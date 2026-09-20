@@ -11,7 +11,7 @@ const machine = $("#machine");
 // --------------------------------------------------
 
 const radio = new Audio("audio/radio.mp3");
-const nature = new Audio("audio/nature.mp3");
+const nature = new Audio("nature-morning.mp3");
 const rain = new Audio("audio/rain.mp3");
 
 // Loop ambience
