@@ -1,273 +1,270 @@
-here// TIME MACHINE — Immersive Audio System
-// Radio + Nature + Rain + Headphone Immersive Mode
+hereconst $ = (s) => document.querySelector(s);
 
-const $ = (s) => document.querySelector(s);
+document.addEventListener("DOMContentLoaded", () => {
 
-const enter = $("#enterBtn");
-const machine = $("#machine");
+  const enter = $("#enterBtn");
+  const machine = $("#machine");
 
-// --------------------------------------------------
-// AUDIO FILES
-// --------------------------------------------------
+  // AUDIO
+  const radio = new Audio("audio/radio.mp3");
+  const nature = new Audio("nature-morning.mp3");
+  const rain = new Audio("audio/rain.mp3");
 
-const radio = new Audio("audio/radio.mp3");
-const nature = new Audio("nature-morning.mp3");
-const rain = new Audio("audio/rain.mp3");
+  radio.loop = true;
+  nature.loop = true;
+  rain.loop = true;
 
-// Loop ambience
-radio.loop = true;
-nature.loop = true;
-rain.loop = true;
+  radio.volume = 0.55;
+  nature.volume = 0.26;
+  rain.volume = 0.34;
 
-// Initial volumes
-radio.volume = 0.55;
-nature.volume = 0.26;
-rain.volume = 0.34;
+  // -----------------------------
+  // TIME MACHINE BUTTON
+  // -----------------------------
 
-// --------------------------------------------------
-// START TIME MACHINE
-// --------------------------------------------------
+  if (enter && machine) {
+    enter.addEventListener("click", async () => {
 
-if (enter) {
-  enter.addEventListener("click", () => {
-    machine.classList.remove("hidden");
+      machine.classList.remove("hidden");
 
-    machine.scrollIntoView({
-      behavior: "smooth"
+      machine.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      try {
+        await radio.play();
+      } catch (e) {
+        console.log("Radio waiting for audio permission");
+      }
+
+      try {
+        await nature.play();
+      } catch (e) {
+        console.log("Nature waiting for audio permission");
+      }
+
+    });
+  }
+
+  // -----------------------------
+  // VOLUME
+  // -----------------------------
+
+  function bindRange(id, valueId, audio) {
+
+    const slider = $("#" + id);
+    const value = $("#" + valueId);
+
+    if (!slider) return;
+
+    slider.addEventListener("input", () => {
+
+      audio.volume = Number(slider.value) / 100;
+
+      if (value) {
+        value.textContent = slider.value + "%";
+      }
+
+    });
+  }
+
+  bindRange("radioVol", "radioVal", radio);
+  bindRange("natureVol", "natureVal", nature);
+  bindRange("rainVol", "rainVal", rain);
+
+  // -----------------------------
+  // RADIO ON / OFF
+  // -----------------------------
+
+  const radioBtn = $("#radioBtn");
+
+  if (radioBtn) {
+
+    radioBtn.addEventListener("click", () => {
+
+      const isOn = radioBtn.classList.toggle("on");
+      const span = radioBtn.querySelector("span");
+
+      if (span) {
+        span.textContent = isOn ? "ON" : "OFF";
+      }
+
+      if (isOn) {
+        radio.play().catch(() => {});
+      } else {
+        radio.pause();
+      }
+
     });
 
-    // Start audio after user interaction
-    startAudio();
-  });
-}
+  }
 
-// --------------------------------------------------
-// AUDIO START
-// --------------------------------------------------
+  // -----------------------------
+  // NATURE ON / OFF
+  // -----------------------------
 
-function startAudio() {
-  radio.play().catch(() => {});
-  nature.play().catch(() => {});
-}
+  const natureSwitch = $("#natureSwitch");
 
-// --------------------------------------------------
-// VOLUME CONTROLS
-// --------------------------------------------------
+  if (natureSwitch) {
 
-function bindRange(id, valueId, audio) {
-  const slider = $("#" + id);
-  const value = $("#" + valueId);
+    natureSwitch.addEventListener("click", () => {
 
-  if (!slider) return;
+      const isOn = natureSwitch.classList.toggle("on");
+      const span = natureSwitch.querySelector("span");
 
-  slider.addEventListener("input", () => {
-    audio.volume = Number(slider.value) / 100;
+      if (span) {
+        span.textContent = isOn ? "ON" : "OFF";
+      }
 
-    if (value) {
-      value.textContent = slider.value + "%";
-    }
-  });
-}
+      if (isOn) {
+        nature.play().catch(() => {});
+      } else {
+        nature.pause();
+      }
 
-bindRange("radioVol", "radioVal", radio);
-bindRange("natureVol", "natureVal", nature);
-bindRange("rainVol", "rainVal", rain);
-
-// --------------------------------------------------
-// ON / OFF BUTTON
-// --------------------------------------------------
-
-function toggle(buttonId, audio) {
-  const btn = $("#" + buttonId);
-
-  if (!btn) return;
-
-  btn.addEventListener("click", () => {
-    const isOn = !btn.classList.contains("on");
-
-    btn.classList.toggle("on", isOn);
-
-    const span = btn.querySelector("span");
-
-    if (span) {
-      span.textContent = isOn ? "ON" : "OFF";
-    }
-
-    if (isOn) {
-      audio.play().catch(() => {});
-    } else {
-      audio.pause();
-    }
-  });
-}
-
-toggle("radioSwitch", radio);
-toggle("natureSwitch", nature);
-toggle("rainSwitch", rain);
-
-// --------------------------------------------------
-// RAIN BUTTON
-// --------------------------------------------------
-
-const rainButton = $("#rainBtn");
-
-if (rainButton) {
-  rainButton.addEventListener("click", () => {
-    const rainSwitch = $("#rainSwitch");
-
-    if (rainSwitch) {
-      rainSwitch.click();
-    }
-
-    machine.classList.remove("hidden");
-    machine.scrollIntoView({
-      behavior: "smooth"
     });
-  });
-}
 
-// --------------------------------------------------
-// HEADPHONE IMMERSIVE MODE
-// --------------------------------------------------
+  }
 
-let immersive = false;
+  // -----------------------------
+  // RAIN ON / OFF
+  // -----------------------------
 
-const headsetSwitch = $("#headsetSwitch");
-const headsetBtn = $("#headsetBtn");
+  const rainSwitch = $("#rainSwitch");
 
-function updateImmersive() {
+  if (rainSwitch) {
 
-  immersive = !immersive;
+    rainSwitch.addEventListener("click", () => {
+
+      const isOn = rainSwitch.classList.toggle("on");
+      const span = rainSwitch.querySelector("span");
+
+      if (span) {
+        span.textContent = isOn ? "ON" : "OFF";
+      }
+
+      if (isOn) {
+        rain.play().catch(() => {});
+      } else {
+        rain.pause();
+      }
+
+    });
+
+  }
+
+  // -----------------------------
+  // RAIN BUTTON
+  // -----------------------------
+
+  const rainBtn = $("#rainBtn");
+
+  if (rainBtn) {
+
+    rainBtn.addEventListener("click", () => {
+
+      if (machine) {
+        machine.classList.remove("hidden");
+
+        machine.scrollIntoView({
+          behavior: "smooth"
+        });
+      }
+
+      if (rainSwitch && !rainSwitch.classList.contains("on")) {
+        rainSwitch.click();
+      }
+
+    });
+
+  }
+
+  // -----------------------------
+  // HEADPHONE IMMERSIVE
+  // -----------------------------
+
+  const headsetSwitch = $("#headsetSwitch");
 
   if (headsetSwitch) {
-    headsetSwitch.classList.toggle("on", immersive);
 
-    const span = headsetSwitch.querySelector("span");
+    headsetSwitch.addEventListener("click", () => {
 
-    if (span) {
-      span.textContent = immersive ? "ON" : "OFF";
-    }
-  }
+      const isOn = headsetSwitch.classList.toggle("on");
+      const span = headsetSwitch.querySelector("span");
 
-  if (immersive) {
-
-    // Headphone-style stereo balance
-    radio.pan = 0;
-    nature.pan = -0.15;
-    rain.pan = 0.12;
-
-    // Slightly softer radio
-    radio.volume = Math.min(radio.volume, 0.60);
-
-    // Nature ambience slightly wider
-    nature.volume = Math.min(nature.volume + 0.04, 1);
-
-    // Rain surrounds the ambience
-    rain.volume = Math.min(rain.volume + 0.03, 1);
-
-  } else {
-
-    // Normal stereo
-    radio.pan = 0;
-    nature.pan = 0;
-    rain.pan = 0;
-  }
-}
-
-if (headsetSwitch) {
-  headsetSwitch.addEventListener("click", updateImmersive);
-}
-
-if (headsetBtn) {
-  headsetBtn.addEventListener("click", updateImmersive);
-}
-
-// --------------------------------------------------
-// PROGRAM BUTTONS
-// --------------------------------------------------
-
-document
-  .querySelectorAll(".program-grid button")
-  .forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const article = button.closest("article");
-
-      if (!article) return;
-
-      const title = article.querySelector("b");
-
-      if (title && $("#programName")) {
-        $("#programName").textContent =
-          title.textContent;
+      if (span) {
+        span.textContent = isOn ? "ON" : "OFF";
       }
 
-      if ($("#timeSlot")) {
-        $("#timeSlot").textContent = "ON AIR";
+      if (isOn) {
+
+        radio.volume = Math.min(radio.volume, 0.60);
+        nature.volume = Math.min(nature.volume + 0.04, 1);
+        rain.volume = Math.min(rain.volume + 0.03, 1);
+
+      } else {
+
+        radio.volume = 0.55;
+        nature.volume = 0.26;
+        rain.volume = 0.34;
+
       }
 
-      // Make sure radio is playing
-      radio.play().catch(() => {});
     });
+
+  }
+
+  // -----------------------------
+  // PROGRAM BUTTONS
+  // -----------------------------
+
+  document
+    .querySelectorAll(".program-grid article button")
+    .forEach((button) => {
+
+      button.addEventListener("click", () => {
+
+        const article = button.closest("article");
+
+        if (!article) return;
+
+        const title = article.querySelector("b");
+
+        if (title && $("#programName")) {
+          $("#programName").textContent = title.textContent;
+        }
+
+        if ($("#timeSlot")) {
+          $("#timeSlot").textContent = "ON AIR";
+        }
+
+        radio.play().catch(() => {});
+
+      });
+
+    });
+
+  // -----------------------------
+  // RADIO STATUS
+  // -----------------------------
+
+  radio.addEventListener("play", () => {
+
+    if ($("#timeSlot")) {
+      $("#timeSlot").textContent = "ON AIR";
+    }
 
   });
 
-// --------------------------------------------------
-// RADIO STATUS
-// --------------------------------------------------
+  radio.addEventListener("pause", () => {
 
-radio.addEventListener("play", () => {
+    if ($("#timeSlot")) {
+      $("#timeSlot").textContent = "PAUSED";
+    }
 
-  const timeSlot = $("#timeSlot");
+  });
 
-  if (timeSlot) {
-    timeSlot.textContent = "ON AIR";
-  }
+  console.log("TIME MACHINE READY");
 
 });
-
-radio.addEventListener("pause", () => {
-
-  const timeSlot = $("#timeSlot");
-
-  if (timeSlot) {
-    timeSlot.textContent = "PAUSED";
-  }
-
-});
-
-// --------------------------------------------------
-// VISIBILITY / TAB SAFETY
-// --------------------------------------------------
-
-document.addEventListener("visibilitychange", () => {
-
-  if (document.hidden) {
-    // Keep ambience running naturally.
-    return;
-  }
-
-});
-
-// --------------------------------------------------
-// INITIAL BUTTON STATE
-// --------------------------------------------------
-
-if ($("#radioSwitch")) {
-  $("#radioSwitch").classList.add("on");
-}
-
-if ($("#natureSwitch")) {
-  $("#natureSwitch").classList.add("on");
-}
-
-if ($("#rainSwitch")) {
-  $("#rainSwitch").classList.remove("on");
-}
-
-if ($("#headsetSwitch")) {
-  $("#headsetSwitch").classList.add("on");
-}
-
-console.log("TIME MACHINE immersive audio system ready.");
