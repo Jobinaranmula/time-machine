@@ -1,12 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  const button = document.getElementById("enterBtn");
+  const enterBtn = document.getElementById("enterBtn");
   const machine = document.getElementById("machine");
 
+  if (enterBtn && machine) {
+    enterBtn.addEventListener("click", function () {
+      machine.classList.remove("hidden");
 
-  button.addEventListener("click", function () {
-    machine.classList.remove("hidden");
-    machine.scrollIntoView({ behavior: "smooth" });
-  });
+      machine.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+  }
 
 });
