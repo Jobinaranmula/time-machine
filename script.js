@@ -1,33 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-  const enter = document.getElementById("enterBtn");
+  const button = document.getElementById("enterBtn");
   const machine = document.getElementById("machine");
 
-  console.log("TIME MACHINE SCRIPT LOADED");
-  console.log("ENTER:", enter);
-  console.log("MACHINE:", machine);
+  alert("SCRIPT WORKING");
 
-  if (!enter) {
-    console.error("enterBtn NOT FOUND");
-    return;
-  }
-
-  if (!machine) {
-    console.error("machine NOT FOUND");
-    return;
-  }
-
-  enter.addEventListener("click", () => {
-
-    console.log("TIME MACHINE BUTTON CLICKED");
-
+  button.addEventListener("click", function () {
     machine.classList.remove("hidden");
-
-    machine.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
+    machine.scrollIntoView({ behavior: "smooth" });
   });
 
 });
