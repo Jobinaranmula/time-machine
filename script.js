@@ -3,13 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const enterBtn = document.getElementById("enterBtn");
   const machine = document.getElementById("machine");
 
-  // MORNING AUDIO
-  const nature = new Audio("nature-morning.mp3");
-  nature.loop = true;
-  nature.volume = 0.28;
+  // =========================
+  // MORNING NATURE AUDIO
+  // =========================
 
+  const nature = new Audio("nature-morning.mp3");
+
+  nature.loop = true;
+  nature.volume = 0.50;
+
+
+  // =========================
   // TIME MACHINE BUTTON
+  // =========================
+
   if (enterBtn && machine) {
+
     enterBtn.addEventListener("click", async function () {
 
       machine.classList.remove("hidden");
@@ -19,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
         block: "start"
       });
 
-      // Start morning sound
       try {
         await nature.play();
       } catch (error) {
@@ -27,9 +35,42 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
     });
+
   }
 
+
+  // =========================
+  // MORNING VOLUME CONTROL
+  // =========================
+
+  const natureVol = document.getElementById("natureVol");
+  const natureVal = document.getElementById("natureVal");
+
+  if (natureVol) {
+
+    natureVol.value = 50;
+
+    natureVol.addEventListener("input", function () {
+
+      nature.volume = Number(this.value) / 100;
+
+      if (natureVal) {
+        natureVal.textContent = this.value + "%";
+      }
+
+    });
+
+  }
+
+  if (natureVal) {
+    natureVal.textContent = "50%";
+  }
+
+
+  // =========================
   // NATURE ON / OFF
+  // =========================
+
   const natureSwitch = document.getElementById("natureSwitch");
 
   if (natureSwitch) {
@@ -37,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     natureSwitch.addEventListener("click", async function () {
 
       const isOn = natureSwitch.classList.toggle("on");
+
       const span = natureSwitch.querySelector("span");
 
       if (span) {
@@ -44,19 +86,70 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (isOn) {
+
         try {
           await nature.play();
         } catch (error) {
-          console.log("Audio error:", error);
+          console.log("Nature audio error:", error);
         }
+
       } else {
+
         nature.pause();
+
       }
 
     });
 
   }
 
-  console.log("TIME MACHINE + MORNING AUDIO READY");
+
+  // =========================
+  // HEADPHONE IMMERSIVE MODE
+  // =========================
+
+  const headsetSwitch =
+    document.getElementById("headsetSwitch");
+
+  if (headsetSwitch) {
+
+    headsetSwitch.addEventListener("click", function () {
+
+      const isOn =
+        headsetSwitch.classList.toggle("on");
+
+      const span =
+        headsetSwitch.querySelector("span");
+
+      if (span) {
+        span.textContent = isOn ? "ON" : "OFF";
+      }
+
+      if (isOn) {
+
+        // Immersive volume
+        nature.volume =
+          Math.min(nature.volume + 0.05, 1);
+
+        console.log("🎧 Immersive ON");
+
+      } else {
+
+        // Normal volume
+        nature.volume =
+          Number(natureVol?.value || 50) / 100;
+
+        console.log("🎧 Immersive OFF");
+
+      }
+
+    });
+
+  }
+
+
+  console.log(
+    "TIME MACHINE + MORNING AUDIO + IMMERSIVE READY"
+  );
 
 });
