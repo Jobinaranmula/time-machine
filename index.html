@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TIME MACHINE — Kerala Radio 1980–1990</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Playfair+Display:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grain"></div>
+<header>
+  <div class="brand">📻 <span>TIME MACHINE</span><small>1980 — 1990 · KERALA RADIO</small></div>
+  <nav>
+    <a href="#programs">പരിപാടികൾ</a>
+    <a href="#years">വർഷങ്ങൾ</a>
+    <a href="#ads">പരസ്യങ്ങൾ</a>
+    <a href="#about">കുറിച്ച്</a>
+  </nav>
+  <button class="icon-btn" id="rainBtn">🌧️ <span>മഴ</span></button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">ഒരു പഴയകാല ശബ്ദയാത്ര</div>
+    <h1>TIME<br><span>MACHINE</span></h1>
+    <p class="years">1980 — 1990</p>
+    <p class="ml">ഒരു ബട്ടൺ അമർത്തൂ...<br>ഓർമ്മകളിലേക്ക് യാത്ര ചെയ്യാം.</p>
+    <button class="enter" id="enterBtn">▶ <span>ടൈം മെഷീനിലേക്ക് പോകാം</span></button>
+  </div>
+  <div class="radio-card">
+    <div class="radio-glow"></div>
+    <div class="radio">PHILIPS</div>
+    <div class="dial"></div>
+    <div class="radio-line"></div>
+    <div class="onair">● ON AIR</div>
+  </div>
+</section>
+
+<section id="machine" class="machine hidden">
+  <div class="topline">
+    <div><b id="dateLabel">1985 · ഒരു രാവിലെ</b><small>കേരള റേഡിയോ</small></div>
+    <button id="natureBtn" class="mode active">🌿 പ്രകൃതി ശബ്ദം</button>
+  </div>
+
+  <div class="now-playing">
+    <div><span class="live">● LIVE</span><span id="timeSlot">06:30 — 07:00</span></div>
+    <h2 id="programName">പ്രഭാതവന്ദനം</h2>
+    <p>ആകാശവാണി · മലയാളം</p>
+    <div class="meter"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <div class="controls">
+    <div class="control"><label>📻 റേഡിയോ</label><input id="radioVol" type="range" min="0" max="100" value="78"><b id="radioVal">78%</b></div>
+    <div class="control"><label>🌿 പ്രകൃതി</label><input id="natureVol" type="range" min="0" max="100" value="28"><b id="natureVal">28%</b></div>
+    <div class="control"><label>🌧️ മഴ</label><input id="rainVol" type="range" min="0" max="100" value="22"><b id="rainVal">22%</b></div>
+  </div>
+
+  <div class="switches">
+    <button id="radioBtn" class="switch on">📻 റേഡിയോ <span>ON</span></button>
+    <button id="natureSwitch" class="switch on">🌿 പ്രകൃതി <span>ON</span></button>
+    <button id="rainSwitch" class="switch">🌧️ മഴ <span>OFF</span></button>
+    <button id="headsetSwitch" class="switch on">🎧 Immersive <span>ON</span></button>
+  </div>
+
+  <div class="program-grid" id="programs">
+    <article><b>🌾 വയലും വീടും</b><span>കൃഷി · ഗ്രാമജീവിതം</span><button>▶ കേൾക്കാം</button></article>
+    <article><b>🎙️ യുവവാണി</b><span>യുവജന പരിപാടി</span><button>▶ കേൾക്കാം</button></article>
+    <article><b>🎭 റേഡിയോ നാടകം</b><span>നാടകം · കഥ</span><button>▶ കേൾക്കാം</button></article>
+    <article><b>🎵 ഗാനപരിപാടി</b><span>പഴയ മലയാളം ഗാനങ്ങൾ</span><button>▶ കേൾക്കാം</button></article>
+    <article><b>📰 വാർത്ത</b><span>അന്നത്തെ വാർത്തകൾ</span><button>▶ കേൾക്കാം</button></article>
+    <article id="ads"><b>📢 പരസ്യങ്ങൾ</b><span>കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ</span><button>▶ കാണാം</button></article>
+  </div>
+</section>
+</main>
+
+<footer id="about">
+  <span>GOOD RADIO · BETTER DAYS</span>
+  <a href="https://instagram.com/jobin_skariah" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
