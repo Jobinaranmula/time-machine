@@ -20,21 +20,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const youvavani =
     new Audio("youvavani.mp3");
 
+  // 🎭 റേഡിയോ നാടകം
+  const radioNadakam =
+    new Audio("radio-nadakam.mp3");
+
+
+  // =========================
+  // LOOP
+  // =========================
 
   nature.loop = true;
   rain.loop = true;
   radio.loop = true;
 
-  // ഇവ ഒരിക്കൽ മാത്രം
   vayalumVeedum.loop = false;
   youvavani.loop = false;
+  radioNadakam.loop = false;
 
+
+  // =========================
+  // VOLUME
+  // =========================
 
   nature.volume = 0.50;
   rain.volume = 0.35;
   radio.volume = 0.55;
+
   vayalumVeedum.volume = 0.50;
   youvavani.volume = 0.50;
+  radioNadakam.volume = 0.50;
 
 
   // =========================
@@ -53,46 +67,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (enterBtn && machine) {
 
-    enterBtn.addEventListener("click", async function () {
+    enterBtn.addEventListener(
+      "click",
+      async function () {
 
-      machine.classList.remove("hidden");
+        machine.classList.remove("hidden");
 
-      machine.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+        machine.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
 
 
-      // 🌿 Morning Nature
-      try {
+        // 🌿 Morning Nature
+        try {
 
-        await nature.play();
+          await nature.play();
 
-      } catch (error) {
+        } catch (error) {
 
-        console.log(
-          "Morning audio waiting:",
-          error
-        );
+          console.log(
+            "Morning audio waiting:",
+            error
+          );
+
+        }
+
+
+        // 📻 Radio
+        try {
+
+          await radio.play();
+
+        } catch (error) {
+
+          console.log(
+            "Radio waiting:",
+            error
+          );
+
+        }
 
       }
-
-
-      // 📻 Radio
-      try {
-
-        await radio.play();
-
-      } catch (error) {
-
-        console.log(
-          "Radio waiting:",
-          error
-        );
-
-      }
-
-    });
+    );
 
   }
 
@@ -412,7 +429,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "click",
       async function () {
 
-
         if (vayalumVeedum.paused) {
 
           try {
@@ -474,7 +490,6 @@ document.addEventListener("DOMContentLoaded", function () {
       "click",
       async function () {
 
-
         if (youvavani.paused) {
 
           try {
@@ -520,6 +535,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =========================
+  // 🎭 RADIO NADAKAM
+  // PLAY / PAUSE
+  // =========================
+
+  const radioNadakamBtn =
+    document.getElementById(
+      "radioNadakamBtn"
+    );
+
+
+  if (radioNadakamBtn) {
+
+    radioNadakamBtn.addEventListener(
+      "click",
+      async function () {
+
+        if (radioNadakam.paused) {
+
+          try {
+
+            await radioNadakam.play();
+
+            radioNadakamBtn.textContent =
+              "⏸ നിർത്താം";
+
+          } catch (error) {
+
+            console.log(
+              "Radio Nadakam error:",
+              error
+            );
+
+          }
+
+        } else {
+
+          radioNadakam.pause();
+
+          radioNadakamBtn.textContent =
+            "▶ കേൾക്കാം";
+
+        }
+
+      }
+    );
+
+
+    radioNadakam.addEventListener(
+      "ended",
+      function () {
+
+        radioNadakamBtn.textContent =
+          "▶ കേൾക്കാം";
+
+      }
+    );
+
+  }
+
+
+  // =========================
   // RAIN HEADER BUTTON
   // =========================
 
@@ -532,7 +608,6 @@ document.addEventListener("DOMContentLoaded", function () {
     rainBtn.addEventListener(
       "click",
       async function () {
-
 
         if (machine) {
 
@@ -649,7 +724,6 @@ document.addEventListener("DOMContentLoaded", function () {
     headsetSwitch.addEventListener(
       "click",
       async function () {
-
 
         immersive =
           headsetSwitch.classList.toggle(
@@ -799,12 +873,24 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
+  radioNadakam.addEventListener(
+    "ended",
+    function () {
+
+      console.log(
+        "🎭 Radio Nadakam finished"
+      );
+
+    }
+  );
+
+
   // =========================
   // READY
   // =========================
 
   console.log(
-    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + YOUVAVANI + IMMERSIVE READY"
+    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + YOUVAVANI + RADIO NADAKAM + IMMERSIVE READY"
   );
 
 });
