@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const enterBtn = document.getElementById("enterBtn");
   const machine = document.getElementById("machine");
 
+
   // =========================
   // AUDIO
   // =========================
@@ -11,13 +12,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const rain = new Audio("rain.mp3");
   const radio = new Audio("radio.mp3");
 
+  // 🌾 വയലും വീടും
+  const vayalumVeedum = new Audio("vayalum-veedum.mp3");
+
   nature.loop = true;
   rain.loop = true;
   radio.loop = true;
 
+  // വയലും വീടും audio repeat വേണ്ടെങ്കിൽ false
+  vayalumVeedum.loop = false;
+
   nature.volume = 0.50;
   rain.volume = 0.35;
   radio.volume = 0.55;
+  vayalumVeedum.volume = 0.50;
+
 
   let audioContext = null;
   let natureSource = null;
@@ -40,16 +49,28 @@ document.addEventListener("DOMContentLoaded", function () {
         block: "start"
       });
 
+
+      // 🌿 Morning Nature
       try {
         await nature.play();
       } catch (error) {
         console.log("Morning audio waiting:", error);
       }
 
+
+      // 📻 Radio
       try {
         await radio.play();
       } catch (error) {
         console.log("Radio waiting:", error);
+      }
+
+
+      // 🌾 വയലും വീടും
+      try {
+        await vayalumVeedum.play();
+      } catch (error) {
+        console.log("Vayalum Veedum waiting:", error);
       }
 
     });
@@ -262,6 +283,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =========================
+  // 🌾 VAYALUM VEEDUM
+  // ON / OFF
+  // =========================
+
+  const vayalumVeedumSwitch =
+    document.getElementById("vayalumVeedumSwitch");
+
+  if (vayalumVeedumSwitch) {
+
+    vayalumVeedumSwitch.addEventListener(
+      "click",
+      async function () {
+
+        const isOn =
+          vayalumVeedumSwitch.classList.toggle("on");
+
+        const span =
+          vayalumVeedumSwitch.querySelector("span");
+
+        if (span) {
+          span.textContent = isOn ? "ON" : "OFF";
+        }
+
+        if (isOn) {
+
+          try {
+            await vayalumVeedum.play();
+          } catch (error) {
+            console.log(
+              "Vayalum Veedum error:",
+              error
+            );
+          }
+
+        } else {
+
+          vayalumVeedum.pause();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  // =========================
   // RAIN HEADER BUTTON
   // =========================
 
@@ -417,11 +485,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =========================
+  // 🌾 VAYALUM VEEDUM STATUS
+  // =========================
+
+  vayalumVeedum.addEventListener(
+    "ended",
+    function () {
+
+      console.log(
+        "🌾 Vayalum Veedum audio finished"
+      );
+
+    }
+  );
+
+
+  // =========================
   // READY
   // =========================
 
   console.log(
-    "TIME MACHINE + RADIO + MORNING + RAIN + IMMERSIVE READY"
+    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + IMMERSIVE READY"
   );
 
 });
