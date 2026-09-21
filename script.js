@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   rain.loop = true;
   radio.loop = true;
 
-  // വയലും വീടും audio repeat വേണ്ടെങ്കിൽ false
+  // വയലും വീടും ഒരിക്കൽ മാത്രം
   vayalumVeedum.loop = false;
 
   nature.volume = 0.50;
@@ -27,6 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
   radio.volume = 0.55;
   vayalumVeedum.volume = 0.50;
 
+
+  // =========================
+  // IMMERSIVE AUDIO
+  // =========================
 
   let audioContext = null;
   let natureSource = null;
@@ -52,25 +56,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 🌿 Morning Nature
       try {
+
         await nature.play();
+
       } catch (error) {
-        console.log("Morning audio waiting:", error);
+
+        console.log(
+          "Morning audio waiting:",
+          error
+        );
+
       }
 
 
       // 📻 Radio
       try {
+
         await radio.play();
-      } catch (error) {
-        console.log("Radio waiting:", error);
-      }
 
-
-      // 🌾 വയലും വീടും
-      try {
-        await vayalumVeedum.play();
       } catch (error) {
-        console.log("Vayalum Veedum waiting:", error);
+
+        console.log(
+          "Radio waiting:",
+          error
+        );
+
       }
 
     });
@@ -82,27 +92,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // RADIO VOLUME
   // =========================
 
-  const radioVol = document.getElementById("radioVol");
-  const radioVal = document.getElementById("radioVal");
+  const radioVol =
+    document.getElementById("radioVol");
+
+  const radioVal =
+    document.getElementById("radioVal");
 
   if (radioVol) {
 
     radioVol.value = 55;
 
-    radioVol.addEventListener("input", function () {
+    radioVol.addEventListener(
+      "input",
+      function () {
 
-      radio.volume = Number(this.value) / 100;
+        radio.volume =
+          Number(this.value) / 100;
 
-      if (radioVal) {
-        radioVal.textContent = this.value + "%";
+        if (radioVal) {
+
+          radioVal.textContent =
+            this.value + "%";
+
+        }
+
       }
-
-    });
+    );
 
   }
 
   if (radioVal) {
+
     radioVal.textContent = "55%";
+
   }
 
 
@@ -110,27 +132,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // MORNING VOLUME
   // =========================
 
-  const natureVol = document.getElementById("natureVol");
-  const natureVal = document.getElementById("natureVal");
+  const natureVol =
+    document.getElementById("natureVol");
+
+  const natureVal =
+    document.getElementById("natureVal");
 
   if (natureVol) {
 
     natureVol.value = 50;
 
-    natureVol.addEventListener("input", function () {
+    natureVol.addEventListener(
+      "input",
+      function () {
 
-      nature.volume = Number(this.value) / 100;
+        nature.volume =
+          Number(this.value) / 100;
 
-      if (natureVal) {
-        natureVal.textContent = this.value + "%";
+        if (natureVal) {
+
+          natureVal.textContent =
+            this.value + "%";
+
+        }
+
       }
-
-    });
+    );
 
   }
 
   if (natureVal) {
+
     natureVal.textContent = "50%";
+
   }
 
 
@@ -138,27 +172,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // RAIN VOLUME
   // =========================
 
-  const rainVol = document.getElementById("rainVol");
-  const rainVal = document.getElementById("rainVal");
+  const rainVol =
+    document.getElementById("rainVol");
+
+  const rainVal =
+    document.getElementById("rainVal");
 
   if (rainVol) {
 
     rainVol.value = 35;
 
-    rainVol.addEventListener("input", function () {
+    rainVol.addEventListener(
+      "input",
+      function () {
 
-      rain.volume = Number(this.value) / 100;
+        rain.volume =
+          Number(this.value) / 100;
 
-      if (rainVal) {
-        rainVal.textContent = this.value + "%";
+        if (rainVal) {
+
+          rainVal.textContent =
+            this.value + "%";
+
+        }
+
       }
-
-    });
+    );
 
   }
 
   if (rainVal) {
+
     rainVal.textContent = "35%";
+
   }
 
 
@@ -171,33 +217,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (radioBtn) {
 
-    radioBtn.addEventListener("click", async function () {
+    radioBtn.addEventListener(
+      "click",
+      async function () {
 
-      const isOn =
-        radioBtn.classList.toggle("on");
+        const isOn =
+          radioBtn.classList.toggle("on");
 
-      const span =
-        radioBtn.querySelector("span");
+        const span =
+          radioBtn.querySelector("span");
 
-      if (span) {
-        span.textContent = isOn ? "ON" : "OFF";
-      }
+        if (span) {
 
-      if (isOn) {
+          span.textContent =
+            isOn ? "ON" : "OFF";
 
-        try {
-          await radio.play();
-        } catch (error) {
-          console.log("Radio error:", error);
         }
 
-      } else {
 
-        radio.pause();
+        if (isOn) {
+
+          try {
+
+            await radio.play();
+
+          } catch (error) {
+
+            console.log(
+              "Radio error:",
+              error
+            );
+
+          }
+
+        } else {
+
+          radio.pause();
+
+        }
 
       }
-
-    });
+    );
 
   }
 
@@ -211,33 +271,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (natureSwitch) {
 
-    natureSwitch.addEventListener("click", async function () {
+    natureSwitch.addEventListener(
+      "click",
+      async function () {
 
-      const isOn =
-        natureSwitch.classList.toggle("on");
+        const isOn =
+          natureSwitch.classList.toggle("on");
 
-      const span =
-        natureSwitch.querySelector("span");
+        const span =
+          natureSwitch.querySelector("span");
 
-      if (span) {
-        span.textContent = isOn ? "ON" : "OFF";
-      }
+        if (span) {
 
-      if (isOn) {
+          span.textContent =
+            isOn ? "ON" : "OFF";
 
-        try {
-          await nature.play();
-        } catch (error) {
-          console.log("Nature error:", error);
         }
 
-      } else {
 
-        nature.pause();
+        if (isOn) {
+
+          try {
+
+            await nature.play();
+
+          } catch (error) {
+
+            console.log(
+              "Nature error:",
+              error
+            );
+
+          }
+
+        } else {
+
+          nature.pause();
+
+        }
 
       }
-
-    });
+    );
 
   }
 
@@ -251,77 +325,109 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (rainSwitch) {
 
-    rainSwitch.addEventListener("click", async function () {
+    rainSwitch.addEventListener(
+      "click",
+      async function () {
 
-      const isOn =
-        rainSwitch.classList.toggle("on");
+        const isOn =
+          rainSwitch.classList.toggle("on");
 
-      const span =
-        rainSwitch.querySelector("span");
+        const span =
+          rainSwitch.querySelector("span");
 
-      if (span) {
-        span.textContent = isOn ? "ON" : "OFF";
-      }
+        if (span) {
 
-      if (isOn) {
+          span.textContent =
+            isOn ? "ON" : "OFF";
 
-        try {
-          await rain.play();
-        } catch (error) {
-          console.log("Rain error:", error);
         }
 
-      } else {
 
-        rain.pause();
+        if (isOn) {
+
+          try {
+
+            await rain.play();
+
+          } catch (error) {
+
+            console.log(
+              "Rain error:",
+              error
+            );
+
+          }
+
+        } else {
+
+          rain.pause();
+
+        }
 
       }
-
-    });
+    );
 
   }
 
 
   // =========================
   // 🌾 VAYALUM VEEDUM
-  // ON / OFF
+  // PLAY BUTTON
   // =========================
 
-  const vayalumVeedumSwitch =
-    document.getElementById("vayalumVeedumSwitch");
+  const vayalumVeedumBtn =
+    document.getElementById(
+      "vayalumVeedumBtn"
+    );
 
-  if (vayalumVeedumSwitch) {
+  if (vayalumVeedumBtn) {
 
-    vayalumVeedumSwitch.addEventListener(
+    vayalumVeedumBtn.addEventListener(
       "click",
       async function () {
 
-        const isOn =
-          vayalumVeedumSwitch.classList.toggle("on");
 
-        const span =
-          vayalumVeedumSwitch.querySelector("span");
-
-        if (span) {
-          span.textContent = isOn ? "ON" : "OFF";
-        }
-
-        if (isOn) {
+        // ▶ PLAY
+        if (vayalumVeedum.paused) {
 
           try {
+
             await vayalumVeedum.play();
+
+            vayalumVeedumBtn.textContent =
+              "⏸ നിർത്താം";
+
           } catch (error) {
+
             console.log(
               "Vayalum Veedum error:",
               error
             );
+
           }
 
+
+        // ⏸ PAUSE
         } else {
 
           vayalumVeedum.pause();
 
+          vayalumVeedumBtn.textContent =
+            "▶ കേൾക്കാം";
+
         }
+
+      }
+    );
+
+
+    // Audio തീർന്നാൽ button reset
+    vayalumVeedum.addEventListener(
+      "ended",
+      function () {
+
+        vayalumVeedumBtn.textContent =
+          "▶ കേൾക്കാം";
 
       }
     );
@@ -338,42 +444,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (rainBtn) {
 
-    rainBtn.addEventListener("click", async function () {
+    rainBtn.addEventListener(
+      "click",
+      async function () {
 
-      if (machine) {
 
-        machine.classList.remove("hidden");
+        if (machine) {
 
-        machine.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+          machine.classList.remove(
+            "hidden"
+          );
 
-      }
+          machine.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
 
-      if (
-        rainSwitch &&
-        !rainSwitch.classList.contains("on")
-      ) {
+        }
 
-        rainSwitch.classList.add("on");
 
-        const span =
-          rainSwitch.querySelector("span");
+        if (
+          rainSwitch &&
+          !rainSwitch.classList.contains("on")
+        ) {
 
-        if (span) {
-          span.textContent = "ON";
+          rainSwitch.classList.add("on");
+
+          const span =
+            rainSwitch.querySelector("span");
+
+          if (span) {
+
+            span.textContent = "ON";
+
+          }
+
+        }
+
+
+        try {
+
+          await rain.play();
+
+        } catch (error) {
+
+          console.log(
+            "Rain waiting:",
+            error
+          );
+
         }
 
       }
-
-      try {
-        await rain.play();
-      } catch (error) {
-        console.log("Rain waiting:", error);
-      }
-
-    });
+    );
 
   }
 
@@ -383,12 +506,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
 
   const headsetSwitch =
-    document.getElementById("headsetSwitch");
+    document.getElementById(
+      "headsetSwitch"
+    );
 
 
   function createImmersiveAudio() {
 
     if (audioContext) return;
+
 
     audioContext =
       new (
@@ -396,14 +522,25 @@ document.addEventListener("DOMContentLoaded", function () {
         window.webkitAudioContext
       )();
 
+
     natureSource =
-      audioContext.createMediaElementSource(nature);
+      audioContext.createMediaElementSource(
+        nature
+      );
+
 
     naturePanner =
       audioContext.createStereoPanner();
 
-    natureSource.connect(naturePanner);
-    naturePanner.connect(audioContext.destination);
+
+    natureSource.connect(
+      naturePanner
+    );
+
+
+    naturePanner.connect(
+      audioContext.destination
+    );
 
   }
 
@@ -414,43 +551,71 @@ document.addEventListener("DOMContentLoaded", function () {
       "click",
       async function () {
 
+
         immersive =
           headsetSwitch.classList.toggle("on");
+
 
         const span =
           headsetSwitch.querySelector("span");
 
+
         if (span) {
+
           span.textContent =
             immersive ? "ON" : "OFF";
+
         }
+
 
         createImmersiveAudio();
 
-        if (audioContext.state === "suspended") {
+
+        if (
+          audioContext.state ===
+          "suspended"
+        ) {
+
           await audioContext.resume();
+
         }
+
 
         if (immersive) {
 
-          naturePanner.pan.value = -0.15;
+          naturePanner.pan.value =
+            -0.15;
+
 
           nature.volume =
             Math.min(
-              Number(natureVol?.value || 50) / 100 + 0.03,
+              Number(
+                natureVol?.value || 50
+              ) / 100 + 0.03,
               1
             );
 
-          console.log("🎧 IMMERSIVE ON");
+
+          console.log(
+            "🎧 IMMERSIVE ON"
+          );
+
 
         } else {
 
-          naturePanner.pan.value = 0;
+          naturePanner.pan.value =
+            0;
+
 
           nature.volume =
-            Number(natureVol?.value || 50) / 100;
+            Number(
+              natureVol?.value || 50
+            ) / 100;
 
-          console.log("🎧 IMMERSIVE OFF");
+
+          console.log(
+            "🎧 IMMERSIVE OFF"
+          );
 
         }
 
@@ -465,23 +630,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
 
   const timeSlot =
-    document.getElementById("timeSlot");
+    document.getElementById(
+      "timeSlot"
+    );
 
-  radio.addEventListener("play", function () {
 
-    if (timeSlot) {
-      timeSlot.textContent = "ON AIR";
+  radio.addEventListener(
+    "play",
+    function () {
+
+      if (timeSlot) {
+
+        timeSlot.textContent =
+          "ON AIR";
+
+      }
+
     }
+  );
 
-  });
 
-  radio.addEventListener("pause", function () {
+  radio.addEventListener(
+    "pause",
+    function () {
 
-    if (timeSlot) {
-      timeSlot.textContent = "PAUSED";
+      if (timeSlot) {
+
+        timeSlot.textContent =
+          "PAUSED";
+
+      }
+
     }
-
-  });
+  );
 
 
   // =========================
