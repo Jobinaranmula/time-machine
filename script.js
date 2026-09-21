@@ -4,20 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const machine = document.getElementById("machine");
 
   // =========================
-  // MORNING AUDIO
+  // AUDIO
   // =========================
 
   const nature = new Audio("nature-morning.mp3");
+  const rain = new Audio("rain.mp3");
+
   nature.loop = true;
+  rain.loop = true;
+
   nature.volume = 0.50;
+  rain.volume = 0.35;
 
   let audioContext = null;
-  let source = null;
-  let panner = null;
+  let natureSource = null;
+  let naturePanner = null;
   let immersive = false;
 
+
   // =========================
-  // START AUDIO
+  // TIME MACHINE
   // =========================
 
   if (enterBtn && machine) {
@@ -41,8 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   // =========================
-  // VOLUME CONTROL
+  // MORNING VOLUME
   // =========================
 
   const natureVol = document.getElementById("natureVol");
@@ -67,6 +74,35 @@ document.addEventListener("DOMContentLoaded", function () {
   if (natureVal) {
     natureVal.textContent = "50%";
   }
+
+
+  // =========================
+  // RAIN VOLUME
+  // =========================
+
+  const rainVol = document.getElementById("rainVol");
+  const rainVal = document.getElementById("rainVal");
+
+  if (rainVol) {
+
+    rainVol.value = 35;
+
+    rainVol.addEventListener("input", function () {
+
+      rain.volume = Number(this.value) / 100;
+
+      if (rainVal) {
+        rainVal.textContent = this.value + "%";
+      }
+
+    });
+
+  }
+
+  if (rainVal) {
+    rainVal.textContent = "35%";
+  }
+
 
   // =========================
   // NATURE ON / OFF
@@ -94,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
           await nature.play();
         } catch (error) {
-          console.log("Nature audio error:", error);
+          console.log("Nature error:", error);
         }
 
       } else {
@@ -107,27 +143,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   // =========================
-  // CREATE IMMERSIVE AUDIO
+  // RAIN ON / OFF
   // =========================
 
-  function createImmersiveAudio() {
+  const rainSwitch =
+    document.getElementById("rainSwitch");
 
-    if (audioContext) return;
+  if (rainSwitch) {
 
-    audioContext =
-      new (window.AudioContext ||
-           window.webkitAudioContext)();
+    rainSwitch.addEventListener("click", async function () {
 
-    source =
-      audioContext.createMediaElementSource(nature);
+      const isOn =
+        rainSwitch.classList.toggle("on");
 
-    panner =
-      audioContext.createStereoPanner();
+      const span =
+        rainSwitch.querySelector("span");
 
-    source.connect(panner);
-    panner.connect(audioContext.destination);
+      if (span) {
+        span.textContent = isOn ? "ON" : "OFF";
+      }
+
+      if (isOn) {
+
+        try {
+          await rain.play();
+        } catch (error) {
+          console.log("Rain error:", error);
+        }
+
+      } else {
+
+        rain.pause();
+
+      }
+
+    });
+
   }
+
+
+  // =========================
+  // RAIN HEADER BUTTON
+  // =========================
+
+  const rainBtn =
+    document.getElementById("rainBtn");
+
+  if (rainBtn) {
+
+    rainBtn.addEventListener("click", async function () {
+
+      if (machine) {
+
+        machine.classList.remove("hidden");
+
+        machine.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }
+
+      if (
+        rainSwitch &&
+        !rainSwitch.classList.contains("on")
+      ) {
+        rainSwitch.classList.add("on");
+
+        const span =
+          rainSwitch.querySelector("span");
+
+        if (span) {
+          span.textContent = "ON";
+        }
+      }
+
+      try {
+        await rain.play();
+      } catch (error) {
+        console.log("Rain waiting:", error);
+      }
+
+    });
+
+  }
+
 
   // =========================
   // HEADPHONE IMMERSIVE
@@ -136,58 +238,86 @@ document.addEventListener("DOMContentLoaded", function () {
   const headsetSwitch =
     document.getElementById("headsetSwitch");
 
-  if (headsetSwitch) {
+  function createImmersiveAudio() {
 
-    headsetSwitch.addEventListener("click", async function () {
+    if (audioContext) return;
 
-      immersive =
-        headsetSwitch.classList.toggle("on");
+    audioContext =
+      new (
+        window.AudioContext ||
+        window.webkitAudioContext
+      )();
 
-      const span =
-        headsetSwitch.querySelector("span");
+    natureSource =
+      audioContext.createMediaElementSource(nature);
 
-      if (span) {
-        span.textContent =
-          immersive ? "ON" : "OFF";
-      }
+    naturePanner =
+      audioContext.createStereoPanner();
 
-      // Create audio system after user tap
-      createImmersiveAudio();
-
-      if (audioContext.state === "suspended") {
-        await audioContext.resume();
-      }
-
-      if (immersive) {
-
-        // Headphone immersive mode
-        panner.pan.value = -0.15;
-
-        nature.volume =
-          Math.min(
-            Number(natureVol?.value || 50) / 100 + 0.03,
-            1
-          );
-
-        console.log("🎧 IMMERSIVE MODE ON");
-
-      } else {
-
-        // Normal mode
-        panner.pan.value = 0;
-
-        nature.volume =
-          Number(natureVol?.value || 50) / 100;
-
-        console.log("🎧 IMMERSIVE MODE OFF");
-      }
-
-    });
+    natureSource.connect(naturePanner);
+    naturePanner.connect(audioContext.destination);
 
   }
 
+
+  if (headsetSwitch) {
+
+    headsetSwitch.addEventListener(
+      "click",
+      async function () {
+
+        immersive =
+          headsetSwitch.classList.toggle("on");
+
+        const span =
+          headsetSwitch.querySelector("span");
+
+        if (span) {
+          span.textContent =
+            immersive ? "ON" : "OFF";
+        }
+
+        createImmersiveAudio();
+
+        if (audioContext.state === "suspended") {
+          await audioContext.resume();
+        }
+
+        if (immersive) {
+
+          naturePanner.pan.value = -0.15;
+
+          nature.volume =
+            Math.min(
+              Number(natureVol?.value || 50) / 100 + 0.03,
+              1
+            );
+
+          console.log("🎧 IMMERSIVE ON");
+
+        } else {
+
+          naturePanner.pan.value = 0;
+
+          nature.volume =
+            Number(natureVol?.value || 50) / 100;
+
+          console.log("🎧 IMMERSIVE OFF");
+
+        }
+
+      }
+    );
+
+  }
+
+
+  // =========================
+  // READY
+  // =========================
+
   console.log(
-    "TIME MACHINE + MORNING AUDIO + HEADPHONE IMMERSIVE READY"
+    "TIME MACHINE + MORNING + RAIN + IMMERSIVE READY"
   );
 
 });
