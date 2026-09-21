@@ -13,19 +13,28 @@ document.addEventListener("DOMContentLoaded", function () {
   const radio = new Audio("radio.mp3");
 
   // 🌾 വയലും വീടും
-  const vayalumVeedum = new Audio("vayalum-veedum.mp3");
+  const vayalumVeedum =
+    new Audio("vayalum-veedum.mp3");
+
+  // 🎙️ യുവവാണി
+  const youvavani =
+    new Audio("youvavani.mp3");
+
 
   nature.loop = true;
   rain.loop = true;
   radio.loop = true;
 
-  // വയലും വീടും ഒരിക്കൽ മാത്രം
+  // ഇവ ഒരിക്കൽ മാത്രം
   vayalumVeedum.loop = false;
+  youvavani.loop = false;
+
 
   nature.volume = 0.50;
   rain.volume = 0.35;
   radio.volume = 0.55;
   vayalumVeedum.volume = 0.50;
+  youvavani.volume = 0.50;
 
 
   // =========================
@@ -98,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const radioVal =
     document.getElementById("radioVal");
 
+
   if (radioVol) {
 
     radioVol.value = 55;
@@ -121,6 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   if (radioVal) {
 
     radioVal.textContent = "55%";
@@ -137,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const natureVal =
     document.getElementById("natureVal");
+
 
   if (natureVol) {
 
@@ -161,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   if (natureVal) {
 
     natureVal.textContent = "50%";
@@ -177,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const rainVal =
     document.getElementById("rainVal");
+
 
   if (rainVol) {
 
@@ -201,6 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+
   if (rainVal) {
 
     rainVal.textContent = "35%";
@@ -215,6 +230,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const radioBtn =
     document.getElementById("radioBtn");
 
+
   if (radioBtn) {
 
     radioBtn.addEventListener(
@@ -226,6 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const span =
           radioBtn.querySelector("span");
+
 
         if (span) {
 
@@ -267,7 +284,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
 
   const natureSwitch =
-    document.getElementById("natureSwitch");
+    document.getElementById(
+      "natureSwitch"
+    );
+
 
   if (natureSwitch) {
 
@@ -280,6 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const span =
           natureSwitch.querySelector("span");
+
 
         if (span) {
 
@@ -321,7 +342,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
 
   const rainSwitch =
-    document.getElementById("rainSwitch");
+    document.getElementById(
+      "rainSwitch"
+    );
+
 
   if (rainSwitch) {
 
@@ -334,6 +358,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const span =
           rainSwitch.querySelector("span");
+
 
         if (span) {
 
@@ -372,13 +397,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // =========================
   // 🌾 VAYALUM VEEDUM
-  // PLAY BUTTON
+  // PLAY / PAUSE
   // =========================
 
   const vayalumVeedumBtn =
     document.getElementById(
       "vayalumVeedumBtn"
     );
+
 
   if (vayalumVeedumBtn) {
 
@@ -387,7 +413,6 @@ document.addEventListener("DOMContentLoaded", function () {
       async function () {
 
 
-        // ▶ PLAY
         if (vayalumVeedum.paused) {
 
           try {
@@ -406,8 +431,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
           }
 
-
-        // ⏸ PAUSE
         } else {
 
           vayalumVeedum.pause();
@@ -421,7 +444,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
 
-    // Audio തീർന്നാൽ button reset
     vayalumVeedum.addEventListener(
       "ended",
       function () {
@@ -436,11 +458,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =========================
+  // 🎙️ YOUVAVANI
+  // PLAY / PAUSE
+  // =========================
+
+  const youvavaniBtn =
+    document.getElementById(
+      "youvavaniBtn"
+    );
+
+
+  if (youvavaniBtn) {
+
+    youvavaniBtn.addEventListener(
+      "click",
+      async function () {
+
+
+        if (youvavani.paused) {
+
+          try {
+
+            await youvavani.play();
+
+            youvavaniBtn.textContent =
+              "⏸ നിർത്താം";
+
+          } catch (error) {
+
+            console.log(
+              "Youvavani error:",
+              error
+            );
+
+          }
+
+        } else {
+
+          youvavani.pause();
+
+          youvavaniBtn.textContent =
+            "▶ കേൾക്കാം";
+
+        }
+
+      }
+    );
+
+
+    youvavani.addEventListener(
+      "ended",
+      function () {
+
+        youvavaniBtn.textContent =
+          "▶ കേൾക്കാം";
+
+      }
+    );
+
+  }
+
+
+  // =========================
   // RAIN HEADER BUTTON
   // =========================
 
   const rainBtn =
     document.getElementById("rainBtn");
+
 
   if (rainBtn) {
 
@@ -472,6 +557,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           const span =
             rainSwitch.querySelector("span");
+
 
           if (span) {
 
@@ -516,11 +602,24 @@ document.addEventListener("DOMContentLoaded", function () {
     if (audioContext) return;
 
 
+    const AudioContext =
+      window.AudioContext ||
+      window.webkitAudioContext;
+
+
+    if (!AudioContext) {
+
+      console.log(
+        "Web Audio API not supported"
+      );
+
+      return;
+
+    }
+
+
     audioContext =
-      new (
-        window.AudioContext ||
-        window.webkitAudioContext
-      )();
+      new AudioContext();
 
 
     natureSource =
@@ -553,11 +652,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         immersive =
-          headsetSwitch.classList.toggle("on");
+          headsetSwitch.classList.toggle(
+            "on"
+          );
 
 
         const span =
-          headsetSwitch.querySelector("span");
+          headsetSwitch.querySelector(
+            "span"
+          );
 
 
         if (span) {
@@ -569,6 +672,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         createImmersiveAudio();
+
+
+        if (!audioContext) return;
 
 
         if (
@@ -666,7 +772,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =========================
-  // 🌾 VAYALUM VEEDUM STATUS
+  // AUDIO STATUS
   // =========================
 
   vayalumVeedum.addEventListener(
@@ -674,7 +780,19 @@ document.addEventListener("DOMContentLoaded", function () {
     function () {
 
       console.log(
-        "🌾 Vayalum Veedum audio finished"
+        "🌾 Vayalum Veedum finished"
+      );
+
+    }
+  );
+
+
+  youvavani.addEventListener(
+    "ended",
+    function () {
+
+      console.log(
+        "🎙️ Youvavani finished"
       );
 
     }
@@ -686,7 +804,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
 
   console.log(
-    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + IMMERSIVE READY"
+    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + YOUVAVANI + IMMERSIVE READY"
   );
 
 });
