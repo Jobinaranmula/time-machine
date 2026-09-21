@@ -9,12 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const nature = new Audio("nature-morning.mp3");
   const rain = new Audio("rain.mp3");
+  const radio = new Audio("radio.mp3");
 
   nature.loop = true;
   rain.loop = true;
+  radio.loop = true;
 
   nature.volume = 0.50;
   rain.volume = 0.35;
+  radio.volume = 0.55;
 
   let audioContext = null;
   let natureSource = null;
@@ -43,8 +46,42 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Morning audio waiting:", error);
       }
 
+      try {
+        await radio.play();
+      } catch (error) {
+        console.log("Radio waiting:", error);
+      }
+
     });
 
+  }
+
+
+  // =========================
+  // RADIO VOLUME
+  // =========================
+
+  const radioVol = document.getElementById("radioVol");
+  const radioVal = document.getElementById("radioVal");
+
+  if (radioVol) {
+
+    radioVol.value = 55;
+
+    radioVol.addEventListener("input", function () {
+
+      radio.volume = Number(this.value) / 100;
+
+      if (radioVal) {
+        radioVal.textContent = this.value + "%";
+      }
+
+    });
+
+  }
+
+  if (radioVal) {
+    radioVal.textContent = "55%";
   }
 
 
@@ -101,6 +138,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (rainVal) {
     rainVal.textContent = "35%";
+  }
+
+
+  // =========================
+  // RADIO ON / OFF
+  // =========================
+
+  const radioBtn =
+    document.getElementById("radioBtn");
+
+  if (radioBtn) {
+
+    radioBtn.addEventListener("click", async function () {
+
+      const isOn =
+        radioBtn.classList.toggle("on");
+
+      const span =
+        radioBtn.querySelector("span");
+
+      if (span) {
+        span.textContent = isOn ? "ON" : "OFF";
+      }
+
+      if (isOn) {
+
+        try {
+          await radio.play();
+        } catch (error) {
+          console.log("Radio error:", error);
+        }
+
+      } else {
+
+        radio.pause();
+
+      }
+
+    });
+
   }
 
 
@@ -210,6 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
         rainSwitch &&
         !rainSwitch.classList.contains("on")
       ) {
+
         rainSwitch.classList.add("on");
 
         const span =
@@ -218,6 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (span) {
           span.textContent = "ON";
         }
+
       }
 
       try {
@@ -237,6 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const headsetSwitch =
     document.getElementById("headsetSwitch");
+
 
   function createImmersiveAudio() {
 
@@ -313,11 +393,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =========================
+  // RADIO STATUS
+  // =========================
+
+  const timeSlot =
+    document.getElementById("timeSlot");
+
+  radio.addEventListener("play", function () {
+
+    if (timeSlot) {
+      timeSlot.textContent = "ON AIR";
+    }
+
+  });
+
+  radio.addEventListener("pause", function () {
+
+    if (timeSlot) {
+      timeSlot.textContent = "PAUSED";
+    }
+
+  });
+
+
+  // =========================
   // READY
   // =========================
 
   console.log(
-    "TIME MACHINE + MORNING + RAIN + IMMERSIVE READY"
+    "TIME MACHINE + RADIO + MORNING + RAIN + IMMERSIVE READY"
   );
 
 });
