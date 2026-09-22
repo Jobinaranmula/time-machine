@@ -23,9 +23,9 @@ body{
   position:fixed;
   inset:0;
   pointer-events:none;
-  opacity:.055;
+  opacity:.045;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  z-index:9999;
+  z-index:20;
 }
 
 /* =========================
@@ -48,7 +48,7 @@ header{
 
   position:sticky;
   top:0;
-  z-index:500;
+  z-index:100;
 }
 
 .brand{
@@ -59,7 +59,6 @@ header{
   display:flex;
   gap:8px;
   align-items:center;
-
   white-space:nowrap;
 }
 
@@ -97,16 +96,17 @@ nav a:hover{
   cursor:pointer;
 }
 
-/* =========================
+/* =====================================================
    HERO
    NEW BACKGROUND
-========================= */
+   time-machine-new.png
+===================================================== */
 
 .hero{
   min-height:calc(100vh - 72px);
 
   display:grid;
-  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  grid-template-columns:1.1fr .9fr;
 
   align-items:center;
 
@@ -115,12 +115,19 @@ nav a:hover{
   position:relative;
   overflow:hidden;
 
+  /*
+    IMPORTANT
+    പുതിയ PNG മാത്രം ഉപയോഗിക്കുന്നു.
+    design-reference.png ഇവിടെ ഇല്ല.
+  */
+
   background-image:
     linear-gradient(
       90deg,
-      rgba(5,4,2,.40) 0%,
-      rgba(5,4,2,.20) 45%,
-      rgba(5,4,2,.08) 100%
+      rgba(7,6,4,.72) 0%,
+      rgba(7,6,4,.45) 42%,
+      rgba(7,6,4,.20) 75%,
+      rgba(7,6,4,.12) 100%
     ),
     url("time-machine-new.png");
 
@@ -142,20 +149,18 @@ nav a:hover{
   background:
     radial-gradient(
       circle at 70% 35%,
-      rgba(214,169,83,.12),
-      transparent 38%
+      rgba(214,169,83,.16),
+      transparent 40%
     ),
     linear-gradient(
       to bottom,
-      rgba(0,0,0,.05),
-      rgba(0,0,0,.30)
+      rgba(0,0,0,.08),
+      rgba(0,0,0,.42)
     );
 
-  z-index:0;
   pointer-events:none;
+  z-index:0;
 }
-
-/* Disable old extra background */
 
 .hero::after{
   display:none;
@@ -357,8 +362,6 @@ nav a:hover{
     );
 
   position:relative;
-
-  overflow:hidden;
 }
 
 .hidden{
@@ -419,8 +422,6 @@ nav a:hover{
 
   box-shadow:
     0 15px 50px #0008;
-
-  position:relative;
 }
 
 .live{
@@ -466,10 +467,6 @@ nav a:hover{
 
   animation:
     bar .7s infinite alternate;
-}
-
-.meter i:nth-child(1){
-  height:20px;
 }
 
 .meter i:nth-child(2){
@@ -531,8 +528,6 @@ nav a:hover{
   border-radius:15px;
 
   background:#17110c;
-
-  min-width:0;
 }
 
 .control label{
@@ -586,8 +581,6 @@ nav a:hover{
   cursor:pointer;
 
   transition:.2s;
-
-  min-width:0;
 }
 
 .switch:hover{
@@ -646,8 +639,6 @@ nav a:hover{
   gap:8px;
 
   transition:.25s;
-
-  min-width:0;
 }
 
 .program-grid article:hover{
@@ -705,7 +696,7 @@ nav a:hover{
 }
 
 /* =========================
-   YOUVAVANI
+   YOUTH PROGRAM
 ========================= */
 
 #youvavaniBtn{
@@ -755,8 +746,6 @@ footer{
   justify-content:space-between;
 
   color:#8f8069;
-
-  gap:20px;
 }
 
 footer a{
@@ -767,53 +756,40 @@ footer a{
   font-size:22px;
 }
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:850px){
-
-  header{
-    height:64px;
-    padding:0 4vw;
-  }
 
   nav{
     display:none;
   }
 
-  .brand{
-    font-size:17px;
+  header{
+    padding:0 4vw;
   }
-
-  .brand small{
-    display:none;
-  }
-
-  /* IMPORTANT MOBILE BACKGROUND */
 
   .hero{
+
     min-height:
-      calc(100svh - 64px);
+      calc(100vh - 72px);
 
-    width:100%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-    align-items:flex-start;
+    grid-template-columns:1fr;
 
     padding:
       70px 7vw;
 
+    /*
+      Mobile-ൽ പുതിയ PNG
+      center ആയി കാണിക്കും
+    */
+
     background-image:
       linear-gradient(
         to bottom,
-        rgba(0,0,0,.22),
-        rgba(0,0,0,.52)
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.60)
       ),
       url("time-machine-new.png");
 
@@ -821,84 +797,53 @@ footer a{
 
     background-position:center center;
 
-    overflow:hidden;
+    background-repeat:no-repeat;
   }
 
-  .hero-copy{
-    width:100%;
-  }
+  .hero::before{
+    display:block;
 
-  .hero h1{
-    font-size:
-      clamp(55px,17vw,82px);
-
-    line-height:.84;
-
-    letter-spacing:-3px;
-
-    margin-top:20px;
-  }
-
-  .years{
-    font-size:23px;
-  }
-
-  .enter{
-    width:auto;
-    max-width:100%;
-
-    padding:15px 22px;
-
-    font-size:15px;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.15),
+        rgba(0,0,0,.48)
+      );
   }
 
   .radio-card{
-    margin-top:45px;
+    margin-top:55px;
 
     width:
-      min(390px,88vw);
+      min(420px,90vw);
 
-    height:280px;
-
-    align-self:center;
-
-    border-width:6px;
-  }
-
-  .radio{
-    font-size:28px;
-  }
-
-  .dial{
-    height:55px;
+    height:300px;
   }
 
   .controls{
     grid-template-columns:1fr;
-
-    gap:12px;
   }
 
   .switches{
     grid-template-columns:1fr 1fr;
-
-    gap:8px;
-  }
-
-  .switch{
-    padding:12px 10px;
-
-    font-size:13px;
   }
 
   .program-grid{
     grid-template-columns:1fr;
-
-    gap:12px;
   }
 
-  .program-grid article{
-    padding:18px;
+  .brand small{
+    display:none;
+  }
+
+  .brand{
+    font-size:17px;
+  }
+
+  .hero h1{
+    font-size:68px;
+
+    letter-spacing:-3px;
   }
 
   .machine{
@@ -913,50 +858,50 @@ footer a{
     gap:15px;
   }
 
-  .topline b{
-    font-size:25px;
+  .enter{
+    width:100%;
   }
 
   .now-playing{
     padding:22px;
-
-    overflow:hidden;
   }
 
   .now-playing h2{
     font-size:28px;
   }
-
-  .meter{
-    justify-content:flex-start;
-
-    margin-top:15px;
-  }
-
-  footer{
-    padding:24px 5vw;
-  }
 }
 
-/* =========================
+/* =====================================================
    SMALL MOBILE
-========================= */
+===================================================== */
 
 @media(max-width:500px){
 
-  header{
-    height:60px;
-  }
-
   .hero{
+
     min-height:
-      calc(100svh - 60px);
+      calc(100vh - 72px);
 
     padding:
       55px 6vw;
 
-    background-position:
-      58% center;
+    /*
+      NEW PNG ONLY
+    */
+
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.62)
+      ),
+      url("time-machine-new.png");
+
+    background-size:cover;
+
+    background-position:center center;
+
+    background-repeat:no-repeat;
   }
 
   .hero h1{
@@ -964,130 +909,74 @@ footer a{
   }
 
   .years{
-    font-size:21px;
-  }
-
-  .enter{
-    padding:
-      14px 18px;
-
-    font-size:14px;
+    font-size:23px;
   }
 
   .radio-card{
-    width:88vw;
+    height:270px;
 
-    max-width:360px;
-
-    height:260px;
-
-    margin-top:35px;
+    border-width:6px;
   }
 
   .radio{
-    font-size:26px;
+    font-size:28px;
   }
 
   .dial{
-    width:75%;
-
-    height:52px;
+    height:55px;
   }
 
   .switches{
     grid-template-columns:1fr 1fr;
-
-    gap:7px;
+    gap:8px;
   }
 
   .switch{
-    padding:11px 8px;
+    padding:12px 10px;
 
-    font-size:12px;
-  }
-
-  .switch span{
-    margin-left:4px;
-  }
-
-  .control{
-    padding:16px;
-  }
-
-  .control input{
-    width:70%;
+    font-size:13px;
   }
 
   .program-grid article{
-    padding:17px;
-  }
-
-  .program-grid b{
-    font-size:18px;
-  }
-
-  footer{
-    flex-direction:column;
-
-    align-items:center;
-
-    text-align:center;
+    padding:18px;
   }
 }
 
-/* =========================
-   VERY SMALL PHONES
-========================= */
+/* =====================================================
+   FINAL BACKGROUND OVERRIDE
+   പഴയ design-reference.png override ചെയ്യാൻ
+===================================================== */
 
-@media(max-width:380px){
+.hero{
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(7,6,4,.72),
+      rgba(7,6,4,.30),
+      rgba(7,6,4,.15)
+    ),
+    url("time-machine-new.png") !important;
+
+  background-repeat:no-repeat !important;
+  background-size:cover !important;
+  background-position:center center !important;
+}
+
+/* Mobile final override */
+
+@media(max-width:600px){
 
   .hero{
-    padding-left:5vw;
-    padding-right:5vw;
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.25),
+        rgba(0,0,0,.62)
+      ),
+      url("time-machine-new.png") !important;
+
+    background-size:cover !important;
+    background-position:center center !important;
+    background-repeat:no-repeat !important;
   }
-
-  .hero h1{
-    font-size:52px;
-  }
-
-  .radio-card{
-    height:235px;
-  }
-
-  .radio{
-    font-size:23px;
-  }
-
-  .dial{
-    height:46px;
-  }
-
-  .switch{
-    font-size:11px;
-  }
-}
-
-/* =========================
-   PREVENT HORIZONTAL OVERFLOW
-========================= */
-
-img,
-video,
-canvas{
-  max-width:100%;
-}
-
-button,
-input{
-  max-width:100%;
-}
-
-.hero-copy,
-.radio-card,
-.machine,
-.now-playing,
-.controls,
-.switches,
-.program-grid{
-  max-width:100%;
 }
