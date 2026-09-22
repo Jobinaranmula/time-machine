@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const radioNadakam =
     new Audio("radio-nadakam.mp3");
 
+  // 🎵 ഗാനപരിപാടി
+  const ganaParipadi =
+    new Audio("gana-paripadi.mp3");
+
 
   // =========================
   // LOOP
@@ -36,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
   vayalumVeedum.loop = false;
   youvavani.loop = false;
   radioNadakam.loop = false;
+  ganaParipadi.loop = false;
 
 
   // =========================
@@ -49,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
   vayalumVeedum.volume = 0.50;
   youvavani.volume = 0.50;
   radioNadakam.volume = 0.50;
+  ganaParipadi.volume = 0.50;
 
 
   // =========================
@@ -596,6 +602,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // =========================
+  // 🎵 GANA PARIPADI
+  // PLAY / PAUSE
+  // =========================
+
+  const ganaParipadiBtn =
+    document.getElementById(
+      "ganaParipadiBtn"
+    );
+
+
+  if (ganaParipadiBtn) {
+
+    ganaParipadiBtn.addEventListener(
+      "click",
+      async function () {
+
+        if (ganaParipadi.paused) {
+
+          try {
+
+            await ganaParipadi.play();
+
+            ganaParipadiBtn.textContent =
+              "⏸ നിർത്താം";
+
+          } catch (error) {
+
+            console.log(
+              "Gana Paripadi error:",
+              error
+            );
+
+          }
+
+        } else {
+
+          ganaParipadi.pause();
+
+          ganaParipadiBtn.textContent =
+            "▶ കേൾക്കാം";
+
+        }
+
+      }
+    );
+
+
+    ganaParipadi.addEventListener(
+      "ended",
+      function () {
+
+        ganaParipadiBtn.textContent =
+          "▶ കേൾക്കാം";
+
+      }
+    );
+
+  }
+
+
+  // =========================
   // RAIN HEADER BUTTON
   // =========================
 
@@ -885,12 +952,24 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
+  ganaParipadi.addEventListener(
+    "ended",
+    function () {
+
+      console.log(
+        "🎵 Gana Paripadi finished"
+      );
+
+    }
+  );
+
+
   // =========================
   // READY
   // =========================
 
   console.log(
-    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + YOUVAVANI + RADIO NADAKAM + IMMERSIVE READY"
+    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + YOUVAVANI + RADIO NADAKAM + GANA PARIPADI + IMMERSIVE READY"
   );
 
-});
+});l
