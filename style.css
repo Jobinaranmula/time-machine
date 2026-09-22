@@ -11,12 +11,12 @@ body{
   min-height:100vh;
   color:#f4e9d0;
   font-family:Manjari,system-ui,sans-serif;
-  background:#0c0906;
+  background:#090705;
   overflow-x:hidden;
 }
 
 /* =========================
-   OLD FILM GRAIN
+   FILM GRAIN
 ========================= */
 
 .grain{
@@ -24,8 +24,9 @@ body{
   inset:0;
   pointer-events:none;
   opacity:.045;
+  z-index:9999;
+
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  z-index:20;
 }
 
 /* =========================
@@ -40,11 +41,10 @@ header{
   align-items:center;
   justify-content:space-between;
 
-  border-bottom:1px solid #725326;
+  background:rgba(12,8,5,.94);
+  border-bottom:1px solid #6e4c24;
 
-  background:rgba(16,11,6,.90);
-
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
 
   position:sticky;
   top:0;
@@ -52,21 +52,21 @@ header{
 }
 
 .brand{
-  font-family:"Playfair Display",serif;
+  display:flex;
+  align-items:center;
+  gap:8px;
+
   color:#d9aa55;
+
+  font-family:"Playfair Display",serif;
   font-size:20px;
 
-  display:flex;
-  gap:8px;
-  align-items:center;
   white-space:nowrap;
 }
 
 .brand small{
-  display:block;
   font:10px Manjari;
-  color:#a9997d;
-  margin-left:5px;
+  color:#9c8b70;
   letter-spacing:1px;
 }
 
@@ -79,7 +79,6 @@ nav a{
   color:#d8ccb5;
   text-decoration:none;
   font-size:15px;
-  transition:.2s;
 }
 
 nav a:hover{
@@ -98,8 +97,8 @@ nav a:hover{
 
 /* =====================================================
    HERO
-   NEW BACKGROUND
-   time-machine-new.png
+   NO IMAGE BACKGROUND
+   DARK 1980s RADIO STUDIO
 ===================================================== */
 
 .hero{
@@ -115,30 +114,30 @@ nav a:hover{
   position:relative;
   overflow:hidden;
 
-  /*
-    IMPORTANT
-    പുതിയ PNG മാത്രം ഉപയോഗിക്കുന്നു.
-    design-reference.png ഇവിടെ ഇല്ല.
-  */
-
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(7,6,4,.72) 0%,
-      rgba(7,6,4,.45) 42%,
-      rgba(7,6,4,.20) 75%,
-      rgba(7,6,4,.12) 100%
-    ),
-    url("time-machine-new.png");
-
-  background-size:cover;
-  background-position:center center;
-  background-repeat:no-repeat;
-
   isolation:isolate;
+
+  background:
+    radial-gradient(
+      circle at 73% 32%,
+      rgba(218,170,82,.20),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 20% 72%,
+      rgba(113,73,33,.20),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #070605 0%,
+      #110c08 28%,
+      #21150b 55%,
+      #100b07 78%,
+      #050403 100%
+    ) !important;
 }
 
-/* Cinematic overlay */
+/* Wooden studio lines */
 
 .hero::before{
   content:"";
@@ -146,24 +145,51 @@ nav a:hover{
   position:absolute;
   inset:0;
 
-  background:
-    radial-gradient(
-      circle at 70% 35%,
-      rgba(214,169,83,.16),
-      transparent 40%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,.08),
-      rgba(0,0,0,.42)
-    );
-
-  pointer-events:none;
   z-index:0;
+  pointer-events:none;
+
+  opacity:.38;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 80px,
+      rgba(120,78,37,.10) 81px,
+      transparent 83px 160px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,200,100,.025) 0 2px,
+      transparent 2px 55px
+    );
 }
 
+/* Warm studio glow */
+
 .hero::after{
-  display:none;
+  content:"";
+
+  position:absolute;
+  width:420px;
+  height:420px;
+
+  right:8%;
+  top:8%;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,190,80,.18),
+      rgba(255,160,50,.06) 35%,
+      transparent 70%
+    );
+
+  filter:blur(10px);
+
+  z-index:0;
+  pointer-events:none;
 }
 
 /* =========================
@@ -176,16 +202,6 @@ nav a:hover{
   z-index:2;
 }
 
-.eyebrow{
-  color:#c9a15b;
-  letter-spacing:3px;
-  font-size:13px;
-}
-
-.hero .ml{
-  display:none;
-}
-
 .hero h1{
   font:
     800 clamp(62px,10vw,140px)/.82
@@ -196,9 +212,11 @@ nav a:hover{
 
   letter-spacing:-5px;
 
+  color:#f1e3c5;
+
   text-shadow:
     0 5px 30px #000,
-    0 2px 8px rgba(0,0,0,.8);
+    0 2px 8px rgba(0,0,0,.9);
 }
 
 .hero h1 span{
@@ -237,9 +255,7 @@ nav a:hover{
   color:#fff2d2;
 
   font:
-    700 18px
-    Manjari,
-    sans-serif;
+    700 18px Manjari,sans-serif;
 
   box-shadow:
     0 12px 35px #0008;
@@ -257,14 +273,11 @@ nav a:hover{
       #805b27,
       #39230d
     );
-
-  box-shadow:
-    0 15px 40px #000b;
 }
 
-/* =========================
+/* =====================================================
    VINTAGE RADIO
-========================= */
+===================================================== */
 
 .radio-card{
   justify-self:center;
@@ -337,9 +350,7 @@ nav a:hover{
 
 .onair{
   color:#e55c43;
-
   margin-top:20px;
-
   font-size:12px;
 }
 
@@ -349,6 +360,8 @@ nav a:hover{
 
 .machine{
   padding:60px 7vw;
+
+  position:relative;
 
   background:
     radial-gradient(
@@ -360,8 +373,6 @@ nav a:hover{
       #15100b,
       #0c0906
     );
-
-  position:relative;
 }
 
 .hidden{
@@ -374,13 +385,10 @@ nav a:hover{
 
 .topline{
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
 
   max-width:1100px;
-
   margin:auto;
 }
 
@@ -388,8 +396,6 @@ nav a:hover{
   font:
     700 28px
     "Playfair Display";
-
-  display:block;
 
   color:#d9aa55;
 }
@@ -404,13 +410,11 @@ nav a:hover{
 
 .now-playing{
   max-width:1100px;
-
   margin:28px auto;
 
   padding:30px;
 
   border:1px solid #6c4b24;
-
   border-radius:18px;
 
   background:
@@ -426,15 +430,12 @@ nav a:hover{
 
 .live{
   color:#e95a43;
-
   margin-right:20px;
 }
 
 .now-playing h2{
   font-size:34px;
-
   color:#e7c077;
-
   margin:15px 0 5px;
 }
 
@@ -448,13 +449,11 @@ nav a:hover{
 
 .meter{
   display:flex;
-
   gap:5px;
 
   height:45px;
 
   align-items:end;
-
   justify-content:flex-end;
 }
 
@@ -465,37 +464,17 @@ nav a:hover{
 
   border-radius:5px;
 
-  animation:
-    bar .7s infinite alternate;
+  animation:bar .7s infinite alternate;
 }
 
-.meter i:nth-child(2){
-  height:25px;
-}
-
-.meter i:nth-child(3){
-  height:40px;
-}
-
-.meter i:nth-child(4){
-  height:18px;
-}
-
-.meter i:nth-child(5){
-  height:34px;
-}
-
-.meter i:nth-child(6){
-  height:28px;
-}
-
-.meter i:nth-child(7){
-  height:43px;
-}
-
-.meter i:nth-child(8){
-  height:20px;
-}
+.meter i:nth-child(1){height:18px}
+.meter i:nth-child(2){height:25px}
+.meter i:nth-child(3){height:40px}
+.meter i:nth-child(4){height:18px}
+.meter i:nth-child(5){height:34px}
+.meter i:nth-child(6){height:28px}
+.meter i:nth-child(7){height:43px}
+.meter i:nth-child(8){height:20px}
 
 @keyframes bar{
   to{
@@ -509,13 +488,10 @@ nav a:hover{
 
 .controls{
   max-width:1100px;
-
   margin:25px auto;
 
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
 
   gap:18px;
 }
@@ -524,7 +500,6 @@ nav a:hover{
   padding:20px;
 
   border:1px solid #4c351b;
-
   border-radius:15px;
 
   background:#17110c;
@@ -532,19 +507,16 @@ nav a:hover{
 
 .control label{
   display:block;
-
   margin-bottom:12px;
 }
 
 .control input{
   width:75%;
-
   accent-color:#c99a4d;
 }
 
 .control b{
   float:right;
-
   color:#c99a4d;
 }
 
@@ -554,13 +526,10 @@ nav a:hover{
 
 .switches{
   max-width:1100px;
-
   margin:20px auto;
 
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
+  grid-template-columns:repeat(4,1fr);
 
   gap:12px;
 }
@@ -589,7 +558,6 @@ nav a:hover{
 
 .switch span{
   float:right;
-
   color:#888;
 }
 
@@ -607,13 +575,10 @@ nav a:hover{
 
 .program-grid{
   max-width:1100px;
-
   margin:30px auto;
 
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
 
   gap:15px;
 }
@@ -622,7 +587,6 @@ nav a:hover{
   padding:22px;
 
   border:1px solid #49341b;
-
   border-radius:15px;
 
   background:
@@ -633,7 +597,6 @@ nav a:hover{
     );
 
   display:flex;
-
   flex-direction:column;
 
   gap:8px;
@@ -652,53 +615,15 @@ nav a:hover{
 
 .program-grid b{
   font-size:20px;
-
   color:#dfba78;
 }
 
 .program-grid span{
   color:#9f9585;
-
   font-size:14px;
 }
 
-.program-grid button{
-  margin-top:10px;
-
-  width:max-content;
-
-  background:#33220f;
-
-  color:#f0d9ad;
-
-  border:1px solid #6c4b24;
-
-  border-radius:20px;
-
-  padding:8px 14px;
-
-  font-family:
-    Manjari,
-    system-ui,
-    sans-serif;
-
-  cursor:pointer;
-
-  transition:.2s;
-}
-
-.program-grid button:hover{
-  background:#523616;
-
-  border-color:#c39446;
-
-  color:#fff2d2;
-}
-
-/* =========================
-   YOUTH PROGRAM
-========================= */
-
+.program-grid button,
 #youvavaniBtn{
   margin-top:10px;
 
@@ -714,21 +639,17 @@ nav a:hover{
 
   padding:8px 14px;
 
-  font-family:
-    Manjari,
-    system-ui,
-    sans-serif;
-
-  font-size:14px;
+  font-family:Manjari,system-ui,sans-serif;
 
   cursor:pointer;
+
+  transition:.2s;
 }
 
+.program-grid button:hover,
 #youvavaniBtn:hover{
-  background:#4a3015;
-
+  background:#523616;
   border-color:#c39446;
-
   color:#fff2d2;
 }
 
@@ -742,7 +663,6 @@ footer{
   border-top:1px solid #3f2d18;
 
   display:flex;
-
   justify-content:space-between;
 
   color:#8f8069;
@@ -750,9 +670,7 @@ footer{
 
 footer a{
   color:#e1a94d;
-
   text-decoration:none;
-
   font-size:22px;
 }
 
@@ -771,51 +689,35 @@ footer a{
   }
 
   .hero{
-
-    min-height:
-      calc(100vh - 72px);
+    min-height:calc(100vh - 72px);
 
     grid-template-columns:1fr;
 
-    padding:
-      70px 7vw;
+    padding:70px 7vw;
 
     /*
-      Mobile-ൽ പുതിയ PNG
-      center ആയി കാണിക്കും
+      Mobile-ലും IMAGE ഇല്ല.
+      Same vintage studio background.
     */
 
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(0,0,0,.25),
-        rgba(0,0,0,.60)
-      ),
-      url("time-machine-new.png");
-
-    background-size:cover;
-
-    background-position:center center;
-
-    background-repeat:no-repeat;
-  }
-
-  .hero::before{
-    display:block;
-
     background:
+      radial-gradient(
+        circle at 70% 25%,
+        rgba(218,170,82,.20),
+        transparent 25%
+      ),
       linear-gradient(
-        to bottom,
-        rgba(0,0,0,.15),
-        rgba(0,0,0,.48)
-      );
+        145deg,
+        #070605,
+        #1b1109 50%,
+        #080604
+      ) !important;
   }
 
   .radio-card{
     margin-top:55px;
 
-    width:
-      min(420px,90vw);
+    width:min(420px,90vw);
 
     height:300px;
   }
@@ -842,7 +744,6 @@ footer a{
 
   .hero h1{
     font-size:68px;
-
     letter-spacing:-3px;
   }
 
@@ -852,9 +753,7 @@ footer a{
 
   .topline{
     flex-direction:column;
-
     align-items:flex-start;
-
     gap:15px;
   }
 
@@ -878,30 +777,20 @@ footer a{
 @media(max-width:500px){
 
   .hero{
+    padding:55px 6vw;
 
-    min-height:
-      calc(100vh - 72px);
-
-    padding:
-      55px 6vw;
-
-    /*
-      NEW PNG ONLY
-    */
-
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(0,0,0,.25),
-        rgba(0,0,0,.62)
+    background:
+      radial-gradient(
+        circle at 75% 25%,
+        rgba(218,170,82,.18),
+        transparent 25%
       ),
-      url("time-machine-new.png");
-
-    background-size:cover;
-
-    background-position:center center;
-
-    background-repeat:no-repeat;
+      linear-gradient(
+        145deg,
+        #070605,
+        #1b1109 50%,
+        #080604
+      ) !important;
   }
 
   .hero h1{
@@ -914,7 +803,6 @@ footer a{
 
   .radio-card{
     height:270px;
-
     border-width:6px;
   }
 
@@ -933,7 +821,6 @@ footer a{
 
   .switch{
     padding:12px 10px;
-
     font-size:13px;
   }
 
@@ -943,40 +830,38 @@ footer a{
 }
 
 /* =====================================================
-   FINAL BACKGROUND OVERRIDE
-   പഴയ design-reference.png override ചെയ്യാൻ
+   IMPORTANT FINAL OVERRIDE
+   NO PNG BACKGROUND
 ===================================================== */
 
 .hero{
   background-image:
-    linear-gradient(
-      90deg,
-      rgba(7,6,4,.72),
-      rgba(7,6,4,.30),
-      rgba(7,6,4,.15)
+    radial-gradient(
+      circle at 73% 32%,
+      rgba(218,170,82,.20),
+      transparent 24%
     ),
-    url("time-machine-new.png") !important;
+    radial-gradient(
+      circle at 20% 72%,
+      rgba(113,73,33,.20),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #070605 0%,
+      #110c08 28%,
+      #21150b 55%,
+      #100b07 78%,
+      #050403 100%
+    ) !important;
 
-  background-repeat:no-repeat !important;
   background-size:cover !important;
-  background-position:center center !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
 }
 
-/* Mobile final override */
+/* NO OLD IMAGE FILE */
 
-@media(max-width:600px){
-
-  .hero{
-    background-image:
-      linear-gradient(
-        to bottom,
-        rgba(0,0,0,.25),
-        rgba(0,0,0,.62)
-      ),
-      url("time-machine-new.png") !important;
-
-    background-size:cover !important;
-    background-position:center center !important;
-    background-repeat:no-repeat !important;
-  }
+.hero{
+  background-attachment:scroll !important;
 }
