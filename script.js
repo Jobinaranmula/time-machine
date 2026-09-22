@@ -1,975 +1,324 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =========================
+     ELEMENTS
+  ========================= */
 
   const enterBtn = document.getElementById("enterBtn");
   const machine = document.getElementById("machine");
 
+  const warmBulb = document.getElementById("warmBulb");
+  const rainBtn = document.getElementById("rainBtn");
 
-  // =========================
-  // AUDIO
-  // =========================
+  const radioBtn = document.getElementById("radioBtn");
+  const natureSwitch = document.getElementById("natureSwitch");
+  const rainSwitch = document.getElementById("rainSwitch");
+  const headsetSwitch = document.getElementById("headsetSwitch");
 
-  const nature = new Audio("nature-morning.mp3");
-  const rain = new Audio("rain.mp3");
-  const radio = new Audio("radio.mp3");
+  const radioVol = document.getElementById("radioVol");
+  const natureVol = document.getElementById("natureVol");
+  const rainVol = document.getElementById("rainVol");
 
-  // 🌾 വയലും വീടും
-  const vayalumVeedum =
-    new Audio("vayalum-veedum.mp3");
+  const radioVal = document.getElementById("radioVal");
+  const natureVal = document.getElementById("natureVal");
+  const rainVal = document.getElementById("rainVal");
 
-  // 🎙️ യുവവാണി
-  const youvavani =
-    new Audio("youvavani.mp3");
+  const programName = document.getElementById("programName");
+  const timeSlot = document.getElementById("timeSlot");
+  const dateLabel = document.getElementById("dateLabel");
 
-  // 🎭 റേഡിയോ നാടകം
-  const radioNadakam =
-    new Audio("radio-nadakam.mp3");
-
-  // 🎵 ഗാനപരിപാടി
-  const ganaParipadi =
-    new Audio("gana-paripadi.mp3");
-
-
-  // =========================
-  // LOOP
-  // =========================
-
-  nature.loop = true;
-  rain.loop = true;
-  radio.loop = true;
-
-  vayalumVeedum.loop = false;
-  youvavani.loop = false;
-  radioNadakam.loop = false;
-  ganaParipadi.loop = false;
-
-
-  // =========================
-  // VOLUME
-  // =========================
-
-  nature.volume = 0.50;
-  rain.volume = 0.35;
-  radio.volume = 0.55;
-
-  vayalumVeedum.volume = 0.50;
-  youvavani.volume = 0.50;
-  radioNadakam.volume = 0.50;
-  ganaParipadi.volume = 0.50;
-
-
-  // =========================
-  // IMMERSIVE AUDIO
-  // =========================
-
-  let audioContext = null;
-  let natureSource = null;
-  let naturePanner = null;
-  let immersive = false;
-
-
-  // =========================
-  // TIME MACHINE
-  // =========================
+  /* =========================
+     ENTER TIME MACHINE
+  ========================= */
 
   if (enterBtn && machine) {
 
-    enterBtn.addEventListener(
-      "click",
-      async function () {
+    enterBtn.addEventListener("click", () => {
 
-        machine.classList.remove("hidden");
+      machine.classList.remove("hidden");
 
+      setTimeout(() => {
         machine.scrollIntoView({
           behavior: "smooth",
           block: "start"
         });
+      }, 100);
 
-
-        // 🌿 Morning Nature
-        try {
-
-          await nature.play();
-
-        } catch (error) {
-
-          console.log(
-            "Morning audio waiting:",
-            error
-          );
-
-        }
-
-
-        // 📻 Radio
-        try {
-
-          await radio.play();
-
-        } catch (error) {
-
-          console.log(
-            "Radio waiting:",
-            error
-          );
-
-        }
-
-      }
-    );
+    });
 
   }
 
 
-  // =========================
-  // RADIO VOLUME
-  // =========================
+  /* =========================
+     BULB
+     NO BLUE COLOR
+  ========================= */
 
-  const radioVol =
-    document.getElementById("radioVol");
+  if (warmBulb) {
 
-  const radioVal =
-    document.getElementById("radioVal");
+    warmBulb.addEventListener("click", () => {
 
+      document.body.classList.toggle("dark-mode");
 
-  if (radioVol) {
-
-    radioVol.value = 55;
-
-    radioVol.addEventListener(
-      "input",
-      function () {
-
-        radio.volume =
-          Number(this.value) / 100;
-
-        if (radioVal) {
-
-          radioVal.textContent =
-            this.value + "%";
-
-        }
-
-      }
-    );
-
-  }
-
-
-  if (radioVal) {
-
-    radioVal.textContent = "55%";
-
-  }
-
-
-  // =========================
-  // MORNING VOLUME
-  // =========================
-
-  const natureVol =
-    document.getElementById("natureVol");
-
-  const natureVal =
-    document.getElementById("natureVal");
-
-
-  if (natureVol) {
-
-    natureVol.value = 50;
-
-    natureVol.addEventListener(
-      "input",
-      function () {
-
-        nature.volume =
-          Number(this.value) / 100;
-
-        if (natureVal) {
-
-          natureVal.textContent =
-            this.value + "%";
-
-        }
-
-      }
-    );
-
-  }
-
-
-  if (natureVal) {
-
-    natureVal.textContent = "50%";
-
-  }
-
-
-  // =========================
-  // RAIN VOLUME
-  // =========================
-
-  const rainVol =
-    document.getElementById("rainVol");
-
-  const rainVal =
-    document.getElementById("rainVal");
-
-
-  if (rainVol) {
-
-    rainVol.value = 35;
-
-    rainVol.addEventListener(
-      "input",
-      function () {
-
-        rain.volume =
-          Number(this.value) / 100;
-
-        if (rainVal) {
-
-          rainVal.textContent =
-            this.value + "%";
-
-        }
-
-      }
-    );
-
-  }
-
-
-  if (rainVal) {
-
-    rainVal.textContent = "35%";
-
-  }
-
-
-  // =========================
-  // RADIO ON / OFF
-  // =========================
-
-  const radioBtn =
-    document.getElementById("radioBtn");
-
-
-  if (radioBtn) {
-
-    radioBtn.addEventListener(
-      "click",
-      async function () {
-
-        const isOn =
-          radioBtn.classList.toggle("on");
-
-        const span =
-          radioBtn.querySelector("span");
-
-
-        if (span) {
-
-          span.textContent =
-            isOn ? "ON" : "OFF";
-
-        }
-
-
-        if (isOn) {
-
-          try {
-
-            await radio.play();
-
-          } catch (error) {
-
-            console.log(
-              "Radio error:",
-              error
-            );
-
-          }
-
-        } else {
-
-          radio.pause();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // NATURE ON / OFF
-  // =========================
-
-  const natureSwitch =
-    document.getElementById(
-      "natureSwitch"
-    );
-
-
-  if (natureSwitch) {
-
-    natureSwitch.addEventListener(
-      "click",
-      async function () {
-
-        const isOn =
-          natureSwitch.classList.toggle("on");
-
-        const span =
-          natureSwitch.querySelector("span");
-
-
-        if (span) {
-
-          span.textContent =
-            isOn ? "ON" : "OFF";
-
-        }
-
-
-        if (isOn) {
-
-          try {
-
-            await nature.play();
-
-          } catch (error) {
-
-            console.log(
-              "Nature error:",
-              error
-            );
-
-          }
-
-        } else {
-
-          nature.pause();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // RAIN ON / OFF
-  // =========================
-
-  const rainSwitch =
-    document.getElementById(
-      "rainSwitch"
-    );
-
-
-  if (rainSwitch) {
-
-    rainSwitch.addEventListener(
-      "click",
-      async function () {
-
-        const isOn =
-          rainSwitch.classList.toggle("on");
-
-        const span =
-          rainSwitch.querySelector("span");
-
-
-        if (span) {
-
-          span.textContent =
-            isOn ? "ON" : "OFF";
-
-        }
-
-
-        if (isOn) {
-
-          try {
-
-            await rain.play();
-
-          } catch (error) {
-
-            console.log(
-              "Rain error:",
-              error
-            );
-
-          }
-
-        } else {
-
-          rain.pause();
-
-        }
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // 🌾 VAYALUM VEEDUM
-  // PLAY / PAUSE
-  // =========================
-
-  const vayalumVeedumBtn =
-    document.getElementById(
-      "vayalumVeedumBtn"
-    );
-
-
-  if (vayalumVeedumBtn) {
-
-    vayalumVeedumBtn.addEventListener(
-      "click",
-      async function () {
-
-        if (vayalumVeedum.paused) {
-
-          try {
-
-            await vayalumVeedum.play();
-
-            vayalumVeedumBtn.textContent =
-              "⏸ നിർത്താം";
-
-          } catch (error) {
-
-            console.log(
-              "Vayalum Veedum error:",
-              error
-            );
-
-          }
-
-        } else {
-
-          vayalumVeedum.pause();
-
-          vayalumVeedumBtn.textContent =
-            "▶ കേൾക്കാം";
-
-        }
-
-      }
-    );
-
-
-    vayalumVeedum.addEventListener(
-      "ended",
-      function () {
-
-        vayalumVeedumBtn.textContent =
-          "▶ കേൾക്കാം";
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // 🎙️ YOUVAVANI
-  // PLAY / PAUSE
-  // =========================
-
-  const youvavaniBtn =
-    document.getElementById(
-      "youvavaniBtn"
-    );
-
-
-  if (youvavaniBtn) {
-
-    youvavaniBtn.addEventListener(
-      "click",
-      async function () {
-
-        if (youvavani.paused) {
-
-          try {
-
-            await youvavani.play();
-
-            youvavaniBtn.textContent =
-              "⏸ നിർത്താം";
-
-          } catch (error) {
-
-            console.log(
-              "Youvavani error:",
-              error
-            );
-
-          }
-
-        } else {
-
-          youvavani.pause();
-
-          youvavaniBtn.textContent =
-            "▶ കേൾക്കാം";
-
-        }
-
-      }
-    );
-
-
-    youvavani.addEventListener(
-      "ended",
-      function () {
-
-        youvavaniBtn.textContent =
-          "▶ കേൾക്കാം";
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // 🎭 RADIO NADAKAM
-  // PLAY / PAUSE
-  // =========================
-
-  const radioNadakamBtn =
-    document.getElementById(
-      "radioNadakamBtn"
-    );
-
-
-  if (radioNadakamBtn) {
-
-    radioNadakamBtn.addEventListener(
-      "click",
-      async function () {
-
-        if (radioNadakam.paused) {
-
-          try {
-
-            await radioNadakam.play();
-
-            radioNadakamBtn.textContent =
-              "⏸ നിർത്താം";
-
-          } catch (error) {
-
-            console.log(
-              "Radio Nadakam error:",
-              error
-            );
-
-          }
-
-        } else {
-
-          radioNadakam.pause();
-
-          radioNadakamBtn.textContent =
-            "▶ കേൾക്കാം";
-
-        }
-
-      }
-    );
-
-
-    radioNadakam.addEventListener(
-      "ended",
-      function () {
-
-        radioNadakamBtn.textContent =
-          "▶ കേൾക്കാം";
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // 🎵 GANA PARIPADI
-  // PLAY / PAUSE
-  // =========================
-
-  const ganaParipadiBtn =
-    document.getElementById(
-      "ganaParipadiBtn"
-    );
-
-
-  if (ganaParipadiBtn) {
-
-    ganaParipadiBtn.addEventListener(
-      "click",
-      async function () {
-
-        if (ganaParipadi.paused) {
-
-          try {
-
-            await ganaParipadi.play();
-
-            ganaParipadiBtn.textContent =
-              "⏸ നിർത്താം";
-
-          } catch (error) {
-
-            console.log(
-              "Gana Paripadi error:",
-              error
-            );
-
-          }
-
-        } else {
-
-          ganaParipadi.pause();
-
-          ganaParipadiBtn.textContent =
-            "▶ കേൾക്കാം";
-
-        }
-
-      }
-    );
-
-
-    ganaParipadi.addEventListener(
-      "ended",
-      function () {
-
-        ganaParipadiBtn.textContent =
-          "▶ കേൾക്കാം";
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // RAIN HEADER BUTTON
-  // =========================
-
-  const rainBtn =
-    document.getElementById("rainBtn");
-
-
-  if (rainBtn) {
-
-    rainBtn.addEventListener(
-      "click",
-      async function () {
-
-        if (machine) {
-
-          machine.classList.remove(
-            "hidden"
-          );
-
-          machine.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-        }
-
-
-        if (
-          rainSwitch &&
-          !rainSwitch.classList.contains("on")
-        ) {
-
-          rainSwitch.classList.add("on");
-
-          const span =
-            rainSwitch.querySelector("span");
-
-
-          if (span) {
-
-            span.textContent = "ON";
-
-          }
-
-        }
-
-
-        try {
-
-          await rain.play();
-
-        } catch (error) {
-
-          console.log(
-            "Rain waiting:",
-            error
-          );
-
-        }
-
-      }
-    );
-
-  }
-
-
-  // =========================
-  // HEADPHONE IMMERSIVE
-  // =========================
-
-  const headsetSwitch =
-    document.getElementById(
-      "headsetSwitch"
-    );
-
-
-  function createImmersiveAudio() {
-
-    if (audioContext) return;
-
-
-    const AudioContext =
-      window.AudioContext ||
-      window.webkitAudioContext;
-
-
-    if (!AudioContext) {
-
-      console.log(
-        "Web Audio API not supported"
+      localStorage.setItem(
+        "timeMachineDark",
+        document.body.classList.contains("dark-mode")
+          ? "on"
+          : "off"
       );
 
-      return;
+    });
+
+  }
+
+
+  /* Restore bulb setting */
+
+  if (
+    localStorage.getItem("timeMachineDark") === "on"
+  ) {
+    document.body.classList.add("dark-mode");
+  }
+
+
+  /* =========================
+     SWITCH FUNCTION
+  ========================= */
+
+  function toggleSwitch(button) {
+
+    if (!button) return;
+
+    button.classList.toggle("on");
+
+    const span = button.querySelector("span");
+
+    if (span) {
+
+      span.textContent =
+        button.classList.contains("on")
+          ? "ON"
+          : "OFF";
 
     }
 
-
-    audioContext =
-      new AudioContext();
+  }
 
 
-    natureSource =
-      audioContext.createMediaElementSource(
-        nature
-      );
+  if (radioBtn) {
+    radioBtn.addEventListener("click", () => {
+      toggleSwitch(radioBtn);
+    });
+  }
 
 
-    naturePanner =
-      audioContext.createStereoPanner();
+  if (natureSwitch) {
+    natureSwitch.addEventListener("click", () => {
+      toggleSwitch(natureSwitch);
+    });
+  }
 
 
-    natureSource.connect(
-      naturePanner
-    );
-
-
-    naturePanner.connect(
-      audioContext.destination
-    );
-
+  if (rainSwitch) {
+    rainSwitch.addEventListener("click", () => {
+      toggleSwitch(rainSwitch);
+    });
   }
 
 
   if (headsetSwitch) {
-
-    headsetSwitch.addEventListener(
-      "click",
-      async function () {
-
-        immersive =
-          headsetSwitch.classList.toggle(
-            "on"
-          );
+    headsetSwitch.addEventListener("click", () => {
+      toggleSwitch(headsetSwitch);
+    });
+  }
 
 
-        const span =
-          headsetSwitch.querySelector(
-            "span"
-          );
+  /* =========================
+     TOP RAIN BUTTON
+  ========================= */
 
+  if (rainBtn && rainSwitch) {
 
-        if (span) {
+    rainBtn.addEventListener("click", () => {
 
-          span.textContent =
-            immersive ? "ON" : "OFF";
+      toggleSwitch(rainSwitch);
 
-        }
+      const rainOn =
+        rainSwitch.classList.contains("on");
 
+      rainBtn.innerHTML =
+        rainOn
+          ? "🌧️ <span>മഴ ON</span>"
+          : "🌧️ <span>മഴ</span>";
 
-        createImmersiveAudio();
-
-
-        if (!audioContext) return;
-
-
-        if (
-          audioContext.state ===
-          "suspended"
-        ) {
-
-          await audioContext.resume();
-
-        }
-
-
-        if (immersive) {
-
-          naturePanner.pan.value =
-            -0.15;
-
-
-          nature.volume =
-            Math.min(
-              Number(
-                natureVol?.value || 50
-              ) / 100 + 0.03,
-              1
-            );
-
-
-          console.log(
-            "🎧 IMMERSIVE ON"
-          );
-
-
-        } else {
-
-          naturePanner.pan.value =
-            0;
-
-
-          nature.volume =
-            Number(
-              natureVol?.value || 50
-            ) / 100;
-
-
-          console.log(
-            "🎧 IMMERSIVE OFF"
-          );
-
-        }
-
-      }
-    );
+    });
 
   }
 
 
-  // =========================
-  // RADIO STATUS
-  // =========================
+  /* =========================
+     VOLUME SLIDERS
+  ========================= */
 
-  const timeSlot =
-    document.getElementById(
-      "timeSlot"
-    );
+  function updateVolume(input, output) {
+
+    if (!input || !output) return;
+
+    input.addEventListener("input", () => {
+
+      output.textContent =
+        input.value + "%";
+
+    });
+
+  }
+
+  updateVolume(radioVol, radioVal);
+  updateVolume(natureVol, natureVal);
+  updateVolume(rainVol, rainVal);
 
 
-  radio.addEventListener(
-    "play",
-    function () {
+  /* =========================
+     PROGRAM BUTTONS
+  ========================= */
 
-      if (timeSlot) {
+  function setProgram(name, time) {
 
-        timeSlot.textContent =
-          "ON AIR";
+    if (programName) {
+      programName.textContent = name;
+    }
 
+    if (timeSlot) {
+      timeSlot.textContent = time;
+    }
+
+  }
+
+
+  const vayalum =
+    document.getElementById("vayalumVeedumBtn");
+
+  if (vayalum) {
+
+    vayalum.addEventListener("click", () => {
+
+      setProgram(
+        "വയലും വീടും",
+        "07:00 — 07:30"
+      );
+
+    });
+
+  }
+
+
+  const youvavani =
+    document.getElementById("youvavaniBtn");
+
+  if (youvavani) {
+
+    youvavani.addEventListener("click", () => {
+
+      setProgram(
+        "യുവവാണി",
+        "08:00 — 08:30"
+      );
+
+    });
+
+  }
+
+
+  const nadakam =
+    document.getElementById("radioNadakamBtn");
+
+  if (nadakam) {
+
+    nadakam.addEventListener("click", () => {
+
+      setProgram(
+        "റേഡിയോ നാടകം",
+        "20:00 — 21:00"
+      );
+
+    });
+
+  }
+
+
+  const gana =
+    document.getElementById("ganaParipadiBtn");
+
+  if (gana) {
+
+    gana.addEventListener("click", () => {
+
+      setProgram(
+        "ഗാനപരിപാടി",
+        "18:00 — 19:00"
+      );
+
+    });
+
+  }
+
+
+  /* =========================
+     DATE LABEL
+  ========================= */
+
+  if (dateLabel) {
+
+    const years = [
+      "1982 · ഒരു രാവിലെ",
+      "1984 · ഒരു വൈകുന്നേരം",
+      "1985 · ഒരു രാവിലെ",
+      "1987 · ഒരു രാത്രി",
+      "1989 · ഒരു ഞായറാഴ്ച"
+    ];
+
+    let index = 2;
+
+    dateLabel.addEventListener("click", () => {
+
+      index++;
+
+      if (index >= years.length) {
+        index = 0;
       }
 
-    }
-  );
+      dateLabel.textContent =
+        years[index];
+
+    });
+
+  }
 
 
-  radio.addEventListener(
-    "pause",
-    function () {
+  /* =========================
+     PROGRAM BUTTON FEEDBACK
+  ========================= */
 
-      if (timeSlot) {
+  document.querySelectorAll(
+    ".program-grid article button"
+  ).forEach(button => {
 
-        timeSlot.textContent =
-          "PAUSED";
+    button.addEventListener("click", () => {
 
-      }
+      const original =
+        button.textContent;
 
-    }
-  );
+      button.textContent = "✓ പ്ലേ ചെയ്യുന്നു";
 
+      setTimeout(() => {
 
-  // =========================
-  // AUDIO STATUS
-  // =========================
+        button.textContent = original;
 
-  vayalumVeedum.addEventListener(
-    "ended",
-    function () {
+      }, 1400);
 
-      console.log(
-        "🌾 Vayalum Veedum finished"
-      );
+    });
 
-    }
-  );
+  });
 
 
-  youvavani.addEventListener(
-    "ended",
-    function () {
-
-      console.log(
-        "🎙️ Youvavani finished"
-      );
-
-    }
-  );
-
-
-  radioNadakam.addEventListener(
-    "ended",
-    function () {
-
-      console.log(
-        "🎭 Radio Nadakam finished"
-      );
-
-    }
-  );
-
-
-  ganaParipadi.addEventListener(
-    "ended",
-    function () {
-
-      console.log(
-        "🎵 Gana Paripadi finished"
-      );
-
-    }
-  );
-
-
-  // =========================
-  // READY
-  // =========================
-
-  console.log(
-    "TIME MACHINE + RADIO + MORNING + RAIN + VAYALUM VEEDUM + YOUVAVANI + RADIO NADAKAM + GANA PARIPADI + IMMERSIVE READY"
-  );
-
-});l
+});
