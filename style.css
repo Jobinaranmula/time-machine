@@ -9,23 +9,23 @@ html{
 body{
   margin:0;
   min-height:100vh;
-  background:#0c0906;
   color:#f4e9d0;
-  font-family:"Manjari",system-ui,sans-serif;
+  font-family:Manjari,system-ui,sans-serif;
+  background:#0c0906;
   overflow-x:hidden;
 }
 
 /* =========================
-   GRAIN
+   OLD FILM GRAIN
 ========================= */
 
 .grain{
   position:fixed;
   inset:0;
   pointer-events:none;
-  opacity:.045;
-  z-index:9990;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index:9999;
 }
 
 /* =========================
@@ -40,38 +40,39 @@ header{
   align-items:center;
   justify-content:space-between;
 
-  position:sticky;
-  top:0;
-  z-index:100;
-
-  background:rgba(15,10,6,.94);
   border-bottom:1px solid #725326;
 
-  backdrop-filter:blur(12px);
+  background:rgba(16,11,6,.90);
+
+  backdrop-filter:blur(10px);
+
+  position:sticky;
+  top:0;
+  z-index:500;
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:7px;
-
-  color:#d9aa55;
-
   font-family:"Playfair Display",serif;
+  color:#d9aa55;
   font-size:20px;
+
+  display:flex;
+  gap:8px;
+  align-items:center;
+
   white-space:nowrap;
 }
 
 .brand small{
+  display:block;
+  font:10px Manjari;
   color:#a9997d;
-  font-family:"Manjari",sans-serif;
-  font-size:9px;
+  margin-left:5px;
   letter-spacing:1px;
 }
 
 nav{
   display:flex;
-  align-items:center;
   gap:25px;
 }
 
@@ -79,74 +80,90 @@ nav a{
   color:#d8ccb5;
   text-decoration:none;
   font-size:15px;
+  transition:.2s;
 }
 
 nav a:hover{
   color:#e7b968;
 }
 
-.icon-btn{
+.icon-btn,
+.mode{
+  background:#2b1d0d;
   border:1px solid #765528;
+  color:#f3dfb7;
   border-radius:22px;
   padding:9px 14px;
-
-  background:#2b1d0d;
-  color:#f3dfb7;
-
   cursor:pointer;
 }
 
 /* =========================
    HERO
+   NEW BACKGROUND
 ========================= */
 
 .hero{
   min-height:calc(100vh - 72px);
 
   display:grid;
-  grid-template-columns:1.1fr .9fr;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+
   align-items:center;
 
   padding:7vw 9vw;
 
   position:relative;
-  isolation:isolate;
   overflow:hidden;
 
-  background:
+  background-image:
     linear-gradient(
       90deg,
-      rgba(7,6,4,.82),
-      rgba(7,6,4,.48),
-      rgba(7,6,4,.18)
+      rgba(5,4,2,.40) 0%,
+      rgba(5,4,2,.20) 45%,
+      rgba(5,4,2,.08) 100%
     ),
-    url("design-reference.png");
+    url("time-machine-new.png");
 
   background-size:cover;
-  background-position:center;
+  background-position:center center;
   background-repeat:no-repeat;
+
+  isolation:isolate;
 }
+
+/* Cinematic overlay */
 
 .hero::before{
   content:"";
+
   position:absolute;
   inset:0;
-  z-index:0;
 
   background:
     radial-gradient(
       circle at 70% 35%,
-      rgba(214,169,83,.18),
+      rgba(214,169,83,.12),
       transparent 38%
     ),
     linear-gradient(
       to bottom,
       rgba(0,0,0,.05),
-      rgba(0,0,0,.42)
+      rgba(0,0,0,.30)
     );
 
+  z-index:0;
   pointer-events:none;
 }
+
+/* Disable old extra background */
+
+.hero::after{
+  display:none;
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
 
 .hero-copy,
 .radio-card{
@@ -154,17 +171,23 @@ nav a:hover{
   z-index:2;
 }
 
-/* =========================
-   HERO TEXT
-========================= */
+.eyebrow{
+  color:#c9a15b;
+  letter-spacing:3px;
+  font-size:13px;
+}
+
+.hero .ml{
+  display:none;
+}
 
 .hero h1{
-  margin:18px 0 10px;
+  font:
+    800 clamp(62px,10vw,140px)/.82
+    "Playfair Display",
+    serif;
 
-  font-family:"Playfair Display",serif;
-  font-size:clamp(62px,10vw,140px);
-  line-height:.82;
-  font-weight:800;
+  margin:18px 0 8px;
 
   letter-spacing:-5px;
 
@@ -178,55 +201,64 @@ nav a:hover{
 }
 
 .years{
-  margin:20px 0;
+  font:
+    700 27px
+    "Playfair Display";
 
   color:#d4a957;
 
-  font-family:"Playfair Display",serif;
-  font-size:27px;
-  font-weight:700;
+  margin:20px 0;
 }
 
 /* =========================
-   ENTER
+   ENTER BUTTON
 ========================= */
 
 .enter{
   margin-top:24px;
 
-  padding:17px 30px;
-
   border:1px solid #c39446;
+
   border-radius:45px;
 
-  background:linear-gradient(
-    #65451c,
-    #2d1b0a
-  );
+  padding:18px 30px;
+
+  background:
+    linear-gradient(
+      #65451c,
+      #2d1b0a
+    );
 
   color:#fff2d2;
 
-  font-family:"Manjari",sans-serif;
-  font-size:18px;
-  font-weight:700;
+  font:
+    700 18px
+    Manjari,
+    sans-serif;
+
+  box-shadow:
+    0 12px 35px #0008;
 
   cursor:pointer;
-
-  box-shadow:0 12px 35px #0008;
 
   transition:.25s;
 }
 
 .enter:hover{
   transform:translateY(-2px);
-  background:linear-gradient(
-    #805b27,
-    #39230d
-  );
+
+  background:
+    linear-gradient(
+      #805b27,
+      #39230d
+    );
+
+  box-shadow:
+    0 15px 40px #000b;
 }
 
 /* =========================
-   RADIO
+   VINTAGE RADIO
 ========================= */
 
 .radio-card{
@@ -235,14 +267,6 @@ nav a:hover{
   width:min(420px,80vw);
   height:340px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-
-  border:8px solid #9a6732;
-  border-radius:24px;
-
   background:
     linear-gradient(
       145deg,
@@ -250,29 +274,41 @@ nav a:hover{
       #25160c
     );
 
+  border:8px solid #9a6732;
+
+  border-radius:24px;
+
   box-shadow:
     0 30px 80px #000b,
     inset 0 0 40px #0008;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  flex-direction:column;
 }
 
 .radio{
-  color:#d6a660;
-
-  font-family:"Playfair Display",serif;
-  font-size:36px;
-  font-weight:700;
+  font:
+    700 36px
+    "Playfair Display";
 
   letter-spacing:4px;
+
+  color:#d6a660;
 }
 
 .dial{
   width:72%;
   height:70px;
 
-  margin-top:20px;
-
   border:3px solid #c28b44;
+
   border-radius:50%;
+
+  margin-top:20px;
 
   background:
     repeating-linear-gradient(
@@ -281,37 +317,33 @@ nav a:hover{
       #c18a42 9px 10px
     );
 
-  box-shadow:inset 0 0 20px #000;
+  box-shadow:
+    inset 0 0 20px #000;
 }
 
 .radio-line{
   width:70%;
   height:4px;
 
-  margin-top:30px;
-
   background:#c18a42;
+
+  margin-top:30px;
 }
 
 .onair{
+  color:#e55c43;
+
   margin-top:20px;
 
-  color:#e55c43;
   font-size:12px;
 }
 
 /* =========================
-   TIME MACHINE SECTION
+   MACHINE
 ========================= */
 
 .machine{
-  display:block;
-
-  width:100%;
-
   padding:60px 7vw;
-
-  position:relative;
 
   background:
     radial-gradient(
@@ -324,10 +356,12 @@ nav a:hover{
       #0c0906
     );
 
-  border-top:1px solid #4c351b;
+  position:relative;
+
+  overflow:hidden;
 }
 
-.machine.hidden{
+.hidden{
   display:none;
 }
 
@@ -336,22 +370,25 @@ nav a:hover{
 ========================= */
 
 .topline{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
   max-width:1100px;
 
-  margin:0 auto;
-
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  margin:auto;
 }
 
 .topline b{
+  font:
+    700 28px
+    "Playfair Display";
+
   display:block;
 
   color:#d9aa55;
-
-  font-family:"Playfair Display",serif;
-  font-size:28px;
 }
 
 .topline small{
@@ -366,36 +403,38 @@ nav a:hover{
   max-width:1100px;
 
   margin:28px auto;
+
   padding:30px;
 
-  position:relative;
-
   border:1px solid #6c4b24;
+
   border-radius:18px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(52,34,17,.97),
-      rgba(24,16,9,.97)
+      rgba(52,34,17,.95),
+      rgba(24,16,9,.95)
     );
 
-  box-shadow:0 15px 50px #0008;
+  box-shadow:
+    0 15px 50px #0008;
+
+  position:relative;
 }
 
 .live{
   color:#e95a43;
+
   margin-right:20px;
-  font-weight:700;
 }
 
 .now-playing h2{
-  margin:15px 0 5px;
+  font-size:34px;
 
   color:#e7c077;
 
-  font-family:"Manjari",sans-serif;
-  font-size:34px;
+  margin:15px 0 5px;
 }
 
 .now-playing p{
@@ -403,41 +442,63 @@ nav a:hover{
 }
 
 /* =========================
-   METER
+   AUDIO METER
 ========================= */
 
 .meter{
-  position:absolute;
-  right:30px;
-  bottom:30px;
-
   display:flex;
-  align-items:end;
+
   gap:5px;
 
   height:45px;
+
+  align-items:end;
+
+  justify-content:flex-end;
 }
 
 .meter i{
-  display:block;
-
   width:7px;
 
   background:#d2a24d;
 
   border-radius:5px;
 
-  animation:bar .7s infinite alternate;
+  animation:
+    bar .7s infinite alternate;
 }
 
-.meter i:nth-child(1){height:22px}
-.meter i:nth-child(2){height:25px}
-.meter i:nth-child(3){height:40px}
-.meter i:nth-child(4){height:18px}
-.meter i:nth-child(5){height:34px}
-.meter i:nth-child(6){height:28px}
-.meter i:nth-child(7){height:43px}
-.meter i:nth-child(8){height:20px}
+.meter i:nth-child(1){
+  height:20px;
+}
+
+.meter i:nth-child(2){
+  height:25px;
+}
+
+.meter i:nth-child(3){
+  height:40px;
+}
+
+.meter i:nth-child(4){
+  height:18px;
+}
+
+.meter i:nth-child(5){
+  height:34px;
+}
+
+.meter i:nth-child(6){
+  height:28px;
+}
+
+.meter i:nth-child(7){
+  height:43px;
+}
+
+.meter i:nth-child(8){
+  height:20px;
+}
 
 @keyframes bar{
   to{
@@ -455,7 +516,9 @@ nav a:hover{
   margin:25px auto;
 
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
 
   gap:18px;
 }
@@ -464,25 +527,29 @@ nav a:hover{
   padding:20px;
 
   border:1px solid #4c351b;
+
   border-radius:15px;
 
   background:#17110c;
+
+  min-width:0;
 }
 
 .control label{
   display:block;
-  margin-bottom:12px;
 
-  color:#ddd0b7;
+  margin-bottom:12px;
 }
 
 .control input{
   width:75%;
+
   accent-color:#c99a4d;
 }
 
 .control b{
   float:right;
+
   color:#c99a4d;
 }
 
@@ -496,25 +563,31 @@ nav a:hover{
   margin:20px auto;
 
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
 
   gap:12px;
 }
 
 .switch{
-  padding:15px;
+  background:#17110c;
 
   border:1px solid #4c351b;
-  border-radius:13px;
 
-  background:#17110c;
   color:#ddd0b7;
+
+  padding:15px;
+
+  border-radius:13px;
 
   text-align:left;
 
   cursor:pointer;
 
   transition:.2s;
+
+  min-width:0;
 }
 
 .switch:hover{
@@ -523,12 +596,12 @@ nav a:hover{
 
 .switch span{
   float:right;
+
   color:#888;
 }
 
 .switch.on{
   border-color:#48764d;
-  background:#142012;
 }
 
 .switch.on span{
@@ -536,7 +609,7 @@ nav a:hover{
 }
 
 /* =========================
-   PROGRAM GRID
+   PROGRAM CARDS
 ========================= */
 
 .program-grid{
@@ -545,21 +618,18 @@ nav a:hover{
   margin:30px auto;
 
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
 
   gap:15px;
 }
 
 .program-grid article{
-  min-height:170px;
-
   padding:22px;
 
-  display:flex;
-  flex-direction:column;
-  gap:8px;
-
   border:1px solid #49341b;
+
   border-radius:15px;
 
   background:
@@ -569,7 +639,15 @@ nav a:hover{
       #110c08
     );
 
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+
   transition:.25s;
+
+  min-width:0;
 }
 
 .program-grid article:hover{
@@ -577,41 +655,89 @@ nav a:hover{
 
   border-color:#9a6b2d;
 
-  box-shadow:0 12px 30px #0008;
+  box-shadow:
+    0 12px 30px #0008;
 }
 
 .program-grid b{
-  color:#dfba78;
   font-size:20px;
+
+  color:#dfba78;
 }
 
 .program-grid span{
   color:#9f9585;
+
   font-size:14px;
 }
 
 .program-grid button{
+  margin-top:10px;
+
   width:max-content;
 
-  margin-top:auto;
+  background:#33220f;
+
+  color:#f0d9ad;
+
+  border:1px solid #6c4b24;
+
+  border-radius:20px;
 
   padding:8px 14px;
 
-  border:1px solid #6c4b24;
-  border-radius:20px;
+  font-family:
+    Manjari,
+    system-ui,
+    sans-serif;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.program-grid button:hover{
+  background:#523616;
+
+  border-color:#c39446;
+
+  color:#fff2d2;
+}
+
+/* =========================
+   YOUVAVANI
+========================= */
+
+#youvavaniBtn{
+  margin-top:10px;
+
+  width:max-content;
 
   background:#33220f;
+
   color:#f0d9ad;
 
-  font-family:"Manjari",sans-serif;
+  border:1px solid #6c4b24;
+
+  border-radius:20px;
+
+  padding:8px 14px;
+
+  font-family:
+    Manjari,
+    system-ui,
+    sans-serif;
+
   font-size:14px;
 
   cursor:pointer;
 }
 
-.program-grid button:hover{
-  background:#523616;
+#youvavaniBtn:hover{
+  background:#4a3015;
+
   border-color:#c39446;
+
   color:#fff2d2;
 }
 
@@ -622,15 +748,15 @@ nav a:hover{
 footer{
   padding:28px 7vw;
 
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
   border-top:1px solid #3f2d18;
 
-  background:#0c0906;
+  display:flex;
+
+  justify-content:space-between;
 
   color:#8f8069;
+
+  gap:20px;
 }
 
 footer a{
@@ -641,30 +767,6 @@ footer a{
   font-size:22px;
 }
 
-footer a:hover{
-  color:#fff;
-}
-
-/* =========================
-   DARK MODE
-========================= */
-
-body.dark-mode{
-  background:#050505;
-}
-
-body.dark-mode .machine{
-  background:
-    linear-gradient(
-      #080706,
-      #030303
-    );
-}
-
-body.dark-mode header{
-  background:rgba(5,5,5,.96);
-}
-
 /* =========================
    MOBILE
 ========================= */
@@ -672,110 +774,94 @@ body.dark-mode header{
 @media(max-width:850px){
 
   header{
-    height:58px;
+    height:64px;
     padding:0 4vw;
-  }
-
-  .brand{
-    font-size:16px;
-  }
-
-  .brand small{
-    display:none;
   }
 
   nav{
     display:none;
   }
 
+  .brand{
+    font-size:17px;
+  }
+
+  .brand small{
+    display:none;
+  }
+
+  /* IMPORTANT MOBILE BACKGROUND */
+
   .hero{
-    min-height:calc(100vh - 58px);
+    min-height:
+      calc(100svh - 64px);
 
-    grid-template-columns:1fr;
+    width:100%;
 
-    padding:60px 7vw;
+    display:flex;
 
-    background-position:center;
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:
+      70px 7vw;
+
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,.22),
+        rgba(0,0,0,.52)
+      ),
+      url("time-machine-new.png");
+
+    background-size:cover;
+
+    background-position:center center;
+
+    overflow:hidden;
   }
 
   .hero-copy{
-    align-self:center;
+    width:100%;
   }
 
   .hero h1{
-    font-size:68px;
+    font-size:
+      clamp(55px,17vw,82px);
+
+    line-height:.84;
+
     letter-spacing:-3px;
-  }
-
-  .enter{
-    width:100%;
-    max-width:330px;
-  }
-
-  .radio-card{
-    width:min(420px,90vw);
-    height:300px;
-
-    margin:45px auto 0;
-  }
-
-  .controls{
-    grid-template-columns:1fr;
-  }
-
-  .switches{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .program-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .now-playing{
-    padding:22px;
-  }
-
-  .now-playing h2{
-    font-size:28px;
-  }
-
-  .meter{
-    position:relative;
-    right:auto;
-    bottom:auto;
-
-    justify-content:flex-end;
 
     margin-top:20px;
   }
 
-  .machine{
-    padding:45px 5vw;
+  .years{
+    font-size:23px;
   }
 
-  .topline{
-    align-items:flex-start;
-    flex-direction:column;
-    gap:10px;
-  }
-}
+  .enter{
+    width:auto;
+    max-width:100%;
 
-/* =========================
-   SMALL MOBILE
-========================= */
+    padding:15px 22px;
 
-@media(max-width:500px){
-
-  .hero{
-    padding:50px 6vw;
-  }
-
-  .hero h1{
-    font-size:56px;
+    font-size:15px;
   }
 
   .radio-card{
-    height:270px;
+    margin-top:45px;
+
+    width:
+      min(390px,88vw);
+
+    height:280px;
+
+    align-self:center;
+
     border-width:6px;
   }
 
@@ -787,30 +873,221 @@ body.dark-mode header{
     height:55px;
   }
 
+  .controls{
+    grid-template-columns:1fr;
+
+    gap:12px;
+  }
+
   .switches{
     grid-template-columns:1fr 1fr;
+
     gap:8px;
   }
 
   .switch{
-    padding:12px 9px;
+    padding:12px 10px;
+
     font-size:13px;
   }
 
   .program-grid{
     grid-template-columns:1fr;
+
+    gap:12px;
   }
 
   .program-grid article{
-    min-height:145px;
     padding:18px;
   }
 
+  .machine{
+    padding:40px 5vw;
+  }
+
+  .topline{
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+  }
+
   .topline b{
-    font-size:23px;
+    font-size:25px;
+  }
+
+  .now-playing{
+    padding:22px;
+
+    overflow:hidden;
+  }
+
+  .now-playing h2{
+    font-size:28px;
+  }
+
+  .meter{
+    justify-content:flex-start;
+
+    margin-top:15px;
   }
 
   footer{
-    padding:25px 5vw;
+    padding:24px 5vw;
   }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:500px){
+
+  header{
+    height:60px;
+  }
+
+  .hero{
+    min-height:
+      calc(100svh - 60px);
+
+    padding:
+      55px 6vw;
+
+    background-position:
+      58% center;
+  }
+
+  .hero h1{
+    font-size:58px;
+  }
+
+  .years{
+    font-size:21px;
+  }
+
+  .enter{
+    padding:
+      14px 18px;
+
+    font-size:14px;
+  }
+
+  .radio-card{
+    width:88vw;
+
+    max-width:360px;
+
+    height:260px;
+
+    margin-top:35px;
+  }
+
+  .radio{
+    font-size:26px;
+  }
+
+  .dial{
+    width:75%;
+
+    height:52px;
+  }
+
+  .switches{
+    grid-template-columns:1fr 1fr;
+
+    gap:7px;
+  }
+
+  .switch{
+    padding:11px 8px;
+
+    font-size:12px;
+  }
+
+  .switch span{
+    margin-left:4px;
+  }
+
+  .control{
+    padding:16px;
+  }
+
+  .control input{
+    width:70%;
+  }
+
+  .program-grid article{
+    padding:17px;
+  }
+
+  .program-grid b{
+    font-size:18px;
+  }
+
+  footer{
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media(max-width:380px){
+
+  .hero{
+    padding-left:5vw;
+    padding-right:5vw;
+  }
+
+  .hero h1{
+    font-size:52px;
+  }
+
+  .radio-card{
+    height:235px;
+  }
+
+  .radio{
+    font-size:23px;
+  }
+
+  .dial{
+    height:46px;
+  }
+
+  .switch{
+    font-size:11px;
+  }
+}
+
+/* =========================
+   PREVENT HORIZONTAL OVERFLOW
+========================= */
+
+img,
+video,
+canvas{
+  max-width:100%;
+}
+
+button,
+input{
+  max-width:100%;
+}
+
+.hero-copy,
+.radio-card,
+.machine,
+.now-playing,
+.controls,
+.switches,
+.program-grid{
+  max-width:100%;
 }
