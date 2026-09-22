@@ -19,205 +19,322 @@ html{
 
 body{
   font-family:"Noto Sans Malayalam","Arial",sans-serif;
-  min-height:100vh;
+  background:#050505;
   color:#fff;
-  background:#07180f;
+  min-height:100vh;
   overflow-x:hidden;
+  transition:background .5s ease;
 }
 
-/* BACKGROUND */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:-3;
+/* =========================
+   WARM LIGHT MODE
+========================= */
+
+body.warm{
   background:
-    linear-gradient(
-      rgba(7,25,14,.58),
-      rgba(5,20,12,.82)
-    ),
-    url("design-reference.png") center/cover no-repeat;
+    radial-gradient(
+      circle at 50% 17%,
+      rgba(255,184,65,.22),
+      rgba(255,145,30,.08) 20%,
+      #050505 58%
+    );
 }
 
-/* WARM LIGHT */
-body::after{
-  content:"";
-  position:fixed;
-  width:420px;
-  height:420px;
+body.dark{
+  background:#020202;
+}
+
+/* =========================
+   HANGING BULB
+========================= */
+
+.bulb-area{
+  position:relative;
+  height:300px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  overflow:visible;
+}
+
+/* long black wire */
+
+.wire{
+  position:absolute;
+  top:-20px;
   left:50%;
-  top:8%;
+  width:7px;
+  height:215px;
   transform:translateX(-50%);
-  z-index:-2;
-  border-radius:50%;
-  background:radial-gradient(
-    circle,
-    rgba(255,205,100,.22) 0%,
-    rgba(255,180,50,.10) 30%,
-    transparent 70%
-  );
-  animation:lightPulse 4s ease-in-out infinite;
-  pointer-events:none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #050505 0px,
+      #171717 3px,
+      #030303 6px
+    );
+  border-radius:10px;
+  box-shadow:0 0 5px #000;
+  transform-origin:top center;
+  animation:swing 3.8s ease-in-out infinite;
+  z-index:3;
 }
 
-@keyframes lightPulse{
+/* old bulb */
+
+.bulb{
+  position:absolute;
+  left:50%;
+  bottom:15px;
+  width:82px;
+  height:112px;
+  transform:translateX(-50%);
+  transform-origin:top center;
+  cursor:pointer;
+  z-index:5;
+  animation:swing 3.8s ease-in-out infinite;
+}
+
+/* metal holder */
+
+.bulb-holder{
+  position:absolute;
+  top:-8px;
+  left:50%;
+  width:38px;
+  height:31px;
+  transform:translateX(-50%);
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #252525 0 5px,
+      #0b0b0b 5px 8px
+    );
+  border-radius:7px 7px 4px 4px;
+  box-shadow:0 2px 7px #000;
+}
+
+/* glass */
+
+.bulb-glass{
+  position:absolute;
+  left:50%;
+  top:15px;
+  width:70px;
+  height:88px;
+  transform:translateX(-50%);
+  border-radius:50% 50% 47% 47%;
+  background:rgba(255,185,65,.16);
+  border:2px solid rgba(255,220,130,.45);
+  box-shadow:
+    0 0 15px rgba(255,177,55,.55),
+    0 0 40px rgba(255,158,35,.38),
+    0 0 80px rgba(255,135,20,.22);
+  transition:.5s;
+}
+
+/* filament */
+
+.filament{
+  position:absolute;
+  left:50%;
+  top:38px;
+  width:25px;
+  height:38px;
+  transform:translateX(-50%);
+  border-left:3px solid #ffd873;
+  border-right:3px solid #ffd873;
+  border-bottom:3px solid #ffd873;
+  border-radius:0 0 15px 15px;
+  filter:drop-shadow(0 0 5px #ffd45e);
+}
+
+/* bulb off */
+
+body.dark .bulb-glass{
+  background:rgba(70,70,70,.10);
+  box-shadow:none;
+  border-color:#333;
+}
+
+body.dark .filament{
+  border-color:#444;
+  filter:none;
+}
+
+/* swing */
+
+@keyframes swing{
   0%,100%{
-    opacity:.55;
-    transform:translateX(-50%) scale(.92);
+    rotate:-3deg;
   }
   50%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.08);
+    rotate:3deg;
   }
 }
 
-.container{
-  max-width:1050px;
-  margin:auto;
-  padding:12px;
+/* =========================
+   FLY AROUND BULB
+========================= */
+
+.fly{
+  position:absolute;
+  left:50%;
+  top:125px;
+  width:22px;
+  height:22px;
+  z-index:8;
+  font-size:21px;
+  pointer-events:none;
+  animation:flyAround 5s linear infinite;
 }
 
-/* HEADER */
+@keyframes flyAround{
+  0%{
+    transform:translate(-100px,-15px) rotate(15deg);
+  }
+  20%{
+    transform:translate(-55px,35px) rotate(-20deg);
+  }
+  40%{
+    transform:translate(55px,5px) rotate(25deg);
+  }
+  60%{
+    transform:translate(95px,-40px) rotate(-15deg);
+  }
+  80%{
+    transform:translate(35px,-75px) rotate(20deg);
+  }
+  100%{
+    transform:translate(-100px,-15px) rotate(15deg);
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+
 header{
   text-align:center;
-  padding:28px 15px;
-  border-radius:24px;
-  background:rgba(0,0,0,.58);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter:blur(9px);
-  box-shadow:0 12px 35px rgba(0,0,0,.4);
+  padding:0 15px 20px;
 }
 
-.logo{
+.radio-logo{
   font-size:52px;
-  filter:drop-shadow(0 0 12px rgba(255,210,100,.6));
+  margin-bottom:4px;
+  filter:drop-shadow(0 0 10px rgba(255,190,70,.4));
 }
 
-header h1{
-  margin-top:5px;
-  color:#f4d477;
-  font-size:clamp(30px,8vw,52px);
+h1{
+  font-size:clamp(32px,8vw,52px);
   letter-spacing:2px;
+  color:#f5d47a;
   text-shadow:2px 3px 8px #000;
 }
 
 .subtitle{
-  margin-top:7px;
-  color:#eee;
+  margin-top:8px;
+  color:#ddd;
   font-size:14px;
 }
 
-.year{
+.memory-badge{
   display:inline-block;
-  margin-top:14px;
-  padding:8px 20px;
+  margin-top:16px;
+  padding:11px 25px;
   border-radius:30px;
-  background:#86582a;
-  box-shadow:0 0 18px rgba(255,190,80,.2);
+  background:#8b5b27;
+  color:white;
   font-weight:bold;
+  box-shadow:0 5px 20px rgba(150,90,20,.25);
 }
 
-/* LIGHT */
-.light-box{
-  margin-top:18px;
-  padding:14px;
-  border-radius:17px;
-  background:rgba(255,190,70,.09);
-  border:1px solid rgba(255,220,130,.2);
-  text-align:center;
+/* bulb mode text */
+
+.mode-text{
+  margin-top:10px;
+  color:#d7c7a0;
+  font-size:12px;
 }
 
-.light{
-  width:14px;
-  height:14px;
-  display:inline-block;
-  border-radius:50%;
-  background:#ffd35c;
-  box-shadow:
-    0 0 7px #ffd35c,
-    0 0 18px #ffd35c,
-    0 0 35px rgba(255,190,60,.7);
-  animation:bulb 1.7s infinite;
-}
+/* =========================
+   NAV BUTTONS
+========================= */
 
-@keyframes bulb{
-  0%,100%{opacity:.65}
-  50%{opacity:1}
-}
-
-/* QUICK */
-.quick{
+.nav{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  margin:18px 0;
+  gap:9px;
+  margin:15px 0 20px;
 }
 
-.quick button{
-  border:1px solid rgba(255,255,255,.15);
+.nav button{
+  padding:13px 5px;
+  border:1px solid rgba(255,255,255,.12);
   border-radius:13px;
-  padding:13px 6px;
-  background:rgba(0,0,0,.68);
+  background:rgba(15,15,15,.88);
   color:#fff;
-  cursor:pointer;
   font-weight:bold;
+  cursor:pointer;
 }
 
-.quick button:hover{
+.nav button:hover{
   background:#285c36;
 }
 
-/* AMBIENT */
-.ambient{
-  padding:18px;
-  border-radius:20px;
-  background:rgba(0,0,0,.65);
-  border:1px solid rgba(255,255,255,.13);
+/* =========================
+   AMBIENT
+========================= */
+
+.section{
   margin-bottom:22px;
 }
 
-.title{
+.section-title{
   text-align:center;
-  color:#f4d477;
-  font-size:23px;
-  margin-bottom:16px;
+  color:#f5d47a;
+  font-size:25px;
+  margin-bottom:15px;
 }
 
-.ambient-grid{
+.ambient{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
 
 .ambient-card{
-  padding:15px 8px;
+  padding:17px 10px;
   text-align:center;
-  background:rgba(255,255,255,.07);
-  border-radius:15px;
+  background:rgba(18,18,18,.88);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
 }
 
-.ambient-card .icon{
-  font-size:31px;
+.ambient-icon{
+  font-size:34px;
+  margin-bottom:7px;
 }
 
 .ambient-card b{
   display:block;
-  margin:7px 0 10px;
+  margin-bottom:12px;
 }
 
 .ambient-card button{
   width:100%;
+  padding:11px 5px;
   border:0;
   border-radius:10px;
-  padding:10px 5px;
-  background:#285c36;
-  color:#fff;
+  background:#28613a;
+  color:white;
   font-weight:bold;
   cursor:pointer;
 }
 
 .ambient-card button.active{
-  background:#a56d25;
+  background:#ad7223;
 }
 
 .volume{
@@ -226,49 +343,45 @@ header h1{
 
 .volume label{
   display:block;
-  font-size:11px;
+  font-size:12px;
   color:#ccc;
-  margin-bottom:3px;
+  margin-bottom:4px;
 }
 
 .volume input{
   width:100%;
+  accent-color:#d4932e;
 }
 
-/* PROGRAMS */
-.section-title{
-  text-align:center;
-  color:#f4d477;
-  font-size:25px;
-  margin:22px 0 16px;
-}
+/* =========================
+   PROGRAMS
+========================= */
 
 .program-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:15px;
+  gap:14px;
 }
 
 .program-card{
-  background:rgba(255,255,255,.96);
-  color:#222;
   padding:19px;
   border-radius:18px;
-  border-left:6px solid #bd8737;
-  box-shadow:0 8px 25px rgba(0,0,0,.3);
+  background:rgba(18,18,18,.91);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
 }
 
 .program-card b{
   display:block;
-  color:#24552f;
-  font-size:20px;
+  color:#f5d47a;
+  font-size:19px;
   margin-bottom:7px;
 }
 
 .program-card span{
   display:block;
-  color:#666;
-  font-size:14px;
+  color:#aaa;
+  font-size:13px;
   margin-bottom:14px;
 }
 
@@ -277,7 +390,7 @@ header h1{
   padding:12px;
   border:0;
   border-radius:11px;
-  background:#285c36;
+  background:#28613a;
   color:#fff;
   font-size:15px;
   font-weight:bold;
@@ -285,23 +398,62 @@ header h1{
 }
 
 .audio-btn.playing{
-  background:#a56d25;
+  background:#ad7223;
 }
 
-/* PLAYER */
-.player{
-  margin-top:22px;
-  padding:20px;
+/* =========================
+   IMMERSIVE
+========================= */
+
+.immersive-box{
+  margin-top:18px;
+  padding:18px;
   text-align:center;
-  background:rgba(0,0,0,.74);
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;
+  background:rgba(15,15,15,.9);
+  border:1px solid rgba(255,255,255,.10);
+}
+
+.immersive-btn{
+  width:100%;
+  max-width:420px;
+  padding:14px;
+  border:0;
+  border-radius:13px;
+  background:#292929;
+  color:#fff;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.immersive-btn.active{
+  background:#76501f;
+  box-shadow:0 0 20px rgba(210,155,55,.3);
+}
+
+.immersive-info{
+  margin-top:8px;
+  color:#999;
+  font-size:12px;
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.player{
+  margin-top:20px;
+  padding:18px;
+  border-radius:18px;
+  background:rgba(12,12,12,.94);
+  border:1px solid rgba(255,255,255,.1);
+  text-align:center;
 }
 
 .player-title{
-  color:#f4d477;
+  color:#f5d47a;
   margin-bottom:12px;
-  font-size:18px;
 }
 
 audio{
@@ -310,30 +462,43 @@ audio{
 
 .stop{
   margin-top:12px;
-  padding:10px 23px;
+  padding:10px 25px;
   border:0;
   border-radius:10px;
-  background:#8b2929;
+  background:#852d2d;
   color:#fff;
   font-weight:bold;
 }
 
-/* FOOTER */
+/* =========================
+   INSTAGRAM
+========================= */
+
 footer{
   text-align:center;
-  color:#bbb;
-  padding:30px 10px;
-  font-size:13px;
+  padding:22px 10px 28px;
 }
 
-footer strong{
-  color:#f4d477;
+.instagram{
+  font-size:12px;
+  color:#999;
 }
 
-/* MOBILE */
-@media(max-width:700px){
+.instagram span{
+  color:#d6a950;
+}
 
-  .ambient-grid{
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px){
+
+  .bulb-area{
+    height:280px;
+  }
+
+  .ambient{
     grid-template-columns:repeat(2,1fr);
   }
 
@@ -342,42 +507,67 @@ footer strong{
   }
 }
 
-@media(max-width:430px){
+@media(max-width:420px){
 
-  .container{
-    padding:9px;
-  }
-
-  .quick button{
-    font-size:11px;
-  }
-
-  .ambient-grid{
-    grid-template-columns:1fr 1fr;
+  .bulb-area{
+    height:265px;
   }
 
   .ambient-card{
-    padding:13px 6px;
+    padding:14px 7px;
   }
 
   .ambient-card b{
     font-size:13px;
   }
 
-  .program-card b{
-    font-size:19px;
+  .nav button{
+    font-size:12px;
   }
 }
 </style>
 </head>
 
-<body>
+
+<body class="warm">
 
 <div class="container">
 
+<!-- =========================
+     HANGING BULB
+========================= -->
+
+<div class="bulb-area">
+
+  <div class="wire"></div>
+
+  <div
+    class="bulb"
+    id="bulb"
+    title="ലൈറ്റ് മാറ്റാൻ തൊടുക">
+
+    <div class="bulb-holder"></div>
+
+    <div class="bulb-glass">
+
+      <div class="filament"></div>
+
+    </div>
+
+  </div>
+
+  <div class="fly">🪰</div>
+
+</div>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-  <div class="logo">📻</div>
+  <div class="radio-logo">📻</div>
 
   <h1>TIME MACHINE</h1>
 
@@ -389,21 +579,22 @@ footer strong{
     പഴയകാല മലയാള റേഡിയോ ഓർമ്മകളിലേക്ക്
   </div>
 
-  <div class="year">
+  <div class="memory-badge">
     🎙️ KERALA RADIO MEMORIES
   </div>
 
-  <div class="light-box">
-    <span class="light"></span>
-    &nbsp; പഴയകാല റേഡിയോ ലൈറ്റ്
+  <div class="mode-text" id="modeText">
+    🟠 Warm Light
   </div>
 
 </header>
 
 
-<!-- QUICK BUTTONS -->
+<!-- =========================
+     NAV
+========================= -->
 
-<div class="quick">
+<div class="nav">
 
   <button onclick="scrollToId('programs')">
     🎙️ പരിപാടികൾ
@@ -420,26 +611,29 @@ footer strong{
 </div>
 
 
-<!-- AMBIENT -->
+<!-- =========================
+     AMBIENT
+========================= -->
 
-<section class="ambient" id="ambient">
+<section class="section" id="ambient">
 
-<h2 class="title">
+<h2 class="section-title">
   🌿 പഴയകാല അന്തരീക്ഷം
 </h2>
 
-<div class="ambient-grid">
+<div class="ambient">
 
 
 <!-- NATURE -->
 
 <div class="ambient-card">
 
-  <div class="icon">🌅</div>
+  <div class="ambient-icon">🌅</div>
 
   <b>രാവിലെ പ്രകൃതി</b>
 
-  <button id="natureBtn" onclick="toggleNature()">
+  <button id="natureBtn"
+          onclick="toggleNature()">
     ▶ കേൾക്കാം
   </button>
 
@@ -463,11 +657,12 @@ footer strong{
 
 <div class="ambient-card">
 
-  <div class="icon">🌧️</div>
+  <div class="ambient-icon">🌧️</div>
 
   <b>മഴ</b>
 
-  <button id="rainBtn" onclick="toggleRain()">
+  <button id="rainBtn"
+          onclick="toggleRain()">
     ▶ മഴ കേൾക്കാം
   </button>
 
@@ -491,11 +686,12 @@ footer strong{
 
 <div class="ambient-card">
 
-  <div class="icon">📻</div>
+  <div class="ambient-icon">📻</div>
 
   <b>പഴയ റേഡിയോ</b>
 
-  <button id="radioBtn" onclick="toggleRadio()">
+  <button id="radioBtn"
+          onclick="toggleRadio()">
     ▶ റേഡിയോ ഓൺ
   </button>
 
@@ -514,41 +710,36 @@ footer strong{
 
 </div>
 
+</div>
 
-<!-- FLY -->
 
-<div class="ambient-card">
+<!-- HEADSET -->
 
-  <div class="icon">🪰</div>
+<div class="immersive-box">
 
-  <b>ഈച്ചയുടെ ശബ്ദം</b>
+  <button
+    class="immersive-btn"
+    id="immersiveBtn"
+    onclick="toggleImmersive()">
 
-  <button id="flyBtn" onclick="toggleFly()">
-    ▶ കേൾക്കാം
+    🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — OFF
+
   </button>
 
-  <div class="volume">
-
-    <label>🔊 Volume</label>
-
-    <input
-      id="flyVol"
-      type="range"
-      min="0"
-      max="100"
-      value="20">
-
+  <div class="immersive-info">
+    ഹെഡ്‌സെറ്റ് ഉപയോഗിക്കുമ്പോൾ ഇടത്–വലത് stereo feel
   </div>
 
 </div>
 
-</div>
 </section>
 
 
-<!-- PROGRAMS -->
+<!-- =========================
+     PROGRAMS
+========================= -->
 
-<section id="programs">
+<section class="section" id="programs">
 
 <h2 class="section-title">
   🎙️ റേഡിയോ പരിപാടികൾ
@@ -623,7 +814,7 @@ footer strong{
 </article>
 
 
-<!-- GANA -->
+<!-- GANA PARIPADI -->
 
 <article class="program-card">
 
@@ -666,16 +857,23 @@ footer strong{
 
 </article>
 
+
 </div>
 </section>
 
 
-<!-- PLAYER -->
+<!-- =========================
+     PLAYER
+========================= -->
 
 <section class="player">
 
-  <div class="player-title" id="playerTitle">
+  <div
+    class="player-title"
+    id="playerTitle">
+
     🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക
+
   </div>
 
   <audio
@@ -684,23 +882,26 @@ footer strong{
     preload="metadata">
   </audio>
 
-  <br>
+  <button
+    class="stop"
+    onclick="stopProgram()">
 
-  <button class="stop" onclick="stopProgram()">
     ⏹ നിർത്തുക
+
   </button>
 
 </section>
 
 
+<!-- =========================
+     INSTAGRAM
+========================= -->
+
 <footer>
 
-  📻 TIME MACHINE — Kerala Radio 1980–1990
-
-  <br><br>
-
-  Developed by
-  <strong>Jobin Skariah</strong>
+  <div class="instagram">
+    📷 <span>@jobin_skariah</span>
+  </div>
 
 </footer>
 
@@ -709,9 +910,9 @@ footer strong{
 
 <script>
 
-/* =========================================
-   AMBIENT AUDIO
-========================================= */
+/* =================================
+   AUDIO
+================================= */
 
 const nature =
   new Audio("nature-morning.mp3");
@@ -722,149 +923,114 @@ const rain =
 const radio =
   new Audio("radio.mp3");
 
-/*
-  ഈച്ചയുടെ audio file repository-ൽ
-  ഉണ്ടെങ്കിൽ അത് ഇവിടെ ഉപയോഗിക്കും.
-  ഇല്ലെങ്കിൽ browser error കാണിക്കാതെ
-  button പ്രവർത്തനരഹിതമാക്കും.
-*/
-const fly =
-  new Audio("fly.mp3");
-
-
 nature.loop = true;
 rain.loop = true;
 radio.loop = true;
-fly.loop = true;
 
-nature.volume = 0.50;
-rain.volume = 0.35;
-radio.volume = 0.55;
-fly.volume = 0.20;
+nature.volume = .50;
+rain.volume = .35;
+radio.volume = .55;
 
 
-/* BUTTONS */
-
-const natureBtn =
-  document.getElementById("natureBtn");
-
-const rainBtn =
-  document.getElementById("rainBtn");
-
-const radioBtn =
-  document.getElementById("radioBtn");
-
-const flyBtn =
-  document.getElementById("flyBtn");
-
-
-/* NATURE */
+/* =================================
+   NATURE
+================================= */
 
 function toggleNature(){
+
+  const btn =
+    document.getElementById("natureBtn");
 
   if(nature.paused){
 
     nature.play().catch(()=>{});
 
-    natureBtn.textContent =
+    btn.textContent =
       "⏸ നിർത്തുക";
 
-    natureBtn.classList.add("active");
+    btn.classList.add("active");
 
   }else{
 
     nature.pause();
 
-    natureBtn.textContent =
+    btn.textContent =
       "▶ കേൾക്കാം";
 
-    natureBtn.classList.remove("active");
+    btn.classList.remove("active");
 
   }
 }
 
 
-/* RAIN */
+/* =================================
+   RAIN
+================================= */
 
 function toggleRain(){
+
+  const btn =
+    document.getElementById("rainBtn");
 
   if(rain.paused){
 
     rain.play().catch(()=>{});
 
-    rainBtn.textContent =
+    btn.textContent =
       "⏸ മഴ നിർത്തുക";
 
-    rainBtn.classList.add("active");
+    btn.classList.add("active");
 
   }else{
 
     rain.pause();
 
-    rainBtn.textContent =
+    btn.textContent =
       "▶ മഴ കേൾക്കാം";
 
-    rainBtn.classList.remove("active");
+    btn.classList.remove("active");
 
   }
 }
 
 
-/* RADIO */
+/* =================================
+   RADIO
+================================= */
 
 function toggleRadio(){
+
+  const btn =
+    document.getElementById("radioBtn");
 
   if(radio.paused){
 
     radio.play().catch(()=>{});
 
-    radioBtn.textContent =
+    btn.textContent =
       "⏸ റേഡിയോ ഓഫ്";
 
-    radioBtn.classList.add("active");
+    btn.classList.add("active");
 
   }else{
 
     radio.pause();
 
-    radioBtn.textContent =
+    btn.textContent =
       "▶ റേഡിയോ ഓൺ";
 
-    radioBtn.classList.remove("active");
+    btn.classList.remove("active");
 
   }
 }
 
 
-/* FLY */
+/* =================================
+   VOLUME
+================================= */
 
-function toggleFly(){
-
-  if(fly.paused){
-
-    fly.play().catch(()=>{});
-
-    flyBtn.textContent =
-      "⏸ നിർത്തുക";
-
-    flyBtn.classList.add("active");
-
-  }else{
-
-    fly.pause();
-
-    flyBtn.textContent =
-      "▶ കേൾക്കാം";
-
-    flyBtn.classList.remove("active");
-
-  }
-}
-
-
-/* VOLUME */
-
-document.getElementById("natureVol")
+document
+.getElementById("natureVol")
 .addEventListener("input",function(){
 
   nature.volume =
@@ -873,7 +1039,8 @@ document.getElementById("natureVol")
 });
 
 
-document.getElementById("rainVol")
+document
+.getElementById("rainVol")
 .addEventListener("input",function(){
 
   rain.volume =
@@ -882,7 +1049,8 @@ document.getElementById("rainVol")
 });
 
 
-document.getElementById("radioVol")
+document
+.getElementById("radioVol")
 .addEventListener("input",function(){
 
   radio.volume =
@@ -891,18 +1059,42 @@ document.getElementById("radioVol")
 });
 
 
-document.getElementById("flyVol")
-.addEventListener("input",function(){
+/* =================================
+   BULB DARK / WARM MODE
+================================= */
 
-  fly.volume =
-    this.value / 100;
+const bulb =
+  document.getElementById("bulb");
+
+const modeText =
+  document.getElementById("modeText");
+
+
+bulb.addEventListener("click",function(){
+
+  document.body.classList.toggle("warm");
+
+  document.body.classList.toggle("dark");
+
+
+  if(document.body.classList.contains("dark")){
+
+    modeText.textContent =
+      "⚫ Dark Mode";
+
+  }else{
+
+    modeText.textContent =
+      "🟠 Warm Light";
+
+  }
 
 });
 
 
-/* =========================================
+/* =================================
    PROGRAM PLAYER
-========================================= */
+================================= */
 
 const audioPlayer =
   document.getElementById("audioPlayer");
@@ -919,10 +1111,11 @@ programButtons.forEach(function(button){
   button.addEventListener("click",function(){
 
     const file =
-      this.getAttribute("data-audio");
+      this.dataset.audio;
 
     const title =
-      this.getAttribute("data-title");
+      this.dataset.title;
+
 
     audioPlayer.pause();
 
@@ -933,6 +1126,7 @@ programButtons.forEach(function(button){
     playerTitle.textContent =
       "🎧 " + title;
 
+
     programButtons.forEach(function(btn){
 
       btn.classList.remove("playing");
@@ -942,23 +1136,23 @@ programButtons.forEach(function(button){
 
     });
 
+
     this.classList.add("playing");
 
     this.textContent =
       "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
 
-    audioPlayer.play().catch(function(error){
 
-      console.log("Audio error:",error);
-
-    });
+    audioPlayer.play().catch(()=>{});
 
   });
 
 });
 
 
-/* STOP */
+/* =================================
+   STOP
+================================= */
 
 function stopProgram(){
 
@@ -980,26 +1174,126 @@ function stopProgram(){
 }
 
 
-/* AUDIO ENDED */
+/* =================================
+   IMMERSIVE HEADSET MODE
+================================= */
 
-audioPlayer.addEventListener(
-  "ended",
-  function(){
+let immersiveOn = false;
 
-    programButtons.forEach(function(btn){
+let audioContext = null;
 
-      btn.classList.remove("playing");
+let natureSource = null;
+let rainSource = null;
+let radioSource = null;
 
-      btn.textContent =
-        "▶ കേൾക്കാം";
+let naturePan = null;
+let rainPan = null;
+let radioPan = null;
 
-    });
+
+function setupImmersive(){
+
+  if(audioContext) return;
+
+  audioContext =
+    new (window.AudioContext ||
+         window.webkitAudioContext)();
+
+
+  natureSource =
+    audioContext.createMediaElementSource(nature);
+
+  rainSource =
+    audioContext.createMediaElementSource(rain);
+
+  radioSource =
+    audioContext.createMediaElementSource(radio);
+
+
+  naturePan =
+    audioContext.createStereoPanner();
+
+  rainPan =
+    audioContext.createStereoPanner();
+
+  radioPan =
+    audioContext.createStereoPanner();
+
+
+  natureSource
+    .connect(naturePan)
+    .connect(audioContext.destination);
+
+  rainSource
+    .connect(rainPan)
+    .connect(audioContext.destination);
+
+  radioSource
+    .connect(radioPan)
+    .connect(audioContext.destination);
+
+}
+
+
+function toggleImmersive(){
+
+  const btn =
+    document.getElementById("immersiveBtn");
+
+
+  if(!immersiveOn){
+
+    setupImmersive();
+
+    if(audioContext.state === "suspended"){
+      audioContext.resume();
+    }
+
+
+    /*
+      Slight stereo separation
+      for headphone effect.
+    */
+
+    naturePan.pan.value = -.35;
+    rainPan.pan.value = .35;
+    radioPan.pan.value = 0;
+
+
+    immersiveOn = true;
+
+    btn.textContent =
+      "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — ON";
+
+    btn.classList.add("active");
+
+  }else{
+
+    if(naturePan)
+      naturePan.pan.value = 0;
+
+    if(rainPan)
+      rainPan.pan.value = 0;
+
+    if(radioPan)
+      radioPan.pan.value = 0;
+
+
+    immersiveOn = false;
+
+    btn.textContent =
+      "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — OFF";
+
+    btn.classList.remove("active");
 
   }
-);
+
+}
 
 
-/* SCROLL */
+/* =================================
+   SCROLL
+================================= */
 
 function scrollToId(id){
 
