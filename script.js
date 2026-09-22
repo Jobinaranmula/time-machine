@@ -1,416 +1,310 @@
+<script>
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  console.log("TIME MACHINE SCRIPT LOADED");
+  /* ==========================================
+     AUDIO PLAYER
+  ========================================== */
 
-  const audio = {
-    radio: new Audio("./radio.mp3"),
-    nature: new Audio("./nature-morning.mp3"),
-    rain: new Audio("./rain.mp3"),
-    vayalum: new Audio("./vayalum-veedum.mp3"),
-    youvavani: new Audio("./youvavani.mp3"),
-    nadakam: new Audio("./radio-nadakam.mp3"),
-    gana: new Audio("./gana-paripadi.mp3")
-  };
-
-  audio.radio.loop = true;
-  audio.nature.loop = true;
-  audio.rain.loop = true;
-
-  audio.radio.volume = 0.78;
-  audio.nature.volume = 0.28;
-  audio.rain.volume = 0.22;
+  let currentAudio = null;
+  let currentButton = null;
 
 
-  /* =========================
-     TEST AUDIO
-  ========================= */
-
-  function playAudio(sound) {
-
-    if (!sound) return;
-
-    sound.play()
-      .then(() => {
-        console.log("AUDIO PLAYING");
-      })
-      .catch((error) => {
-        console.error("AUDIO ERROR:", error);
-        alert("Audio play ആയില്ല. MP3 file / GitHub Pages പരിശോധിക്കണം.");
-      });
-  }
+  const buttons =
+    document.querySelectorAll(".audio-btn");
 
 
-  /* =========================
-     ENTER
-  ========================= */
+  buttons.forEach(function (button) {
 
-  const enterBtn = document.getElementById("enterBtn");
-  const machine = document.getElementById("machine");
+    button.addEventListener("click", function () {
+
+      const file =
+        button.getAttribute("data-audio");
+
+      const title =
+        button.getAttribute("data-title");
+
+
+      /* SAME BUTTON = PLAY / PAUSE */
+
+      if (
+        currentAudio &&
+        currentButton === button
+      ) {
+
+        if (currentAudio.paused) {
+
+          currentAudio.play();
+
+          button.textContent =
+            "⏸ Pause";
+
+        } else {
+
+          currentAudio.pause();
+
+          button.textContent =
+            "▶ കേൾക്കാം";
+
+        }
+
+        return;
+      }
+
+
+      /* STOP PREVIOUS AUDIO */
+
+      if (currentAudio) {
+
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+
+      }
+
+
+      if (currentButton) {
+
+        currentButton.textContent =
+          "▶ കേൾക്കാം";
+
+      }
+
+
+      /* CREATE NEW AUDIO */
+
+      const audio =
+        new Audio(file);
+
+      currentAudio = audio;
+      currentButton = button;
+
+
+      /* PLAY */
+
+      audio.play()
+        .then(function () {
+
+          button.textContent =
+            "⏸ Pause";
+
+        })
+        .catch(function (error) {
+
+          console.log(
+            "Audio play error:",
+            error
+          );
+
+          button.textContent =
+            "▶ വീണ്ടും ശ്രമിക്കുക";
+
+        });
+
+
+      /* NOW PLAYING */
+
+      const programName =
+        document.getElementById("programName");
+
+      if (programName) {
+
+        programName.textContent =
+          title;
+
+      }
+
+
+      /* AUDIO FINISHED */
+
+      audio.addEventListener(
+        "ended",
+        function () {
+
+          button.textContent =
+            "▶ കേൾക്കാം";
+
+          currentAudio = null;
+          currentButton = null;
+
+        }
+      );
+
+    });
+
+  });
+
+
+  /* ==========================================
+     ENTER TIME MACHINE
+  ========================================== */
+
+  const enterBtn =
+    document.getElementById("enterBtn");
+
+  const machine =
+    document.getElementById("machine");
+
 
   if (enterBtn && machine) {
 
-    enterBtn.addEventListener("click", function () {
+    enterBtn.addEventListener(
+      "click",
+      function () {
 
-      machine.classList.remove("hidden");
+        machine.classList.remove("hidden");
 
-      setTimeout(function () {
+        setTimeout(function () {
 
-        machine.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
+          machine.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
 
-      }, 100);
+        }, 100);
 
-    });
+      }
+    );
 
   }
 
 
-  /* =========================
-     RADIO
-  ========================= */
-
-  const radioBtn = document.getElementById("radioBtn");
-
-  if (radioBtn) {
-
-    radioBtn.addEventListener("click", function () {
-
-      if (audio.radio.paused) {
-
-        playAudio(audio.radio);
-
-        radioBtn.classList.add("on");
-
-        const span = radioBtn.querySelector("span");
-
-        if (span) span.textContent = "ON";
-
-      } else {
-
-        audio.radio.pause();
-
-        radioBtn.classList.remove("on");
-
-        const span = radioBtn.querySelector("span");
-
-        if (span) span.textContent = "OFF";
-
-      }
-
-    });
-
-  }
-
-
-  /* =========================
-     NATURE
-  ========================= */
-
-  const natureSwitch =
-    document.getElementById("natureSwitch");
-
-  if (natureSwitch) {
-
-    natureSwitch.addEventListener("click", function () {
-
-      if (audio.nature.paused) {
-
-        playAudio(audio.nature);
-
-        natureSwitch.classList.add("on");
-
-        const span =
-          natureSwitch.querySelector("span");
-
-        if (span) span.textContent = "ON";
-
-      } else {
-
-        audio.nature.pause();
-
-        natureSwitch.classList.remove("on");
-
-        const span =
-          natureSwitch.querySelector("span");
-
-        if (span) span.textContent = "OFF";
-
-      }
-
-    });
-
-  }
-
-
-  /* =========================
-     RAIN
-  ========================= */
-
-  const rainSwitch =
-    document.getElementById("rainSwitch");
-
-  const rainBtn =
-    document.getElementById("rainBtn");
-
-  function toggleRain() {
-
-    if (audio.rain.paused) {
-
-      playAudio(audio.rain);
-
-      if (rainSwitch) {
-        rainSwitch.classList.add("on");
-
-        const span =
-          rainSwitch.querySelector("span");
-
-        if (span) span.textContent = "ON";
-      }
-
-      if (rainBtn) {
-        rainBtn.innerHTML =
-          "🌧️ <span>മഴ ON</span>";
-      }
-
-    } else {
-
-      audio.rain.pause();
-
-      if (rainSwitch) {
-        rainSwitch.classList.remove("on");
-
-        const span =
-          rainSwitch.querySelector("span");
-
-        if (span) span.textContent = "OFF";
-      }
-
-      if (rainBtn) {
-        rainBtn.innerHTML =
-          "🌧️ <span>മഴ</span>";
-      }
-
-    }
-
-  }
-
-  if (rainSwitch) {
-    rainSwitch.addEventListener("click", toggleRain);
-  }
-
-  if (rainBtn) {
-    rainBtn.addEventListener("click", toggleRain);
-  }
-
-
-  /* =========================
-     VOLUME
-  ========================= */
-
-  const radioVol =
-    document.getElementById("radioVol");
-
-  const radioVal =
-    document.getElementById("radioVal");
-
-  if (radioVol) {
-
-    radioVol.addEventListener("input", function () {
-
-      audio.radio.volume =
-        Number(this.value) / 100;
-
-      if (radioVal) {
-        radioVal.textContent =
-          this.value + "%";
-      }
-
-    });
-
-  }
-
-
-  const natureVol =
-    document.getElementById("natureVol");
-
-  const natureVal =
-    document.getElementById("natureVal");
-
-  if (natureVol) {
-
-    natureVol.addEventListener("input", function () {
-
-      audio.nature.volume =
-        Number(this.value) / 100;
-
-      if (natureVal) {
-        natureVal.textContent =
-          this.value + "%";
-      }
-
-    });
-
-  }
-
-
-  const rainVol =
-    document.getElementById("rainVol");
-
-  const rainVal =
-    document.getElementById("rainVal");
-
-  if (rainVol) {
-
-    rainVol.addEventListener("input", function () {
-
-      audio.rain.volume =
-        Number(this.value) / 100;
-
-      if (rainVal) {
-        rainVal.textContent =
-          this.value + "%";
-      }
-
-    });
-
-  }
-
-
-  /* =========================
-     PROGRAMS
-  ========================= */
-
-  function programButton(
-    id,
-    sound,
-    name,
-    time
+  /* ==========================================
+     SLIDERS
+  ========================================== */
+
+  function connectSlider(
+    inputId,
+    valueId
   ) {
+
+    const input =
+      document.getElementById(inputId);
+
+    const value =
+      document.getElementById(valueId);
+
+    if (!input || !value) return;
+
+
+    input.addEventListener(
+      "input",
+      function () {
+
+        value.textContent =
+          input.value + "%";
+
+      }
+    );
+
+  }
+
+
+  connectSlider(
+    "radioVol",
+    "radioVal"
+  );
+
+  connectSlider(
+    "natureVol",
+    "natureVal"
+  );
+
+  connectSlider(
+    "rainVol",
+    "rainVal"
+  );
+
+
+  /* ==========================================
+     SWITCHES
+  ========================================== */
+
+  function setupSwitch(id) {
 
     const button =
       document.getElementById(id);
 
     if (!button) return;
 
-    button.addEventListener("click", function () {
 
-      /* stop other programs */
+    button.addEventListener(
+      "click",
+      function () {
 
-      audio.vayalum.pause();
-      audio.youvavani.pause();
-      audio.nadakam.pause();
-      audio.gana.pause();
+        button.classList.toggle("on");
 
-      audio.vayalum.currentTime = 0;
-      audio.youvavani.currentTime = 0;
-      audio.nadakam.currentTime = 0;
-      audio.gana.currentTime = 0;
+        const span =
+          button.querySelector("span");
 
+        if (span) {
 
-      const programName =
-        document.getElementById("programName");
+          span.textContent =
+            button.classList.contains("on")
+              ? "ON"
+              : "OFF";
 
-      const timeSlot =
-        document.getElementById("timeSlot");
+        }
 
-
-      if (programName) {
-        programName.textContent = name;
       }
-
-      if (timeSlot) {
-        timeSlot.textContent = time;
-      }
-
-
-      sound.currentTime = 0;
-
-      playAudio(sound);
-
-    });
+    );
 
   }
 
 
-  programButton(
-    "vayalumVeedumBtn",
-    audio.vayalum,
-    "വയലും വീടും",
-    "07:00 — 07:30"
-  );
+  setupSwitch("radioBtn");
+  setupSwitch("natureSwitch");
+  setupSwitch("rainSwitch");
+  setupSwitch("headsetSwitch");
 
 
-  programButton(
-    "youvavaniBtn",
-    audio.youvavani,
-    "യുവവാണി",
-    "08:00 — 08:30"
-  );
+  /* ==========================================
+     TOP RAIN BUTTON
+  ========================================== */
+
+  const rainBtn =
+    document.getElementById("rainBtn");
+
+  const rainSwitch =
+    document.getElementById("rainSwitch");
 
 
-  programButton(
-    "radioNadakamBtn",
-    audio.nadakam,
-    "റേഡിയോ നാടകം",
-    "20:00 — 21:00"
-  );
+  if (rainBtn && rainSwitch) {
 
+    rainBtn.addEventListener(
+      "click",
+      function () {
 
-  programButton(
-    "ganaParipadiBtn",
-    audio.gana,
-    "ഗാനപരിപാടി",
-    "18:00 — 19:00"
-  );
-
-
-  /* =========================
-     HEADSET
-  ========================= */
-
-  const headsetSwitch =
-    document.getElementById("headsetSwitch");
-
-  if (headsetSwitch) {
-
-    headsetSwitch.addEventListener("click", function () {
-
-      this.classList.toggle("on");
-
-      const span =
-        this.querySelector("span");
-
-      if (span) {
-
-        span.textContent =
-          this.classList.contains("on")
-            ? "ON"
-            : "OFF";
+        rainSwitch.click();
 
       }
-
-    });
+    );
 
   }
 
 
-  /* =========================
+  /* ==========================================
      BULB
-  ========================= */
+  ========================================== */
 
-  const warmBulb =
+  const bulb =
     document.getElementById("warmBulb");
 
-  if (warmBulb) {
 
-    warmBulb.addEventListener("click", function () {
+  if (bulb) {
 
-      document.body.classList.toggle("dark-mode");
+    bulb.addEventListener(
+      "click",
+      function () {
 
-    });
+        document.body.classList.toggle(
+          "dark-mode"
+        );
+
+      }
+    );
 
   }
 
 });
+
+</script>
