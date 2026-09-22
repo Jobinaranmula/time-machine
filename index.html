@@ -10,9 +10,7 @@
   content="width=device-width,initial-scale=1"
 >
 
-<title>
-TIME MACHINE — Kerala Radio 1980–1990
-</title>
+<title>TIME MACHINE — Kerala Radio 1980–1990</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -21,39 +19,17 @@ TIME MACHINE — Kerala Radio 1980–1990
   rel="stylesheet"
 >
 
-<link
-  rel="stylesheet"
-  href="style.css?v=6"
->
+<!-- IMPORTANT: cache version changed -->
+<link rel="stylesheet" href="style.css?v=7">
+
 
 <style>
-
-/* =====================================================
-   TIME MACHINE NEW REFERENCE IMAGE
-===================================================== */
-
-.hero{
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(7,6,4,.72) 0%,
-      rgba(7,6,4,.40) 45%,
-      rgba(7,6,4,.18) 100%
-    ),
-    url("time-machine-new.png") !important;
-
-  background-size:cover !important;
-  background-position:center !important;
-  background-repeat:no-repeat !important;
-}
-
 
 /* =====================================================
    HANGING WARM BULB
 ===================================================== */
 
 .warm-bulb{
-
   position:fixed;
 
   top:0;
@@ -67,7 +43,6 @@ TIME MACHINE — Kerala Radio 1980–1990
   z-index:10000;
 
   cursor:pointer;
-
   touch-action:manipulation;
 
   display:flex;
@@ -78,13 +53,11 @@ TIME MACHINE — Kerala Radio 1980–1990
 
   transform-origin:top center;
 
-  animation:
-    bulbSwing 4s ease-in-out infinite;
+  animation:bulbSwing 4s ease-in-out infinite;
 }
 
 
 .bulb-cord{
-
   width:2px;
   height:92px;
 
@@ -96,7 +69,6 @@ TIME MACHINE — Kerala Radio 1980–1990
 
 
 .bulb-holder{
-
   width:20px;
   height:12px;
 
@@ -111,7 +83,6 @@ TIME MACHINE — Kerala Radio 1980–1990
 
 
 .bulb-light{
-
   position:relative;
 
   width:32px;
@@ -138,7 +109,6 @@ TIME MACHINE — Kerala Radio 1980–1990
 
 
 .bulb-light::after{
-
   content:"";
 
   position:absolute;
@@ -196,9 +166,7 @@ TIME MACHINE — Kerala Radio 1980–1990
 ===================================================== */
 
 body.dark-mode{
-
   background:#050605 !important;
-
   color:#d8d8d8;
 
   transition:
@@ -208,7 +176,6 @@ body.dark-mode{
 
 
 body.dark-mode::after{
-
   content:"";
 
   position:fixed;
@@ -225,13 +192,11 @@ body.dark-mode::after{
 
 
 body.dark-mode .warm-bulb{
-
   z-index:10000;
 }
 
 
 body.dark-mode .bulb-light{
-
   background:#181818;
 
   box-shadow:none;
@@ -241,95 +206,38 @@ body.dark-mode .bulb-light{
 
 
 body.dark-mode .bulb-light::after{
-
   opacity:0;
 }
 
 
 body.dark-mode .bulb-holder{
-
   background:#161616;
 }
 
 
 body.dark-mode .bulb-cord{
-
   background:#111;
 }
 
 
 /* =====================================================
-   INSTAGRAM
-===================================================== */
-
-.instagram-link{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:8px;
-
-  color:#e1a94d !important;
-
-  text-decoration:none;
-
-  font-family:
-    Manjari,
-    system-ui,
-    sans-serif;
-
-  font-size:15px;
-
-  transition:.25s;
-}
-
-
-.instagram-link:hover{
-
-  color:#fff0c9 !important;
-
-  transform:
-    translateY(-2px);
-}
-
-
-/* =====================================================
-   MOBILE
+   MOBILE BULB
 ===================================================== */
 
 @media(max-width:600px){
 
   .warm-bulb{
-
     width:48px;
     height:146px;
   }
 
-
   .bulb-cord{
-
     height:89px;
   }
 
-
   .bulb-light{
-
     width:31px;
     height:40px;
-  }
-
-
-  .instagram-link{
-
-    font-size:13px;
-  }
-
-
-  .hero{
-
-    background-position:
-      center center !important;
   }
 
 }
@@ -341,6 +249,10 @@ body.dark-mode .bulb-cord{
 
 <body>
 
+
+<!-- =====================================================
+     GRAIN
+===================================================== -->
 
 <div class="grain"></div>
 
@@ -414,6 +326,7 @@ body.dark-mode .bulb-cord{
   >
 
     🌧️
+
     <span>
       മഴ
     </span>
@@ -429,6 +342,10 @@ body.dark-mode .bulb-cord{
 
 <main>
 
+
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section class="hero">
 
@@ -518,8 +435,10 @@ body.dark-mode .bulb-cord{
 
   <!-- TOP LINE -->
 
-  <div class="topline">
-
+  <div
+    class="topline"
+    id="years"
+  >
 
     <div>
 
@@ -527,13 +446,11 @@ body.dark-mode .bulb-cord{
         1985 · ഒരു രാവിലെ
       </b>
 
-
       <small>
         കേരള റേഡിയോ
       </small>
 
     </div>
-
 
   </div>
 
@@ -550,7 +467,6 @@ body.dark-mode .bulb-cord{
       <span class="live">
         ● LIVE
       </span>
-
 
       <span id="timeSlot">
         06:30 — 07:00
@@ -599,7 +515,6 @@ body.dark-mode .bulb-cord{
         📻 റേഡിയോ
       </label>
 
-
       <input
         id="radioVol"
         type="range"
@@ -607,7 +522,6 @@ body.dark-mode .bulb-cord{
         max="100"
         value="78"
       >
-
 
       <b id="radioVal">
         78%
@@ -622,7 +536,6 @@ body.dark-mode .bulb-cord{
         🌿 പ്രകൃതി
       </label>
 
-
       <input
         id="natureVol"
         type="range"
@@ -630,7 +543,6 @@ body.dark-mode .bulb-cord{
         max="100"
         value="28"
       >
-
 
       <b id="natureVal">
         28%
@@ -645,7 +557,6 @@ body.dark-mode .bulb-cord{
         🌧️ മഴ
       </label>
 
-
       <input
         id="rainVol"
         type="range"
@@ -653,7 +564,6 @@ body.dark-mode .bulb-cord{
         max="100"
         value="22"
       >
-
 
       <b id="rainVal">
         22%
@@ -749,11 +659,9 @@ body.dark-mode .bulb-cord{
         🌾 വയലും വീടും
       </b>
 
-
       <span>
         കൃഷി · ഗ്രാമജീവിതം
       </span>
-
 
       <button
         id="vayalumVeedumBtn"
@@ -772,11 +680,9 @@ body.dark-mode .bulb-cord{
         🎙️ യുവവാണി
       </b>
 
-
       <span>
         പഴയ മലയാളം യുവജന പരിപാടികൾ
       </span>
-
 
       <button
         id="youvavaniBtn"
@@ -795,11 +701,9 @@ body.dark-mode .bulb-cord{
         🎭 റേഡിയോ നാടകം
       </b>
 
-
       <span>
         നാടകം · കഥ
       </span>
-
 
       <button
         id="radioNadakamBtn"
@@ -818,11 +722,9 @@ body.dark-mode .bulb-cord{
         🎵 ഗാനപരിപാടി
       </b>
 
-
       <span>
         പഴയ മലയാളം ഗാനങ്ങൾ
       </span>
-
 
       <button
         id="ganaParipadiBtn"
@@ -841,11 +743,9 @@ body.dark-mode .bulb-cord{
         📰 വാർത്ത
       </b>
 
-
       <span>
         അന്നത്തെ വാർത്തകൾ
       </span>
-
 
       <button>
         ▶ കേൾക്കാം
@@ -862,11 +762,9 @@ body.dark-mode .bulb-cord{
         📢 പരസ്യങ്ങൾ
       </b>
 
-
       <span>
         കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ
       </span>
-
 
       <button>
         ▶ കാണാം
@@ -890,34 +788,15 @@ body.dark-mode .bulb-cord{
 
 <footer id="about">
 
-
   <span>
     GOOD RADIO · BETTER DAYS
   </span>
-
-
-  <a
-    class="instagram-link"
-    href="https://instagram.com/jobin_skariah"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Instagram @jobin_skariah"
-  >
-
-    📷
-
-    <span>
-      @jobin_skariah
-    </span>
-
-  </a>
-
 
 </footer>
 
 
 <!-- =====================================================
-     WARM BULB JAVASCRIPT
+     WARM BULB SCRIPT
 ===================================================== -->
 
 <script>
@@ -932,7 +811,9 @@ document.addEventListener(
       );
 
 
-    if(!warmBulb) return;
+    if(!warmBulb){
+      return;
+    }
 
 
     function updateBulbMode(){
@@ -950,21 +831,17 @@ document.addEventListener(
           "on"
         );
 
-
         warmBulb.setAttribute(
           "aria-label",
           "Normal light"
         );
 
-      }
-
-      else{
+      }else{
 
         localStorage.setItem(
           "timeMachineDark",
           "off"
         );
-
 
         warmBulb.setAttribute(
           "aria-label",
@@ -976,7 +853,7 @@ document.addEventListener(
     }
 
 
-    /* Restore previous setting */
+    /* Restore previous mode */
 
     if(
       localStorage.getItem(
@@ -1004,7 +881,6 @@ document.addEventListener(
           "dark-mode"
         );
 
-
         updateBulbMode();
 
       }
@@ -1018,11 +894,11 @@ document.addEventListener(
 
 
 <!-- =====================================================
-     EXISTING JAVASCRIPT
+     MAIN JAVASCRIPT
 ===================================================== -->
 
 <script
-  src="script.js?v=5"
+  src="script.js?v=6"
   defer>
 </script>
 
