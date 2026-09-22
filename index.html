@@ -4,99 +4,626 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TIME MACHINE — Kerala Radio 1980–1990</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Playfair+Display:wght@500;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
+
+<style>
+/* =====================================================
+   💡 HANGING WARM BULB
+   ===================================================== */
+
+.warm-bulb {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 46px;
+  height: 132px;
+  z-index: 10000;
+  cursor: pointer;
+  touch-action: manipulation;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hanging wire */
+.bulb-cord {
+  width: 2px;
+  height: 76px;
+  background: #27231e;
+  box-shadow: 0 0 2px rgba(0,0,0,.8);
+}
+
+/* Bulb holder */
+.bulb-holder {
+  width: 17px;
+  height: 10px;
+  border-radius: 4px 4px 2px 2px;
+  background: #3b332b;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,.15);
+}
+
+/* Warm bulb */
+.bulb-light {
+  position: relative;
+  width: 27px;
+  height: 35px;
+  margin-top: 2px;
+  border-radius: 50% 50% 45% 45%;
+  background: #ffd98a;
+
+  box-shadow:
+    0 0 8px #ffd98a,
+    0 0 18px rgba(255,205,105,.9),
+    0 0 35px rgba(255,180,55,.65),
+    0 0 65px rgba(255,170,35,.35);
+
+  transition:
+    background .35s ease,
+    box-shadow .35s ease,
+    opacity .35s ease;
+}
+
+/* Small filament */
+.bulb-light::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 8px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-left: 2px solid #a96b24;
+  border-right: 2px solid #a96b24;
+  border-radius: 50%;
+  opacity: .7;
+}
+
+/* =====================================================
+   🌙 DARK MODE
+   ===================================================== */
+
+body.dark-mode {
+  background: #050605 !important;
+  color: #d8d8d8;
+  transition:
+    background .35s ease,
+    color .35s ease;
+}
+
+/* Dark overlay — keeps existing design unchanged */
+body.dark-mode::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.58);
+  z-index: 9998;
+  pointer-events: none;
+  transition: background .35s ease;
+}
+
+/* Bulb stays above dark overlay */
+body.dark-mode .warm-bulb {
+  z-index: 10000;
+}
+
+/* Bulb OFF */
+body.dark-mode .bulb-light {
+  background: #181818;
+  box-shadow: none;
+  opacity: .9;
+}
+
+body.dark-mode .bulb-light::after {
+  opacity: 0;
+}
+
+body.dark-mode .bulb-holder {
+  background: #161616;
+}
+
+body.dark-mode .bulb-cord {
+  background: #111;
+}
+
+
+/* =====================================================
+   📱 MOBILE POSITION
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+  .warm-bulb {
+    width: 44px;
+    height: 128px;
+  }
+
+  .bulb-cord {
+    height: 73px;
+  }
+
+  .bulb-light {
+    width: 26px;
+    height: 34px;
+  }
+
+}
+</style>
 </head>
+
 <body>
+
 <div class="grain"></div>
+
+
+<!-- =====================================================
+     💡 HANGING WARM BULB
+     ===================================================== -->
+
+<div
+  id="warmBulb"
+  class="warm-bulb"
+  role="button"
+  aria-label="Warm light toggle"
+  title="ലൈറ്റ് മാറ്റാൻ തൊടുക"
+>
+
+  <div class="bulb-cord"></div>
+
+  <div class="bulb-holder"></div>
+
+  <div class="bulb-light"></div>
+
+</div>
+
+
 <header>
-  <div class="brand">📻 <span>TIME MACHINE</span><small>1980 — 1990 · KERALA RADIO</small></div>
+
+  <div class="brand">
+    📻
+    <span>TIME MACHINE</span>
+    <small>1980 — 1990 · KERALA RADIO</small>
+  </div>
+
   <nav>
     <a href="#programs">പരിപാടികൾ</a>
     <a href="#years">വർഷങ്ങൾ</a>
     <a href="#ads">പരസ്യങ്ങൾ</a>
     <a href="#about">കുറിച്ച്</a>
   </nav>
-  <button class="icon-btn" id="rainBtn">🌧️ <span>മഴ</span></button>
+
+  <button class="icon-btn" id="rainBtn">
+    🌧️ <span>മഴ</span>
+  </button>
+
 </header>
 
+
 <main>
+
 <section class="hero">
+
   <div class="hero-copy">
-    <div class="eyebrow">ഒരു പഴയകാല ശബ്ദയാത്ര</div>
-    <h1>TIME<br><span>MACHINE</span></h1>
-    <p class="years">1980 — 1990</p>
-    <p class="ml">ഒരു ബട്ടൺ അമർത്തൂ...<br>ഓർമ്മകളിലേക്ക് യാത്ര ചെയ്യാം.</p>
-    <button class="enter" id="enterBtn">▶ <span>ടൈം മെഷീനിലേക്ക് പോകാം</span></button>
+
+    <div class="eyebrow">
+      ഒരു പഴയകാല ശബ്ദയാത്ര
+    </div>
+
+    <h1>
+      TIME<br>
+      <span>MACHINE</span>
+    </h1>
+
+    <p class="years">
+      1980 — 1990
+    </p>
+
+    <p class="ml">
+      ഒരു ബട്ടൺ അമർത്തൂ...<br>
+      ഓർമ്മകളിലേക്ക് യാത്ര ചെയ്യാം.
+    </p>
+
+    <button class="enter" id="enterBtn">
+      ▶ <span>ടൈം മെഷീനിലേക്ക് പോകാം</span>
+    </button>
+
   </div>
+
+
   <div class="radio-card">
+
     <div class="radio-glow"></div>
-    <div class="radio">PHILIPS</div>
+
+    <div class="radio">
+      PHILIPS
+    </div>
+
     <div class="dial"></div>
+
     <div class="radio-line"></div>
-    <div class="onair">● ON AIR</div>
+
+    <div class="onair">
+      ● ON AIR
+    </div>
+
   </div>
+
 </section>
+
 
 <section id="machine" class="machine hidden">
+
   <div class="topline">
-    <div><b id="dateLabel">1985 · ഒരു രാവിലെ</b><small>കേരള റേഡിയോ</small></div>
-    <button id="natureBtn" class="mode active">🌿 പ്രകൃതി ശബ്ദം</button>
+
+    <div>
+      <b id="dateLabel">
+        1985 · ഒരു രാവിലെ
+      </b>
+
+      <small>
+        കേരള റേഡിയോ
+      </small>
+    </div>
+
+    <button id="natureBtn" class="mode active">
+      🌿 പ്രകൃതി ശബ്ദം
+    </button>
+
   </div>
+
 
   <div class="now-playing">
-    <div><span class="live">● LIVE</span><span id="timeSlot">06:30 — 07:00</span></div>
-    <h2 id="programName">പ്രഭാതവന്ദനം</h2>
-    <p>ആകാശവാണി · മലയാളം</p>
-    <div class="meter"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div>
+      <span class="live">
+        ● LIVE
+      </span>
+
+      <span id="timeSlot">
+        06:30 — 07:00
+      </span>
+    </div>
+
+    <h2 id="programName">
+      പ്രഭാതവന്ദനം
+    </h2>
+
+    <p>
+      ആകാശവാണി · മലയാളം
+    </p>
+
+    <div class="meter">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+
   </div>
+
 
   <div class="controls">
-    <div class="control"><label>📻 റേഡിയോ</label><input id="radioVol" type="range" min="0" max="100" value="78"><b id="radioVal">78%</b></div>
-    <div class="control"><label>🌿 പ്രകൃതി</label><input id="natureVol" type="range" min="0" max="100" value="28"><b id="natureVal">28%</b></div>
-    <div class="control"><label>🌧️ മഴ</label><input id="rainVol" type="range" min="0" max="100" value="22"><b id="rainVal">22%</b></div>
+
+    <div class="control">
+
+      <label>
+        📻 റേഡിയോ
+      </label>
+
+      <input
+        id="radioVol"
+        type="range"
+        min="0"
+        max="100"
+        value="78"
+      >
+
+      <b id="radioVal">
+        78%
+      </b>
+
+    </div>
+
+
+    <div class="control">
+
+      <label>
+        🌿 പ്രകൃതി
+      </label>
+
+      <input
+        id="natureVol"
+        type="range"
+        min="0"
+        max="100"
+        value="28"
+      >
+
+      <b id="natureVal">
+        28%
+      </b>
+
+    </div>
+
+
+    <div class="control">
+
+      <label>
+        🌧️ മഴ
+      </label>
+
+      <input
+        id="rainVol"
+        type="range"
+        min="0"
+        max="100"
+        value="22"
+      >
+
+      <b id="rainVal">
+        22%
+      </b>
+
+    </div>
+
   </div>
+
 
   <div class="switches">
-    <button id="radioBtn" class="switch on">📻 റേഡിയോ <span>ON</span></button>
-    <button id="natureSwitch" class="switch on">🌿 പ്രകൃതി <span>ON</span></button>
-    <button id="rainSwitch" class="switch">🌧️ മഴ <span>OFF</span></button>
-    <button id="headsetSwitch" class="switch on">🎧 Immersive <span>ON</span></button>
+
+    <button id="radioBtn" class="switch on">
+      📻 റേഡിയോ <span>ON</span>
+    </button>
+
+    <button id="natureSwitch" class="switch on">
+      🌿 പ്രകൃതി <span>ON</span>
+    </button>
+
+    <button id="rainSwitch" class="switch">
+      🌧️ മഴ <span>OFF</span>
+    </button>
+
+    <button id="headsetSwitch" class="switch on">
+      🎧 Immersive <span>ON</span>
+    </button>
+
   </div>
+
 
   <div class="program-grid" id="programs">
+
+
+    <!-- 🌾 വയലും വീടും -->
+
     <article>
-  <b>🌾 വയലും വീടും</b>
-  <span>കൃഷി · ഗ്രാമജീവിതം</span>
-  <button id="vayalumVeedumBtn">▶ കേൾക്കാം</button>
+
+      <b>
+        🌾 വയലും വീടും
+      </b>
+
+      <span>
+        കൃഷി · ഗ്രാമജീവിതം
+      </span>
+
+      <button id="vayalumVeedumBtn">
+        ▶ കേൾക്കാം
+      </button>
+
     </article>
+
+
+    <!-- 🎙️ യുവവാണി -->
+
     <article>
-  <b>🎙️ യുവവാണി</b>
-  <span>പഴയ മലയാളം യുവജന പരിപാടികൾ</span>
-  <button id="youvavaniBtn">▶ കേൾക്കാം</button>
+
+      <b>
+        🎙️ യുവവാണി
+      </b>
+
+      <span>
+        പഴയ മലയാളം യുവജന പരിപാടികൾ
+      </span>
+
+      <button id="youvavaniBtn">
+        ▶ കേൾക്കാം
+      </button>
+
     </article>
+
+
+    <!-- 🎭 റേഡിയോ നാടകം -->
+
     <article>
-  <b>🎭 റേഡിയോ നാടകം</b>
-  <span>നാടകം · കഥ</span>
-  <button id="radioNadakamBtn">▶ കേൾക്കാം</button>
+
+      <b>
+        🎭 റേഡിയോ നാടകം
+      </b>
+
+      <span>
+        നാടകം · കഥ
+      </span>
+
+      <button id="radioNadakamBtn">
+        ▶ കേൾക്കാം
+      </button>
+
     </article>
+
+
+    <!-- 🎵 ഗാനപരിപാടി -->
+
     <article>
-  <b>🎵 ഗാനപരിപാടി</b>
-  <span>പഴയ മലയാളം ഗാനങ്ങൾ</span>
-  <button id="ganaParipadiBtn">▶ കേൾക്കാം</button>
+
+      <b>
+        🎵 ഗാനപരിപാടി
+      </b>
+
+      <span>
+        പഴയ മലയാളം ഗാനങ്ങൾ
+      </span>
+
+      <button id="ganaParipadiBtn">
+        ▶ കേൾക്കാം
+      </button>
+
     </article>
-    <article><b>📰 വാർത്ത</b><span>അന്നത്തെ വാർത്തകൾ</span><button>▶ കേൾക്കാം</button></article>
-    <article id="ads"><b>📢 പരസ്യങ്ങൾ</b><span>കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ</span><button>▶ കാണാം</button></article>
+
+
+    <!-- 📰 വാർത്ത -->
+
+    <article>
+
+      <b>
+        📰 വാർത്ത
+      </b>
+
+      <span>
+        അന്നത്തെ വാർത്തകൾ
+      </span>
+
+      <button>
+        ▶ കേൾക്കാം
+      </button>
+
+    </article>
+
+
+    <!-- 📢 പരസ്യങ്ങൾ -->
+
+    <article id="ads">
+
+      <b>
+        📢 പരസ്യങ്ങൾ
+      </b>
+
+      <span>
+        കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ
+      </span>
+
+      <button>
+        ▶ കാണാം
+      </button>
+
+    </article>
+
+
   </div>
+
 </section>
+
 </main>
 
+
 <footer id="about">
-  <span>GOOD RADIO · BETTER DAYS</span>
-  <a href="https://instagram.com/jobin_skariah" target="_blank" rel="noopener" aria-label="Instagram">◎</a>
+
+  <span>
+    GOOD RADIO · BETTER DAYS
+  </span>
+
+  <a
+    href="https://instagram.com/jobin_skariah"
+    target="_blank"
+    rel="noopener"
+    aria-label="Instagram"
+  >
+    ◎
+  </a>
+
 </footer>
 
+
+<!-- =====================================================
+     💡 WARM BULB CONTROL
+     ===================================================== -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const warmBulb =
+    document.getElementById("warmBulb");
+
+  if (!warmBulb) return;
+
+
+  function updateBulbMode() {
+
+    const dark =
+      document.body.classList.contains("dark-mode");
+
+    if (dark) {
+
+      localStorage.setItem(
+        "timeMachineDark",
+        "on"
+      );
+
+      warmBulb.setAttribute(
+        "aria-label",
+        "Normal light"
+      );
+
+    } else {
+
+      localStorage.setItem(
+        "timeMachineDark",
+        "off"
+      );
+
+      warmBulb.setAttribute(
+        "aria-label",
+        "Dark mode"
+      );
+
+    }
+
+  }
+
+
+  /* Remember previous setting */
+
+  if (
+    localStorage.getItem("timeMachineDark") === "on"
+  ) {
+
+    document.body.classList.add("dark-mode");
+
+  }
+
+
+  updateBulbMode();
+
+
+  /* 💡 Touch / Click */
+
+  warmBulb.addEventListener(
+    "click",
+    function () {
+
+      document.body.classList.toggle(
+        "dark-mode"
+      );
+
+      updateBulbMode();
+
+    }
+  );
+
+});
+</script>
+
+
+<!-- Existing JavaScript -->
 <script src="script.js?v=4" defer></script>
+
 </body>
 </html>
