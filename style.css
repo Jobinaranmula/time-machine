@@ -9,27 +9,23 @@ html{
 body{
   margin:0;
   min-height:100vh;
-  color:#332313;
+  color:#f4e7c8;
   font-family:Manjari,system-ui,sans-serif;
+  background:#120c07;
   overflow-x:hidden;
-
-  background:
-    linear-gradient(rgba(38,25,12,.18),rgba(38,25,12,.18)),
-    #171008;
 }
 
 /* =========================
-   FILM GRAIN
+   GRAIN
 ========================= */
 
 .grain{
   position:fixed;
   inset:0;
-  pointer-events:none;
-  opacity:.045;
   z-index:50;
-
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events:none;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* =========================
@@ -39,80 +35,68 @@ body{
 header{
   height:72px;
   padding:0 4vw;
-
   display:flex;
   align-items:center;
   justify-content:space-between;
-
   position:sticky;
   top:0;
-  z-index:20;
-
-  background:
-    linear-gradient(
-      rgba(30,20,10,.94),
-      rgba(18,12,7,.94)
-    );
-
-  border-bottom:1px solid #7b5a2b;
+  z-index:30;
+  background:rgba(20,12,6,.94);
+  border-bottom:1px solid #765323;
   backdrop-filter:blur(12px);
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:8px;
-
-  color:#f0d18e;
-
+  gap:7px;
+  color:#e1b866;
   font-family:"Playfair Display",serif;
   font-size:20px;
-  font-weight:700;
+  white-space:nowrap;
 }
 
 .brand small{
-  color:#c6ad83;
+  color:#a99879;
   font:10px Manjari;
   letter-spacing:1px;
 }
 
 nav{
   display:flex;
-  gap:25px;
+  gap:24px;
 }
 
 nav a{
-  color:#e8d6b6;
+  color:#d8c8aa;
   text-decoration:none;
   font-size:14px;
 }
 
 nav a:hover{
-  color:#e9bb62;
+  color:#e7b967;
 }
 
 .icon-btn,
 .mode{
-  border:1px solid #9a7133;
+  border:1px solid #765323;
   border-radius:22px;
-
-  background:#2c1c0b;
-  color:#f3ddb0;
-
   padding:8px 14px;
+  background:#2b1b0b;
+  color:#f0d8a9;
   cursor:pointer;
 }
 
 /* =========================
    HERO
+   NO PNG
 ========================= */
 
 .hero{
   min-height:680px;
-
   position:relative;
-  overflow:hidden;
   isolation:isolate;
+  overflow:hidden;
 
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -120,123 +104,73 @@ nav a:hover{
 
   padding:70px 7vw;
 
-  /*
-    NO design-reference.png
-    NO external background image
-  */
-
   background:
-    /* sunset */
     radial-gradient(
-      ellipse at 48% 34%,
-      rgba(248,181,72,.95) 0%,
-      rgba(211,132,39,.55) 13%,
-      transparent 34%
+      circle at 50% 35%,
+      rgba(255,190,82,.95) 0%,
+      rgba(220,142,42,.65) 15%,
+      transparent 38%
     ),
-
-    /* sky */
     linear-gradient(
       to bottom,
-      #9c6b39 0%,
-      #d29a4b 25%,
-      #e2ad5b 42%,
-      #5e542d 60%,
-      #26341d 100%
-    );
+      #76502c 0%,
+      #c58d48 30%,
+      #718044 53%,
+      #30451f 72%,
+      #172512 100%
+    ) !important;
 }
 
 /* =========================
-   KERALA PALMS
+   KERALA BACKGROUND
 ========================= */
 
 .hero::before{
-  content:"";
+  content:"🌴     🌴        🌴     🌴";
 
   position:absolute;
-  inset:0;
+  left:-5%;
+  right:-5%;
+  bottom:28%;
 
   z-index:-1;
 
-  opacity:.85;
+  color:#182713;
+  font-size:clamp(80px,15vw,190px);
+  letter-spacing:25px;
+  line-height:1;
 
-  background:
-
-    /* far palm silhouettes */
-    radial-gradient(
-      ellipse at 12% 34%,
-      transparent 0 34px,
-      #1c2917 35px 42px,
-      transparent 43px
-    ),
-
-    radial-gradient(
-      ellipse at 25% 40%,
-      transparent 0 38px,
-      #25331a 39px 47px,
-      transparent 48px
-    ),
-
-    radial-gradient(
-      ellipse at 62% 40%,
-      transparent 0 45px,
-      #243319 46px 53px,
-      transparent 54px
-    ),
-
-    radial-gradient(
-      ellipse at 82% 35%,
-      transparent 0 42px,
-      #192717 43px 50px,
-      transparent 51px
-    ),
-
-    /* dark tree line */
-    linear-gradient(
-      to bottom,
-      transparent 42%,
-      rgba(25,40,19,.65) 43%,
-      rgba(20,32,16,.9) 55%,
-      rgba(18,29,14,.98) 100%
-    );
+  opacity:.48;
+  filter:saturate(.4);
 }
-
-/* =========================
-   VILLAGE GROUND
-========================= */
 
 .hero::after{
   content:"";
 
   position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
+  left:-10%;
+  right:-10%;
+  bottom:-15%;
 
-  height:42%;
+  height:45%;
 
   z-index:-1;
 
   background:
-
-    /* paddy lines */
     repeating-linear-gradient(
       4deg,
-      rgba(112,132,46,.32) 0 3px,
-      transparent 3px 15px
+      rgba(126,145,54,.35) 0 4px,
+      transparent 4px 18px
     ),
-
-    /* mud path */
     radial-gradient(
-      ellipse at 48% 110%,
-      #8d5d2d 0%,
-      #704821 19%,
-      transparent 45%
+      ellipse at 50% 100%,
+      #85572a 0%,
+      #69431f 22%,
+      transparent 48%
     ),
-
     linear-gradient(
       to top,
-      #24351a,
-      #34441d 65%,
+      #263817,
       transparent
     );
 }
@@ -245,19 +179,20 @@ nav a:hover{
    HERO CONTENT
 ========================= */
 
-.hero-copy{
+.hero-copy,
+.radio-card{
   position:relative;
   z-index:5;
+}
 
+.hero-copy{
   max-width:560px;
 }
 
 .eyebrow{
-  color:#ffe4a7;
-
-  font-size:14px;
+  color:#ffe0a0;
+  font-size:13px;
   letter-spacing:3px;
-
   text-shadow:0 2px 8px #000;
 }
 
@@ -265,37 +200,40 @@ nav a:hover{
   margin:18px 0 10px;
 
   font:
-    800 clamp(60px,9vw,120px)/.82
+    800 clamp(62px,9vw,125px)/.82
     "Playfair Display",
     serif;
 
   letter-spacing:-5px;
-
   color:#fff0c9;
 
   text-shadow:
-    0 5px 10px #2b1607,
-    0 12px 35px #0008;
+    0 5px 12px #2c1708,
+    0 15px 35px #0009;
 }
 
 .hero h1 span{
-  color:#ffe09a;
+  color:#ffe09b;
 }
 
 .years{
+  margin:20px 0;
+
   color:#ffe0a0;
 
   font:
-    700 26px
+    700 27px
     "Playfair Display";
 
   text-shadow:0 2px 8px #000;
+}
 
-  margin:22px 0;
+.hero .ml{
+  display:none;
 }
 
 /* =========================
-   ENTER
+   ENTER BUTTON
 ========================= */
 
 .enter{
@@ -303,113 +241,102 @@ nav a:hover{
 
   padding:16px 30px;
 
-  border-radius:32px;
-  border:2px solid #f0bd63;
+  border:2px solid #e0a94f;
+  border-radius:40px;
 
   background:
     linear-gradient(
-      #7d4313,
-      #3a1d08
+      #754313,
+      #351b08
     );
 
-  color:#fff1ca;
+  color:#fff0c9;
 
   font:
     700 18px
     Manjari,sans-serif;
 
-  box-shadow:
-    0 8px 25px #0008;
+  box-shadow:0 10px 30px #0009;
 
   cursor:pointer;
-
-  transition:.25s;
 }
 
 .enter:hover{
-  transform:translateY(-3px);
+  transform:translateY(-2px);
 }
 
 /* =========================
-   VINTAGE RADIO
+   RADIO
 ========================= */
 
 .radio-card{
-  position:relative;
-  z-index:5;
-
   justify-self:center;
 
-  width:min(460px,90vw);
-  height:350px;
+  width:min(430px,90vw);
+  height:330px;
 
-  padding:30px;
-
-  border-radius:18px;
+  border:8px solid #795027;
+  border-radius:22px;
 
   background:
     linear-gradient(
       145deg,
-      #4d2d14,
-      #1c1008
+      #68401d,
+      #251509
     );
-
-  border:9px solid #70451f;
 
   box-shadow:
     0 30px 70px #000c,
-    inset 0 0 30px #0009;
+    inset 0 0 35px #0009;
 
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 }
 
 .radio{
-  color:#e8bd70;
+  color:#e5b86a;
 
   font:
-    700 38px
+    700 36px
     "Playfair Display";
 
   letter-spacing:4px;
 }
 
 .dial{
-  width:78%;
+  width:75%;
   height:65px;
 
-  margin-top:22px;
+  margin-top:20px;
 
-  border:3px solid #c08a3e;
+  border:3px solid #c08b43;
   border-radius:50%;
 
   background:
     repeating-linear-gradient(
       90deg,
-      #211208 0 8px,
-      #c28c43 9px 10px
+      #241408 0 8px,
+      #c28b43 9px 10px
     );
 
-  box-shadow:
-    inset 0 0 25px #000;
+  box-shadow:inset 0 0 20px #000;
 }
 
 .radio-line{
-  width:75%;
+  width:70%;
   height:4px;
 
   margin-top:28px;
 
-  background:#c78d3c;
+  background:#c28b43;
 }
 
 .onair{
   margin-top:18px;
-
-  color:#f26b45;
-  font-size:13px;
+  color:#e85d43;
+  font-size:12px;
 }
 
 /* =========================
@@ -419,45 +346,39 @@ nav a:hover{
 .machine{
   position:relative;
 
-  padding:60px 5vw 80px;
+  padding:55px 5vw 80px;
+
+  color:#342212;
 
   background:
     linear-gradient(
-      rgba(239,220,174,.96),
-      rgba(210,180,119,.96)
+      #ead9ac,
+      #d2b87d
     );
 
-  color:#352313;
-
-  border-top:
-    8px solid #6b401a;
+  border-top:7px solid #694017;
 
   box-shadow:
-    inset 0 20px 50px rgba(72,42,15,.3);
+    inset 0 15px 40px #59371745;
 }
 
 .hidden{
   display:none;
 }
 
-/* =========================
-   MACHINE INNER
-========================= */
-
 .topline{
   max-width:1100px;
-
   margin:auto;
 
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
 }
 
 .topline b{
   display:block;
 
-  color:#392414;
+  color:#382313;
 
   font:
     700 28px
@@ -465,7 +386,7 @@ nav a:hover{
 }
 
 .topline small{
-  color:#76552e;
+  color:#75552f;
 }
 
 /* =========================
@@ -476,27 +397,24 @@ nav a:hover{
   max-width:1100px;
 
   margin:25px auto;
-
   padding:28px;
 
-  border:2px solid #b4945d;
-
+  border:2px solid #b29560;
   border-radius:18px;
 
   background:
     linear-gradient(
       145deg,
-      #ead9ac,
-      #d6bc80
+      #ebdbaf,
+      #d6bd83
     );
 
   box-shadow:
-    0 12px 30px #4b2d1250,
-    inset 0 1px 0 #fff8;
+    0 12px 30px #51301440;
 }
 
 .live{
-  color:#a72d20;
+  color:#a82c20;
   font-weight:bold;
   margin-right:18px;
 }
@@ -504,13 +422,12 @@ nav a:hover{
 .now-playing h2{
   margin:15px 0 5px;
 
-  color:#27180e;
-
+  color:#27180d;
   font-size:34px;
 }
 
 .now-playing p{
-  color:#765d38;
+  color:#765c38;
 }
 
 /* =========================
@@ -519,7 +436,6 @@ nav a:hover{
 
 .meter{
   display:flex;
-
   gap:5px;
 
   height:45px;
@@ -527,34 +443,32 @@ nav a:hover{
   align-items:end;
   justify-content:flex-end;
 
-  padding:8px 14px;
+  padding:7px 12px;
 
   border-radius:12px;
 
-  background:#292317;
-
-  box-shadow:
-    inset 0 0 8px #000;
+  background:#28251b;
+  box-shadow:inset 0 0 10px #000;
 }
 
 .meter i{
   width:7px;
 
-  background:#b5e957;
+  background:#b9ed5b;
 
-  border-radius:3px;
+  border-radius:4px;
 
   animation:bar .7s infinite alternate;
 }
 
-.meter i:nth-child(1){height:34px}
-.meter i:nth-child(2){height:39px}
+.meter i:nth-child(1){height:30px}
+.meter i:nth-child(2){height:38px}
 .meter i:nth-child(3){height:42px}
-.meter i:nth-child(4){height:37px}
+.meter i:nth-child(4){height:35px}
 .meter i:nth-child(5){height:43px}
-.meter i:nth-child(6){height:39px}
-.meter i:nth-child(7){height:30px}
-.meter i:nth-child(8){height:25px}
+.meter i:nth-child(6){height:37px}
+.meter i:nth-child(7){height:29px}
+.meter i:nth-child(8){height:23px}
 
 @keyframes bar{
   to{
@@ -572,9 +486,7 @@ nav a:hover{
   margin:20px auto;
 
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
 
   gap:14px;
 }
@@ -582,38 +494,32 @@ nav a:hover{
 .control{
   padding:18px;
 
-  border:2px solid #b99a61;
-
+  border:2px solid #b99b61;
   border-radius:15px;
 
   background:
     linear-gradient(
       #ead9ad,
-      #d6bd83
+      #d3b97e
     );
 
-  box-shadow:
-    0 6px 15px #55341435;
+  box-shadow:0 6px 15px #54341435;
 }
 
 .control label{
   display:block;
-
   margin-bottom:12px;
-
-  color:#382415;
+  color:#382313;
 }
 
 .control input{
   width:75%;
-
-  accent-color:#714018;
+  accent-color:#704019;
 }
 
 .control b{
   float:right;
-
-  color:#4e3018;
+  color:#503018;
 }
 
 /* =========================
@@ -626,9 +532,7 @@ nav a:hover{
   margin:18px auto;
 
   display:grid;
-
-  grid-template-columns:
-    repeat(4,1fr);
+  grid-template-columns:repeat(4,1fr);
 
   gap:12px;
 }
@@ -636,20 +540,17 @@ nav a:hover{
 .switch{
   padding:14px;
 
-  border:2px solid #8e7445;
-
+  border:2px solid #92784a;
   border-radius:14px;
 
-  background:#e5d09c;
+  background:#e4cf99;
 
-  color:#352313;
+  color:#382414;
 
   text-align:left;
-
   cursor:pointer;
 
-  box-shadow:
-    0 5px 12px #55341435;
+  box-shadow:0 5px 12px #55341430;
 }
 
 .switch span{
@@ -660,29 +561,27 @@ nav a:hover{
   border-radius:15px;
 
   background:#333;
-
-  color:#fff;
+  color:white;
 }
 
 .switch.on{
   background:
     linear-gradient(
-      #4d7921,
-      #315b16
+      #4e7b22,
+      #315d17
     );
 
-  border-color:#274d12;
-
+  border-color:#2b4d14;
   color:#fff;
 }
 
 .switch.on span{
-  background:#1e370f;
-  color:#d6f69c;
+  background:#1e390e;
+  color:#d5f69c;
 }
 
 /* =========================
-   PROGRAM GRID
+   PROGRAMS
 ========================= */
 
 .program-grid{
@@ -691,90 +590,50 @@ nav a:hover{
   margin:30px auto;
 
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
+  grid-template-columns:repeat(3,1fr);
 
   gap:14px;
 }
 
 .program-grid article{
-  min-height:190px;
+  min-height:180px;
 
-  padding:16px;
+  padding:18px;
 
-  border:2px solid #a98b54;
-
-  border-radius:14px;
+  border:2px solid #aa8c55;
+  border-radius:15px;
 
   background:
     linear-gradient(
       145deg,
       #e8d4a4,
-      #cdb278
+      #ccb174
     );
 
   display:flex;
   flex-direction:column;
   gap:7px;
 
-  box-shadow:
-    0 7px 16px #54331440;
+  box-shadow:0 7px 16px #54331435;
 
   transition:.25s;
 }
 
 .program-grid article:hover{
   transform:translateY(-4px);
-
-  box-shadow:
-    0 12px 25px #54331455;
 }
 
 .program-grid b{
-  color:#3b2514;
-
+  color:#392313;
   font-size:20px;
 }
 
 .program-grid span{
-  color:#705634;
-
+  color:#705532;
   font-size:14px;
 }
 
-.program-grid button{
-  margin-top:auto;
-
-  width:max-content;
-
-  padding:8px 15px;
-
-  border-radius:20px;
-
-  border:1px solid #6e421b;
-
-  background:
-    linear-gradient(
-      #55300f,
-      #2e1808
-    );
-
-  color:#ffe9bc;
-
-  font-family:Manjari,system-ui,sans-serif;
-
-  cursor:pointer;
-}
-
-.program-grid button:hover{
-  background:#704519;
-}
-
-/* =========================
-   YOUTH BUTTON
-========================= */
-
+.program-grid button,
 #youvavaniBtn{
   margin-top:auto;
 
@@ -782,17 +641,25 @@ nav a:hover{
 
   padding:8px 15px;
 
+  border:1px solid #704219;
   border-radius:20px;
 
-  border:1px solid #6e421b;
+  background:
+    linear-gradient(
+      #58320f,
+      #2d1808
+    );
 
-  background:#55300f;
+  color:#ffeac0;
 
-  color:#ffe9bc;
-
-  font-family:Manjari,sans-serif;
+  font-family:Manjari,system-ui,sans-serif;
 
   cursor:pointer;
+}
+
+.program-grid button:hover,
+#youvavaniBtn:hover{
+  background:#704719;
 }
 
 /* =========================
@@ -807,16 +674,14 @@ footer{
 
   background:#21150b;
 
-  border-top:1px solid #6b481f;
+  border-top:1px solid #69471f;
 
-  color:#cdb68e;
+  color:#cbb48c;
 }
 
 footer a{
-  color:#e1ad59;
-
+  color:#e0aa54;
   text-decoration:none;
-
   font-size:22px;
 }
 
@@ -839,35 +704,33 @@ footer a{
 
     grid-template-columns:1fr;
 
-    padding:60px 7vw;
+    padding:55px 7vw;
 
     background:
       radial-gradient(
-        ellipse at 50% 25%,
-        rgba(245,175,62,.95),
+        circle at 50% 25%,
+        rgba(255,188,76,.95),
         transparent 30%
       ),
       linear-gradient(
         to bottom,
-        #80562f,
-        #c28a43 38%,
-        #33401d 68%,
-        #1d2a14
-      );
+        #80572f,
+        #c38c47 35%,
+        #52642e 60%,
+        #263719 100%
+      ) !important;
   }
 
   .hero h1{
-    font-size:65px;
+    font-size:66px;
     letter-spacing:-3px;
   }
 
   .radio-card{
     width:90vw;
     max-width:430px;
-
-    height:290px;
-
-    margin-top:25px;
+    height:285px;
+    margin-top:20px;
   }
 
   .radio{
@@ -879,8 +742,7 @@ footer a{
   }
 
   .switches{
-    grid-template-columns:
-      1fr 1fr;
+    grid-template-columns:1fr 1fr;
   }
 
   .program-grid{
@@ -892,25 +754,21 @@ footer a{
     align-items:flex-start;
     gap:10px;
   }
-
-  .now-playing h2{
-    font-size:28px;
-  }
 }
 
 /* =========================
-   SMALL MOBILE
+   SMALL PHONE
 ========================= */
 
 @media(max-width:500px){
 
   .hero{
-    min-height:700px;
+    min-height:720px;
     padding:45px 6vw;
   }
 
   .hero h1{
-    font-size:55px;
+    font-size:56px;
   }
 
   .years{
@@ -923,7 +781,7 @@ footer a{
   }
 
   .radio{
-    font-size:26px;
+    font-size:27px;
   }
 
   .dial{
@@ -951,4 +809,21 @@ footer a{
   .now-playing{
     padding:20px;
   }
+
+  .now-playing h2{
+    font-size:27px;
+  }
+}
+
+/* =========================
+   IMPORTANT
+   HIDE OLD PNG / HERO IMAGE
+========================= */
+
+.hero img,
+.hero > img,
+.hero .hero-bg,
+.hero .background,
+.hero .hero-image{
+  display:none !important;
 }
