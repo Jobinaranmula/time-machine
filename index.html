@@ -47,6 +47,19 @@ body.dark{
 
 
 /* =====================================================
+   REMOVE BLUE TOUCH
+===================================================== */
+
+button,
+a,
+.lantern-swing,
+.lantern-swing *{
+  -webkit-tap-highlight-color:transparent !important;
+  outline:none;
+}
+
+
+/* =====================================================
    LANTERN AREA
 ===================================================== */
 
@@ -58,31 +71,36 @@ body.dark{
 }
 
 
-/* മുഴുവൻ റാന്തലും ഒരുമിച്ച് ആടും */
+/* =====================================================
+   WHOLE LANTERN + WIRE TOGETHER
+===================================================== */
 
 .lantern-swing{
   position:absolute;
-  top:-5px;
+
+  top:-8px;
   left:50%;
 
-  width:90px;
+  width:78px;
   height:225px;
 
   transform:translateX(-50%);
   transform-origin:top center;
 
   animation:
-    lanternSwing 4.5s ease-in-out infinite;
+    lanternSwing 4.8s ease-in-out infinite;
 
   cursor:pointer;
+
   z-index:20;
 
-  -webkit-tap-highlight-color:transparent;
   user-select:none;
 }
 
 
-/* മുകളിൽ നിന്ന് താഴേക്ക് chain */
+/* =====================================================
+   WIRE
+===================================================== */
 
 .lantern-chain{
   position:absolute;
@@ -90,26 +108,29 @@ body.dark{
   top:0;
   left:50%;
 
-  width:4px;
-  height:154px;
+  width:3px;
+  height:150px;
 
   transform:translateX(-50%);
 
   background:
     repeating-linear-gradient(
       0deg,
-      #090806 0 5px,
-      #57432c 6px,
-      #090806 8px
+      #050403 0 5px,
+      #4b3927 6px,
+      #050403 8px
     );
 
-  border-radius:5px;
+  border-radius:4px;
 
-  box-shadow:0 0 4px #000;
+  box-shadow:
+    0 0 3px #000;
 }
 
 
-/* ചെറിയ പഴയ റാന്തൽ */
+/* =====================================================
+   SMALL OLD LANTERN
+===================================================== */
 
 .lantern{
   position:absolute;
@@ -117,39 +138,39 @@ body.dark{
   left:50%;
   bottom:0;
 
-  width:68px;
-  height:82px;
+  width:58px;
+  height:70px;
 
   transform:translateX(-50%);
 
   filter:
     drop-shadow(
-      0 8px 13px rgba(0,0,0,.85)
+      0 7px 11px rgba(0,0,0,.9)
     );
 }
 
 
-/* handle */
+/* HANDLE */
 
 .lantern-handle{
   position:absolute;
 
   left:50%;
-  top:-20px;
+  top:-18px;
 
-  width:43px;
-  height:30px;
+  width:36px;
+  height:25px;
 
   transform:translateX(-50%);
 
-  border:4px solid #49351f;
+  border:3px solid #49351f;
   border-bottom:0;
 
-  border-radius:30px 30px 0 0;
+  border-radius:28px 28px 0 0;
 }
 
 
-/* top cap */
+/* TOP */
 
 .lantern-top{
   position:absolute;
@@ -157,12 +178,12 @@ body.dark{
   top:0;
   left:50%;
 
-  width:43px;
-  height:14px;
+  width:38px;
+  height:12px;
 
   transform:translateX(-50%);
 
-  border-radius:7px 7px 3px 3px;
+  border-radius:6px 6px 3px 3px;
 
   background:
     linear-gradient(
@@ -174,22 +195,22 @@ body.dark{
 }
 
 
-/* glass */
+/* GLASS */
 
 .lantern-glass{
   position:absolute;
 
-  top:12px;
+  top:10px;
   left:50%;
 
-  width:46px;
-  height:55px;
+  width:40px;
+  height:48px;
 
   transform:translateX(-50%);
 
   overflow:hidden;
 
-  border-radius:10px 10px 13px 13px;
+  border-radius:8px 8px 11px 11px;
 
   border:2px solid #76502a;
 
@@ -202,21 +223,28 @@ body.dark{
     );
 
   box-shadow:
-    0 0 12px rgba(255,180,55,.9),
-    0 0 30px rgba(255,145,20,.42);
+    0 0 10px rgba(255,180,55,.9),
+    0 0 25px rgba(255,145,20,.42);
+
+  transition:
+    background .35s ease,
+    box-shadow .35s ease,
+    filter .35s ease;
 }
 
 
-/* flame */
+/* =====================================================
+   FLAME
+===================================================== */
 
 .lantern-flame{
   position:absolute;
 
   left:50%;
-  top:18px;
+  top:16px;
 
-  width:12px;
-  height:25px;
+  width:10px;
+  height:21px;
 
   transform:
     translateX(-50%)
@@ -234,14 +262,20 @@ body.dark{
     );
 
   filter:
-    drop-shadow(0 0 6px #ffc044);
+    drop-shadow(0 0 5px #ffc044);
 
   animation:
     flameMove .15s ease-in-out infinite alternate;
+
+  opacity:1;
+
+  transition:
+    opacity .3s ease,
+    filter .3s ease;
 }
 
 
-/* bottom */
+/* BOTTOM */
 
 .lantern-bottom{
   position:absolute;
@@ -249,12 +283,12 @@ body.dark{
   bottom:0;
   left:50%;
 
-  width:52px;
-  height:14px;
+  width:44px;
+  height:12px;
 
   transform:translateX(-50%);
 
-  border-radius:3px 3px 10px 10px;
+  border-radius:3px 3px 9px 9px;
 
   background:
     linear-gradient(
@@ -266,7 +300,9 @@ body.dark{
 }
 
 
-/* lantern swing */
+/* =====================================================
+   LANTERN SWING
+===================================================== */
 
 @keyframes lanternSwing{
 
@@ -285,7 +321,9 @@ body.dark{
 }
 
 
-/* flame */
+/* =====================================================
+   FLAME ANIMATION
+===================================================== */
 
 @keyframes flameMove{
 
@@ -307,14 +345,46 @@ body.dark{
 
 
 /* =====================================================
-   TWO TINY FLYING INSECTS
+   DARK MODE — LANTERN COMPLETELY OFF
+===================================================== */
+
+body.dark .lantern-glass{
+
+  background:
+    rgba(5,5,5,.96);
+
+  box-shadow:none;
+
+  filter:brightness(.25);
+}
+
+body.dark .lantern-flame{
+
+  opacity:0;
+
+  animation:none;
+
+  filter:none;
+}
+
+body.dark .lantern{
+
+  filter:
+    drop-shadow(
+      0 6px 9px rgba(0,0,0,.95)
+    );
+}
+
+
+/* =====================================================
+   TWO SMALL FLYING INSECTS
 ===================================================== */
 
 .insect{
   position:absolute;
 
-  width:20px;
-  height:16px;
+  width:16px;
+  height:13px;
 
   z-index:30;
 
@@ -322,55 +392,54 @@ body.dark{
 
   animation:
     insectFlight 5s ease-in-out infinite;
-
-  -webkit-tap-highlight-color:transparent;
 }
 
 
-/* body */
+/* BODY */
 
 .insect-body{
   position:absolute;
 
-  left:7px;
-  top:5px;
+  left:6px;
+  top:4px;
 
-  width:7px;
-  height:13px;
+  width:5px;
+  height:11px;
 
   border-radius:50%;
 
   background:
     linear-gradient(
       90deg,
-      #050505,
+      #020202,
       #493622,
-      #050505
+      #020202
     );
 }
 
 
-/* wings */
+/* WINGS */
 
 .wing{
   position:absolute;
 
-  top:1px;
+  top:0;
 
-  width:11px;
-  height:7px;
+  width:9px;
+  height:6px;
 
   background:
     linear-gradient(
       135deg,
-      rgba(255,255,255,.70),
-      rgba(160,160,160,.10)
+      rgba(255,255,255,.72),
+      rgba(160,160,160,.08)
     );
 
   border:
-    1px solid rgba(255,255,255,.45);
+    1px solid rgba(255,255,255,.42);
 
-  border-radius:80% 20% 80% 20%;
+  border-radius:
+    80% 20% 80% 20%;
 
   transform-origin:center bottom;
 
@@ -378,11 +447,9 @@ body.dark{
     wingFlap .075s linear infinite;
 }
 
-
 .wing-left{
   left:-1px;
 }
-
 
 .wing-right{
   right:-1px;
@@ -392,34 +459,44 @@ body.dark{
 }
 
 
-/* left wing */
+/* =====================================================
+   WING FLAP
+===================================================== */
 
 @keyframes wingFlap{
 
   0%{
-    transform:rotate(25deg) scaleY(1);
+    transform:
+      rotate(25deg)
+      scaleY(1);
   }
 
   25%{
-    transform:rotate(5deg) scaleY(.25);
+    transform:
+      rotate(5deg)
+      scaleY(.2);
   }
 
   50%{
-    transform:rotate(-25deg) scaleY(1.15);
+    transform:
+      rotate(-25deg)
+      scaleY(1.15);
   }
 
   75%{
-    transform:rotate(5deg) scaleY(.25);
+    transform:
+      rotate(5deg)
+      scaleY(.2);
   }
 
   100%{
-    transform:rotate(25deg) scaleY(1);
+    transform:
+      rotate(25deg)
+      scaleY(1);
   }
 
 }
 
-
-/* right wing */
 
 @keyframes wingFlapRight{
 
@@ -434,7 +511,7 @@ body.dark{
     transform:
       scaleX(-1)
       rotate(5deg)
-      scaleY(.25);
+      scaleY(.2);
   }
 
   50%{
@@ -448,7 +525,7 @@ body.dark{
     transform:
       scaleX(-1)
       rotate(5deg)
-      scaleY(.25);
+      scaleY(.2);
   }
 
   100%{
@@ -461,7 +538,9 @@ body.dark{
 }
 
 
-/* flying path */
+/* =====================================================
+   INSECT POSITIONS
+===================================================== */
 
 .insect-one{
   left:41%;
@@ -472,11 +551,15 @@ body.dark{
   left:56%;
   top:125px;
 
-  transform:scale(.8);
+  transform:scale(.78);
 
   animation-delay:-2.3s;
 }
 
+
+/* =====================================================
+   INSECT FLIGHT
+===================================================== */
 
 @keyframes insectFlight{
 
@@ -625,8 +708,6 @@ h1{
   font-weight:bold;
 
   cursor:pointer;
-
-  -webkit-tap-highlight-color:transparent;
 }
 
 
@@ -932,18 +1013,6 @@ footer{
 
 
 /* =====================================================
-   REMOVE BLUE TAP EFFECT
-===================================================== */
-
-button,
-a,
-.lantern-swing,
-.lantern-swing *{
-  -webkit-tap-highlight-color:transparent;
-}
-
-
-/* =====================================================
    MOBILE
 ===================================================== */
 
@@ -984,7 +1053,7 @@ a,
 
 
 <!-- =====================================================
-     HANGING LANTERN + INSECTS
+     HANGING LANTERN
 ===================================================== -->
 
 <div class="lantern-area">
@@ -1002,7 +1071,9 @@ a,
       <div class="lantern-top"></div>
 
       <div class="lantern-glass">
+
         <div class="lantern-flame"></div>
+
       </div>
 
       <div class="lantern-bottom"></div>
@@ -1012,7 +1083,7 @@ a,
   </div>
 
 
-  <!-- ചെറിയ ഈച്ച 1 -->
+  <!-- INSECT 1 -->
 
   <div class="insect insect-one">
 
@@ -1025,7 +1096,7 @@ a,
   </div>
 
 
-  <!-- ചെറിയ ഈച്ച 2 -->
+  <!-- INSECT 2 -->
 
   <div class="insect insect-two">
 
@@ -1038,7 +1109,6 @@ a,
   </div>
 
 </div>
-
 
 
 <div class="container">
@@ -1081,7 +1151,6 @@ a,
 </header>
 
 
-
 <!-- =====================================================
      NAV
 ===================================================== -->
@@ -1101,7 +1170,6 @@ a,
   </button>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -1258,7 +1326,6 @@ a,
 </section>
 
 
-
 <!-- =====================================================
      PROGRAMS
 ===================================================== -->
@@ -1288,7 +1355,8 @@ a,
       <button
         class="audio-btn"
         data-audio="vayalum-veedum.mp3"
-        data-title="🌾 വയലും വീടും">
+        data-title="🌾 വയലും വീടും"
+        type="button">
 
         ▶ കേൾക്കാം
 
@@ -1310,7 +1378,8 @@ a,
       <button
         class="audio-btn"
         data-audio="youvavani.mp3"
-        data-title="🎙️ യുവവാണി">
+        data-title="🎙️ യുവവാണി"
+        type="button">
 
         ▶ കേൾക്കാം
 
@@ -1332,7 +1401,8 @@ a,
       <button
         class="audio-btn"
         data-audio="radio-nadakam.mp3"
-        data-title="🎭 റേഡിയോ നാടകം">
+        data-title="🎭 റേഡിയോ നാടകം"
+        type="button">
 
         ▶ കേൾക്കാം
 
@@ -1354,7 +1424,8 @@ a,
       <button
         class="audio-btn"
         data-audio="gana-paripadi.mp3"
-        data-title="🎵 ഗാനപരിപാടി">
+        data-title="🎵 ഗാനപരിപാടി"
+        type="button">
 
         ▶ കേൾക്കാം
 
@@ -1376,7 +1447,8 @@ a,
       <button
         class="audio-btn"
         data-audio="ads.mp3"
-        data-title="📢 പരസ്യങ്ങൾ">
+        data-title="📢 പരസ്യങ്ങൾ"
+        type="button">
 
         ▶ കേൾക്കാം
 
@@ -1388,7 +1460,6 @@ a,
   </div>
 
 </section>
-
 
 
 <!-- =====================================================
@@ -1422,7 +1493,6 @@ a,
 </section>
 
 
-
 <!-- =====================================================
      INSTAGRAM
 ===================================================== -->
@@ -1445,7 +1515,6 @@ a,
 </div>
 
 
-
 <script>
 
 /* =====================================================
@@ -1462,14 +1531,14 @@ const radio =
   new Audio("radio.mp3");
 
 
-nature.loop=true;
-rain.loop=true;
-radio.loop=true;
+nature.loop = true;
+rain.loop = true;
+radio.loop = true;
 
 
-nature.volume=.50;
-rain.volume=.35;
-radio.volume=.55;
+nature.volume = .50;
+rain.volume = .35;
+radio.volume = .55;
 
 
 /* =====================================================
@@ -1485,7 +1554,8 @@ function toggleNature(){
 
     nature.play().catch(()=>{});
 
-    btn.textContent="⏸ നിർത്തുക";
+    btn.textContent =
+      "⏸ നിർത്തുക";
 
     btn.classList.add("active");
 
@@ -1493,7 +1563,8 @@ function toggleNature(){
 
     nature.pause();
 
-    btn.textContent="▶ കേൾക്കാം";
+    btn.textContent =
+      "▶ കേൾക്കാം";
 
     btn.classList.remove("active");
 
@@ -1515,7 +1586,8 @@ function toggleRain(){
 
     rain.play().catch(()=>{});
 
-    btn.textContent="⏸ മഴ നിർത്തുക";
+    btn.textContent =
+      "⏸ മഴ നിർത്തുക";
 
     btn.classList.add("active");
 
@@ -1523,7 +1595,8 @@ function toggleRain(){
 
     rain.pause();
 
-    btn.textContent="▶ മഴ കേൾക്കാം";
+    btn.textContent =
+      "▶ മഴ കേൾക്കാം";
 
     btn.classList.remove("active");
 
@@ -1545,7 +1618,8 @@ function toggleRadio(){
 
     radio.play().catch(()=>{});
 
-    btn.textContent="⏸ റേഡിയോ ഓഫ്";
+    btn.textContent =
+      "⏸ റേഡിയോ ഓഫ്";
 
     btn.classList.add("active");
 
@@ -1553,7 +1627,8 @@ function toggleRadio(){
 
     radio.pause();
 
-    btn.textContent="▶ റേഡിയോ ഓൺ";
+    btn.textContent =
+      "▶ റേഡിയോ ഓൺ";
 
     btn.classList.remove("active");
 
@@ -1568,33 +1643,45 @@ function toggleRadio(){
 
 document
 .getElementById("natureVol")
-.addEventListener("input",function(){
+.addEventListener(
+  "input",
+  function(){
 
-  nature.volume=this.value/100;
+    nature.volume =
+      this.value / 100;
 
-});
+  }
+);
 
 
 document
 .getElementById("rainVol")
-.addEventListener("input",function(){
+.addEventListener(
+  "input",
+  function(){
 
-  rain.volume=this.value/100;
+    rain.volume =
+      this.value / 100;
 
-});
+  }
+);
 
 
 document
 .getElementById("radioVol")
-.addEventListener("input",function(){
+.addEventListener(
+  "input",
+  function(){
 
-  radio.volume=this.value/100;
+    radio.volume =
+      this.value / 100;
 
-});
+  }
+);
 
 
 /* =====================================================
-   LANTERN WARM / DARK
+   LANTERN — WARM / DARK
 ===================================================== */
 
 const lantern =
@@ -1604,27 +1691,45 @@ const modeText =
   document.getElementById("modeText");
 
 
-lantern.addEventListener("click",function(e){
+lantern.addEventListener(
+  "click",
+  function(e){
 
-  e.preventDefault();
-
-  document.body.classList.toggle("dark");
-  document.body.classList.toggle("warm");
+    e.preventDefault();
+    e.stopPropagation();
 
 
-  if(
-    document.body.classList.contains("dark")
-  ){
+    const dark =
+      document.body.classList.contains("dark");
 
-    modeText.textContent="⚫ Dark Mode";
 
-  }else{
+    if(dark){
 
-    modeText.textContent="🟠 Warm Light";
+      /* DARK → WARM */
 
-  }
+      document.body.classList.remove("dark");
 
-});
+      document.body.classList.add("warm");
+
+      modeText.textContent =
+        "🟠 Warm Light";
+
+    }else{
+
+      /* WARM → DARK */
+
+      document.body.classList.remove("warm");
+
+      document.body.classList.add("dark");
+
+      modeText.textContent =
+        "⚫ Dark Mode";
+
+    }
+
+  },
+  {passive:false}
+);
 
 
 /* =====================================================
@@ -1632,55 +1737,101 @@ lantern.addEventListener("click",function(e){
 ===================================================== */
 
 const audioPlayer =
-  document.getElementById("audioPlayer");
+  document.getElementById(
+    "audioPlayer"
+  );
 
 const playerTitle =
-  document.getElementById("playerTitle");
+  document.getElementById(
+    "playerTitle"
+  );
 
 const programButtons =
-  document.querySelectorAll(".audio-btn");
+  document.querySelectorAll(
+    ".audio-btn"
+  );
 
 
-programButtons.forEach(function(button){
+programButtons.forEach(
+  function(button){
 
-  button.addEventListener("click",function(){
+    button.addEventListener(
+      "click",
+      function(){
 
-    const file=this.dataset.audio;
-    const title=this.dataset.title;
+        const file =
+          this.dataset.audio;
 
-
-    audioPlayer.pause();
-
-    audioPlayer.currentTime=0;
-
-    audioPlayer.src=file;
-
-    playerTitle.textContent=
-      "🎧 "+title;
+        const title =
+          this.dataset.title;
 
 
-    programButtons.forEach(function(btn){
+        audioPlayer.pause();
 
-      btn.classList.remove("playing");
+        audioPlayer.currentTime = 0;
 
-      btn.textContent="▶ കേൾക്കാം";
+        audioPlayer.src = file;
 
-    });
-
-
-    this.classList.add("playing");
-
-    this.textContent=
-      "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
+        playerTitle.textContent =
+          "🎧 " + title;
 
 
-    audioPlayer
-      .play()
-      .catch(()=>{});
+        programButtons.forEach(
+          function(btn){
 
-  });
+            btn.classList.remove(
+              "playing"
+            );
 
-});
+            btn.textContent =
+              "▶ കേൾക്കാം";
+
+          }
+        );
+
+
+        this.classList.add(
+          "playing"
+        );
+
+        this.textContent =
+          "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
+
+
+        audioPlayer
+          .play()
+          .catch(()=>{});
+
+      }
+    );
+
+  }
+);
+
+
+/* =====================================================
+   WHEN PROGRAM ENDS
+===================================================== */
+
+audioPlayer.addEventListener(
+  "ended",
+  function(){
+
+    programButtons.forEach(
+      function(btn){
+
+        btn.classList.remove(
+          "playing"
+        );
+
+        btn.textContent =
+          "▶ കേൾക്കാം";
+
+      }
+    );
+
+  }
+);
 
 
 /* =====================================================
@@ -1691,19 +1842,24 @@ function stopProgram(){
 
   audioPlayer.pause();
 
-  audioPlayer.currentTime=0;
+  audioPlayer.currentTime = 0;
 
 
-  programButtons.forEach(function(btn){
+  programButtons.forEach(
+    function(btn){
 
-    btn.classList.remove("playing");
+      btn.classList.remove(
+        "playing"
+      );
 
-    btn.textContent="▶ കേൾക്കാം";
+      btn.textContent =
+        "▶ കേൾക്കാം";
 
-  });
+    }
+  );
 
 
-  playerTitle.textContent=
+  playerTitle.textContent =
     "🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക";
 
 }
@@ -1713,17 +1869,17 @@ function stopProgram(){
    HEADSET IMMERSIVE
 ===================================================== */
 
-let immersiveOn=false;
+let immersiveOn = false;
 
-let audioContext=null;
+let audioContext = null;
 
-let natureSource=null;
-let rainSource=null;
-let radioSource=null;
+let natureSource = null;
+let rainSource = null;
+let radioSource = null;
 
-let naturePan=null;
-let rainPan=null;
-let radioPan=null;
+let naturePan = null;
+let rainPan = null;
+let radioPan = null;
 
 
 function setupImmersive(){
@@ -1731,63 +1887,75 @@ function setupImmersive(){
   if(audioContext) return;
 
 
-  audioContext=
+  audioContext =
     new(
       window.AudioContext ||
       window.webkitAudioContext
     )();
 
 
-  natureSource=
+  natureSource =
     audioContext
-    .createMediaElementSource(nature);
+    .createMediaElementSource(
+      nature
+    );
 
 
-  rainSource=
+  rainSource =
     audioContext
-    .createMediaElementSource(rain);
+    .createMediaElementSource(
+      rain
+    );
 
 
-  radioSource=
+  radioSource =
     audioContext
-    .createMediaElementSource(radio);
+    .createMediaElementSource(
+      radio
+    );
 
 
-  naturePan=
+  naturePan =
     audioContext
     .createStereoPanner();
 
 
-  rainPan=
+  rainPan =
     audioContext
     .createStereoPanner();
 
 
-  radioPan=
+  radioPan =
     audioContext
     .createStereoPanner();
 
 
   natureSource
     .connect(naturePan)
-    .connect(audioContext.destination);
+    .connect(
+      audioContext.destination
+    );
 
 
   rainSource
     .connect(rainPan)
-    .connect(audioContext.destination);
+    .connect(
+      audioContext.destination
+    );
 
 
   radioSource
     .connect(radioPan)
-    .connect(audioContext.destination);
+    .connect(
+      audioContext.destination
+    );
 
 }
 
 
 function toggleImmersive(){
 
-  const btn=
+  const btn =
     document.getElementById(
       "immersiveBtn"
     );
@@ -1799,7 +1967,8 @@ function toggleImmersive(){
 
 
     if(
-      audioContext.state==="suspended"
+      audioContext.state ===
+      "suspended"
     ){
 
       audioContext.resume();
@@ -1807,37 +1976,44 @@ function toggleImmersive(){
     }
 
 
-    naturePan.pan.value=-.35;
+    naturePan.pan.value =
+      -.35;
 
-    rainPan.pan.value=.35;
+    rainPan.pan.value =
+      .35;
 
-    radioPan.pan.value=0;
+    radioPan.pan.value =
+      0;
 
 
-    immersiveOn=true;
+    immersiveOn = true;
 
 
-    btn.textContent=
+    btn.textContent =
       "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — ON";
 
-    btn.classList.add("active");
+    btn.classList.add(
+      "active"
+    );
 
   }else{
 
-    naturePan.pan.value=0;
+    naturePan.pan.value = 0;
 
-    rainPan.pan.value=0;
+    rainPan.pan.value = 0;
 
-    radioPan.pan.value=0;
-
-
-    immersiveOn=false;
+    radioPan.pan.value = 0;
 
 
-    btn.textContent=
+    immersiveOn = false;
+
+
+    btn.textContent =
       "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — OFF";
 
-    btn.classList.remove("active");
+    btn.classList.remove(
+      "active"
+    );
 
   }
 
@@ -1850,11 +2026,14 @@ function toggleImmersive(){
 
 function scrollToId(id){
 
-  document
-    .getElementById(id)
-    .scrollIntoView({
-      behavior:"smooth"
-    });
+  const element =
+    document.getElementById(id);
+
+  if(!element) return;
+
+  element.scrollIntoView({
+    behavior:"smooth"
+  });
 
 }
 
