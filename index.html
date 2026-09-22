@@ -20,8 +20,8 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 46px;
-  height: 132px;
+  width: 50px;
+  height: 150px;
   z-index: 10000;
   cursor: pointer;
   touch-action: manipulation;
@@ -29,20 +29,23 @@
   flex-direction: column;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
+
+  transform-origin: top center;
+  animation: bulbSwing 4s ease-in-out infinite;
 }
 
-/* Hanging wire */
+/* വയർ */
 .bulb-cord {
   width: 2px;
-  height: 76px;
+  height: 92px;
   background: #27231e;
   box-shadow: 0 0 2px rgba(0,0,0,.8);
 }
 
-/* Bulb holder */
+/* Holder */
 .bulb-holder {
-  width: 17px;
-  height: 10px;
+  width: 20px;
+  height: 12px;
   border-radius: 4px 4px 2px 2px;
   background: #3b332b;
   box-shadow:
@@ -52,17 +55,17 @@
 /* Warm bulb */
 .bulb-light {
   position: relative;
-  width: 27px;
-  height: 35px;
+  width: 32px;
+  height: 41px;
   margin-top: 2px;
   border-radius: 50% 50% 45% 45%;
   background: #ffd98a;
 
   box-shadow:
-    0 0 8px #ffd98a,
-    0 0 18px rgba(255,205,105,.9),
-    0 0 35px rgba(255,180,55,.65),
-    0 0 65px rgba(255,170,35,.35);
+    0 0 10px #ffd98a,
+    0 0 22px rgba(255,205,105,.95),
+    0 0 42px rgba(255,180,55,.7),
+    0 0 75px rgba(255,170,35,.4);
 
   transition:
     background .35s ease,
@@ -70,20 +73,38 @@
     opacity .35s ease;
 }
 
-/* Small filament */
+/* Filament */
 .bulb-light::after {
   content: "";
   position: absolute;
   left: 50%;
-  top: 10px;
-  width: 8px;
-  height: 12px;
+  top: 12px;
+  width: 9px;
+  height: 14px;
   transform: translateX(-50%);
   border-left: 2px solid #a96b24;
   border-right: 2px solid #a96b24;
   border-radius: 50%;
   opacity: .7;
 }
+
+/* ചെറിയ ഇടത്-വലത് ആട്ടം */
+@keyframes bulbSwing {
+
+  0% {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateX(-50%) rotate(2deg);
+  }
+
+  100% {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+}
+
 
 /* =====================================================
    🌙 DARK MODE
@@ -92,26 +113,34 @@
 body.dark-mode {
   background: #050605 !important;
   color: #d8d8d8;
+
   transition:
     background .35s ease,
     color .35s ease;
 }
 
-/* Dark overlay — keeps existing design unchanged */
+
+/* Dark overlay */
 body.dark-mode::after {
   content: "";
   position: fixed;
   inset: 0;
+
   background: rgba(0,0,0,.58);
+
   z-index: 9998;
   pointer-events: none;
-  transition: background .35s ease;
+
+  transition:
+    background .35s ease;
 }
 
-/* Bulb stays above dark overlay */
+
+/* Bulb above overlay */
 body.dark-mode .warm-bulb {
   z-index: 10000;
 }
+
 
 /* Bulb OFF */
 body.dark-mode .bulb-light {
@@ -134,28 +163,29 @@ body.dark-mode .bulb-cord {
 
 
 /* =====================================================
-   📱 MOBILE POSITION
+   📱 MOBILE
    ===================================================== */
 
 @media (max-width: 600px) {
 
   .warm-bulb {
-    width: 44px;
-    height: 128px;
+    width: 48px;
+    height: 146px;
   }
 
   .bulb-cord {
-    height: 73px;
+    height: 89px;
   }
 
   .bulb-light {
-    width: 26px;
-    height: 34px;
+    width: 31px;
+    height: 40px;
   }
 
 }
 </style>
 </head>
+
 
 <body>
 
@@ -281,6 +311,7 @@ body.dark-mode .bulb-cord {
   <div class="now-playing">
 
     <div>
+
       <span class="live">
         ● LIVE
       </span>
@@ -288,6 +319,7 @@ body.dark-mode .bulb-cord {
       <span id="timeSlot">
         06:30 — 07:00
       </span>
+
     </div>
 
     <h2 id="programName">
@@ -299,6 +331,7 @@ body.dark-mode .bulb-cord {
     </p>
 
     <div class="meter">
+
       <i></i>
       <i></i>
       <i></i>
@@ -307,6 +340,7 @@ body.dark-mode .bulb-cord {
       <i></i>
       <i></i>
       <i></i>
+
     </div>
 
   </div>
@@ -547,83 +581,100 @@ body.dark-mode .bulb-cord {
      ===================================================== -->
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  const warmBulb =
-    document.getElementById("warmBulb");
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
 
-  if (!warmBulb) return;
+    const warmBulb =
+      document.getElementById("warmBulb");
+
+    if (!warmBulb) return;
 
 
-  function updateBulbMode() {
+    function updateBulbMode() {
 
-    const dark =
-      document.body.classList.contains("dark-mode");
+      const dark =
+        document.body.classList.contains(
+          "dark-mode"
+        );
 
-    if (dark) {
 
-      localStorage.setItem(
-        "timeMachineDark",
-        "on"
-      );
+      if (dark) {
 
-      warmBulb.setAttribute(
-        "aria-label",
-        "Normal light"
-      );
+        localStorage.setItem(
+          "timeMachineDark",
+          "on"
+        );
 
-    } else {
+        warmBulb.setAttribute(
+          "aria-label",
+          "Normal light"
+        );
 
-      localStorage.setItem(
-        "timeMachineDark",
-        "off"
-      );
+      } else {
 
-      warmBulb.setAttribute(
-        "aria-label",
-        "Dark mode"
-      );
+        localStorage.setItem(
+          "timeMachineDark",
+          "off"
+        );
+
+        warmBulb.setAttribute(
+          "aria-label",
+          "Dark mode"
+        );
+
+      }
 
     }
 
-  }
 
+    /* പഴയ setting ഉണ്ടെങ്കിൽ restore ചെയ്യുക */
 
-  /* Remember previous setting */
+    if (
+      localStorage.getItem(
+        "timeMachineDark"
+      ) === "on"
+    ) {
 
-  if (
-    localStorage.getItem("timeMachineDark") === "on"
-  ) {
-
-    document.body.classList.add("dark-mode");
-
-  }
-
-
-  updateBulbMode();
-
-
-  /* 💡 Touch / Click */
-
-  warmBulb.addEventListener(
-    "click",
-    function () {
-
-      document.body.classList.toggle(
+      document.body.classList.add(
         "dark-mode"
       );
 
-      updateBulbMode();
-
     }
-  );
 
-});
+
+    updateBulbMode();
+
+
+    /* 💡 Touch / Click */
+
+    warmBulb.addEventListener(
+      "click",
+      function () {
+
+        document.body.classList.toggle(
+          "dark-mode"
+        );
+
+        updateBulbMode();
+
+      }
+    );
+
+  }
+
+);
+
 </script>
 
 
 <!-- Existing JavaScript -->
-<script src="script.js?v=4" defer></script>
+
+<script
+  src="script.js?v=4"
+  defer>
+</script>
 
 </body>
 </html>
