@@ -8,6 +8,10 @@
 
 <style>
 
+/* =====================================================
+   BASIC
+===================================================== */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,21 +23,21 @@ html{
 }
 
 body{
-  font-family:"Noto Sans Malayalam","Arial",sans-serif;
-  background:#020202;
-  color:#fff;
   min-height:100vh;
   overflow-x:hidden;
-  transition:.5s ease;
+  background:#020202;
+  color:#fff;
+  font-family:"Noto Sans Malayalam",Arial,sans-serif;
+  transition:background .5s ease;
 }
 
 body.warm{
   background:
     radial-gradient(
-      circle at 50% 18%,
-      rgba(255,170,50,.17),
+      circle at 50% 12%,
+      rgba(255,170,45,.18),
       rgba(255,130,20,.06) 25%,
-      #020202 62%
+      #020202 65%
     );
 }
 
@@ -42,162 +46,229 @@ body.dark{
 }
 
 
-/* =================================
-   BULB AREA
-================================= */
+/* =====================================================
+   LANTERN AREA
+===================================================== */
 
-.bulb-area{
+.lantern-area{
   position:relative;
-  height:235px;
+  width:100%;
+  height:245px;
   overflow:hidden;
 }
 
 
-/* wire + bulb ഒരുമിച്ച് */
+/* മുഴുവൻ റാന്തലും ഒരുമിച്ച് ആടും */
 
-.bulb-hanging{
+.lantern-swing{
   position:absolute;
-  top:-8px;
+  top:-5px;
   left:50%;
-  width:55px;
-  height:220px;
+
+  width:90px;
+  height:225px;
 
   transform:translateX(-50%);
   transform-origin:top center;
 
-  animation:bulbSwing 4s ease-in-out infinite;
+  animation:
+    lanternSwing 4.5s ease-in-out infinite;
 
   cursor:pointer;
-  z-index:10;
+  z-index:20;
 
-  outline:none !important;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
 }
 
 
-/* wire */
+/* മുകളിൽ നിന്ന് താഴേക്ക് chain */
 
-.wire{
+.lantern-chain{
   position:absolute;
+
   top:0;
   left:50%;
 
-  width:3px;
-  height:176px;
+  width:4px;
+  height:154px;
 
   transform:translateX(-50%);
 
-  background:#080808;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #090806 0 5px,
+      #57432c 6px,
+      #090806 8px
+    );
 
   border-radius:5px;
 
-  box-shadow:
-    0 0 3px #000;
+  box-shadow:0 0 4px #000;
 }
 
 
-/* bulb */
+/* ചെറിയ പഴയ റാന്തൽ */
 
-.bulb{
+.lantern{
   position:absolute;
 
   left:50%;
   bottom:0;
 
-  width:40px;
-  height:56px;
+  width:68px;
+  height:82px;
 
   transform:translateX(-50%);
+
+  filter:
+    drop-shadow(
+      0 8px 13px rgba(0,0,0,.85)
+    );
 }
 
 
-/* metal holder */
+/* handle */
 
-.bulb-holder{
+.lantern-handle{
   position:absolute;
 
   left:50%;
-  top:0;
+  top:-20px;
 
-  width:21px;
-  height:17px;
+  width:43px;
+  height:30px;
 
   transform:translateX(-50%);
 
-  border-radius:4px 4px 3px 3px;
+  border:4px solid #49351f;
+  border-bottom:0;
+
+  border-radius:30px 30px 0 0;
+}
+
+
+/* top cap */
+
+.lantern-top{
+  position:absolute;
+
+  top:0;
+  left:50%;
+
+  width:43px;
+  height:14px;
+
+  transform:translateX(-50%);
+
+  border-radius:7px 7px 3px 3px;
 
   background:
-    repeating-linear-gradient(
-      0deg,
-      #282828 0 3px,
-      #080808 3px 6px
+    linear-gradient(
+      #80603a,
+      #20140a
     );
+
+  border:2px solid #110c07;
 }
 
 
 /* glass */
 
-.bulb-glass{
+.lantern-glass{
   position:absolute;
 
+  top:12px;
   left:50%;
-  top:10px;
 
-  width:38px;
-  height:46px;
+  width:46px;
+  height:55px;
 
   transform:translateX(-50%);
 
-  border-radius:
-    50% 50%
-    45% 45%;
+  overflow:hidden;
+
+  border-radius:10px 10px 13px 13px;
+
+  border:2px solid #76502a;
 
   background:
     radial-gradient(
-      circle at 50% 45%,
-      rgba(255,215,110,.95),
-      rgba(255,165,45,.40) 30%,
-      rgba(255,140,20,.12) 65%,
-      transparent 75%
+      circle at 50% 55%,
+      rgba(255,225,120,.98),
+      rgba(255,164,40,.60) 34%,
+      rgba(80,35,5,.32) 75%
     );
 
-  border:1px solid rgba(255,220,130,.45);
-
   box-shadow:
-    0 0 10px rgba(255,175,55,.65),
-    0 0 25px rgba(255,150,30,.28);
-
-  transition:.5s;
+    0 0 12px rgba(255,180,55,.9),
+    0 0 30px rgba(255,145,20,.42);
 }
 
 
-/* filament */
+/* flame */
 
-.filament{
+.lantern-flame{
   position:absolute;
 
   left:50%;
-  top:20px;
+  top:18px;
 
-  width:13px;
-  height:20px;
+  width:12px;
+  height:25px;
 
-  transform:translateX(-50%);
+  transform:
+    translateX(-50%)
+    rotate(45deg);
 
-  border-left:2px solid #ffe08a;
-  border-right:2px solid #ffe08a;
-  border-bottom:2px solid #ffe08a;
+  border-radius:70% 20% 70% 20%;
 
-  border-radius:
-    0 0 10px 10px;
+  background:
+    radial-gradient(
+      circle at 35% 35%,
+      #fffbd0,
+      #ffd34e 35%,
+      #ff8b18 70%,
+      transparent 73%
+    );
 
   filter:
-    drop-shadow(0 0 4px #ffd45e);
+    drop-shadow(0 0 6px #ffc044);
+
+  animation:
+    flameMove .15s ease-in-out infinite alternate;
 }
 
 
-/* bulb sway */
+/* bottom */
 
-@keyframes bulbSwing{
+.lantern-bottom{
+  position:absolute;
+
+  bottom:0;
+  left:50%;
+
+  width:52px;
+  height:14px;
+
+  transform:translateX(-50%);
+
+  border-radius:3px 3px 10px 10px;
+
+  background:
+    linear-gradient(
+      #79542d,
+      #21150b
+    );
+
+  border:2px solid #17100a;
+}
+
+
+/* lantern swing */
+
+@keyframes lanternSwing{
 
   0%,100%{
     transform:
@@ -214,85 +285,177 @@ body.dark{
 }
 
 
-/* dark mode bulb */
+/* flame */
 
-body.dark .bulb-glass{
-  background:
-    radial-gradient(
-      circle,
-      rgba(40,40,40,.12),
-      transparent 70%
-    );
+@keyframes flameMove{
 
-  border-color:#333;
+  from{
+    transform:
+      translateX(-50%)
+      rotate(40deg)
+      scale(.9);
+  }
 
-  box-shadow:none;
+  to{
+    transform:
+      translateX(-50%)
+      rotate(50deg)
+      scale(1.08);
+  }
+
 }
 
-body.dark .filament{
-  border-color:#444;
-  filter:none;
-}
 
+/* =====================================================
+   TWO TINY FLYING INSECTS
+===================================================== */
 
-/* =================================
-   TWO SMALL FLIES
-================================= */
-
-.fly{
+.insect{
   position:absolute;
 
-  width:13px;
-  height:13px;
+  width:20px;
+  height:16px;
 
-  font-size:11px;
-
-  z-index:20;
+  z-index:30;
 
   pointer-events:none;
 
-  transform-origin:center;
+  animation:
+    insectFlight 5s ease-in-out infinite;
+
+  -webkit-tap-highlight-color:transparent;
+}
+
+
+/* body */
+
+.insect-body{
+  position:absolute;
+
+  left:7px;
+  top:5px;
+
+  width:7px;
+  height:13px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #050505,
+      #493622,
+      #050505
+    );
+}
+
+
+/* wings */
+
+.wing{
+  position:absolute;
+
+  top:1px;
+
+  width:11px;
+  height:7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.70),
+      rgba(160,160,160,.10)
+    );
+
+  border:
+    1px solid rgba(255,255,255,.45);
+
+  border-radius:80% 20% 80% 20%;
+
+  transform-origin:center bottom;
 
   animation:
-    flyMove 5s linear infinite,
-    wingFlap .09s steps(2) infinite;
+    wingFlap .075s linear infinite;
 }
 
 
-/* fly 1 */
-
-.fly.one{
-  left:43%;
-  top:105px;
-
-  animation-delay:0s;
+.wing-left{
+  left:-1px;
 }
 
 
-/* fly 2 */
+.wing-right{
+  right:-1px;
 
-.fly.two{
-  left:56%;
-  top:135px;
-
-  animation-delay:-2.2s;
+  animation-name:
+    wingFlapRight;
 }
 
 
-/* wing movement */
+/* left wing */
 
 @keyframes wingFlap{
 
   0%{
-    scale:1 1;
+    transform:rotate(25deg) scaleY(1);
+  }
+
+  25%{
+    transform:rotate(5deg) scaleY(.25);
   }
 
   50%{
-    scale:1.25 .65;
+    transform:rotate(-25deg) scaleY(1.15);
+  }
+
+  75%{
+    transform:rotate(5deg) scaleY(.25);
   }
 
   100%{
-    scale:1 1;
+    transform:rotate(25deg) scaleY(1);
+  }
+
+}
+
+
+/* right wing */
+
+@keyframes wingFlapRight{
+
+  0%{
+    transform:
+      scaleX(-1)
+      rotate(25deg)
+      scaleY(1);
+  }
+
+  25%{
+    transform:
+      scaleX(-1)
+      rotate(5deg)
+      scaleY(.25);
+  }
+
+  50%{
+    transform:
+      scaleX(-1)
+      rotate(-25deg)
+      scaleY(1.15);
+  }
+
+  75%{
+    transform:
+      scaleX(-1)
+      rotate(5deg)
+      scaleY(.25);
+  }
+
+  100%{
+    transform:
+      scaleX(-1)
+      rotate(25deg)
+      scaleY(1);
   }
 
 }
@@ -300,60 +463,75 @@ body.dark .filament{
 
 /* flying path */
 
-@keyframes flyMove{
+.insect-one{
+  left:41%;
+  top:105px;
+}
+
+.insect-two{
+  left:56%;
+  top:125px;
+
+  transform:scale(.8);
+
+  animation-delay:-2.3s;
+}
+
+
+@keyframes insectFlight{
 
   0%{
-    margin-left:-45px;
-    margin-top:0;
-    rotate:10deg;
+    margin-left:-25px;
+    margin-top:15px;
+    rotate:8deg;
   }
 
   20%{
-    margin-left:-15px;
-    margin-top:25px;
-    rotate:-15deg;
+    margin-left:5px;
+    margin-top:-5px;
+    rotate:-12deg;
   }
 
   40%{
     margin-left:35px;
-    margin-top:5px;
-    rotate:20deg;
+    margin-top:15px;
+    rotate:10deg;
   }
 
   60%{
     margin-left:55px;
-    margin-top:-28px;
-    rotate:-15deg;
+    margin-top:-18px;
+    rotate:-8deg;
   }
 
   80%{
-    margin-left:10px;
-    margin-top:-45px;
-    rotate:15deg;
+    margin-left:15px;
+    margin-top:-30px;
+    rotate:12deg;
   }
 
   100%{
-    margin-left:-45px;
-    margin-top:0;
-    rotate:10deg;
+    margin-left:-25px;
+    margin-top:15px;
+    rotate:8deg;
   }
 
 }
 
 
-/* =================================
-   MAIN
-================================= */
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container{
-  width:min(100% - 24px, 900px);
+  width:min(100% - 24px,900px);
   margin:auto;
 }
 
 
-/* =================================
+/* =====================================================
    HEADER
-================================= */
+===================================================== */
 
 header{
   text-align:center;
@@ -372,7 +550,7 @@ header{
 
 h1{
   font-size:
-    clamp(34px,9vw,58px);
+    clamp(36px,9vw,60px);
 
   letter-spacing:2px;
 
@@ -395,8 +573,7 @@ h1{
 
   margin-top:15px;
 
-  padding:
-    10px 22px;
+  padding:10px 22px;
 
   border-radius:30px;
 
@@ -414,9 +591,9 @@ h1{
 }
 
 
-/* =================================
+/* =====================================================
    NAV
-================================= */
+===================================================== */
 
 .nav{
   display:grid;
@@ -449,14 +626,13 @@ h1{
 
   cursor:pointer;
 
-  -webkit-tap-highlight-color:
-    transparent;
+  -webkit-tap-highlight-color:transparent;
 }
 
 
-/* =================================
+/* =====================================================
    SECTION
-================================= */
+===================================================== */
 
 .section{
   margin-bottom:25px;
@@ -473,9 +649,9 @@ h1{
 }
 
 
-/* =================================
+/* =====================================================
    AMBIENT
-================================= */
+===================================================== */
 
 .ambient{
   display:grid;
@@ -556,9 +732,9 @@ h1{
 }
 
 
-/* =================================
+/* =====================================================
    HEADSET
-================================= */
+===================================================== */
 
 .immersive-box{
   margin-top:17px;
@@ -610,9 +786,9 @@ h1{
 }
 
 
-/* =================================
+/* =====================================================
    PROGRAMS
-================================= */
+===================================================== */
 
 .program-grid{
   display:grid;
@@ -681,9 +857,9 @@ h1{
 }
 
 
-/* =================================
+/* =====================================================
    PLAYER
-================================= */
+===================================================== */
 
 .player{
   margin-top:20px;
@@ -715,8 +891,7 @@ audio{
 .stop{
   margin-top:12px;
 
-  padding:
-    10px 25px;
+  padding:10px 25px;
 
   border:0;
 
@@ -732,9 +907,9 @@ audio{
 }
 
 
-/* =================================
+/* =====================================================
    INSTAGRAM
-================================= */
+===================================================== */
 
 footer{
   text-align:center;
@@ -756,9 +931,21 @@ footer{
 }
 
 
-/* =================================
+/* =====================================================
+   REMOVE BLUE TAP EFFECT
+===================================================== */
+
+button,
+a,
+.lantern-swing,
+.lantern-swing *{
+  -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =====================================================
    MOBILE
-================================= */
+===================================================== */
 
 @media(max-width:650px){
 
@@ -796,38 +983,59 @@ footer{
 <body class="warm">
 
 
-<!-- =================================
-     BULB
-================================= -->
+<!-- =====================================================
+     HANGING LANTERN + INSECTS
+===================================================== -->
 
-<div class="bulb-area">
+<div class="lantern-area">
 
   <div
-    class="bulb-hanging"
-    id="bulb">
+    class="lantern-swing"
+    id="lantern">
 
-    <div class="wire"></div>
+    <div class="lantern-chain"></div>
 
-    <div class="bulb">
+    <div class="lantern">
 
-      <div class="bulb-holder"></div>
+      <div class="lantern-handle"></div>
 
-      <div class="bulb-glass">
+      <div class="lantern-top"></div>
 
-        <div class="filament"></div>
-
+      <div class="lantern-glass">
+        <div class="lantern-flame"></div>
       </div>
+
+      <div class="lantern-bottom"></div>
 
     </div>
 
   </div>
 
 
-  <!-- രണ്ട് ചെറിയ ഈച്ചകൾ -->
+  <!-- ചെറിയ ഈച്ച 1 -->
 
-  <div class="fly one">🪰</div>
+  <div class="insect insect-one">
 
-  <div class="fly two">🪰</div>
+    <span class="insect-body"></span>
+
+    <span class="wing wing-left"></span>
+
+    <span class="wing wing-right"></span>
+
+  </div>
+
+
+  <!-- ചെറിയ ഈച്ച 2 -->
+
+  <div class="insect insect-two">
+
+    <span class="insect-body"></span>
+
+    <span class="wing wing-left"></span>
+
+    <span class="wing wing-right"></span>
+
+  </div>
 
 </div>
 
@@ -836,9 +1044,9 @@ footer{
 <div class="container">
 
 
-<!-- =================================
+<!-- =====================================================
      HEADER
-================================= -->
+===================================================== -->
 
 <header>
 
@@ -874,9 +1082,9 @@ footer{
 
 
 
-<!-- =================================
+<!-- =====================================================
      NAV
-================================= -->
+===================================================== -->
 
 <div class="nav">
 
@@ -896,9 +1104,9 @@ footer{
 
 
 
-<!-- =================================
+<!-- =====================================================
      AMBIENT
-================================= -->
+===================================================== -->
 
 <section
   class="section"
@@ -950,7 +1158,6 @@ footer{
     </div>
 
 
-
     <!-- RAIN -->
 
     <div class="ambient-card">
@@ -987,7 +1194,6 @@ footer{
       </div>
 
     </div>
-
 
 
     <!-- RADIO -->
@@ -1030,7 +1236,6 @@ footer{
   </div>
 
 
-
   <!-- HEADSET -->
 
   <div class="immersive-box">
@@ -1054,9 +1259,9 @@ footer{
 
 
 
-<!-- =================================
+<!-- =====================================================
      PROGRAMS
-================================= -->
+===================================================== -->
 
 <section
   class="section"
@@ -1092,7 +1297,6 @@ footer{
     </article>
 
 
-
     <article class="program-card">
 
       <b>
@@ -1113,7 +1317,6 @@ footer{
       </button>
 
     </article>
-
 
 
     <article class="program-card">
@@ -1138,7 +1341,6 @@ footer{
     </article>
 
 
-
     <article class="program-card">
 
       <b>
@@ -1159,7 +1361,6 @@ footer{
       </button>
 
     </article>
-
 
 
     <article class="program-card">
@@ -1190,9 +1391,9 @@ footer{
 
 
 
-<!-- =================================
+<!-- =====================================================
      PLAYER
-================================= -->
+===================================================== -->
 
 <section class="player">
 
@@ -1222,9 +1423,9 @@ footer{
 
 
 
-<!-- =================================
+<!-- =====================================================
      INSTAGRAM
-================================= -->
+===================================================== -->
 
 <footer>
 
@@ -1247,10 +1448,9 @@ footer{
 
 <script>
 
-
-/* =================================
-   AUDIO FILES
-================================= */
+/* =====================================================
+   AMBIENT AUDIO
+===================================================== */
 
 const nature =
   new Audio("nature-morning.mp3");
@@ -1262,20 +1462,19 @@ const radio =
   new Audio("radio.mp3");
 
 
-nature.loop = true;
-rain.loop = true;
-radio.loop = true;
+nature.loop=true;
+rain.loop=true;
+radio.loop=true;
 
 
-nature.volume = .50;
-rain.volume = .35;
-radio.volume = .55;
+nature.volume=.50;
+rain.volume=.35;
+radio.volume=.55;
 
 
-
-/* =================================
+/* =====================================================
    NATURE
-================================= */
+===================================================== */
 
 function toggleNature(){
 
@@ -1286,8 +1485,7 @@ function toggleNature(){
 
     nature.play().catch(()=>{});
 
-    btn.textContent =
-      "⏸ നിർത്തുക";
+    btn.textContent="⏸ നിർത്തുക";
 
     btn.classList.add("active");
 
@@ -1295,8 +1493,7 @@ function toggleNature(){
 
     nature.pause();
 
-    btn.textContent =
-      "▶ കേൾക്കാം";
+    btn.textContent="▶ കേൾക്കാം";
 
     btn.classList.remove("active");
 
@@ -1305,10 +1502,9 @@ function toggleNature(){
 }
 
 
-
-/* =================================
+/* =====================================================
    RAIN
-================================= */
+===================================================== */
 
 function toggleRain(){
 
@@ -1319,8 +1515,7 @@ function toggleRain(){
 
     rain.play().catch(()=>{});
 
-    btn.textContent =
-      "⏸ മഴ നിർത്തുക";
+    btn.textContent="⏸ മഴ നിർത്തുക";
 
     btn.classList.add("active");
 
@@ -1328,8 +1523,7 @@ function toggleRain(){
 
     rain.pause();
 
-    btn.textContent =
-      "▶ മഴ കേൾക്കാം";
+    btn.textContent="▶ മഴ കേൾക്കാം";
 
     btn.classList.remove("active");
 
@@ -1338,10 +1532,9 @@ function toggleRain(){
 }
 
 
-
-/* =================================
+/* =====================================================
    RADIO
-================================= */
+===================================================== */
 
 function toggleRadio(){
 
@@ -1352,8 +1545,7 @@ function toggleRadio(){
 
     radio.play().catch(()=>{});
 
-    btn.textContent =
-      "⏸ റേഡിയോ ഓഫ്";
+    btn.textContent="⏸ റേഡിയോ ഓഫ്";
 
     btn.classList.add("active");
 
@@ -1361,8 +1553,7 @@ function toggleRadio(){
 
     radio.pause();
 
-    btn.textContent =
-      "▶ റേഡിയോ ഓൺ";
+    btn.textContent="▶ റേഡിയോ ഓൺ";
 
     btn.classList.remove("active");
 
@@ -1371,172 +1562,130 @@ function toggleRadio(){
 }
 
 
-
-/* =================================
+/* =====================================================
    VOLUME
-================================= */
+===================================================== */
 
 document
 .getElementById("natureVol")
-.addEventListener(
-  "input",
-  function(){
+.addEventListener("input",function(){
 
-    nature.volume =
-      this.value / 100;
+  nature.volume=this.value/100;
 
-  }
-);
+});
 
 
 document
 .getElementById("rainVol")
-.addEventListener(
-  "input",
-  function(){
+.addEventListener("input",function(){
 
-    rain.volume =
-      this.value / 100;
+  rain.volume=this.value/100;
 
-  }
-);
+});
 
 
 document
 .getElementById("radioVol")
-.addEventListener(
-  "input",
-  function(){
+.addEventListener("input",function(){
 
-    radio.volume =
-      this.value / 100;
+  radio.volume=this.value/100;
 
-  }
-);
+});
 
 
+/* =====================================================
+   LANTERN WARM / DARK
+===================================================== */
 
-/* =================================
-   BULB WARM / DARK
-================================= */
-
-const bulb =
-  document.getElementById("bulb");
+const lantern =
+  document.getElementById("lantern");
 
 const modeText =
   document.getElementById("modeText");
 
 
-bulb.addEventListener(
-  "click",
-  function(){
+lantern.addEventListener("click",function(e){
 
-    document.body.classList.toggle("warm");
+  e.preventDefault();
 
-    document.body.classList.toggle("dark");
+  document.body.classList.toggle("dark");
+  document.body.classList.toggle("warm");
 
 
-    if(
-      document.body.classList.contains("dark")
-    ){
+  if(
+    document.body.classList.contains("dark")
+  ){
 
-      modeText.textContent =
-        "⚫ Dark Mode";
+    modeText.textContent="⚫ Dark Mode";
 
-    }else{
+  }else{
 
-      modeText.textContent =
-        "🟠 Warm Light";
-
-    }
+    modeText.textContent="🟠 Warm Light";
 
   }
-);
+
+});
 
 
-
-/* =================================
+/* =====================================================
    PROGRAM PLAYER
-================================= */
+===================================================== */
 
 const audioPlayer =
-  document.getElementById(
-    "audioPlayer"
-  );
+  document.getElementById("audioPlayer");
 
 const playerTitle =
-  document.getElementById(
-    "playerTitle"
-  );
+  document.getElementById("playerTitle");
 
 const programButtons =
-  document.querySelectorAll(
-    ".audio-btn"
-  );
+  document.querySelectorAll(".audio-btn");
 
 
-programButtons.forEach(
-  function(button){
+programButtons.forEach(function(button){
 
-    button.addEventListener(
-      "click",
-      function(){
+  button.addEventListener("click",function(){
 
-        const file =
-          this.dataset.audio;
-
-        const title =
-          this.dataset.title;
+    const file=this.dataset.audio;
+    const title=this.dataset.title;
 
 
-        audioPlayer.pause();
+    audioPlayer.pause();
 
-        audioPlayer.currentTime=0;
+    audioPlayer.currentTime=0;
 
-        audioPlayer.src=file;
+    audioPlayer.src=file;
 
-
-        playerTitle.textContent =
-          "🎧 " + title;
-
-
-        programButtons.forEach(
-          function(btn){
-
-            btn.classList.remove(
-              "playing"
-            );
-
-            btn.textContent =
-              "▶ കേൾക്കാം";
-
-          }
-        );
+    playerTitle.textContent=
+      "🎧 "+title;
 
 
-        this.classList.add(
-          "playing"
-        );
+    programButtons.forEach(function(btn){
 
-        this.textContent =
-          "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
+      btn.classList.remove("playing");
 
+      btn.textContent="▶ കേൾക്കാം";
 
-        audioPlayer
-          .play()
-          .catch(()=>{});
-
-      }
-    );
-
-  }
-);
+    });
 
 
+    this.classList.add("playing");
 
-/* =================================
-   STOP
-================================= */
+    this.textContent=
+      "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
+
+
+    audioPlayer
+      .play()
+      .catch(()=>{});
+
+  });
+
+});
+
+
+/* =====================================================
+   STOP PROGRAM
+===================================================== */
 
 function stopProgram(){
 
@@ -1545,30 +1694,24 @@ function stopProgram(){
   audioPlayer.currentTime=0;
 
 
-  programButtons.forEach(
-    function(btn){
+  programButtons.forEach(function(btn){
 
-      btn.classList.remove(
-        "playing"
-      );
+    btn.classList.remove("playing");
 
-      btn.textContent =
-        "▶ കേൾക്കാം";
+    btn.textContent="▶ കേൾക്കാം";
 
-    }
-  );
+  });
 
 
-  playerTitle.textContent =
+  playerTitle.textContent=
     "🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക";
 
 }
 
 
-
-/* =================================
-   IMMERSIVE HEADSET
-================================= */
+/* =====================================================
+   HEADSET IMMERSIVE
+===================================================== */
 
 let immersiveOn=false;
 
@@ -1588,76 +1731,63 @@ function setupImmersive(){
   if(audioContext) return;
 
 
-  audioContext =
+  audioContext=
     new(
       window.AudioContext ||
       window.webkitAudioContext
     )();
 
 
-  natureSource =
+  natureSource=
     audioContext
-    .createMediaElementSource(
-      nature
-    );
+    .createMediaElementSource(nature);
 
 
-  rainSource =
+  rainSource=
     audioContext
-    .createMediaElementSource(
-      rain
-    );
+    .createMediaElementSource(rain);
 
 
-  radioSource =
+  radioSource=
     audioContext
-    .createMediaElementSource(
-      radio
-    );
+    .createMediaElementSource(radio);
 
 
-  naturePan =
+  naturePan=
     audioContext
     .createStereoPanner();
 
 
-  rainPan =
+  rainPan=
     audioContext
     .createStereoPanner();
 
 
-  radioPan =
+  radioPan=
     audioContext
     .createStereoPanner();
 
 
   natureSource
     .connect(naturePan)
-    .connect(
-      audioContext.destination
-    );
+    .connect(audioContext.destination);
 
 
   rainSource
     .connect(rainPan)
-    .connect(
-      audioContext.destination
-    );
+    .connect(audioContext.destination);
 
 
   radioSource
     .connect(radioPan)
-    .connect(
-      audioContext.destination
-    );
+    .connect(audioContext.destination);
 
 }
 
 
-
 function toggleImmersive(){
 
-  const btn =
+  const btn=
     document.getElementById(
       "immersiveBtn"
     );
@@ -1669,8 +1799,7 @@ function toggleImmersive(){
 
 
     if(
-      audioContext.state ===
-      "suspended"
+      audioContext.state==="suspended"
     ){
 
       audioContext.resume();
@@ -1688,14 +1817,12 @@ function toggleImmersive(){
     immersiveOn=true;
 
 
-    btn.textContent =
+    btn.textContent=
       "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — ON";
-
 
     btn.classList.add("active");
 
   }else{
-
 
     naturePan.pan.value=0;
 
@@ -1707,9 +1834,8 @@ function toggleImmersive(){
     immersiveOn=false;
 
 
-    btn.textContent =
+    btn.textContent=
       "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — OFF";
-
 
     btn.classList.remove("active");
 
@@ -1718,10 +1844,9 @@ function toggleImmersive(){
 }
 
 
-
-/* =================================
+/* =====================================================
    SCROLL
-================================= */
+===================================================== */
 
 function scrollToId(id){
 
