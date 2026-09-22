@@ -6,6 +6,17 @@
 
 <title>OLD RADIO — Kerala Radio 1980–1990</title>
 
+<meta name="description"
+content="OLD RADIO — 1980–1990 കാലത്തെ കേരള റേഡിയോ ഓർമ്മകൾ, പഴയ മലയാളം പരിപാടികൾ, ഗാനങ്ങൾ, നാടകങ്ങൾ, പരസ്യങ്ങൾ.">
+
+<meta name="keywords"
+content="OLD RADIO, Old Radio Kerala, Kerala Radio, Malayalam Radio, Kerala Radio 1980 1990, പഴയ റേഡിയോ">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical"
+href="https://jobinaranmula.github.io/time-machine/">
+
 <style>
 
 /* =====================================================
@@ -45,11 +56,6 @@ body.dark{
   background:#010101;
 }
 
-
-/* =====================================================
-   REMOVE BLUE TOUCH
-===================================================== */
-
 button,
 a,
 .lantern-swing,
@@ -58,11 +64,6 @@ a,
   outline:none;
 }
 
-
-/* =====================================================
-   LANTERN AREA
-===================================================== */
-
 .lantern-area{
   position:relative;
   width:100%;
@@ -70,49 +71,27 @@ a,
   overflow:hidden;
 }
 
-
-/* =====================================================
-   WHOLE LANTERN + WIRE TOGETHER
-===================================================== */
-
 .lantern-swing{
   position:absolute;
-
   top:-8px;
   left:50%;
-
   width:78px;
   height:225px;
-
   transform:translateX(-50%);
   transform-origin:top center;
-
-  animation:
-    lanternSwing 4.8s ease-in-out infinite;
-
+  animation:lanternSwing 4.8s ease-in-out infinite;
   cursor:pointer;
-
   z-index:20;
-
   user-select:none;
 }
 
-
-/* =====================================================
-   WIRE
-===================================================== */
-
 .lantern-chain{
   position:absolute;
-
   top:0;
   left:50%;
-
   width:3px;
   height:150px;
-
   transform:translateX(-50%);
-
   background:
     repeating-linear-gradient(
       0deg,
@@ -120,100 +99,54 @@ a,
       #4b3927 6px,
       #050403 8px
     );
-
   border-radius:4px;
-
-  box-shadow:
-    0 0 3px #000;
+  box-shadow:0 0 3px #000;
 }
-
-
-/* =====================================================
-   SMALL OLD LANTERN
-===================================================== */
 
 .lantern{
   position:absolute;
-
   left:50%;
   bottom:0;
-
   width:58px;
   height:70px;
-
   transform:translateX(-50%);
-
-  filter:
-    drop-shadow(
-      0 7px 11px rgba(0,0,0,.9)
-    );
+  filter:drop-shadow(0 7px 11px rgba(0,0,0,.9));
 }
-
-
-/* HANDLE */
 
 .lantern-handle{
   position:absolute;
-
   left:50%;
   top:-18px;
-
   width:36px;
   height:25px;
-
   transform:translateX(-50%);
-
   border:3px solid #49351f;
   border-bottom:0;
-
   border-radius:28px 28px 0 0;
 }
 
-
-/* TOP */
-
 .lantern-top{
   position:absolute;
-
   top:0;
   left:50%;
-
   width:38px;
   height:12px;
-
   transform:translateX(-50%);
-
   border-radius:6px 6px 3px 3px;
-
-  background:
-    linear-gradient(
-      #80603a,
-      #20140a
-    );
-
+  background:linear-gradient(#80603a,#20140a);
   border:2px solid #110c07;
 }
 
-
-/* GLASS */
-
 .lantern-glass{
   position:absolute;
-
   top:10px;
   left:50%;
-
   width:40px;
   height:48px;
-
   transform:translateX(-50%);
-
   overflow:hidden;
-
   border-radius:8px 8px 11px 11px;
-
   border:2px solid #76502a;
-
   background:
     radial-gradient(
       circle at 50% 55%,
@@ -221,37 +154,23 @@ a,
       rgba(255,164,40,.60) 34%,
       rgba(80,35,5,.32) 75%
     );
-
   box-shadow:
     0 0 10px rgba(255,180,55,.9),
     0 0 25px rgba(255,145,20,.42);
-
   transition:
     background .35s ease,
     box-shadow .35s ease,
     filter .35s ease;
 }
 
-
-/* =====================================================
-   FLAME
-===================================================== */
-
 .lantern-flame{
   position:absolute;
-
   left:50%;
   top:16px;
-
   width:10px;
   height:21px;
-
-  transform:
-    translateX(-50%)
-    rotate(45deg);
-
+  transform:translateX(-50%) rotate(45deg);
   border-radius:70% 20% 70% 20%;
-
   background:
     radial-gradient(
       circle at 35% 35%,
@@ -260,191 +179,91 @@ a,
       #ff8b18 70%,
       transparent 73%
     );
-
-  filter:
-    drop-shadow(0 0 5px #ffc044);
-
-  animation:
-    flameMove .15s ease-in-out infinite alternate;
-
+  filter:drop-shadow(0 0 5px #ffc044);
+  animation:flameMove .15s ease-in-out infinite alternate;
   opacity:1;
-
-  transition:
-    opacity .3s ease,
-    filter .3s ease;
 }
-
-
-/* BOTTOM */
 
 .lantern-bottom{
   position:absolute;
-
   bottom:0;
   left:50%;
-
   width:44px;
   height:12px;
-
   transform:translateX(-50%);
-
   border-radius:3px 3px 9px 9px;
-
-  background:
-    linear-gradient(
-      #79542d,
-      #21150b
-    );
-
+  background:linear-gradient(#79542d,#21150b);
   border:2px solid #17100a;
 }
 
-
-/* =====================================================
-   LANTERN SWING
-===================================================== */
-
 @keyframes lanternSwing{
-
   0%,100%{
-    transform:
-      translateX(-50%)
-      rotate(-3deg);
+    transform:translateX(-50%) rotate(-3deg);
   }
-
   50%{
-    transform:
-      translateX(-50%)
-      rotate(3deg);
+    transform:translateX(-50%) rotate(3deg);
   }
-
 }
-
-
-/* =====================================================
-   FLAME ANIMATION
-===================================================== */
 
 @keyframes flameMove{
-
   from{
-    transform:
-      translateX(-50%)
-      rotate(40deg)
-      scale(.9);
+    transform:translateX(-50%) rotate(40deg) scale(.9);
   }
-
   to{
-    transform:
-      translateX(-50%)
-      rotate(50deg)
-      scale(1.08);
+    transform:translateX(-50%) rotate(50deg) scale(1.08);
   }
-
 }
 
-
-/* =====================================================
-   DARK MODE — LANTERN COMPLETELY OFF
-===================================================== */
-
 body.dark .lantern-glass{
-
-  background:
-    rgba(5,5,5,.96);
-
+  background:rgba(5,5,5,.96);
   box-shadow:none;
-
   filter:brightness(.25);
 }
 
 body.dark .lantern-flame{
-
   opacity:0;
-
   animation:none;
-
   filter:none;
 }
 
 body.dark .lantern{
-
-  filter:
-    drop-shadow(
-      0 6px 9px rgba(0,0,0,.95)
-    );
+  filter:drop-shadow(0 6px 9px rgba(0,0,0,.95));
 }
-
-
-/* =====================================================
-   TWO SMALL FLYING INSECTS
-===================================================== */
 
 .insect{
   position:absolute;
-
   width:16px;
   height:13px;
-
   z-index:30;
-
   pointer-events:none;
-
-  animation:
-    insectFlight 5s ease-in-out infinite;
+  animation:insectFlight 5s ease-in-out infinite;
 }
-
-
-/* BODY */
 
 .insect-body{
   position:absolute;
-
   left:6px;
   top:4px;
-
   width:5px;
   height:11px;
-
   border-radius:50%;
-
-  background:
-    linear-gradient(
-      90deg,
-      #020202,
-      #493622,
-      #020202
-    );
+  background:linear-gradient(90deg,#020202,#493622,#020202);
 }
-
-
-/* WINGS */
 
 .wing{
   position:absolute;
-
   top:0;
-
   width:9px;
   height:6px;
-
   background:
     linear-gradient(
       135deg,
       rgba(255,255,255,.72),
       rgba(160,160,160,.08)
     );
-
-  border:
-    1px solid rgba(255,255,255,.42);
-
-  border-radius:
-    80% 20% 80% 20%;
-
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:80% 20% 80% 20%;
   transform-origin:center bottom;
-
-  animation:
-    wingFlap .075s linear infinite;
+  animation:wingFlap .075s linear infinite;
 }
 
 .wing-left{
@@ -453,94 +272,34 @@ body.dark .lantern{
 
 .wing-right{
   right:-1px;
-
-  animation-name:
-    wingFlapRight;
+  animation-name:wingFlapRight;
 }
-
-
-/* =====================================================
-   WING FLAP
-===================================================== */
 
 @keyframes wingFlap{
-
-  0%{
-    transform:
-      rotate(25deg)
-      scaleY(1);
-  }
-
-  25%{
-    transform:
-      rotate(5deg)
-      scaleY(.2);
-  }
-
-  50%{
-    transform:
-      rotate(-25deg)
-      scaleY(1.15);
-  }
-
-  75%{
-    transform:
-      rotate(5deg)
-      scaleY(.2);
-  }
-
-  100%{
-    transform:
-      rotate(25deg)
-      scaleY(1);
-  }
-
+  0%{transform:rotate(25deg) scaleY(1);}
+  25%{transform:rotate(5deg) scaleY(.2);}
+  50%{transform:rotate(-25deg) scaleY(1.15);}
+  75%{transform:rotate(5deg) scaleY(.2);}
+  100%{transform:rotate(25deg) scaleY(1);}
 }
-
 
 @keyframes wingFlapRight{
-
   0%{
-    transform:
-      scaleX(-1)
-      rotate(25deg)
-      scaleY(1);
+    transform:scaleX(-1) rotate(25deg) scaleY(1);
   }
-
   25%{
-    transform:
-      scaleX(-1)
-      rotate(5deg)
-      scaleY(.2);
+    transform:scaleX(-1) rotate(5deg) scaleY(.2);
   }
-
   50%{
-    transform:
-      scaleX(-1)
-      rotate(-25deg)
-      scaleY(1.15);
+    transform:scaleX(-1) rotate(-25deg) scaleY(1.15);
   }
-
   75%{
-    transform:
-      scaleX(-1)
-      rotate(5deg)
-      scaleY(.2);
+    transform:scaleX(-1) rotate(5deg) scaleY(.2);
   }
-
   100%{
-    transform:
-      scaleX(-1)
-      rotate(25deg)
-      scaleY(1);
+    transform:scaleX(-1) rotate(25deg) scaleY(1);
   }
-
 }
-
-
-/* =====================================================
-   INSECT POSITIONS
-===================================================== */
 
 .insect-one{
   left:41%;
@@ -550,71 +309,47 @@ body.dark .lantern{
 .insect-two{
   left:56%;
   top:125px;
-
   transform:scale(.78);
-
   animation-delay:-2.3s;
 }
 
-
-/* =====================================================
-   INSECT FLIGHT
-===================================================== */
-
 @keyframes insectFlight{
-
   0%{
     margin-left:-25px;
     margin-top:15px;
     rotate:8deg;
   }
-
   20%{
     margin-left:5px;
     margin-top:-5px;
     rotate:-12deg;
   }
-
   40%{
     margin-left:35px;
     margin-top:15px;
     rotate:10deg;
   }
-
   60%{
     margin-left:55px;
     margin-top:-18px;
     rotate:-8deg;
   }
-
   80%{
     margin-left:15px;
     margin-top:-30px;
     rotate:12deg;
   }
-
   100%{
     margin-left:-25px;
     margin-top:15px;
     rotate:8deg;
   }
-
 }
-
-
-/* =====================================================
-   CONTAINER
-===================================================== */
 
 .container{
   width:min(100% - 24px,900px);
   margin:auto;
 }
-
-
-/* =====================================================
-   HEADER
-===================================================== */
 
 header{
   text-align:center;
@@ -623,97 +358,54 @@ header{
 
 .radio-logo{
   font-size:42px;
-
-  filter:
-    drop-shadow(
-      0 0 10px
-      rgba(255,180,60,.5)
-    );
+  filter:drop-shadow(0 0 10px rgba(255,180,60,.5));
 }
 
 h1{
-  font-size:
-    clamp(36px,9vw,60px);
-
+  font-size:clamp(36px,9vw,60px);
   letter-spacing:2px;
-
   color:#f3d278;
-
-  text-shadow:
-    2px 3px 10px #000;
+  text-shadow:2px 3px 10px #000;
 }
 
 .subtitle{
   margin-top:7px;
-
   color:#ddd;
-
   font-size:14px;
 }
 
 .memory-badge{
   display:inline-block;
-
   margin-top:15px;
-
   padding:10px 22px;
-
   border-radius:30px;
-
   background:#795026;
-
   font-weight:bold;
 }
 
 .mode-text{
   margin-top:10px;
-
   color:#aaa;
-
   font-size:13px;
 }
 
-
-/* =====================================================
-   NAV
-===================================================== */
-
 .nav{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:9px;
-
   margin-bottom:22px;
 }
 
 .nav button{
   width:100%;
-
   padding:13px 5px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.10);
-
+  border:1px solid rgba(255,255,255,.10);
   border-radius:13px;
-
-  background:
-    rgba(15,15,15,.9);
-
+  background:rgba(15,15,15,.9);
   color:#fff;
-
   font-weight:bold;
-
   cursor:pointer;
 }
-
-
-/* =====================================================
-   SECTION
-===================================================== */
 
 .section{
   margin-bottom:25px;
@@ -721,70 +413,43 @@ h1{
 
 .section-title{
   text-align:center;
-
   color:#f3d278;
-
   font-size:25px;
-
   margin-bottom:15px;
 }
 
-
-/* =====================================================
-   AMBIENT
-===================================================== */
-
 .ambient{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:12px;
 }
 
 .ambient-card{
   padding:16px 10px;
-
   text-align:center;
-
-  background:
-    rgba(15,15,15,.88);
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
+  background:rgba(15,15,15,.88);
+  border:1px solid rgba(255,255,255,.09);
   border-radius:18px;
 }
 
 .ambient-icon{
   font-size:31px;
-
   margin-bottom:7px;
 }
 
 .ambient-card b{
   display:block;
-
   margin-bottom:12px;
 }
 
 .ambient-card button{
   width:100%;
-
   padding:11px 5px;
-
   border:0;
-
   border-radius:10px;
-
   background:#28613a;
-
   color:#fff;
-
   font-weight:bold;
-
   cursor:pointer;
 }
 
@@ -798,59 +463,34 @@ h1{
 
 .volume label{
   display:block;
-
   color:#ccc;
-
   font-size:12px;
-
   margin-bottom:4px;
 }
 
 .volume input{
   width:100%;
-
   accent-color:#d3922c;
 }
 
-
-/* =====================================================
-   HEADSET
-===================================================== */
-
 .immersive-box{
   margin-top:17px;
-
   padding:17px;
-
   text-align:center;
-
   border-radius:18px;
-
-  background:
-    rgba(15,15,15,.92);
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
+  background:rgba(15,15,15,.92);
+  border:1px solid rgba(255,255,255,.09);
 }
 
 .immersive-btn{
   width:100%;
-
   padding:14px;
-
   border:0;
-
   border-radius:12px;
-
   background:#292929;
-
   color:#fff;
-
   font-size:15px;
-
   font-weight:bold;
-
   cursor:pointer;
 }
 
@@ -860,76 +500,46 @@ h1{
 
 .immersive-info{
   margin-top:8px;
-
   color:#999;
-
   font-size:12px;
 }
 
-
-/* =====================================================
-   PROGRAMS
-===================================================== */
-
 .program-grid{
   display:grid;
-
-  grid-template-columns:
-    repeat(2,1fr);
-
+  grid-template-columns:repeat(2,1fr);
   gap:14px;
 }
 
 .program-card{
   padding:18px;
-
   border-radius:18px;
-
-  background:
-    rgba(15,15,15,.91);
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
+  background:rgba(15,15,15,.91);
+  border:1px solid rgba(255,255,255,.09);
 }
 
 .program-card b{
   display:block;
-
   color:#f3d278;
-
   font-size:18px;
-
   margin-bottom:7px;
 }
 
 .program-card span{
   display:block;
-
   color:#aaa;
-
   font-size:13px;
-
   margin-bottom:14px;
 }
 
 .audio-btn{
   width:100%;
-
   padding:12px;
-
   border:0;
-
   border-radius:11px;
-
   background:#28613a;
-
   color:#fff;
-
   font-size:15px;
-
   font-weight:bold;
-
   cursor:pointer;
 }
 
@@ -937,31 +547,17 @@ h1{
   background:#a86d20;
 }
 
-
-/* =====================================================
-   PLAYER
-===================================================== */
-
 .player{
   margin-top:20px;
-
   padding:17px;
-
   border-radius:18px;
-
-  background:
-    rgba(10,10,10,.94);
-
-  border:
-    1px solid
-    rgba(255,255,255,.09);
-
+  background:rgba(10,10,10,.94);
+  border:1px solid rgba(255,255,255,.09);
   text-align:center;
 }
 
 .player-title{
   color:#f3d278;
-
   margin-bottom:12px;
 }
 
@@ -971,39 +567,23 @@ audio{
 
 .stop{
   margin-top:12px;
-
   padding:10px 25px;
-
   border:0;
-
   border-radius:10px;
-
   background:#852d2d;
-
   color:#fff;
-
   font-weight:bold;
-
   cursor:pointer;
 }
 
-
-/* =====================================================
-   INSTAGRAM
-===================================================== */
-
 footer{
   text-align:center;
-
-  padding:
-    22px 10px 30px;
+  padding:22px 10px 30px;
 }
 
 .instagram{
   color:#999;
-
   font-size:12px;
-
   text-decoration:none;
 }
 
@@ -1011,16 +591,10 @@ footer{
   color:#d5a64b;
 }
 
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
 @media(max-width:650px){
 
   .ambient{
-    grid-template-columns:
-      repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .program-grid{
@@ -1048,19 +622,11 @@ footer{
 </style>
 </head>
 
-
 <body class="warm">
-
-
-<!-- =====================================================
-     HANGING LANTERN
-===================================================== -->
 
 <div class="lantern-area">
 
-  <div
-    class="lantern-swing"
-    id="lantern">
+  <div class="lantern-swing" id="lantern">
 
     <div class="lantern-chain"></div>
 
@@ -1071,9 +637,7 @@ footer{
       <div class="lantern-top"></div>
 
       <div class="lantern-glass">
-
         <div class="lantern-flame"></div>
-
       </div>
 
       <div class="lantern-bottom"></div>
@@ -1082,51 +646,27 @@ footer{
 
   </div>
 
-
-  <!-- INSECT 1 -->
-
   <div class="insect insect-one">
-
     <span class="insect-body"></span>
-
     <span class="wing wing-left"></span>
-
     <span class="wing wing-right"></span>
-
   </div>
 
-
-  <!-- INSECT 2 -->
-
   <div class="insect insect-two">
-
     <span class="insect-body"></span>
-
     <span class="wing wing-left"></span>
-
     <span class="wing wing-right"></span>
-
   </div>
 
 </div>
 
-
 <div class="container">
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header>
 
-  <div class="radio-logo">
-    📻
-  </div>
+  <div class="radio-logo">📻</div>
 
-  <h1>
-    OLD RADIO
-  </h1>
+  <h1>OLD RADIO</h1>
 
   <div class="subtitle">
     1980 — 1990 · KERALA RADIO
@@ -1140,20 +680,11 @@ footer{
     🎙️ KERALA RADIO MEMORIES
   </div>
 
-  <div
-    class="mode-text"
-    id="modeText">
-
+  <div class="mode-text" id="modeText">
     🟠 Warm Light
-
   </div>
 
 </header>
-
-
-<!-- =====================================================
-     NAV
-===================================================== -->
 
 <div class="nav">
 
@@ -1171,48 +702,27 @@ footer{
 
 </div>
 
-
-<!-- =====================================================
-     AMBIENT
-===================================================== -->
-
-<section
-  class="section"
-  id="ambient">
+<section class="section" id="ambient">
 
   <h2 class="section-title">
     🌿 പഴയകാല അന്തരീക്ഷം
   </h2>
 
-
   <div class="ambient">
-
-
-    <!-- NATURE -->
 
     <div class="ambient-card">
 
-      <div class="ambient-icon">
-        🌅
-      </div>
+      <div class="ambient-icon">🌅</div>
 
-      <b>
-        രാവിലെ പ്രകൃതി
-      </b>
+      <b>രാവിലെ പ്രകൃതി</b>
 
-      <button
-        id="natureBtn"
-        onclick="toggleNature()">
-
+      <button id="natureBtn" onclick="toggleNature()">
         ▶ കേൾക്കാം
-
       </button>
 
       <div class="volume">
 
-        <label>
-          🔊 Volume
-        </label>
+        <label>🔊 Volume</label>
 
         <input
           id="natureVol"
@@ -1225,32 +735,19 @@ footer{
 
     </div>
 
-
-    <!-- RAIN -->
-
     <div class="ambient-card">
 
-      <div class="ambient-icon">
-        🌧️
-      </div>
+      <div class="ambient-icon">🌧️</div>
 
-      <b>
-        മഴ
-      </b>
+      <b>മഴ</b>
 
-      <button
-        id="rainBtn"
-        onclick="toggleRain()">
-
+      <button id="rainBtn" onclick="toggleRain()">
         ▶ മഴ കേൾക്കാം
-
       </button>
 
       <div class="volume">
 
-        <label>
-          🔊 Volume
-        </label>
+        <label>🔊 Volume</label>
 
         <input
           id="rainVol"
@@ -1263,32 +760,19 @@ footer{
 
     </div>
 
-
-    <!-- RADIO -->
-
     <div class="ambient-card">
 
-      <div class="ambient-icon">
-        📻
-      </div>
+      <div class="ambient-icon">📻</div>
 
-      <b>
-        പഴയ റേഡിയോ
-      </b>
+      <b>പഴയ റേഡിയോ</b>
 
-      <button
-        id="radioBtn"
-        onclick="toggleRadio()">
-
+      <button id="radioBtn" onclick="toggleRadio()">
         ▶ റേഡിയോ ഓൺ
-
       </button>
 
       <div class="volume">
 
-        <label>
-          🔊 Volume
-        </label>
+        <label>🔊 Volume</label>
 
         <input
           id="radioVol"
@@ -1302,9 +786,6 @@ footer{
     </div>
 
   </div>
-
-
-  <!-- HEADSET -->
 
   <div class="immersive-box">
 
@@ -1325,32 +806,19 @@ footer{
 
 </section>
 
-
-<!-- =====================================================
-     PROGRAMS
-===================================================== -->
-
-<section
-  class="section"
-  id="programs">
+<section class="section" id="programs">
 
   <h2 class="section-title">
     🎙️ റേഡിയോ പരിപാടികൾ
   </h2>
 
-
   <div class="program-grid">
-
 
     <article class="program-card">
 
-      <b>
-        🌾 വയലും വീടും
-      </b>
+      <b>🌾 വയലും വീടും</b>
 
-      <span>
-        കൃഷി · ഗ്രാമജീവിതം
-      </span>
+      <span>കൃഷി · ഗ്രാമജീവിതം</span>
 
       <button
         class="audio-btn"
@@ -1364,16 +832,11 @@ footer{
 
     </article>
 
-
     <article class="program-card">
 
-      <b>
-        🎙️ യുവവാണി
-      </b>
+      <b>🎙️ യുവവാണി</b>
 
-      <span>
-        പഴയ മലയാളം യുവജന പരിപാടികൾ
-      </span>
+      <span>പഴയ മലയാളം യുവജന പരിപാടികൾ</span>
 
       <button
         class="audio-btn"
@@ -1387,16 +850,11 @@ footer{
 
     </article>
 
-
     <article class="program-card">
 
-      <b>
-        🎭 റേഡിയോ നാടകം
-      </b>
+      <b>🎭 റേഡിയോ നാടകം</b>
 
-      <span>
-        നാടകം · കഥ
-      </span>
+      <span>നാടകം · കഥ</span>
 
       <button
         class="audio-btn"
@@ -1410,16 +868,11 @@ footer{
 
     </article>
 
-
     <article class="program-card">
 
-      <b>
-        🎵 ഗാനപരിപാടി
-      </b>
+      <b>🎵 ഗാനപരിപാടി</b>
 
-      <span>
-        പഴയ മലയാളം ഗാനങ്ങൾ
-      </span>
+      <span>പഴയ മലയാളം ഗാനങ്ങൾ</span>
 
       <button
         class="audio-btn"
@@ -1433,16 +886,11 @@ footer{
 
     </article>
 
-
     <article class="program-card">
 
-      <b>
-        📢 പരസ്യങ്ങൾ
-      </b>
+      <b>📢 പരസ്യങ്ങൾ</b>
 
-      <span>
-        1980–1990 കാലഘട്ടത്തിലെ പരസ്യങ്ങൾ
-      </span>
+      <span>1980–1990 കാലഘട്ടത്തിലെ പരസ്യങ്ങൾ</span>
 
       <button
         class="audio-btn"
@@ -1456,24 +904,14 @@ footer{
 
     </article>
 
-
   </div>
 
 </section>
 
-
-<!-- =====================================================
-     PLAYER
-===================================================== -->
-
 <section class="player">
 
-  <div
-    class="player-title"
-    id="playerTitle">
-
+  <div class="player-title" id="playerTitle">
     🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക
-
   </div>
 
   <audio
@@ -1492,11 +930,6 @@ footer{
 
 </section>
 
-
-<!-- =====================================================
-     INSTAGRAM
-===================================================== -->
-
 <footer>
 
   <a
@@ -1511,9 +944,7 @@ footer{
 
 </footer>
 
-
 </div>
-
 
 <script>
 
@@ -1521,20 +952,13 @@ footer{
    AMBIENT AUDIO
 ===================================================== */
 
-const nature =
-  new Audio("nature-morning.mp3");
-
-const rain =
-  new Audio("rain.mp3");
-
-const radio =
-  new Audio("radio.mp3");
-
+const nature = new Audio("nature-morning.mp3");
+const rain = new Audio("rain.mp3");
+const radio = new Audio("radio.mp3");
 
 nature.loop = true;
 rain.loop = true;
 radio.loop = true;
-
 
 nature.volume = .50;
 rain.volume = .35;
@@ -1547,25 +971,26 @@ radio.volume = .55;
 
 function toggleNature(){
 
-  const btn =
-    document.getElementById("natureBtn");
+  const btn = document.getElementById("natureBtn");
 
   if(nature.paused){
 
-    nature.play().catch(()=>{});
+    nature.play().then(()=>{
 
-    btn.textContent =
-      "⏸ നിർത്തുക";
+      btn.textContent = "⏸ നിർത്തുക";
+      btn.classList.add("active");
 
-    btn.classList.add("active");
+    }).catch(()=>{
+
+      alert("nature-morning.mp3 ഫയൽ കണ്ടെത്താനായില്ല.");
+
+    });
 
   }else{
 
     nature.pause();
 
-    btn.textContent =
-      "▶ കേൾക്കാം";
-
+    btn.textContent = "▶ കേൾക്കാം";
     btn.classList.remove("active");
 
   }
@@ -1579,25 +1004,26 @@ function toggleNature(){
 
 function toggleRain(){
 
-  const btn =
-    document.getElementById("rainBtn");
+  const btn = document.getElementById("rainBtn");
 
   if(rain.paused){
 
-    rain.play().catch(()=>{});
+    rain.play().then(()=>{
 
-    btn.textContent =
-      "⏸ മഴ നിർത്തുക";
+      btn.textContent = "⏸ മഴ നിർത്തുക";
+      btn.classList.add("active");
 
-    btn.classList.add("active");
+    }).catch(()=>{
+
+      alert("rain.mp3 ഫയൽ കണ്ടെത്താനായില്ല.");
+
+    });
 
   }else{
 
     rain.pause();
 
-    btn.textContent =
-      "▶ മഴ കേൾക്കാം";
-
+    btn.textContent = "▶ മഴ കേൾക്കാം";
     btn.classList.remove("active");
 
   }
@@ -1611,25 +1037,26 @@ function toggleRain(){
 
 function toggleRadio(){
 
-  const btn =
-    document.getElementById("radioBtn");
+  const btn = document.getElementById("radioBtn");
 
   if(radio.paused){
 
-    radio.play().catch(()=>{});
+    radio.play().then(()=>{
 
-    btn.textContent =
-      "⏸ റേഡിയോ ഓഫ്";
+      btn.textContent = "⏸ റേഡിയോ ഓഫ്";
+      btn.classList.add("active");
 
-    btn.classList.add("active");
+    }).catch(()=>{
+
+      alert("radio.mp3 ഫയൽ കണ്ടെത്താനായില്ല.");
+
+    });
 
   }else{
 
     radio.pause();
 
-    btn.textContent =
-      "▶ റേഡിയോ ഓൺ";
-
+    btn.textContent = "▶ റേഡിയോ ഓൺ";
     btn.classList.remove("active");
 
   }
@@ -1641,41 +1068,24 @@ function toggleRadio(){
    VOLUME
 ===================================================== */
 
-document
-.getElementById("natureVol")
-.addEventListener(
+document.getElementById("natureVol").addEventListener(
   "input",
   function(){
-
-    nature.volume =
-      this.value / 100;
-
+    nature.volume = this.value / 100;
   }
 );
 
-
-document
-.getElementById("rainVol")
-.addEventListener(
+document.getElementById("rainVol").addEventListener(
   "input",
   function(){
-
-    rain.volume =
-      this.value / 100;
-
+    rain.volume = this.value / 100;
   }
 );
 
-
-document
-.getElementById("radioVol")
-.addEventListener(
+document.getElementById("radioVol").addEventListener(
   "input",
   function(){
-
-    radio.volume =
-      this.value / 100;
-
+    radio.volume = this.value / 100;
   }
 );
 
@@ -1684,52 +1094,34 @@ document
    LANTERN — WARM / DARK
 ===================================================== */
 
-const lantern =
-  document.getElementById("lantern");
+const lantern = document.getElementById("lantern");
+const modeText = document.getElementById("modeText");
 
-const modeText =
-  document.getElementById("modeText");
+lantern.addEventListener("click",function(e){
 
+  e.preventDefault();
+  e.stopPropagation();
 
-lantern.addEventListener(
-  "click",
-  function(e){
+  const dark =
+    document.body.classList.contains("dark");
 
-    e.preventDefault();
-    e.stopPropagation();
+  if(dark){
 
+    document.body.classList.remove("dark");
+    document.body.classList.add("warm");
 
-    const dark =
-      document.body.classList.contains("dark");
+    modeText.textContent = "🟠 Warm Light";
 
+  }else{
 
-    if(dark){
+    document.body.classList.remove("warm");
+    document.body.classList.add("dark");
 
-      /* DARK → WARM */
+    modeText.textContent = "⚫ Dark Mode";
 
-      document.body.classList.remove("dark");
+  }
 
-      document.body.classList.add("warm");
-
-      modeText.textContent =
-        "🟠 Warm Light";
-
-    }else{
-
-      /* WARM → DARK */
-
-      document.body.classList.remove("warm");
-
-      document.body.classList.add("dark");
-
-      modeText.textContent =
-        "⚫ Dark Mode";
-
-    }
-
-  },
-  {passive:false}
-);
+},{passive:false});
 
 
 /* =====================================================
@@ -1737,127 +1129,80 @@ lantern.addEventListener(
 ===================================================== */
 
 const audioPlayer =
-  document.getElementById(
-    "audioPlayer"
-  );
+  document.getElementById("audioPlayer");
 
 const playerTitle =
-  document.getElementById(
-    "playerTitle"
-  );
+  document.getElementById("playerTitle");
 
 const programButtons =
-  document.querySelectorAll(
-    ".audio-btn"
-  );
+  document.querySelectorAll(".audio-btn");
 
+programButtons.forEach(function(button){
 
-programButtons.forEach(
-  function(button){
+  button.addEventListener("click",function(){
 
-    button.addEventListener(
-      "click",
-      function(){
+    const file = this.dataset.audio;
+    const title = this.dataset.title;
 
-        const file =
-          this.dataset.audio;
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
 
-        const title =
-          this.dataset.title;
+    audioPlayer.src = file;
 
+    playerTitle.textContent = "🎧 " + title;
 
-        audioPlayer.pause();
+    programButtons.forEach(function(btn){
 
-        audioPlayer.currentTime = 0;
+      btn.classList.remove("playing");
+      btn.textContent = "▶ കേൾക്കാം";
 
-        audioPlayer.src = file;
+    });
 
-        playerTitle.textContent =
-          "🎧 " + title;
+    this.classList.add("playing");
+    this.textContent = "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
 
+    audioPlayer.play().catch(()=>{
 
-        programButtons.forEach(
-          function(btn){
+      alert(file + " ഫയൽ കണ്ടെത്താനായില്ല.");
 
-            btn.classList.remove(
-              "playing"
-            );
+    });
 
-            btn.textContent =
-              "▶ കേൾക്കാം";
+  });
 
-          }
-        );
-
-
-        this.classList.add(
-          "playing"
-        );
-
-        this.textContent =
-          "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
-
-
-        audioPlayer
-          .play()
-          .catch(()=>{});
-
-      }
-    );
-
-  }
-);
+});
 
 
 /* =====================================================
-   WHEN PROGRAM ENDS
+   PROGRAM END
 ===================================================== */
 
-audioPlayer.addEventListener(
-  "ended",
-  function(){
+audioPlayer.addEventListener("ended",function(){
 
-    programButtons.forEach(
-      function(btn){
+  programButtons.forEach(function(btn){
 
-        btn.classList.remove(
-          "playing"
-        );
+    btn.classList.remove("playing");
+    btn.textContent = "▶ കേൾക്കാം";
 
-        btn.textContent =
-          "▶ കേൾക്കാം";
+  });
 
-      }
-    );
-
-  }
-);
+});
 
 
 /* =====================================================
-   STOP PROGRAM
+   STOP
 ===================================================== */
 
 function stopProgram(){
 
   audioPlayer.pause();
-
   audioPlayer.currentTime = 0;
 
+  programButtons.forEach(function(btn){
 
-  programButtons.forEach(
-    function(btn){
+    btn.classList.remove("playing");
+    btn.textContent = "▶ കേൾക്കാം";
 
-      btn.classList.remove(
-        "playing"
-      );
-
-      btn.textContent =
-        "▶ കേൾക്കാം";
-
-    }
-  );
-
+  });
 
   playerTitle.textContent =
     "🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക";
@@ -1886,134 +1231,92 @@ function setupImmersive(){
 
   if(audioContext) return;
 
-
   audioContext =
     new(
       window.AudioContext ||
       window.webkitAudioContext
     )();
 
-
   natureSource =
-    audioContext
-    .createMediaElementSource(
-      nature
-    );
-
+    audioContext.createMediaElementSource(nature);
 
   rainSource =
-    audioContext
-    .createMediaElementSource(
-      rain
-    );
-
+    audioContext.createMediaElementSource(rain);
 
   radioSource =
-    audioContext
-    .createMediaElementSource(
-      radio
-    );
-
+    audioContext.createMediaElementSource(radio);
 
   naturePan =
-    audioContext
-    .createStereoPanner();
-
+    audioContext.createStereoPanner();
 
   rainPan =
-    audioContext
-    .createStereoPanner();
-
+    audioContext.createStereoPanner();
 
   radioPan =
-    audioContext
-    .createStereoPanner();
+    audioContext.createStereoPanner();
 
 
   natureSource
     .connect(naturePan)
-    .connect(
-      audioContext.destination
-    );
-
+    .connect(audioContext.destination);
 
   rainSource
     .connect(rainPan)
-    .connect(
-      audioContext.destination
-    );
-
+    .connect(audioContext.destination);
 
   radioSource
     .connect(radioPan)
-    .connect(
-      audioContext.destination
-    );
+    .connect(audioContext.destination);
 
 }
 
 
-function toggleImmersive(){
+async function toggleImmersive(){
 
   const btn =
-    document.getElementById(
-      "immersiveBtn"
-    );
+    document.getElementById("immersiveBtn");
 
-
-  if(!immersiveOn){
+  try{
 
     setupImmersive();
 
+    if(audioContext.state === "suspended"){
+      await audioContext.resume();
+    }
 
-    if(
-      audioContext.state ===
-      "suspended"
-    ){
+    if(!immersiveOn){
 
-      audioContext.resume();
+      naturePan.pan.value = -.35;
+      rainPan.pan.value = .35;
+      radioPan.pan.value = 0;
+
+      immersiveOn = true;
+
+      btn.textContent =
+        "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — ON";
+
+      btn.classList.add("active");
+
+    }else{
+
+      naturePan.pan.value = 0;
+      rainPan.pan.value = 0;
+      radioPan.pan.value = 0;
+
+      immersiveOn = false;
+
+      btn.textContent =
+        "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — OFF";
+
+      btn.classList.remove("active");
 
     }
 
+  }catch(error){
 
-    naturePan.pan.value =
-      -.35;
+    console.error(error);
 
-    rainPan.pan.value =
-      .35;
-
-    radioPan.pan.value =
-      0;
-
-
-    immersiveOn = true;
-
-
-    btn.textContent =
-      "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — ON";
-
-    btn.classList.add(
-      "active"
-    );
-
-  }else{
-
-    naturePan.pan.value = 0;
-
-    rainPan.pan.value = 0;
-
-    radioPan.pan.value = 0;
-
-
-    immersiveOn = false;
-
-
-    btn.textContent =
-      "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — OFF";
-
-    btn.classList.remove(
-      "active"
-    );
+    alert("Headset Immersive Mode ഈ browser-ൽ support ചെയ്യുന്നില്ല.");
 
   }
 
