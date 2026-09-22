@@ -2,9 +2,9 @@
 <html lang="ml">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>TIME MACHINE — 1980–1990 Kerala Radio Memories</title>
+<title>TIME MACHINE — Kerala Radio 1980–1990</title>
 
 <style>
 *{
@@ -13,96 +13,255 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   font-family:"Noto Sans Malayalam","Arial",sans-serif;
-  background:
-    linear-gradient(rgba(10,35,20,.72),rgba(10,35,20,.82)),
-    url("design-reference.png") center/cover fixed;
   min-height:100vh;
-  color:white;
+  color:#fff;
+  background:#07180f;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  background:
+    linear-gradient(
+      rgba(7,25,14,.58),
+      rgba(5,20,12,.82)
+    ),
+    url("design-reference.png") center/cover no-repeat;
+}
+
+/* WARM LIGHT */
+body::after{
+  content:"";
+  position:fixed;
+  width:420px;
+  height:420px;
+  left:50%;
+  top:8%;
+  transform:translateX(-50%);
+  z-index:-2;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    rgba(255,205,100,.22) 0%,
+    rgba(255,180,50,.10) 30%,
+    transparent 70%
+  );
+  animation:lightPulse 4s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes lightPulse{
+  0%,100%{
+    opacity:.55;
+    transform:translateX(-50%) scale(.92);
+  }
+  50%{
+    opacity:1;
+    transform:translateX(-50%) scale(1.08);
+  }
 }
 
 .container{
-  width:100%;
-  max-width:1000px;
+  max-width:1050px;
   margin:auto;
-  padding:18px;
+  padding:12px;
 }
 
 /* HEADER */
 header{
   text-align:center;
-  padding:35px 18px;
-  border-radius:25px;
-  background:rgba(0,0,0,.62);
-  backdrop-filter:blur(10px);
-  box-shadow:0 12px 35px rgba(0,0,0,.4);
+  padding:28px 15px;
+  border-radius:24px;
+  background:rgba(0,0,0,.58);
   border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(9px);
+  box-shadow:0 12px 35px rgba(0,0,0,.4);
 }
 
-.radio{
-  font-size:55px;
+.logo{
+  font-size:52px;
+  filter:drop-shadow(0 0 12px rgba(255,210,100,.6));
 }
 
 header h1{
-  margin-top:8px;
-  font-size:clamp(28px,7vw,48px);
-  color:#f4d06f;
+  margin-top:5px;
+  color:#f4d477;
+  font-size:clamp(30px,8vw,52px);
+  letter-spacing:2px;
   text-shadow:2px 3px 8px #000;
 }
 
-header p{
-  margin-top:10px;
-  font-size:15px;
+.subtitle{
+  margin-top:7px;
   color:#eee;
+  font-size:14px;
 }
 
-.badge{
+.year{
   display:inline-block;
-  margin-top:15px;
+  margin-top:14px;
   padding:8px 20px;
-  background:#8a5b2b;
   border-radius:30px;
+  background:#86582a;
+  box-shadow:0 0 18px rgba(255,190,80,.2);
   font-weight:bold;
 }
 
-/* SECTION */
-.section{
-  margin-top:25px;
-}
-
-.section h2{
+/* LIGHT */
+.light-box{
+  margin-top:18px;
+  padding:14px;
+  border-radius:17px;
+  background:rgba(255,190,70,.09);
+  border:1px solid rgba(255,220,130,.2);
   text-align:center;
-  color:#ffe28a;
-  margin-bottom:18px;
-  font-size:25px;
 }
 
-/* PROGRAM GRID */
+.light{
+  width:14px;
+  height:14px;
+  display:inline-block;
+  border-radius:50%;
+  background:#ffd35c;
+  box-shadow:
+    0 0 7px #ffd35c,
+    0 0 18px #ffd35c,
+    0 0 35px rgba(255,190,60,.7);
+  animation:bulb 1.7s infinite;
+}
+
+@keyframes bulb{
+  0%,100%{opacity:.65}
+  50%{opacity:1}
+}
+
+/* QUICK */
+.quick{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:18px 0;
+}
+
+.quick button{
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:13px;
+  padding:13px 6px;
+  background:rgba(0,0,0,.68);
+  color:#fff;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.quick button:hover{
+  background:#285c36;
+}
+
+/* AMBIENT */
+.ambient{
+  padding:18px;
+  border-radius:20px;
+  background:rgba(0,0,0,.65);
+  border:1px solid rgba(255,255,255,.13);
+  margin-bottom:22px;
+}
+
+.title{
+  text-align:center;
+  color:#f4d477;
+  font-size:23px;
+  margin-bottom:16px;
+}
+
+.ambient-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.ambient-card{
+  padding:15px 8px;
+  text-align:center;
+  background:rgba(255,255,255,.07);
+  border-radius:15px;
+}
+
+.ambient-card .icon{
+  font-size:31px;
+}
+
+.ambient-card b{
+  display:block;
+  margin:7px 0 10px;
+}
+
+.ambient-card button{
+  width:100%;
+  border:0;
+  border-radius:10px;
+  padding:10px 5px;
+  background:#285c36;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.ambient-card button.active{
+  background:#a56d25;
+}
+
+.volume{
+  margin-top:10px;
+}
+
+.volume label{
+  display:block;
+  font-size:11px;
+  color:#ccc;
+  margin-bottom:3px;
+}
+
+.volume input{
+  width:100%;
+}
+
+/* PROGRAMS */
+.section-title{
+  text-align:center;
+  color:#f4d477;
+  font-size:25px;
+  margin:22px 0 16px;
+}
+
 .program-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:16px;
+  gap:15px;
 }
 
 .program-card{
   background:rgba(255,255,255,.96);
   color:#222;
-  padding:20px;
+  padding:19px;
   border-radius:18px;
-  border-left:6px solid #c58b35;
+  border-left:6px solid #bd8737;
   box-shadow:0 8px 25px rgba(0,0,0,.3);
-  transition:.25s;
-}
-
-.program-card:hover{
-  transform:translateY(-4px);
 }
 
 .program-card b{
   display:block;
-  font-size:20px;
   color:#24552f;
+  font-size:20px;
   margin-bottom:7px;
 }
 
@@ -110,133 +269,296 @@ header p{
   display:block;
   color:#666;
   font-size:14px;
-  margin-bottom:15px;
+  margin-bottom:14px;
 }
 
-/* BUTTON */
 .audio-btn{
   width:100%;
   padding:12px;
   border:0;
   border-radius:11px;
   background:#285c36;
-  color:white;
-  font-size:16px;
+  color:#fff;
+  font-size:15px;
   font-weight:bold;
   cursor:pointer;
 }
 
-.audio-btn:hover{
-  background:#173d22;
-}
-
 .audio-btn.playing{
-  background:#a56b20;
+  background:#a56d25;
 }
 
 /* PLAYER */
 .player{
-  margin-top:25px;
+  margin-top:22px;
   padding:20px;
   text-align:center;
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.74);
   border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.14);
 }
 
 .player-title{
-  color:#ffe08a;
-  font-size:18px;
+  color:#f4d477;
   margin-bottom:12px;
+  font-size:18px;
 }
 
 audio{
   width:100%;
-  max-width:750px;
 }
 
-.stop-btn{
+.stop{
   margin-top:12px;
-  padding:10px 25px;
+  padding:10px 23px;
   border:0;
   border-radius:10px;
-  background:#8c2929;
-  color:white;
+  background:#8b2929;
+  color:#fff;
   font-weight:bold;
-  cursor:pointer;
 }
 
 /* FOOTER */
 footer{
   text-align:center;
+  color:#bbb;
   padding:30px 10px;
-  color:#ddd;
   font-size:13px;
 }
 
 footer strong{
-  color:#f4d06f;
+  color:#f4d477;
 }
 
 /* MOBILE */
-@media(max-width:650px){
+@media(max-width:700px){
 
-  .container{
-    padding:10px;
-  }
-
-  header{
-    padding:25px 12px;
-  }
-
-  .radio{
-    font-size:45px;
+  .ambient-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 
   .program-grid{
     grid-template-columns:1fr;
   }
+}
 
-  .program-card{
-    padding:17px;
+@media(max-width:430px){
+
+  .container{
+    padding:9px;
   }
 
+  .quick button{
+    font-size:11px;
+  }
+
+  .ambient-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .ambient-card{
+    padding:13px 6px;
+  }
+
+  .ambient-card b{
+    font-size:13px;
+  }
+
+  .program-card b{
+    font-size:19px;
+  }
 }
 </style>
 </head>
-
 
 <body>
 
 <div class="container">
 
-<!-- HEADER -->
 <header>
 
-  <div class="radio">📻</div>
+  <div class="logo">📻</div>
 
   <h1>TIME MACHINE</h1>
 
-  <p>
-    1980–1990 · കേരള റേഡിയോ ഓർമ്മകൾ
-  </p>
+  <div class="subtitle">
+    1980 — 1990 · KERALA RADIO
+  </div>
 
-  <div class="badge">
-    📻 പഴയകാല മലയാള റേഡിയോ
+  <div class="subtitle">
+    പഴയകാല മലയാള റേഡിയോ ഓർമ്മകളിലേക്ക്
+  </div>
+
+  <div class="year">
+    🎙️ KERALA RADIO MEMORIES
+  </div>
+
+  <div class="light-box">
+    <span class="light"></span>
+    &nbsp; പഴയകാല റേഡിയോ ലൈറ്റ്
   </div>
 
 </header>
 
 
+<!-- QUICK BUTTONS -->
+
+<div class="quick">
+
+  <button onclick="scrollToId('programs')">
+    🎙️ പരിപാടികൾ
+  </button>
+
+  <button onclick="scrollToId('ambient')">
+    🌿 പ്രകൃതി
+  </button>
+
+  <button onclick="toggleRadio()">
+    📻 റേഡിയോ
+  </button>
+
+</div>
+
+
+<!-- AMBIENT -->
+
+<section class="ambient" id="ambient">
+
+<h2 class="title">
+  🌿 പഴയകാല അന്തരീക്ഷം
+</h2>
+
+<div class="ambient-grid">
+
+
+<!-- NATURE -->
+
+<div class="ambient-card">
+
+  <div class="icon">🌅</div>
+
+  <b>രാവിലെ പ്രകൃതി</b>
+
+  <button id="natureBtn" onclick="toggleNature()">
+    ▶ കേൾക്കാം
+  </button>
+
+  <div class="volume">
+
+    <label>🔊 Volume</label>
+
+    <input
+      id="natureVol"
+      type="range"
+      min="0"
+      max="100"
+      value="50">
+
+  </div>
+
+</div>
+
+
+<!-- RAIN -->
+
+<div class="ambient-card">
+
+  <div class="icon">🌧️</div>
+
+  <b>മഴ</b>
+
+  <button id="rainBtn" onclick="toggleRain()">
+    ▶ മഴ കേൾക്കാം
+  </button>
+
+  <div class="volume">
+
+    <label>🔊 Volume</label>
+
+    <input
+      id="rainVol"
+      type="range"
+      min="0"
+      max="100"
+      value="35">
+
+  </div>
+
+</div>
+
+
+<!-- RADIO -->
+
+<div class="ambient-card">
+
+  <div class="icon">📻</div>
+
+  <b>പഴയ റേഡിയോ</b>
+
+  <button id="radioBtn" onclick="toggleRadio()">
+    ▶ റേഡിയോ ഓൺ
+  </button>
+
+  <div class="volume">
+
+    <label>🔊 Volume</label>
+
+    <input
+      id="radioVol"
+      type="range"
+      min="0"
+      max="100"
+      value="55">
+
+  </div>
+
+</div>
+
+
+<!-- FLY -->
+
+<div class="ambient-card">
+
+  <div class="icon">🪰</div>
+
+  <b>ഈച്ചയുടെ ശബ്ദം</b>
+
+  <button id="flyBtn" onclick="toggleFly()">
+    ▶ കേൾക്കാം
+  </button>
+
+  <div class="volume">
+
+    <label>🔊 Volume</label>
+
+    <input
+      id="flyVol"
+      type="range"
+      min="0"
+      max="100"
+      value="20">
+
+  </div>
+
+</div>
+
+</div>
+</section>
+
+
 <!-- PROGRAMS -->
-<section class="section">
 
-<h2>🎙️ പരിപാടികൾ</h2>
+<section id="programs">
 
-<div class="program-grid" id="programs">
+<h2 class="section-title">
+  🎙️ റേഡിയോ പരിപാടികൾ
+</h2>
+
+<div class="program-grid">
 
 
 <!-- VAYALUM VEEDUM -->
+
 <article class="program-card">
 
   <b>🌾 വയലും വീടും</b>
@@ -248,8 +570,7 @@ footer strong{
   <button
     class="audio-btn"
     data-audio="vayalum-veedum.mp3"
-    data-title="🌾 വയലും വീടും"
-    type="button">
+    data-title="🌾 വയലും വീടും">
 
     ▶ കേൾക്കാം
 
@@ -259,6 +580,7 @@ footer strong{
 
 
 <!-- YOUVAVANI -->
+
 <article class="program-card">
 
   <b>🎙️ യുവവാണി</b>
@@ -270,8 +592,7 @@ footer strong{
   <button
     class="audio-btn"
     data-audio="youvavani.mp3"
-    data-title="🎙️ യുവവാണി"
-    type="button">
+    data-title="🎙️ യുവവാണി">
 
     ▶ കേൾക്കാം
 
@@ -281,6 +602,7 @@ footer strong{
 
 
 <!-- RADIO NADAKAM -->
+
 <article class="program-card">
 
   <b>🎭 റേഡിയോ നാടകം</b>
@@ -292,8 +614,7 @@ footer strong{
   <button
     class="audio-btn"
     data-audio="radio-nadakam.mp3"
-    data-title="🎭 റേഡിയോ നാടകം"
-    type="button">
+    data-title="🎭 റേഡിയോ നാടകം">
 
     ▶ കേൾക്കാം
 
@@ -302,7 +623,8 @@ footer strong{
 </article>
 
 
-<!-- GANA PARIPADI -->
+<!-- GANA -->
+
 <article class="program-card">
 
   <b>🎵 ഗാനപരിപാടി</b>
@@ -314,30 +636,7 @@ footer strong{
   <button
     class="audio-btn"
     data-audio="gana-paripadi.mp3"
-    data-title="🎵 ഗാനപരിപാടി"
-    type="button">
-
-    ▶ കേൾക്കാം
-
-  </button>
-
-</article>
-
-
-<!-- NEWS -->
-<article class="program-card">
-
-  <b>📰 വാർത്ത</b>
-
-  <span>
-    അന്നത്തെ വാർത്തകൾ
-  </span>
-
-  <button
-    class="audio-btn"
-    data-audio="radio.mp3"
-    data-title="📰 വാർത്ത"
-    type="button">
+    data-title="🎵 ഗാനപരിപാടി">
 
     ▶ കേൾക്കാം
 
@@ -347,19 +646,19 @@ footer strong{
 
 
 <!-- ADS -->
+
 <article class="program-card">
 
   <b>📢 പരസ്യങ്ങൾ</b>
 
   <span>
-    കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ
+    1980–1990 കാലഘട്ടത്തിലെ പരസ്യങ്ങൾ
   </span>
 
   <button
     class="audio-btn"
     data-audio="ads.mp3"
-    data-title="📢 പരസ്യങ്ങൾ"
-    type="button">
+    data-title="📢 പരസ്യങ്ങൾ">
 
     ▶ കേൾക്കാം
 
@@ -367,12 +666,12 @@ footer strong{
 
 </article>
 
-
 </div>
 </section>
 
 
-<!-- AUDIO PLAYER -->
+<!-- PLAYER -->
+
 <section class="player">
 
   <div class="player-title" id="playerTitle">
@@ -387,22 +686,16 @@ footer strong{
 
   <br>
 
-  <button
-    class="stop-btn"
-    id="stopBtn"
-    type="button">
-
+  <button class="stop" onclick="stopProgram()">
     ⏹ നിർത്തുക
-
   </button>
 
 </section>
 
 
-<!-- FOOTER -->
 <footer>
 
-  📻 TIME MACHINE — Kerala Radio Memories
+  📻 TIME MACHINE — Kerala Radio 1980–1990
 
   <br><br>
 
@@ -416,24 +709,214 @@ footer strong{
 
 <script>
 
+/* =========================================
+   AMBIENT AUDIO
+========================================= */
+
+const nature =
+  new Audio("nature-morning.mp3");
+
+const rain =
+  new Audio("rain.mp3");
+
+const radio =
+  new Audio("radio.mp3");
+
+/*
+  ഈച്ചയുടെ audio file repository-ൽ
+  ഉണ്ടെങ്കിൽ അത് ഇവിടെ ഉപയോഗിക്കും.
+  ഇല്ലെങ്കിൽ browser error കാണിക്കാതെ
+  button പ്രവർത്തനരഹിതമാക്കും.
+*/
+const fly =
+  new Audio("fly.mp3");
+
+
+nature.loop = true;
+rain.loop = true;
+radio.loop = true;
+fly.loop = true;
+
+nature.volume = 0.50;
+rain.volume = 0.35;
+radio.volume = 0.55;
+fly.volume = 0.20;
+
+
+/* BUTTONS */
+
+const natureBtn =
+  document.getElementById("natureBtn");
+
+const rainBtn =
+  document.getElementById("rainBtn");
+
+const radioBtn =
+  document.getElementById("radioBtn");
+
+const flyBtn =
+  document.getElementById("flyBtn");
+
+
+/* NATURE */
+
+function toggleNature(){
+
+  if(nature.paused){
+
+    nature.play().catch(()=>{});
+
+    natureBtn.textContent =
+      "⏸ നിർത്തുക";
+
+    natureBtn.classList.add("active");
+
+  }else{
+
+    nature.pause();
+
+    natureBtn.textContent =
+      "▶ കേൾക്കാം";
+
+    natureBtn.classList.remove("active");
+
+  }
+}
+
+
+/* RAIN */
+
+function toggleRain(){
+
+  if(rain.paused){
+
+    rain.play().catch(()=>{});
+
+    rainBtn.textContent =
+      "⏸ മഴ നിർത്തുക";
+
+    rainBtn.classList.add("active");
+
+  }else{
+
+    rain.pause();
+
+    rainBtn.textContent =
+      "▶ മഴ കേൾക്കാം";
+
+    rainBtn.classList.remove("active");
+
+  }
+}
+
+
+/* RADIO */
+
+function toggleRadio(){
+
+  if(radio.paused){
+
+    radio.play().catch(()=>{});
+
+    radioBtn.textContent =
+      "⏸ റേഡിയോ ഓഫ്";
+
+    radioBtn.classList.add("active");
+
+  }else{
+
+    radio.pause();
+
+    radioBtn.textContent =
+      "▶ റേഡിയോ ഓൺ";
+
+    radioBtn.classList.remove("active");
+
+  }
+}
+
+
+/* FLY */
+
+function toggleFly(){
+
+  if(fly.paused){
+
+    fly.play().catch(()=>{});
+
+    flyBtn.textContent =
+      "⏸ നിർത്തുക";
+
+    flyBtn.classList.add("active");
+
+  }else{
+
+    fly.pause();
+
+    flyBtn.textContent =
+      "▶ കേൾക്കാം";
+
+    flyBtn.classList.remove("active");
+
+  }
+}
+
+
+/* VOLUME */
+
+document.getElementById("natureVol")
+.addEventListener("input",function(){
+
+  nature.volume =
+    this.value / 100;
+
+});
+
+
+document.getElementById("rainVol")
+.addEventListener("input",function(){
+
+  rain.volume =
+    this.value / 100;
+
+});
+
+
+document.getElementById("radioVol")
+.addEventListener("input",function(){
+
+  radio.volume =
+    this.value / 100;
+
+});
+
+
+document.getElementById("flyVol")
+.addEventListener("input",function(){
+
+  fly.volume =
+    this.value / 100;
+
+});
+
+
+/* =========================================
+   PROGRAM PLAYER
+========================================= */
+
 const audioPlayer =
   document.getElementById("audioPlayer");
 
 const playerTitle =
   document.getElementById("playerTitle");
 
-const stopBtn =
-  document.getElementById("stopBtn");
-
-const buttons =
+const programButtons =
   document.querySelectorAll(".audio-btn");
 
 
-/* PLAY AUDIO */
+programButtons.forEach(function(button){
 
-buttons.forEach(button => {
-
-  button.addEventListener("click", function(){
+  button.addEventListener("click",function(){
 
     const file =
       this.getAttribute("data-audio");
@@ -441,44 +924,30 @@ buttons.forEach(button => {
     const title =
       this.getAttribute("data-title");
 
-
-    /* Stop previous */
-
     audioPlayer.pause();
 
     audioPlayer.currentTime = 0;
-
-
-    /* Set new audio */
 
     audioPlayer.src = file;
 
     playerTitle.textContent =
       "🎧 " + title;
 
-
-    /* Reset buttons */
-
-    buttons.forEach(btn => {
+    programButtons.forEach(function(btn){
 
       btn.classList.remove("playing");
 
-      btn.textContent = "▶ കേൾക്കാം";
+      btn.textContent =
+        "▶ കേൾക്കാം";
 
     });
-
-
-    /* Current button */
 
     this.classList.add("playing");
 
     this.textContent =
       "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
 
-
-    /* Play */
-
-    audioPlayer.play().catch(error => {
+    audioPlayer.play().catch(function(error){
 
       console.log("Audio error:",error);
 
@@ -491,39 +960,56 @@ buttons.forEach(button => {
 
 /* STOP */
 
-stopBtn.addEventListener("click",function(){
+function stopProgram(){
 
   audioPlayer.pause();
 
   audioPlayer.currentTime = 0;
 
-  buttons.forEach(btn => {
+  programButtons.forEach(function(btn){
 
     btn.classList.remove("playing");
 
-    btn.textContent = "▶ കേൾക്കാം";
+    btn.textContent =
+      "▶ കേൾക്കാം";
 
   });
 
   playerTitle.textContent =
     "🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക";
-
-});
+}
 
 
 /* AUDIO ENDED */
 
-audioPlayer.addEventListener("ended",function(){
+audioPlayer.addEventListener(
+  "ended",
+  function(){
 
-  buttons.forEach(btn => {
+    programButtons.forEach(function(btn){
 
-    btn.classList.remove("playing");
+      btn.classList.remove("playing");
 
-    btn.textContent = "▶ കേൾക്കാം";
+      btn.textContent =
+        "▶ കേൾക്കാം";
 
-  });
+    });
 
-});
+  }
+);
+
+
+/* SCROLL */
+
+function scrollToId(id){
+
+  document
+    .getElementById(id)
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
 
 </script>
 
