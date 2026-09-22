@@ -1,512 +1,529 @@
 <!DOCTYPE html>
 <html lang="ml">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>കേരള റേഡിയോ — പഴയകാല ഓർമ്മകൾ</title>
+<title>TIME MACHINE — 1980–1990 Kerala Radio Memories</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    body {
-      font-family: "Noto Sans Malayalam", "Arial", sans-serif;
-      background:
-        linear-gradient(rgba(8, 35, 20, 0.78), rgba(8, 35, 20, 0.78)),
-        url("background.jpg") center/cover fixed;
-      color: #fff;
-      min-height: 100vh;
-    }
+body{
+  font-family:"Noto Sans Malayalam","Arial",sans-serif;
+  background:
+    linear-gradient(rgba(10,35,20,.72),rgba(10,35,20,.82)),
+    url("design-reference.png") center/cover fixed;
+  min-height:100vh;
+  color:white;
+}
 
-    .overlay {
-      min-height: 100vh;
-      padding: 20px 14px 40px;
-    }
+.container{
+  width:100%;
+  max-width:1000px;
+  margin:auto;
+  padding:18px;
+}
 
-    /* HEADER */
-    .header {
-      max-width: 950px;
-      margin: auto;
-      text-align: center;
-      padding: 28px 15px;
-      border-radius: 22px;
-      background: rgba(0, 0, 0, 0.55);
-      border: 1px solid rgba(255,255,255,0.2);
-      box-shadow: 0 10px 35px rgba(0,0,0,0.35);
-      backdrop-filter: blur(8px);
-    }
+/* HEADER */
+header{
+  text-align:center;
+  padding:35px 18px;
+  border-radius:25px;
+  background:rgba(0,0,0,.62);
+  backdrop-filter:blur(10px);
+  box-shadow:0 12px 35px rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.18);
+}
 
-    .radio-icon {
-      font-size: 55px;
-      margin-bottom: 8px;
-    }
+.radio{
+  font-size:55px;
+}
 
-    .header h1 {
-      font-size: clamp(27px, 6vw, 48px);
-      color: #f7d36b;
-      text-shadow: 2px 3px 8px #000;
-    }
+header h1{
+  margin-top:8px;
+  font-size:clamp(28px,7vw,48px);
+  color:#f4d06f;
+  text-shadow:2px 3px 8px #000;
+}
 
-    .header p {
-      margin-top: 8px;
-      color: #eee;
-      font-size: 15px;
-    }
+header p{
+  margin-top:10px;
+  font-size:15px;
+  color:#eee;
+}
 
-    .year {
-      display: inline-block;
-      margin-top: 14px;
-      padding: 7px 18px;
-      border-radius: 30px;
-      background: #8b5a2b;
-      color: white;
-      font-weight: bold;
-    }
+.badge{
+  display:inline-block;
+  margin-top:15px;
+  padding:8px 20px;
+  background:#8a5b2b;
+  border-radius:30px;
+  font-weight:bold;
+}
 
-    /* PROGRAM SECTION */
-    .section {
-      max-width: 950px;
-      margin: 25px auto 0;
-    }
+/* SECTION */
+.section{
+  margin-top:25px;
+}
 
-    .section-title {
-      text-align: center;
-      font-size: 25px;
-      color: #ffe08a;
-      margin-bottom: 18px;
-    }
+.section h2{
+  text-align:center;
+  color:#ffe28a;
+  margin-bottom:18px;
+  font-size:25px;
+}
 
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
+/* PROGRAM GRID */
+.program-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
 
-    .program-card {
-      background: rgba(255,255,255,0.95);
-      color: #222;
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-      transition: 0.25s;
-      border-left: 6px solid #c8943d;
-    }
+.program-card{
+  background:rgba(255,255,255,.96);
+  color:#222;
+  padding:20px;
+  border-radius:18px;
+  border-left:6px solid #c58b35;
+  box-shadow:0 8px 25px rgba(0,0,0,.3);
+  transition:.25s;
+}
 
-    .program-card:hover {
-      transform: translateY(-4px);
-    }
+.program-card:hover{
+  transform:translateY(-4px);
+}
 
-    .program-card b {
-      display: block;
-      font-size: 21px;
-      color: #244b2d;
-      margin-bottom: 7px;
-    }
+.program-card b{
+  display:block;
+  font-size:20px;
+  color:#24552f;
+  margin-bottom:7px;
+}
 
-    .program-card span {
-      display: block;
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
+.program-card span{
+  display:block;
+  color:#666;
+  font-size:14px;
+  margin-bottom:15px;
+}
 
-    .audio-btn {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 12px;
-      background: #285c36;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+/* BUTTON */
+.audio-btn{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:11px;
+  background:#285c36;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .audio-btn:hover {
-      background: #173d22;
-    }
+.audio-btn:hover{
+  background:#173d22;
+}
 
-    .audio-btn.playing {
-      background: #a56b20;
-    }
+.audio-btn.playing{
+  background:#a56b20;
+}
 
-    /* PLAYER */
-    .player {
-      max-width: 950px;
-      margin: 25px auto 0;
-      padding: 20px;
-      border-radius: 20px;
-      background: rgba(0,0,0,0.72);
-      border: 1px solid rgba(255,255,255,0.18);
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    }
+/* PLAYER */
+.player{
+  margin-top:25px;
+  padding:20px;
+  text-align:center;
+  background:rgba(0,0,0,.75);
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
 
-    .player-title {
-      color: #ffe08a;
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
+.player-title{
+  color:#ffe08a;
+  font-size:18px;
+  margin-bottom:12px;
+}
 
-    audio {
-      width: 100%;
-      max-width: 700px;
-    }
+audio{
+  width:100%;
+  max-width:750px;
+}
 
-    .stop-btn {
-      margin-top: 12px;
-      padding: 10px 22px;
-      border: none;
-      border-radius: 10px;
-      background: #8e2929;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.stop-btn{
+  margin-top:12px;
+  padding:10px 25px;
+  border:0;
+  border-radius:10px;
+  background:#8c2929;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    /* FOOTER */
-    footer {
-      max-width: 950px;
-      margin: 35px auto 0;
-      text-align: center;
-      padding: 20px;
-      color: #ddd;
-      font-size: 13px;
-    }
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px 10px;
+  color:#ddd;
+  font-size:13px;
+}
 
-    footer strong {
-      color: #f7d36b;
-    }
+footer strong{
+  color:#f4d06f;
+}
 
-    /* MOBILE */
-    @media (max-width: 650px) {
+/* MOBILE */
+@media(max-width:650px){
 
-      .overlay {
-        padding: 10px 10px 30px;
-      }
+  .container{
+    padding:10px;
+  }
 
-      .header {
-        padding: 22px 12px;
-      }
+  header{
+    padding:25px 12px;
+  }
 
-      .radio-icon {
-        font-size: 43px;
-      }
+  .radio{
+    font-size:45px;
+  }
 
-      .program-grid {
-        grid-template-columns: 1fr;
-      }
+  .program-grid{
+    grid-template-columns:1fr;
+  }
 
-      .program-card {
-        padding: 17px;
-      }
+  .program-card{
+    padding:17px;
+  }
 
-      .program-card b {
-        font-size: 19px;
-      }
-    }
-  </style>
+}
+</style>
 </head>
+
 
 <body>
 
-<div class="overlay">
+<div class="container">
 
-  <!-- HEADER -->
-  <header class="header">
+<!-- HEADER -->
+<header>
 
-    <div class="radio-icon">📻</div>
+  <div class="radio">📻</div>
 
-    <h1>കേരള റേഡിയോ</h1>
+  <h1>TIME MACHINE</h1>
 
-    <p>
-      പഴയകാല മലയാള റേഡിയോ പരിപാടികളുടെ ഓർമ്മകളിലേക്ക്
-    </p>
+  <p>
+    1980–1990 · കേരള റേഡിയോ ഓർമ്മകൾ
+  </p>
 
-    <div class="year">
-      1980 — 1990
-    </div>
+  <div class="badge">
+    📻 പഴയകാല മലയാള റേഡിയോ
+  </div>
 
-  </header>
+</header>
 
 
-  <!-- PROGRAMS -->
-  <section class="section">
+<!-- PROGRAMS -->
+<section class="section">
 
-    <h2 class="section-title">
-      🎙️ ഇന്നത്തെ പരിപാടികൾ
-    </h2>
+<h2>🎙️ പരിപാടികൾ</h2>
 
-    <div class="program-grid" id="programs">
+<div class="program-grid" id="programs">
 
 
-      <!-- VAYALUM VEEDUM -->
-      <article class="program-card">
+<!-- VAYALUM VEEDUM -->
+<article class="program-card">
 
-        <b>🌾 വയലും വീടും</b>
+  <b>🌾 വയലും വീടും</b>
 
-        <span>
-          കൃഷി · ഗ്രാമജീവിതം
-        </span>
+  <span>
+    കൃഷി · ഗ്രാമജീവിതം
+  </span>
 
-        <button
-          class="audio-btn"
-          data-audio="vayalum-veedum.mp3"
-          data-title="🌾 വയലും വീടും"
-          type="button">
+  <button
+    class="audio-btn"
+    data-audio="vayalum-veedum.mp3"
+    data-title="🌾 വയലും വീടും"
+    type="button">
 
-          ▶ കേൾക്കാം
+    ▶ കേൾക്കാം
 
-        </button>
+  </button>
 
-      </article>
+</article>
 
 
-      <!-- YOUVAVANI -->
-      <article class="program-card">
+<!-- YOUVAVANI -->
+<article class="program-card">
 
-        <b>🎙️ യുവവാണി</b>
+  <b>🎙️ യുവവാണി</b>
 
-        <span>
-          പഴയ മലയാളം യുവജന പരിപാടികൾ
-        </span>
+  <span>
+    പഴയ മലയാളം യുവജന പരിപാടികൾ
+  </span>
 
-        <button
-          class="audio-btn"
-          data-audio="youvavani.mp3"
-          data-title="🎙️ യുവവാണി"
-          type="button">
+  <button
+    class="audio-btn"
+    data-audio="youvavani.mp3"
+    data-title="🎙️ യുവവാണി"
+    type="button">
 
-          ▶ കേൾക്കാം
+    ▶ കേൾക്കാം
 
-        </button>
+  </button>
 
-      </article>
+</article>
 
 
-      <!-- RADIO NADAKAM -->
-      <article class="program-card">
+<!-- RADIO NADAKAM -->
+<article class="program-card">
 
-        <b>🎭 റേഡിയോ നാടകം</b>
+  <b>🎭 റേഡിയോ നാടകം</b>
 
-        <span>
-          നാടകം · കഥ
-        </span>
+  <span>
+    നാടകം · കഥ
+  </span>
 
-        <button
-          class="audio-btn"
-          data-audio="radio-nadakam.mp3"
-          data-title="🎭 റേഡിയോ നാടകം"
-          type="button">
+  <button
+    class="audio-btn"
+    data-audio="radio-nadakam.mp3"
+    data-title="🎭 റേഡിയോ നാടകം"
+    type="button">
 
-          ▶ കേൾക്കാം
+    ▶ കേൾക്കാം
 
-        </button>
+  </button>
 
-      </article>
+</article>
 
 
-      <!-- GANA PARIPADI -->
-      <article class="program-card">
+<!-- GANA PARIPADI -->
+<article class="program-card">
 
-        <b>🎵 ഗാനപരിപാടി</b>
+  <b>🎵 ഗാനപരിപാടി</b>
 
-        <span>
-          പഴയ മലയാളം ഗാനങ്ങൾ
-        </span>
+  <span>
+    പഴയ മലയാളം ഗാനങ്ങൾ
+  </span>
 
-        <button
-          class="audio-btn"
-          data-audio="gana-paripadi.mp3"
-          data-title="🎵 ഗാനപരിപാടി"
-          type="button">
+  <button
+    class="audio-btn"
+    data-audio="gana-paripadi.mp3"
+    data-title="🎵 ഗാനപരിപാടി"
+    type="button">
 
-          ▶ കേൾക്കാം
+    ▶ കേൾക്കാം
 
-        </button>
+  </button>
 
-      </article>
+</article>
 
 
-      <!-- NEWS -->
-      <article class="program-card">
+<!-- NEWS -->
+<article class="program-card">
 
-        <b>📰 വാർത്ത</b>
+  <b>📰 വാർത്ത</b>
 
-        <span>
-          അന്നത്തെ വാർത്തകൾ
-        </span>
+  <span>
+    അന്നത്തെ വാർത്തകൾ
+  </span>
 
-        <button
-          class="audio-btn"
-          type="button"
-          onclick="showMessage('📰 വാർത്താ പരിപാടി ഉടൻ ലഭ്യമാകും')">
+  <button
+    class="audio-btn"
+    data-audio="radio.mp3"
+    data-title="📰 വാർത്ത"
+    type="button">
 
-          ▶ കേൾക്കാം
+    ▶ കേൾക്കാം
 
-        </button>
+  </button>
 
-      </article>
+</article>
 
 
-      <!-- ADS -->
-      <article class="program-card" id="ads">
+<!-- ADS -->
+<article class="program-card">
 
-        <b>📢 പരസ്യങ്ങൾ</b>
+  <b>📢 പരസ്യങ്ങൾ</b>
 
-        <span>
-          കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ
-        </span>
+  <span>
+    കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ
+  </span>
 
-        <button
-          class="audio-btn"
-          type="button"
-          onclick="showMessage('📢 പഴയകാല പരസ്യങ്ങൾ ഉടൻ ലഭ്യമാകും')">
+  <button
+    class="audio-btn"
+    data-audio="ads.mp3"
+    data-title="📢 പരസ്യങ്ങൾ"
+    type="button">
 
-          ▶ കാണാം
+    ▶ കേൾക്കാം
 
-        </button>
+  </button>
 
-      </article>
+</article>
 
-    </div>
 
-  </section>
+</div>
+</section>
 
 
-  <!-- AUDIO PLAYER -->
-  <section class="player">
+<!-- AUDIO PLAYER -->
+<section class="player">
 
-    <div class="player-title" id="playerTitle">
-      🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക
-    </div>
+  <div class="player-title" id="playerTitle">
+    🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക
+  </div>
 
-    <audio
-      id="audioPlayer"
-      controls
-      preload="metadata">
-    </audio>
+  <audio
+    id="audioPlayer"
+    controls
+    preload="metadata">
+  </audio>
 
-    <br>
+  <br>
 
-    <button
-      class="stop-btn"
-      id="stopBtn"
-      type="button">
+  <button
+    class="stop-btn"
+    id="stopBtn"
+    type="button">
 
-      ⏹ നിർത്തുക
+    ⏹ നിർത്തുക
 
-    </button>
+  </button>
 
-  </section>
+</section>
 
 
-  <!-- FOOTER -->
-  <footer>
+<!-- FOOTER -->
+<footer>
 
-    📻 കേരള റേഡിയോ · പഴയകാല ഓർമ്മകൾ
+  📻 TIME MACHINE — Kerala Radio Memories
 
-    <br><br>
+  <br><br>
 
-    Developed by
-    <strong>Jobin Skariah</strong>
+  Developed by
+  <strong>Jobin Skariah</strong>
 
-  </footer>
+</footer>
 
 </div>
 
 
 <script>
 
-  const audioPlayer = document.getElementById("audioPlayer");
-  const playerTitle = document.getElementById("playerTitle");
-  const stopBtn = document.getElementById("stopBtn");
+const audioPlayer =
+  document.getElementById("audioPlayer");
 
-  const buttons = document.querySelectorAll(".audio-btn[data-audio]");
+const playerTitle =
+  document.getElementById("playerTitle");
 
+const stopBtn =
+  document.getElementById("stopBtn");
 
-  buttons.forEach(button => {
-
-    button.addEventListener("click", function () {
-
-      const audioFile = this.dataset.audio;
-      const title = this.dataset.title;
+const buttons =
+  document.querySelectorAll(".audio-btn");
 
 
-      // Change audio
-      audioPlayer.src = audioFile;
+/* PLAY AUDIO */
 
-      // Change title
-      playerTitle.textContent = "🎧 " + title;
+buttons.forEach(button => {
 
+  button.addEventListener("click", function(){
 
-      // Remove playing state
-      buttons.forEach(btn => {
-        btn.classList.remove("playing");
-        btn.textContent = "▶ കേൾക്കാം";
-      });
+    const file =
+      this.getAttribute("data-audio");
 
-
-      // Current button
-      this.classList.add("playing");
-      this.textContent = "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
+    const title =
+      this.getAttribute("data-title");
 
 
-      // Play
-      audioPlayer.play().catch(error => {
-
-        console.log("Audio play error:", error);
-
-      });
-
-    });
-
-  });
-
-
-  // STOP
-  stopBtn.addEventListener("click", function () {
+    /* Stop previous */
 
     audioPlayer.pause();
 
     audioPlayer.currentTime = 0;
 
-    buttons.forEach(btn => {
 
-      btn.classList.remove("playing");
-      btn.textContent = "▶ കേൾക്കാം";
+    /* Set new audio */
 
-    });
+    audioPlayer.src = file;
 
-    playerTitle.textContent = "🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക";
-
-  });
+    playerTitle.textContent =
+      "🎧 " + title;
 
 
-  // When audio ends
-  audioPlayer.addEventListener("ended", function () {
+    /* Reset buttons */
 
     buttons.forEach(btn => {
 
       btn.classList.remove("playing");
+
       btn.textContent = "▶ കേൾക്കാം";
+
+    });
+
+
+    /* Current button */
+
+    this.classList.add("playing");
+
+    this.textContent =
+      "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
+
+
+    /* Play */
+
+    audioPlayer.play().catch(error => {
+
+      console.log("Audio error:",error);
 
     });
 
   });
 
+});
 
-  // Message
-  function showMessage(message) {
 
-    playerTitle.textContent = message;
+/* STOP */
 
-  }
+stopBtn.addEventListener("click",function(){
+
+  audioPlayer.pause();
+
+  audioPlayer.currentTime = 0;
+
+  buttons.forEach(btn => {
+
+    btn.classList.remove("playing");
+
+    btn.textContent = "▶ കേൾക്കാം";
+
+  });
+
+  playerTitle.textContent =
+    "🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക";
+
+});
+
+
+/* AUDIO ENDED */
+
+audioPlayer.addEventListener("ended",function(){
+
+  buttons.forEach(btn => {
+
+    btn.classList.remove("playing");
+
+    btn.textContent = "▶ കേൾക്കാം";
+
+  });
+
+});
 
 </script>
 
