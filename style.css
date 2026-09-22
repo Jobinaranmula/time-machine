@@ -1,19 +1,1237 @@
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#f4e9d0;background:#17110b;font-family:Manjari,system-ui,sans-serif;min-height:100vh}.grain{position:fixed;inset:0;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:10}header{height:72px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #6f5127;background:#100c08cc;backdrop-filter:blur(8px);position:sticky;top:0;z-index:5}.brand{font-family:"Playfair Display",serif;color:#d9aa55;font-size:20px;display:flex;gap:8px;align-items:center}.brand small{display:block;font:10px Manjari;color:#b7a98e;margin-left:5px;letter-spacing:1px}nav{display:flex;gap:25px}nav a{color:#d8ccb5;text-decoration:none;font-size:15px}.icon-btn,.mode{background:#2b1d0d;border:1px solid #765528;color:#f3dfb7;border-radius:22px;padding:9px 14px}.hero{min-height:calc(100vh - 72px);display:grid;grid-template-columns:1.15fr .85fr;align-items:center;padding:7vw 9vw;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 45%,#5b3514 0,#24160b 38%,#120d09 72%)}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#120d09 0%,#120d0988 50%,#120d0920),radial-gradient(circle at 80% 40%,#8b642833,transparent 40%)}.hero-copy,.radio-card{position:relative;z-index:1}.eyebrow{color:#c9a15b;letter-spacing:3px;font-size:13px}.hero h1{font:800 clamp(62px,10vw,140px)/.82 "Playfair Display",serif;margin:18px 0 8px;letter-spacing:-5px;text-shadow:0 5px 30px #000}.hero h1 span{color:#e0b76c}.years{font:700 27px "Playfair Display";color:#d4a957;margin:20px 0}.ml{font-size:20px;line-height:1.8;color:#eee0c8}.enter{margin-top:24px;border:1px solid #c39446;border-radius:45px;padding:18px 30px;background:linear-gradient(#65451c,#2d1b0a);color:#fff2d2;font:700 18px Manjari;box-shadow:0 12px 35px #0008;cursor:pointer}.radio-card{justify-self:center;width:min(420px,80vw);height:340px;background:linear-gradient(145deg,#6b431f,#25160c);border:8px solid #9a6732;border-radius:24px;box-shadow:0 30px 80px #000b,inset 0 0 40px #0008;display:flex;align-items:center;justify-content:center;flex-direction:column}.radio{font:700 36px "Playfair Display";letter-spacing:4px;color:#d6a660}.dial{width:72%;height:70px;border:3px solid #c28b44;border-radius:50%;margin-top:20px;background:repeating-linear-gradient(90deg,#25160c 0 8px,#c18a42 9px 10px);box-shadow:inset 0 0 20px #000}.radio-line{width:70%;height:4px;background:#c18a42;margin-top:30px}.onair{color:#e55c43;margin-top:20px;font-size:12px}.machine{padding:50px 7vw;background:#0f0c09}.hidden{display:none}.topline{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:auto}.topline b{font:700 28px "Playfair Display";display:block;color:#d9aa55}.topline small{color:#9e927d}.now-playing{max-width:1100px;margin:28px auto;padding:30px;border:1px solid #6c4b24;border-radius:18px;background:#1b130b;box-shadow:0 15px 50px #0008}.live{color:#e95a43;margin-right:20px}.now-playing h2{font-size:34px;color:#e7c077;margin:15px 0 5px}.now-playing p{color:#aaa08e}.meter{display:flex;gap:5px;height:45px;align-items:end;justify-content:flex-end}.meter i{width:7px;background:#d2a24d;border-radius:5px;animation:bar .7s infinite alternate}.meter i:nth-child(2){height:25px}.meter i:nth-child(3){height:40px}.meter i:nth-child(4){height:18px}.meter i:nth-child(5){height:34px}.meter i:nth-child(6){height:28px}.meter i:nth-child(7){height:43px}.meter i:nth-child(8){height:20px}@keyframes bar{to{transform:scaleY(.55)}}.controls{max-width:1100px;margin:25px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.control{padding:20px;border:1px solid #4c351b;border-radius:15px;background:#17110c}.control label{display:block;margin-bottom:12px}.control input{width:75%;accent-color:#c99a4d}.control b{float:right;color:#c99a4d}.switches{max-width:1100px;margin:20px auto;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.switch{background:#17110c;border:1px solid #4c351b;color:#ddd0b7;padding:15px;border-radius:13px;text-align:left}.switch span{float:right;color:#888}.switch.on{border-color:#48764d}.switch.on span{color:#6fd17a}.program-grid{max-width:1100px;margin:30px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.program-grid article{padding:22px;border:1px solid #49341b;border-radius:15px;background:linear-gradient(145deg,#1d140b,#120e0a);display:flex;flex-direction:column;gap:8px}.program-grid b{font-size:20px;color:#dfba78}.program-grid span{color:#9f9585;font-size:14px}.program-grid button{margin-top:10px;width:max-content;background:#33220f;color:#f0d9ad;border:1px solid #6c4b24;border-radius:20px;padding:8px 14px}footer{padding:28px 7vw;border-top:1px solid #3f2d18;display:flex;justify-content:space-between;color:#8f8069}footer a{color:#e1a94d;text-decoration:none;font-size:28px}@media(max-width:850px){nav{display:none}.hero{grid-template-columns:1fr;padding:60px 7vw}.radio-card{margin-top:50px}.controls,.switches,.program-grid{grid-template-columns:1fr}.brand small{display:none}.hero h1{font-size:68px}.machine{padding:40px 5vw}.topline{gap:15px;align-items:flex-start}.topline{flex-direction:column}.enter{width:100%}}
-#youvavaniBtn {
-  margin-top: 10px;
-  width: max-content;
-  background: #33220f;
-  color: #f0d9ad;
-  border: 1px solid #6c4b24;
-  border-radius: 20px;
-  padding: 8px 14px;
-  font-family: Manjari, system-ui, sans-serif;
-  font-size: 14px;
-  cursor: pointer;
+*{
+  box-sizing:border-box;
 }
 
-#youvavaniBtn:hover {
-  background: #4a3015;
-  border-color: #c39446;
-  color: #fff2d2;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  color:#f4e9d0;
+  background:#17110b;
+  font-family:Manjari,system-ui,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  transition:background .5s ease,color .5s ease;
+}
+
+
+/* =====================================================
+   🌾 KERALA VINTAGE ATMOSPHERE
+   ===================================================== */
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-5;
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(35,25,13,.20) 0%,
+      rgba(48,39,17,.10) 35%,
+      rgba(15,30,13,.38) 72%,
+      rgba(20,12,7,.82) 100%
+    ),
+    radial-gradient(
+      circle at 50% 18%,
+      rgba(255,211,125,.28),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      #806b43 0%,
+      #b89555 24%,
+      #718447 45%,
+      #405c2d 67%,
+      #21150c 100%
+    );
+}
+
+
+/* =====================================================
+   🌴 SUBTLE KERALA LANDSCAPE
+   ===================================================== */
+
+body::after{
+  content:"";
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:58vh;
+  z-index:-4;
+  pointer-events:none;
+
+  opacity:.78;
+
+  background:
+
+    /* distant coconut trees */
+    radial-gradient(
+      ellipse 45px 100px at 8% 20%,
+      transparent 57%,
+      rgba(28,55,24,.75) 59%,
+      rgba(28,55,24,.75) 63%,
+      transparent 65%
+    ),
+
+    radial-gradient(
+      ellipse 55px 110px at 18% 8%,
+      transparent 57%,
+      rgba(31,59,25,.72) 59%,
+      rgba(31,59,25,.72) 63%,
+      transparent 65%
+    ),
+
+    radial-gradient(
+      ellipse 48px 105px at 82% 13%,
+      transparent 57%,
+      rgba(28,52,22,.78) 59%,
+      rgba(28,52,22,.78) 63%,
+      transparent 65%
+    ),
+
+    radial-gradient(
+      ellipse 58px 115px at 94% 5%,
+      transparent 57%,
+      rgba(26,49,21,.80) 59%,
+      rgba(26,49,21,.80) 63%,
+      transparent 65%
+    ),
+
+    /* paddy fields */
+    repeating-linear-gradient(
+      0deg,
+      rgba(116,139,54,.34) 0 3px,
+      rgba(59,86,34,.25) 4px 9px
+    );
+
+  filter:blur(.2px);
+}
+
+
+/* =====================================================
+   🌅 OLD PHOTO LIGHT
+   ===================================================== */
+
+body{
+  background-color:#20150c;
+  background-image:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(255,202,110,.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 15% 70%,
+      rgba(76,108,45,.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(74,105,40,.16),
+      transparent 30%
+    );
+}
+
+
+/* =====================================================
+   🎞️ FILM GRAIN
+   ===================================================== */
+
+.grain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+
+  opacity:.055;
+
+  background-image:url(
+    "data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+  );
+
+  z-index:20;
+}
+
+
+/* =====================================================
+   📻 HEADER
+   ===================================================== */
+
+header{
+  height:72px;
+  padding:0 5vw;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  border-bottom:1px solid rgba(111,81,39,.75);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(26,18,10,.94),
+      rgba(16,12,8,.82)
+    );
+
+  backdrop-filter:blur(10px);
+
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+
+
+.brand{
+  font-family:"Playfair Display",serif;
+  color:#d9aa55;
+
+  font-size:20px;
+
+  display:flex;
+  gap:8px;
+  align-items:center;
+
+  text-shadow:0 2px 12px #000;
+}
+
+.brand small{
+  display:block;
+
+  font:10px Manjari;
+
+  color:#b7a98e;
+
+  margin-left:5px;
+
+  letter-spacing:1px;
+}
+
+
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:#d8ccb5;
+  text-decoration:none;
+  font-size:15px;
+
+  transition:
+    color .25s ease,
+    transform .25s ease;
+}
+
+nav a:hover{
+  color:#e3b866;
+  transform:translateY(-1px);
+}
+
+
+.icon-btn,
+.mode{
+  background:#2b1d0d;
+  border:1px solid #765528;
+  color:#f3dfb7;
+  border-radius:22px;
+  padding:9px 14px;
+}
+
+
+/* =====================================================
+   🌴 HERO
+   ===================================================== */
+
+.hero{
+  min-height:calc(100vh - 72px);
+
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+
+  align-items:center;
+
+  padding:7vw 9vw;
+
+  position:relative;
+  overflow:hidden;
+
+  background:
+
+    /* warm sky */
+    radial-gradient(
+      circle at 75% 18%,
+      rgba(255,206,118,.34),
+      transparent 25%
+    ),
+
+    /* green Kerala */
+    linear-gradient(
+      180deg,
+      rgba(100,91,45,.22),
+      rgba(35,59,27,.40) 60%,
+      rgba(18,12,7,.95)
+    );
+}
+
+
+/* subtle field lines */
+
+.hero::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      rgba(14,10,7,.82) 0%,
+      rgba(18,12,8,.48) 38%,
+      rgba(18,12,8,.10) 72%,
+      rgba(18,12,8,.45) 100%
+    ),
+
+    repeating-linear-gradient(
+      165deg,
+      transparent 0 80px,
+      rgba(183,160,76,.08) 81px 83px
+    );
+
+  pointer-events:none;
+}
+
+
+/* =====================================================
+   🌾 MUD ROAD EFFECT
+   ===================================================== */
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+
+  width:55%;
+  height:38%;
+
+  left:25%;
+  bottom:-10%;
+
+  background:
+    linear-gradient(
+      170deg,
+      transparent 0 35%,
+      rgba(110,75,35,.40) 36%,
+      rgba(86,55,26,.55) 70%,
+      rgba(43,27,14,.85) 100%
+    );
+
+  clip-path:polygon(
+    46% 0,
+    56% 0,
+    100% 100%,
+    0 100%
+  );
+
+  opacity:.65;
+
+  pointer-events:none;
+}
+
+
+.hero-copy,
+.radio-card{
+  position:relative;
+  z-index:2;
+}
+
+
+.eyebrow{
+  color:#c9a15b;
+  letter-spacing:3px;
+  font-size:13px;
+}
+
+
+.hero h1{
+  font:
+    800 clamp(62px,10vw,140px)/.82
+    "Playfair Display",
+    serif;
+
+  margin:18px 0 8px;
+
+  letter-spacing:-5px;
+
+  text-shadow:
+    0 5px 30px #000,
+    0 1px 1px #000;
+}
+
+
+.hero h1 span{
+  color:#e0b76c;
+}
+
+
+.years{
+  font:
+    700 27px
+    "Playfair Display";
+
+  color:#d4a957;
+
+  margin:20px 0;
+}
+
+
+.ml{
+  font-size:20px;
+  line-height:1.8;
+  color:#eee0c8;
+}
+
+
+.enter{
+  margin-top:24px;
+
+  border:1px solid #c39446;
+
+  border-radius:45px;
+
+  padding:18px 30px;
+
+  background:
+    linear-gradient(
+      #65451c,
+      #2d1b0a
+    );
+
+  color:#fff2d2;
+
+  font:
+    700 18px
+    Manjari;
+
+  box-shadow:
+    0 12px 35px #0008;
+
+  cursor:pointer;
+}
+
+
+/* =====================================================
+   📻 VINTAGE RADIO
+   ===================================================== */
+
+.radio-card{
+  justify-self:center;
+
+  width:min(420px,80vw);
+  height:340px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #714a25,
+      #2a180b
+    );
+
+  border:8px solid #9a6732;
+
+  border-radius:24px;
+
+  box-shadow:
+    0 30px 80px #000b,
+    inset 0 0 40px #0008;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  flex-direction:column;
+
+  transform:
+    rotate(1deg);
+
+  transition:
+    transform .4s ease;
+}
+
+.radio-card:hover{
+  transform:
+    rotate(0deg)
+    translateY(-4px);
+}
+
+
+.radio{
+  font:
+    700 36px
+    "Playfair Display";
+
+  letter-spacing:4px;
+
+  color:#d6a660;
+}
+
+
+.dial{
+  width:72%;
+  height:70px;
+
+  border:3px solid #c28b44;
+
+  border-radius:50%;
+
+  margin-top:20px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #25160c 0 8px,
+      #c18a42 9px 10px
+    );
+
+  box-shadow:
+    inset 0 0 20px #000;
+}
+
+
+.radio-line{
+  width:70%;
+  height:4px;
+
+  background:#c18a42;
+
+  margin-top:30px;
+}
+
+
+.onair{
+  color:#e55c43;
+
+  margin-top:20px;
+
+  font-size:12px;
+}
+
+
+/* =====================================================
+   🎛️ MACHINE
+   ===================================================== */
+
+.machine{
+  padding:50px 7vw;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(25,17,10,.96),
+      rgba(19,25,13,.96)
+    );
+
+  position:relative;
+}
+
+
+.machine::before{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at 50% 0,
+      rgba(205,158,71,.12),
+      transparent 35%
+    );
+
+  pointer-events:none;
+}
+
+
+.hidden{
+  display:none;
+}
+
+
+.topline{
+  display:flex;
+
+  justify-content:space-between;
+  align-items:center;
+
+  max-width:1100px;
+
+  margin:auto;
+
+  position:relative;
+  z-index:2;
+}
+
+
+.topline b{
+  font:
+    700 28px
+    "Playfair Display";
+
+  display:block;
+
+  color:#d9aa55;
+}
+
+
+.topline small{
+  color:#9e927d;
+}
+
+
+/* =====================================================
+   📻 NOW PLAYING
+   ===================================================== */
+
+.now-playing{
+  max-width:1100px;
+
+  margin:28px auto;
+
+  padding:30px;
+
+  border:1px solid #6c4b24;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(45,30,16,.96),
+      rgba(25,18,10,.96)
+    );
+
+  box-shadow:
+    0 15px 50px #0008;
+
+  position:relative;
+  z-index:2;
+}
+
+
+.live{
+  color:#e95a43;
+  margin-right:20px;
+}
+
+
+.now-playing h2{
+  font-size:34px;
+
+  color:#e7c077;
+
+  margin:15px 0 5px;
+}
+
+
+.now-playing p{
+  color:#aaa08e;
+}
+
+
+/* =====================================================
+   🎚️ AUDIO METER
+   ===================================================== */
+
+.meter{
+  display:flex;
+
+  gap:5px;
+
+  height:45px;
+
+  align-items:end;
+
+  justify-content:flex-end;
+}
+
+
+.meter i{
+  width:7px;
+
+  background:#d2a24d;
+
+  border-radius:5px;
+
+  animation:
+    bar .7s infinite alternate;
+}
+
+
+.meter i:nth-child(2){
+  height:25px;
+}
+
+.meter i:nth-child(3){
+  height:40px;
+}
+
+.meter i:nth-child(4){
+  height:18px;
+}
+
+.meter i:nth-child(5){
+  height:34px;
+}
+
+.meter i:nth-child(6){
+  height:28px;
+}
+
+.meter i:nth-child(7){
+  height:43px;
+}
+
+.meter i:nth-child(8){
+  height:20px;
+}
+
+
+@keyframes bar{
+  to{
+    transform:scaleY(.55);
+  }
+}
+
+
+/* =====================================================
+   🎚️ CONTROLS
+   ===================================================== */
+
+.controls{
+  max-width:1100px;
+
+  margin:25px auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:18px;
+
+  position:relative;
+  z-index:2;
+}
+
+
+.control{
+  padding:20px;
+
+  border:1px solid #4c351b;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #21170d,
+      #15100b
+    );
+}
+
+
+.control label{
+  display:block;
+
+  margin-bottom:12px;
+}
+
+
+.control input{
+  width:75%;
+
+  accent-color:#c99a4d;
+}
+
+
+.control b{
+  float:right;
+
+  color:#c99a4d;
+}
+
+
+/* =====================================================
+   🔘 SWITCHES
+   ===================================================== */
+
+.switches{
+  max-width:1100px;
+
+  margin:20px auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:12px;
+
+  position:relative;
+  z-index:2;
+}
+
+
+.switch{
+  background:#17110c;
+
+  border:1px solid #4c351b;
+
+  color:#ddd0b7;
+
+  padding:15px;
+
+  border-radius:13px;
+
+  text-align:left;
+
+  cursor:pointer;
+}
+
+
+.switch span{
+  float:right;
+
+  color:#888;
+}
+
+
+.switch.on{
+  border-color:#48764d;
+}
+
+
+.switch.on span{
+  color:#6fd17a;
+}
+
+
+/* =====================================================
+   🎙️ PROGRAM CARDS
+   ===================================================== */
+
+.program-grid{
+  max-width:1100px;
+
+  margin:30px auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:15px;
+
+  position:relative;
+  z-index:2;
+}
+
+
+.program-grid article{
+  padding:22px;
+
+  border:1px solid #49341b;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #24180d,
+      #130e09
+    );
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+
+.program-grid article:hover{
+  transform:translateY(-4px);
+
+  border-color:#87602d;
+
+  box-shadow:
+    0 12px 30px #0007;
+}
+
+
+.program-grid b{
+  font-size:20px;
+
+  color:#dfba78;
+}
+
+
+.program-grid span{
+  color:#9f9585;
+
+  font-size:14px;
+}
+
+
+.program-grid button{
+  margin-top:10px;
+
+  width:max-content;
+
+  background:#33220f;
+
+  color:#f0d9ad;
+
+  border:1px solid #6c4b24;
+
+  border-radius:20px;
+
+  padding:8px 14px;
+
+  font-family:
+    Manjari,
+    system-ui,
+    sans-serif;
+
+  cursor:pointer;
+
+  transition:
+    background .25s ease,
+    border-color .25s ease;
+}
+
+
+.program-grid button:hover{
+  background:#4a3015;
+
+  border-color:#c39446;
+
+  color:#fff2d2;
+}
+
+
+/* =====================================================
+   🎙️ YOUVAVANI BUTTON
+   ===================================================== */
+
+#youvavaniBtn{
+  margin-top:10px;
+
+  width:max-content;
+
+  background:#33220f;
+
+  color:#f0d9ad;
+
+  border:1px solid #6c4b24;
+
+  border-radius:20px;
+
+  padding:8px 14px;
+
+  font-family:
+    Manjari,
+    system-ui,
+    sans-serif;
+
+  font-size:14px;
+
+  cursor:pointer;
+}
+
+
+#youvavaniBtn:hover{
+  background:#4a3015;
+
+  border-color:#c39446;
+
+  color:#fff2d2;
+}
+
+
+/* =====================================================
+   👣 FOOTER
+   ===================================================== */
+
+footer{
+  padding:28px 7vw;
+
+  border-top:1px solid #3f2d18;
+
+  display:flex;
+
+  justify-content:space-between;
+
+  color:#8f8069;
+
+  background:
+    #120d09;
+}
+
+
+footer a{
+  color:#e1a94d;
+
+  text-decoration:none;
+
+  font-size:16px;
+}
+
+
+/* =====================================================
+   📱 MOBILE
+   ===================================================== */
+
+@media(max-width:850px){
+
+  nav{
+    display:none;
+  }
+
+
+  .hero{
+    grid-template-columns:1fr;
+
+    padding:60px 7vw;
+
+    min-height:calc(100vh - 72px);
+  }
+
+
+  .radio-card{
+    margin-top:50px;
+
+    width:min(380px,88vw);
+
+    height:300px;
+  }
+
+
+  .controls,
+  .switches,
+  .program-grid{
+    grid-template-columns:1fr;
+  }
+
+
+  .brand small{
+    display:none;
+  }
+
+
+  .hero h1{
+    font-size:68px;
+  }
+
+
+  .machine{
+    padding:40px 5vw;
+  }
+
+
+  .topline{
+    gap:15px;
+
+    align-items:flex-start;
+
+    flex-direction:column;
+  }
+
+
+  .enter{
+    width:100%;
+  }
+
+
+  .now-playing{
+    padding:24px 18px;
+  }
+
+
+  .meter{
+    justify-content:flex-start;
+
+    margin-top:20px;
+  }
+
+}
+
+
+/* =====================================================
+   📱 SMALL PHONE
+   ===================================================== */
+
+@media(max-width:480px){
+
+  .hero{
+    padding:
+      55px 5vw
+      45px;
+  }
+
+
+  .hero h1{
+    font-size:58px;
+
+    letter-spacing:-3px;
+  }
+
+
+  .years{
+    font-size:23px;
+  }
+
+
+  .ml{
+    font-size:17px;
+  }
+
+
+  .radio-card{
+    height:270px;
+
+    border-width:6px;
+  }
+
+
+  .radio{
+    font-size:29px;
+  }
+
+
+  .topline b{
+    font-size:23px;
+  }
+
+
+  .now-playing h2{
+    font-size:28px;
+  }
+
+
+  .program-grid article{
+    padding:19px;
+  }
+
+}
+
+
+/* =====================================================
+   🌙 DARK MODE SUPPORT
+   ===================================================== */
+
+body.dark-mode{
+  background:#050605 !important;
+
+  color:#d8d8d8;
+}
+
+
+body.dark-mode .hero{
+  background:
+    linear-gradient(
+      180deg,
+      rgba(2,4,2,.75),
+      rgba(2,4,2,.96)
+    );
+}
+
+
+body.dark-mode .machine{
+  background:#050605;
+}
+
+
+body.dark-mode .program-grid article,
+body.dark-mode .control,
+body.dark-mode .now-playing{
+  background:
+    linear-gradient(
+      145deg,
+      #11130f,
+      #070907
+    );
+}
+
+
+/* =====================================================
+   ✨ SOFT VINTAGE GLOW
+   ===================================================== */
+
+.hero h1,
+.radio,
+.topline b,
+.now-playing h2{
+  text-rendering:optimizeLegibility;
+}
+
+
+/* =====================================================
+   🌿 KERALA GREEN ACCENT
+   ===================================================== */
+
+.switch.on{
+  box-shadow:
+    inset 0 0 18px rgba(55,100,52,.08);
+}
+
+
+.program-grid article:nth-child(1){
+  border-color:#526238;
+}
+
+
+.program-grid article:nth-child(1) b{
+  color:#d7bd73;
+}
+
+
+.program-grid article:nth-child(2){
+  border-color:#4c5d39;
+}
+
+
+.program-grid article:nth-child(3){
+  border-color:#60452a;
+}
+
+
+/* =====================================================
+   🕰️ OLD PAPER FEEL FOR PLAYER
+   ===================================================== */
+
+.now-playing::before{
+  content:"";
+
+  position:absolute;
+
+  inset:8px;
+
+  border:1px solid rgba(201,154,77,.08);
+
+  border-radius:12px;
+
+  pointer-events:none;
+}
