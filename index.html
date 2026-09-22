@@ -40,6 +40,7 @@ body.dark{
   background:#010101;
 }
 
+
 /* =========================
    BULB + WIRE
 ========================= */
@@ -54,7 +55,7 @@ body.dark{
   position:absolute;
   top:-20px;
   left:50%;
-  width:70px;
+  width:60px;
   height:235px;
   transform:translateX(-50%);
   transform-origin:top center;
@@ -76,20 +77,23 @@ body.dark{
   position:absolute;
   top:0;
   left:50%;
-  width:5px;
-  height:185px;
+  width:4px;
+  height:188px;
   transform:translateX(-50%);
   background:#080808;
   border-radius:8px;
   box-shadow:0 0 4px #000;
 }
 
+
+/* ചെറിയ bulb */
+
 .bulb{
   position:absolute;
   left:50%;
   bottom:0;
-  width:58px;
-  height:78px;
+  width:45px;
+  height:62px;
   transform:translateX(-50%);
 }
 
@@ -97,46 +101,46 @@ body.dark{
   position:absolute;
   top:0;
   left:50%;
-  width:28px;
-  height:23px;
+  width:23px;
+  height:19px;
   transform:translateX(-50%);
   background:
     repeating-linear-gradient(
       0deg,
-      #252525 0 4px,
-      #090909 4px 7px
+      #252525 0 3px,
+      #090909 3px 6px
     );
-  border-radius:6px 6px 3px 3px;
+  border-radius:5px 5px 3px 3px;
 }
 
 .bulb-glass{
   position:absolute;
   left:50%;
-  top:13px;
-  width:52px;
-  height:64px;
+  top:11px;
+  width:42px;
+  height:51px;
   transform:translateX(-50%);
   border-radius:50% 50% 47% 47%;
   background:rgba(255,185,65,.16);
-  border:1.5px solid rgba(255,220,130,.45);
+  border:1px solid rgba(255,220,130,.45);
   box-shadow:
-    0 0 12px rgba(255,177,55,.55),
-    0 0 30px rgba(255,158,35,.35);
+    0 0 9px rgba(255,177,55,.55),
+    0 0 23px rgba(255,158,35,.30);
   transition:.5s;
 }
 
 .filament{
   position:absolute;
   left:50%;
-  top:29px;
-  width:19px;
-  height:28px;
+  top:23px;
+  width:15px;
+  height:22px;
   transform:translateX(-50%);
   border-left:2px solid #ffd873;
   border-right:2px solid #ffd873;
   border-bottom:2px solid #ffd873;
-  border-radius:0 0 12px 12px;
-  filter:drop-shadow(0 0 4px #ffd45e);
+  border-radius:0 0 10px 10px;
+  filter:drop-shadow(0 0 3px #ffd45e);
 }
 
 body.dark .bulb-glass{
@@ -150,7 +154,11 @@ body.dark .filament{
   filter:none;
 }
 
+
+/* wire + bulb ഒരുമിച്ച് */
+
 @keyframes bulbSwing{
+
   0%,100%{
     transform:translateX(-50%) rotate(-3deg);
   }
@@ -158,47 +166,88 @@ body.dark .filament{
   50%{
     transform:translateX(-50%) rotate(3deg);
   }
+
 }
 
+
 /* =========================
-   FLY
+   ചെറിയ ഈച്ച
 ========================= */
 
 .fly{
   position:absolute;
   left:50%;
   top:125px;
-  font-size:18px;
+  width:16px;
+  height:16px;
+  font-size:14px;
+  line-height:16px;
   pointer-events:none;
   z-index:8;
-  animation:flyAround 5s linear infinite;
+
+  animation:
+    flyAround 5s linear infinite,
+    wingBeat .10s steps(2) infinite;
 }
 
-@keyframes flyAround{
+
+/* ചിറകടിക്കൽ */
+
+@keyframes wingBeat{
+
   0%{
-    transform:translate(-90px,-15px) rotate(15deg);
+    scale:1 1;
   }
 
-  20%{
-    transform:translate(-50px,30px) rotate(-20deg);
-  }
-
-  40%{
-    transform:translate(45px,5px) rotate(25deg);
-  }
-
-  60%{
-    transform:translate(85px,-35px) rotate(-15deg);
-  }
-
-  80%{
-    transform:translate(30px,-65px) rotate(20deg);
+  50%{
+    scale:1.18 .72;
   }
 
   100%{
-    transform:translate(-90px,-15px) rotate(15deg);
+    scale:1 1;
   }
+
 }
+
+
+/* പറക്കൽ */
+
+@keyframes flyAround{
+
+  0%{
+    transform:translate(-75px,-5px) rotate(15deg);
+  }
+
+  15%{
+    transform:translate(-45px,25px) rotate(-20deg);
+  }
+
+  30%{
+    transform:translate(20px,35px) rotate(25deg);
+  }
+
+  45%{
+    transform:translate(70px,5px) rotate(-15deg);
+  }
+
+  60%{
+    transform:translate(55px,-35px) rotate(20deg);
+  }
+
+  75%{
+    transform:translate(-5px,-55px) rotate(-20deg);
+  }
+
+  90%{
+    transform:translate(-65px,-35px) rotate(15deg);
+  }
+
+  100%{
+    transform:translate(-75px,-5px) rotate(15deg);
+  }
+
+}
+
 
 /* =========================
    HEADER
@@ -242,6 +291,7 @@ h1{
   font-size:12px;
 }
 
+
 /* =========================
    NAV
 ========================= */
@@ -269,9 +319,6 @@ h1{
   -webkit-tap-highlight-color:transparent;
 }
 
-.nav button:hover{
-  background:#285c36;
-}
 
 /* =========================
    SECTIONS
@@ -287,6 +334,7 @@ h1{
   font-size:25px;
   margin-bottom:15px;
 }
+
 
 /* =========================
    AMBIENT
@@ -348,6 +396,7 @@ h1{
   accent-color:#d4932e;
 }
 
+
 /* =========================
    IMMERSIVE
 ========================= */
@@ -372,7 +421,6 @@ h1{
   font-size:16px;
   font-weight:bold;
   cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
 }
 
 .immersive-btn.active{
@@ -384,6 +432,7 @@ h1{
   color:#999;
   font-size:12px;
 }
+
 
 /* =========================
    PROGRAMS
@@ -400,7 +449,6 @@ h1{
   border-radius:18px;
   background:rgba(18,18,18,.91);
   border:1px solid rgba(255,255,255,.10);
-  box-shadow:0 8px 24px rgba(0,0,0,.35);
 }
 
 .program-card b{
@@ -427,12 +475,12 @@ h1{
   font-size:15px;
   font-weight:bold;
   cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
 }
 
 .audio-btn.playing{
   background:#ad7223;
 }
+
 
 /* =========================
    PLAYER
@@ -466,6 +514,7 @@ audio{
   font-weight:bold;
 }
 
+
 /* =========================
    INSTAGRAM
 ========================= */
@@ -480,22 +529,18 @@ footer{
   color:#999;
   font-size:12px;
   text-decoration:none;
-  -webkit-tap-highlight-color:transparent;
 }
 
 .instagram:hover{
   color:#d6a950;
 }
 
+
 /* =========================
    MOBILE
 ========================= */
 
 @media(max-width:650px){
-
-  .bulb-area{
-    height:245px;
-  }
 
   .ambient{
     grid-template-columns:repeat(2,1fr);
@@ -504,6 +549,7 @@ footer{
   .program-grid{
     grid-template-columns:1fr;
   }
+
 }
 
 @media(max-width:420px){
@@ -519,6 +565,7 @@ footer{
   .nav button{
     font-size:12px;
   }
+
 }
 </style>
 </head>
@@ -530,7 +577,7 @@ footer{
 
 
 <!-- =========================
-     BULB
+     HANGING BULB
 ========================= -->
 
 <div class="bulb-area">
@@ -548,12 +595,16 @@ footer{
       <div class="bulb-holder"></div>
 
       <div class="bulb-glass">
+
         <div class="filament"></div>
+
       </div>
 
     </div>
 
   </div>
+
+  <!-- ചെറിയ ഈച്ച -->
 
   <div class="fly">🪰</div>
 
@@ -585,7 +636,9 @@ footer{
   <div
     class="mode-text"
     id="modeText">
+
     🟠 Warm Light
+
   </div>
 
 </header>
@@ -768,8 +821,6 @@ footer{
   <div class="program-grid">
 
 
-    <!-- VAYALUM VEEDUM -->
-
     <article class="program-card">
 
       <b>🌾 വയലും വീടും</b>
@@ -789,8 +840,6 @@ footer{
 
     </article>
 
-
-    <!-- YOUVAVANI -->
 
     <article class="program-card">
 
@@ -812,8 +861,6 @@ footer{
     </article>
 
 
-    <!-- RADIO NADAKAM -->
-
     <article class="program-card">
 
       <b>🎭 റേഡിയോ നാടകം</b>
@@ -834,8 +881,6 @@ footer{
     </article>
 
 
-    <!-- GANA -->
-
     <article class="program-card">
 
       <b>🎵 ഗാനപരിപാടി</b>
@@ -855,8 +900,6 @@ footer{
 
     </article>
 
-
-    <!-- ADS -->
 
     <article class="program-card">
 
@@ -972,18 +1015,14 @@ function toggleNature(){
 
     nature.play().catch(()=>{});
 
-    btn.textContent =
-      "⏸ നിർത്തുക";
-
+    btn.textContent="⏸ നിർത്തുക";
     btn.classList.add("active");
 
   }else{
 
     nature.pause();
 
-    btn.textContent =
-      "▶ കേൾക്കാം";
-
+    btn.textContent="▶ കേൾക്കാം";
     btn.classList.remove("active");
 
   }
@@ -1004,18 +1043,14 @@ function toggleRain(){
 
     rain.play().catch(()=>{});
 
-    btn.textContent =
-      "⏸ മഴ നിർത്തുക";
-
+    btn.textContent="⏸ മഴ നിർത്തുക";
     btn.classList.add("active");
 
   }else{
 
     rain.pause();
 
-    btn.textContent =
-      "▶ മഴ കേൾക്കാം";
-
+    btn.textContent="▶ മഴ കേൾക്കാം";
     btn.classList.remove("active");
 
   }
@@ -1036,18 +1071,14 @@ function toggleRadio(){
 
     radio.play().catch(()=>{});
 
-    btn.textContent =
-      "⏸ റേഡിയോ ഓഫ്";
-
+    btn.textContent="⏸ റേഡിയോ ഓഫ്";
     btn.classList.add("active");
 
   }else{
 
     radio.pause();
 
-    btn.textContent =
-      "▶ റേഡിയോ ഓൺ";
-
+    btn.textContent="▶ റേഡിയോ ഓൺ";
     btn.classList.remove("active");
 
   }
@@ -1063,8 +1094,7 @@ document
 .getElementById("natureVol")
 .addEventListener("input",function(){
 
-  nature.volume =
-    this.value / 100;
+  nature.volume=this.value/100;
 
 });
 
@@ -1073,8 +1103,7 @@ document
 .getElementById("rainVol")
 .addEventListener("input",function(){
 
-  rain.volume =
-    this.value / 100;
+  rain.volume=this.value/100;
 
 });
 
@@ -1083,14 +1112,13 @@ document
 .getElementById("radioVol")
 .addEventListener("input",function(){
 
-  radio.volume =
-    this.value / 100;
+  radio.volume=this.value/100;
 
 });
 
 
 /* =========================
-   BULB MODE
+   BULB DARK / WARM
 ========================= */
 
 const bulb =
@@ -1106,17 +1134,13 @@ bulb.addEventListener("click",function(e){
   document.body.classList.toggle("warm");
   document.body.classList.toggle("dark");
 
-  if(
-    document.body.classList.contains("dark")
-  ){
+  if(document.body.classList.contains("dark")){
 
-    modeText.textContent =
-      "⚫ Dark Mode";
+    modeText.textContent="⚫ Dark Mode";
 
   }else{
 
-    modeText.textContent =
-      "🟠 Warm Light";
+    modeText.textContent="🟠 Warm Light";
 
   }
 
@@ -1141,36 +1165,24 @@ programButtons.forEach(function(button){
 
   button.addEventListener("click",function(){
 
-    const file =
-      this.dataset.audio;
-
-    const title =
-      this.dataset.title;
+    const file=this.dataset.audio;
+    const title=this.dataset.title;
 
     audioPlayer.pause();
+    audioPlayer.currentTime=0;
+    audioPlayer.src=file;
 
-    audioPlayer.currentTime = 0;
-
-    audioPlayer.src = file;
-
-    playerTitle.textContent =
-      "🎧 " + title;
-
+    playerTitle.textContent="🎧 "+title;
 
     programButtons.forEach(function(btn){
 
       btn.classList.remove("playing");
-
-      btn.textContent =
-        "▶ കേൾക്കാം";
+      btn.textContent="▶ കേൾക്കാം";
 
     });
 
-
     this.classList.add("playing");
-
-    this.textContent =
-      "⏸ ഇപ്പോൾ കേൾക്കുന്നു";
+    this.textContent="⏸ ഇപ്പോൾ കേൾക്കുന്നു";
 
     audioPlayer.play().catch(()=>{});
 
@@ -1186,70 +1198,64 @@ programButtons.forEach(function(button){
 function stopProgram(){
 
   audioPlayer.pause();
-
-  audioPlayer.currentTime = 0;
+  audioPlayer.currentTime=0;
 
   programButtons.forEach(function(btn){
 
     btn.classList.remove("playing");
-
-    btn.textContent =
-      "▶ കേൾക്കാം";
+    btn.textContent="▶ കേൾക്കാം";
 
   });
 
-  playerTitle.textContent =
+  playerTitle.textContent=
     "🎧 ഒരു പരിപാടി തിരഞ്ഞെടുക്കുക";
 
 }
 
 
 /* =========================
-   IMMERSIVE HEADSET
+   HEADSET IMMERSIVE
 ========================= */
 
-let immersiveOn = false;
-let audioContext = null;
+let immersiveOn=false;
+let audioContext=null;
 
-let natureSource = null;
-let rainSource = null;
-let radioSource = null;
+let natureSource=null;
+let rainSource=null;
+let radioSource=null;
 
-let naturePan = null;
-let rainPan = null;
-let radioPan = null;
+let naturePan=null;
+let rainPan=null;
+let radioPan=null;
 
 
 function setupImmersive(){
 
   if(audioContext) return;
 
-  audioContext =
-    new (
+  audioContext=
+    new(
       window.AudioContext ||
       window.webkitAudioContext
     )();
 
-
-  natureSource =
+  natureSource=
     audioContext.createMediaElementSource(nature);
 
-  rainSource =
+  rainSource=
     audioContext.createMediaElementSource(rain);
 
-  radioSource =
+  radioSource=
     audioContext.createMediaElementSource(radio);
 
-
-  naturePan =
+  naturePan=
     audioContext.createStereoPanner();
 
-  rainPan =
+  rainPan=
     audioContext.createStereoPanner();
 
-  radioPan =
+  radioPan=
     audioContext.createStereoPanner();
-
 
   natureSource
     .connect(naturePan)
@@ -1268,38 +1274,37 @@ function setupImmersive(){
 
 function toggleImmersive(){
 
-  const btn =
+  const btn=
     document.getElementById("immersiveBtn");
-
 
   if(!immersiveOn){
 
     setupImmersive();
 
-    if(audioContext.state === "suspended"){
+    if(audioContext.state==="suspended"){
       audioContext.resume();
     }
 
-    naturePan.pan.value = -.35;
-    rainPan.pan.value = .35;
-    radioPan.pan.value = 0;
+    naturePan.pan.value=-.35;
+    rainPan.pan.value=.35;
+    radioPan.pan.value=0;
 
-    immersiveOn = true;
+    immersiveOn=true;
 
-    btn.textContent =
+    btn.textContent=
       "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — ON";
 
     btn.classList.add("active");
 
   }else{
 
-    naturePan.pan.value = 0;
-    rainPan.pan.value = 0;
-    radioPan.pan.value = 0;
+    naturePan.pan.value=0;
+    rainPan.pan.value=0;
+    radioPan.pan.value=0;
 
-    immersiveOn = false;
+    immersiveOn=false;
 
-    btn.textContent =
+    btn.textContent=
       "🎧 ഹെഡ്‌സെറ്റ് Immersive Mode — OFF";
 
     btn.classList.remove("active");
