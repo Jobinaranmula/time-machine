@@ -1,504 +1,64 @@
-<!doctype html>
-<html lang="ml">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>TIME MACHINE — Kerala Radio 1980–1990</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Manjari:wght@400;700&family=Playfair+Display:wght@500;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<div class="grain"></div>
-
-
-<!-- =====================================================
-     💡 HANGING BULB
-===================================================== -->
-
-<div
-  id="warmBulb"
-  class="warm-bulb"
-  role="button"
-  tabindex="0"
-  aria-label="ലൈറ്റ് മാറ്റുക"
-  title="ലൈറ്റ് മാറ്റാൻ തൊടുക"
->
-  <div class="bulb-cord"></div>
-  <div class="bulb-holder"></div>
-  <div class="bulb-light"></div>
-</div>
-
-
-<!-- =====================================================
-     🪰 FLYING FLIES
-===================================================== -->
-
-<span class="fly fly1"></span>
-<span class="fly fly2"></span>
-<span class="fly fly3"></span>
-<span class="fly fly4"></span>
-<span class="fly fly5"></span>
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header>
-
-  <div class="brand">
-    📻
-    <span>TIME MACHINE</span>
-    <small>KERALA RADIO</small>
-  </div>
-
-  <nav>
-    <a href="#programs">പരിപാടികൾ</a>
-    <a href="#years">വർഷങ്ങൾ</a>
-    <a href="#ads">പരസ്യങ്ങൾ</a>
-    <a href="#about">കുറിച്ച്</a>
-  </nav>
-
-  <button
-    class="icon-btn"
-    id="rainBtn"
-    type="button"
-  >
-    🌧️ <span>മഴ</span>
-  </button>
-
-</header>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main>
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-copy">
-
-      <h1>
-        TIME<br>
-        <span>MACHINE</span>
-      </h1>
-
-      <div class="years" id="years">
-        1980 — 1990
-      </div>
-
-      <button
-        class="enter"
-        id="enterBtn"
-        type="button"
-      >
-        ▶
-        <span>ടൈം മെഷീനിലേക്ക് പോകാം</span>
-      </button>
-
-    </div>
-
-
-    <!-- RADIO -->
-
-    <div class="radio-card">
-
-      <div class="radio">
-        PHILIPS
-      </div>
-
-      <div class="dial"></div>
-
-      <div class="radio-line"></div>
-
-      <div class="onair">
-        ● ON AIR
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ===================================================
-       TIME MACHINE
-  =================================================== -->
-
-  <section
-    id="machine"
-    class="machine hidden"
-  >
-
-    <!-- TOP -->
-
-    <div class="topline">
-
-      <div>
-        <b id="dateLabel">
-          1985 · ഒരു രാവിലെ
-        </b>
-
-        <small>
-          കേരള റേഡിയോ
-        </small>
-      </div>
-
-    </div>
-
-
-    <!-- =================================================
-         NOW PLAYING
-    ================================================= -->
-
-    <div class="now-playing">
-
-      <div>
-
-        <span class="live">
-          ● LIVE
-        </span>
-
-        <span id="timeSlot">
-          06:30 — 07:00
-        </span>
-
-      </div>
-
-      <h2 id="programName">
-        പ്രഭാതവന്ദനം
-      </h2>
-
-      <p>
-        ആകാശവാണി · മലയാളം
-      </p>
-
-      <div class="meter">
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-      </div>
-
-    </div>
-
-
-    <!-- =================================================
-         VOLUME
-    ================================================= -->
-
-    <div class="controls">
-
-      <div class="control">
-
-        <label>
-          📻 റേഡിയോ
-        </label>
-
-        <input
-          id="radioVol"
-          type="range"
-          min="0"
-          max="100"
-          value="78"
-        >
-
-        <b id="radioVal">
-          78%
-        </b>
-
-      </div>
-
-
-      <div class="control">
-
-        <label>
-          🌿 പ്രകൃതി
-        </label>
-
-        <input
-          id="natureVol"
-          type="range"
-          min="0"
-          max="100"
-          value="28"
-        >
-
-        <b id="natureVal">
-          28%
-        </b>
-
-      </div>
-
-
-      <div class="control">
-
-        <label>
-          🌧️ മഴ
-        </label>
-
-        <input
-          id="rainVol"
-          type="range"
-          min="0"
-          max="100"
-          value="22"
-        >
-
-        <b id="rainVal">
-          22%
-        </b>
-
-      </div>
-
-    </div>
-
-
-    <!-- =================================================
-         SWITCHES
-    ================================================= -->
-
-    <div class="switches">
-
-      <button
-        id="radioBtn"
-        class="switch on"
-        type="button"
-      >
-        📻 റേഡിയോ
-        <span>ON</span>
-      </button>
-
-
-      <button
-        id="natureSwitch"
-        class="switch on"
-        type="button"
-      >
-        🌿 പ്രകൃതി
-        <span>ON</span>
-      </button>
-
-
-      <button
-        id="rainSwitch"
-        class="switch"
-        type="button"
-      >
-        🌧️ മഴ
-        <span>OFF</span>
-      </button>
-
-
-      <button
-        id="headsetSwitch"
-        class="switch on"
-        type="button"
-      >
-        🎧 Immersive
-        <span>ON</span>
-      </button>
-
-    </div>
-
-
-    <!-- =================================================
-         PROGRAMS
-    ================================================= -->
-
-    <div
-      class="program-grid"
-      id="programs"
-    >
-
-      <!-- VAYALUM VEEDUM -->
-
-      <article>
-
-        <b>
-          🌾 വയലും വീടും
-        </b>
-
-        <span>
-          കൃഷി · ഗ്രാമജീവിതം
-        </span>
-
-        <button
-          id="vayalumVeedumBtn"
-          type="button"
-        >
-          ▶ കേൾക്കാം
-        </button>
-
-      </article>
-
-
-      <!-- YOUVAVANI -->
-
-      <article>
-
-        <b>
-          🎙️ യുവവാണി
-        </b>
-
-        <span>
-          പഴയ മലയാളം യുവജന പരിപാടികൾ
-        </span>
-
-        <button
-          id="youvavaniBtn"
-          type="button"
-        >
-          ▶ കേൾക്കാം
-        </button>
-
-      </article>
-
-
-      <!-- RADIO NADAKAM -->
-
-      <article>
-
-        <b>
-          🎭 റേഡിയോ നാടകം
-        </b>
-
-        <span>
-          നാടകം · കഥ
-        </span>
-
-        <button
-          id="radioNadakamBtn"
-          type="button"
-        >
-          ▶ കേൾക്കാം
-        </button>
-
-      </article>
-
-
-      <!-- SONG -->
-
-      <article>
-
-        <b>
-          🎵 ഗാനപരിപാടി
-        </b>
-
-        <span>
-          പഴയ മലയാളം ഗാനങ്ങൾ
-        </span>
-
-        <button
-          id="ganaParipadiBtn"
-          type="button"
-        >
-          ▶ കേൾക്കാം
-        </button>
-
-      </article>
-
-
-      <!-- NEWS -->
-
-      <article>
-
-        <b>
-          📰 വാർത്ത
-        </b>
-
-        <span>
-          അന്നത്തെ വാർത്തകൾ
-        </span>
-
-        <button
-          id="newsBtn"
-          type="button"
-        >
-          ▶ കേൾക്കാം
-        </button>
-
-      </article>
-
-
-      <!-- ADS -->
-
-      <article id="ads">
-
-        <b>
-          📢 പരസ്യങ്ങൾ
-        </b>
-
-        <span>
-          കാലഘട്ട ശൈലിയിലുള്ള പരസ്യങ്ങൾ
-        </span>
-
-        <button
-          id="adsBtn"
-          type="button"
-        >
-          ▶ കാണാം
-        </button>
-
-      </article>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer id="about">
-
-  <span>
-    GOOD RADIO · BETTER DAYS
-  </span>
-
-  <a
-    id="myInstagram"
-    href="https://instagram.com/jobin_skariah"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    @jobin_skariah
-  </a>
-
-</footer>
-
-
-<!-- =====================================================
-     BASIC WORKING JAVASCRIPT
-===================================================== -->
-
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", function(){
+  /* =====================================================
+     TIME MACHINE — AUDIO SYSTEM
+  ===================================================== */
 
-  /* ==========================================
-     BULB / DARK MODE
-  ========================================== */
+  const audio = {
+    radio: new Audio("./radio.mp3"),
+    nature: new Audio("./nature-morning.mp3"),
+    rain: new Audio("./rain.mp3"),
+
+    vayalum: new Audio("./vayalum-veedum.mp3"),
+    youvavani: new Audio("./youvavani.mp3"),
+    nadakam: new Audio("./radio-nadakam.mp3"),
+    gana: new Audio("./gana-paripadi.mp3")
+  };
+
+  /* LOOP */
+  audio.radio.loop = true;
+  audio.nature.loop = true;
+  audio.rain.loop = true;
+
+  /* DEFAULT VOLUME */
+  audio.radio.volume = 0.78;
+  audio.nature.volume = 0.28;
+  audio.rain.volume = 0.22;
+
+
+  /* =====================================================
+     ELEMENTS
+  ===================================================== */
 
   const bulb = document.getElementById("warmBulb");
+  const enterBtn = document.getElementById("enterBtn");
+  const machine = document.getElementById("machine");
 
-  function toggleLight(){
+  const rainBtn = document.getElementById("rainBtn");
+
+  const radioBtn = document.getElementById("radioBtn");
+  const natureSwitch = document.getElementById("natureSwitch");
+  const rainSwitch = document.getElementById("rainSwitch");
+  const headsetSwitch = document.getElementById("headsetSwitch");
+
+  const radioVol = document.getElementById("radioVol");
+  const natureVol = document.getElementById("natureVol");
+  const rainVol = document.getElementById("rainVol");
+
+  const radioVal = document.getElementById("radioVal");
+  const natureVal = document.getElementById("natureVal");
+  const rainVal = document.getElementById("rainVal");
+
+  const programName = document.getElementById("programName");
+  const timeSlot = document.getElementById("timeSlot");
+
+
+  /* =====================================================
+     BULB
+  ===================================================== */
+
+  function toggleLight() {
 
     document.body.classList.toggle("dark-mode");
 
@@ -508,22 +68,21 @@ document.addEventListener("DOMContentLoaded", function(){
         ? "on"
         : "off"
     );
-
   }
 
-  if(
+  if (
     localStorage.getItem("timeMachineDark") === "on"
-  ){
+  ) {
     document.body.classList.add("dark-mode");
   }
 
-  if(bulb){
+  if (bulb) {
 
     bulb.addEventListener("click", toggleLight);
 
-    bulb.addEventListener("keydown", function(e){
+    bulb.addEventListener("keydown", function (e) {
 
-      if(e.key === "Enter" || e.key === " "){
+      if (e.key === "Enter" || e.key === " ") {
 
         e.preventDefault();
         toggleLight();
@@ -531,195 +90,460 @@ document.addEventListener("DOMContentLoaded", function(){
       }
 
     });
-
   }
 
 
-  /* ==========================================
-     ENTER BUTTON
-  ========================================== */
+  /* =====================================================
+     ENTER
+  ===================================================== */
 
-  const enterBtn =
-    document.getElementById("enterBtn");
+  if (enterBtn && machine) {
 
-  const machine =
-    document.getElementById("machine");
-
-  if(enterBtn && machine){
-
-    enterBtn.addEventListener("click", function(){
+    enterBtn.addEventListener("click", function () {
 
       machine.classList.remove("hidden");
 
-      machine.scrollIntoView({
-        behavior:"smooth",
-        block:"start"
-      });
+      setTimeout(function () {
+
+        machine.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+      }, 100);
 
     });
-
   }
 
 
-  /* ==========================================
-     SLIDERS
-  ========================================== */
+  /* =====================================================
+     VOLUME
+  ===================================================== */
 
-  function connectSlider(inputId, valueId){
+  function connectVolume(input, label, sound) {
 
-    const input =
-      document.getElementById(inputId);
+    if (!input || !label) return;
 
-    const value =
-      document.getElementById(valueId);
+    function update() {
 
-    if(!input || !value) return;
+      const value = Number(input.value);
 
-    function update(){
+      label.textContent = value + "%";
 
-      value.textContent =
-        input.value + "%";
-
+      sound.volume = value / 100;
     }
 
-    input.addEventListener(
-      "input",
-      update
-    );
+    input.addEventListener("input", update);
 
     update();
-
   }
 
-  connectSlider(
-    "radioVol",
-    "radioVal"
+  connectVolume(
+    radioVol,
+    radioVal,
+    audio.radio
   );
 
-  connectSlider(
-    "natureVol",
-    "natureVal"
+  connectVolume(
+    natureVol,
+    natureVal,
+    audio.nature
   );
 
-  connectSlider(
-    "rainVol",
-    "rainVal"
+  connectVolume(
+    rainVol,
+    rainVal,
+    audio.rain
   );
 
 
-  /* ==========================================
-     SWITCHES
-  ========================================== */
+  /* =====================================================
+     SWITCH UI
+  ===================================================== */
 
-  function setupSwitch(id){
+  function setSwitch(button, state) {
 
-    const button =
-      document.getElementById(id);
+    if (!button) return;
 
-    if(!button) return;
+    button.classList.toggle("on", state);
 
-    button.addEventListener("click", function(){
+    const span = button.querySelector("span");
 
-      button.classList.toggle("on");
+    if (span) {
+      span.textContent = state ? "ON" : "OFF";
+    }
+  }
 
-      const span =
-        button.querySelector("span");
+  function toggleSwitch(button) {
 
-      if(span){
+    if (!button) return false;
 
-        span.textContent =
-          button.classList.contains("on")
-            ? "ON"
-            : "OFF";
+    const state =
+      !button.classList.contains("on");
+
+    setSwitch(button, state);
+
+    return state;
+  }
+
+
+  /* =====================================================
+     RADIO
+  ===================================================== */
+
+  if (radioBtn) {
+
+    radioBtn.addEventListener("click", function () {
+
+      const on = toggleSwitch(radioBtn);
+
+      if (on) {
+
+        audio.radio.play().catch(function (err) {
+          console.log("Radio:", err);
+        });
+
+      } else {
+
+        audio.radio.pause();
 
       }
 
     });
-
   }
 
-  setupSwitch("radioBtn");
-  setupSwitch("natureSwitch");
-  setupSwitch("rainSwitch");
-  setupSwitch("headsetSwitch");
+
+  /* =====================================================
+     NATURE
+  ===================================================== */
+
+  if (natureSwitch) {
+
+    natureSwitch.addEventListener("click", function () {
+
+      const on = toggleSwitch(natureSwitch);
+
+      if (on) {
+
+        audio.nature.play().catch(function (err) {
+          console.log("Nature:", err);
+        });
+
+      } else {
+
+        audio.nature.pause();
+
+      }
+
+    });
+  }
 
 
-  /* ==========================================
+  /* =====================================================
+     RAIN
+  ===================================================== */
+
+  if (rainSwitch) {
+
+    rainSwitch.addEventListener("click", function () {
+
+      const on = toggleSwitch(rainSwitch);
+
+      if (on) {
+
+        audio.rain.play().catch(function (err) {
+          console.log("Rain:", err);
+        });
+
+      } else {
+
+        audio.rain.pause();
+
+      }
+
+    });
+  }
+
+
+  /* =====================================================
      TOP RAIN BUTTON
-  ========================================== */
+  ===================================================== */
 
-  const rainBtn =
-    document.getElementById("rainBtn");
+  if (rainBtn) {
 
-  const rainSwitch =
-    document.getElementById("rainSwitch");
+    rainBtn.addEventListener("click", function () {
 
-  if(rainBtn && rainSwitch){
+      if (rainSwitch) {
 
-    rainBtn.addEventListener("click", function(){
-
-      rainSwitch.click();
-
-    });
-
-  }
-
-
-  /* ==========================================
-     PROGRAM BUTTONS
-  ========================================== */
-
-  const programs = {
-
-    vayalumVeedumBtn:
-      "🌾 വയലും വീടും — പരിപാടി തിരഞ്ഞെടുത്തു",
-
-    youvavaniBtn:
-      "🎙️ യുവവാണി — പരിപാടി തിരഞ്ഞെടുത്തു",
-
-    radioNadakamBtn:
-      "🎭 റേഡിയോ നാടകം — പരിപാടി തിരഞ്ഞെടുത്തു",
-
-    ganaParipadiBtn:
-      "🎵 ഗാനപരിപാടി — പരിപാടി തിരഞ്ഞെടുത്തു",
-
-    newsBtn:
-      "📰 വാർത്ത — പരിപാടി തിരഞ്ഞെടുത്തു",
-
-    adsBtn:
-      "📢 പരസ്യങ്ങൾ — പരിപാടി തിരഞ്ഞെടുത്തു"
-
-  };
-
-
-  Object.keys(programs).forEach(function(id){
-
-    const button =
-      document.getElementById(id);
-
-    if(!button) return;
-
-    button.addEventListener("click", function(){
-
-      const programName =
-        document.getElementById("programName");
-
-      if(programName){
-
-        programName.textContent =
-          programs[id]
-            .replace(" — പരിപാടി തിരഞ്ഞെടുത്തു","")
-            .replace(" — പരിപാടി തിരഞ്ഞെടുത്തു","");
+        rainSwitch.click();
 
       }
 
     });
+  }
 
-  });
+
+  /* =====================================================
+     STOP PROGRAM AUDIO
+  ===================================================== */
+
+  function stopProgramAudio() {
+
+    audio.vayalum.pause();
+    audio.youvavani.pause();
+    audio.nadakam.pause();
+    audio.gana.pause();
+
+    audio.vayalum.currentTime = 0;
+    audio.youvavani.currentTime = 0;
+    audio.nadakam.currentTime = 0;
+    audio.gana.currentTime = 0;
+  }
+
+
+  /* =====================================================
+     PLAY PROGRAM
+  ===================================================== */
+
+  function playProgram(sound, name, time) {
+
+    stopProgramAudio();
+
+    if (programName) {
+      programName.textContent = name;
+    }
+
+    if (timeSlot) {
+      timeSlot.textContent = time;
+    }
+
+    sound.currentTime = 0;
+
+    sound.play().then(function () {
+
+      console.log(
+        "▶ Playing:",
+        name
+      );
+
+    }).catch(function (error) {
+
+      console.error(
+        "Audio error:",
+        error
+      );
+
+      alert(
+        "Audio play ചെയ്യാൻ കഴിഞ്ഞില്ല.\n\nMP3 file name പരിശോധിക്കുക."
+      );
+
+    });
+  }
+
+
+  /* =====================================================
+     🌾 VAYALUM VEEDUM
+  ===================================================== */
+
+  const vayalumBtn =
+    document.getElementById("vayalumVeedumBtn");
+
+  if (vayalumBtn) {
+
+    vayalumBtn.addEventListener(
+      "click",
+      function () {
+
+        playProgram(
+          audio.vayalum,
+          "വയലും വീടും",
+          "07:00 — 07:30"
+        );
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     🎙️ YOUVAVANI
+  ===================================================== */
+
+  const youvavaniBtn =
+    document.getElementById("youvavaniBtn");
+
+  if (youvavaniBtn) {
+
+    youvavaniBtn.addEventListener(
+      "click",
+      function () {
+
+        playProgram(
+          audio.youvavani,
+          "യുവവാണി",
+          "08:00 — 08:30"
+        );
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     🎭 RADIO NADAKAM
+  ===================================================== */
+
+  const nadakamBtn =
+    document.getElementById("radioNadakamBtn");
+
+  if (nadakamBtn) {
+
+    nadakamBtn.addEventListener(
+      "click",
+      function () {
+
+        playProgram(
+          audio.nadakam,
+          "റേഡിയോ നാടകം",
+          "20:00 — 21:00"
+        );
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     🎵 GANA PARIPADI
+  ===================================================== */
+
+  const ganaBtn =
+    document.getElementById("ganaParipadiBtn");
+
+  if (ganaBtn) {
+
+    ganaBtn.addEventListener(
+      "click",
+      function () {
+
+        playProgram(
+          audio.gana,
+          "ഗാനപരിപാടി",
+          "18:00 — 19:00"
+        );
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     📰 NEWS
+     No MP3 currently connected
+  ===================================================== */
+
+  const newsBtn =
+    document.getElementById("newsBtn");
+
+  if (newsBtn) {
+
+    newsBtn.addEventListener(
+      "click",
+      function () {
+
+        if (programName) {
+          programName.textContent =
+            "വാർത്ത";
+        }
+
+        if (timeSlot) {
+          timeSlot.textContent =
+            "അന്നത്തെ വാർത്തകൾ";
+        }
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     📢 ADS
+  ===================================================== */
+
+  const adsBtn =
+    document.getElementById("adsBtn");
+
+  if (adsBtn) {
+
+    adsBtn.addEventListener(
+      "click",
+      function () {
+
+        if (programName) {
+          programName.textContent =
+            "പരസ്യങ്ങൾ";
+        }
+
+        if (timeSlot) {
+          timeSlot.textContent =
+            "1980 — 1990";
+        }
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     DATE
+  ===================================================== */
+
+  const dateLabel =
+    document.getElementById("dateLabel");
+
+  if (dateLabel) {
+
+    const years = [
+      "1982 · ഒരു രാവിലെ",
+      "1984 · ഒരു വൈകുന്നേരം",
+      "1985 · ഒരു രാവിലെ",
+      "1987 · ഒരു രാത്രി",
+      "1989 · ഒരു ഞായറാഴ്ച"
+    ];
+
+    let index = 2;
+
+    dateLabel.addEventListener(
+      "click",
+      function () {
+
+        index++;
+
+        if (index >= years.length) {
+          index = 0;
+        }
+
+        dateLabel.textContent =
+          years[index];
+
+      }
+    );
+  }
+
+
+  /* =====================================================
+     INITIAL BUTTON STATE
+  ===================================================== */
+
+  setSwitch(radioBtn, true);
+  setSwitch(natureSwitch, true);
+  setSwitch(rainSwitch, false);
+  setSwitch(headsetSwitch, true);
+
+
+  console.log(
+    "TIME MACHINE — AUDIO READY"
+  );
 
 });
-
 </script>
-
-</body>
-</html>
